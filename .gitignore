@@ -57,3 +57,7 @@ playwright/.cache/
 
 # Browser automation profiles / evidence captures
 **/.chrome-profile/
+# Python (workspace scripts)
+__pycache__/
+*.py[cod]
+.pytest_cache/

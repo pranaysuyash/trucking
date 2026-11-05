@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Facility,
   InboundManifest,
@@ -11,6 +11,7 @@ import {
 } from '../engine/types';
 import {
   createCanonicalFacility,
+  createCustomFacility,
   createSeedMoveableEntities,
   computeFacilityMetrics,
   findSlotById,
@@ -18,7 +19,7 @@ import {
 } from '../engine/spatialModel';
 import { createCanonical40PalletManifest } from '../engine/inboundManifest';
 import { solvePutawayManifest } from '../engine/putawayEngine';
-import { executeScanVerification } from '../engine/verificationEngine';
+import { executeScanVerification, publishEpcisEvent, noopEpcisPublisher } from '../engine/verificationEngine';
 import { useShipmentSession } from '../suite/ShipmentSession';
 import { useShipmentDraft } from '../suite/useShipmentDraft';
 import { facilityForShipment, inboundForShipment, planningFacility, resultForReceivingPlan } from '../engine/shipmentAdapter';
@@ -29,14 +30,14 @@ import {
   translateCargoFitLoadToInboundManifest,
 } from '../engine/cargoFitBridge';
 
-export const Warehouse2DPlanner: React.FC = () => {
+export const Warehouse2DPlanner: React.FC<{ onWorkspaceChange?: (s: { facility: Facility | null; manifest: InboundManifest | null }) => void }> = ({ onWorkspaceChange }) => {
+  const onWorkspaceChangeRef = useRef(onWorkspaceChange);
+  onWorkspaceChangeRef.current = onWorkspaceChange;
   const session = useShipmentSession();
-  const [facility, setFacility] = useState<Facility>(() => createCanonicalFacility());
-  const [manifest, setManifest] = useState<InboundManifest>(() => createCanonical40PalletManifest());
-  const [entities] = useState<MoveableEntity[]>(() => createSeedMoveableEntities());
-  const [solverResult, setSolverResult] = useState<PutawaySolveSummary | null>(() =>
-    solvePutawayManifest(createCanonicalFacility(), createCanonical40PalletManifest())
-  );
+  const [facility, setFacility] = useState<Facility | null>(null);
+  const [manifest, setManifest] = useState<InboundManifest | null>(null);
+  const [entities, setEntities] = useState<MoveableEntity[]>([]);
+  const [solverResult, setSolverResult] = useState<PutawaySolveSummary | null>(null);
 
   const [selectedPalletId, setSelectedPalletId] = useState<string | null>(null);
   const [selectedSlotId, setSelectedSlotId] = useState<string | null>(null);
@@ -45,43 +46,158 @@ export const Warehouse2DPlanner: React.FC = () => {
   const [rightPanelTab, setRightPanelTab] = useState<'queue' | 'epcis' | 'yard'>('queue');
   const [hoveredSlot, setHoveredSlot] = useState<LocationSlot | null>(null);
 
-  // EPCIS audit stream
-  const [epcisEvents, setEpcisEvents] = useState<EpcisEvent[]>(session?.selectedId ? [] : [
-    {
-      eventId: 'urn:uuid:evt-seed-receiving-01',
-      eventType: 'ObjectEvent',
-      eventTime: new Date(Date.now() - 3600000).toISOString(),
-      action: 'OBSERVE',
-      bizStep: 'urn:epcglobal:cbv:bizstep:receiving',
-      disposition: 'urn:epcglobal:cbv:disp:in_progress',
-      epcList: ['urn:epc:id:sscc:0614141.000109283740000001'],
-      readPoint: 'urn:epc:id:sgln:0614141.00001.DOCK-02',
-      bizLocation: 'urn:epc:id:sgln:0614141.00001.ZD-REC',
-      verificationEvidence: {
-        scanType: 'BARCODE_2D_DATAMATRIX',
-        operatorId: 'OPR-RECEIVING-D02',
-        verifiedTimestamp: new Date(Date.now() - 3600000).toISOString(),
-        notes: 'Inbound trailer DO-CHI-884910 docked and seal intact.',
-      },
-      verificationStatus: 'simulated',
-    },
-  ]);
+  // EPCIS audit stream — empty until a demo workspace is loaded or events are observed.
+  const [epcisEvents, setEpcisEvents] = useState<EpcisEvent[]>([]);
 
   const [discrepancies, setDiscrepancies] = useState<DiscrepancyReport[]>([]);
   const [notification, setNotification] = useState<{ type: 'success' | 'warn'; message: string } | null>(null);
-  function importShared(shipment: Shipment) {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  function validateImportedFacility(raw: unknown): Facility {
+    if (!raw || typeof raw !== 'object') throw new Error('Workspace JSON must include a "facility" object.');
+    const f = raw as Record<string, unknown>;
+    const input = {
+      id: String(f.id ?? ''),
+      code: String(f.code ?? ''),
+      name: String(f.name ?? ''),
+      address: String(f.address ?? ''),
+      totalSquareFeet: Number(f.totalSquareFeet),
+      clearHeightFt: Number(f.clearHeightFt),
+      zones: Array.isArray(f.zones) ? (f.zones as Facility['zones']) : [],
+    };
+    // createCustomFacility validates shape basics; full slot-level validation is best-effort.
+    return createCustomFacility(input);
+  }
+
+  function validateImportedManifest(raw: unknown): InboundManifest {
+    if (!raw || typeof raw !== 'object') throw new Error('Manifest must be an object.');
+    const m = raw as Record<string, unknown>;
+    if (!Array.isArray(m.items)) throw new Error('Manifest must include an "items" array.');
+    return {
+      manifestId: String(m.manifestId ?? `IMP-${Date.now()}`),
+      deliveryOrderNumber: String(m.deliveryOrderNumber ?? ''),
+      carrierName: String(m.carrierName ?? ''),
+      vehiclePlate: String(m.vehiclePlate ?? ''),
+      eta: String(m.eta ?? new Date().toISOString()),
+      originTruckLoadId: typeof m.originTruckLoadId === 'string' ? m.originTruckLoadId : undefined,
+      dockAssigned: String(m.dockAssigned ?? ''),
+      stagingLaneAssigned: String(m.stagingLaneAssigned ?? ''),
+      items: m.items as InboundManifest['items'],
+    };
+  }
+
+  function createStarterFacility(): Facility {
+    return createCustomFacility({
+      id: `FAC-${Date.now()}`,
+      code: 'STARTER-01',
+      name: 'My Warehouse',
+      address: '',
+      totalSquareFeet: 10000,
+      clearHeightFt: 24,
+      zones: [
+        {
+          id: 'ZONE-DOCK', code: 'DOCK', name: 'Receiving Dock', type: 'receiving_dock',
+          canvasBounds: { x: 20, y: 15, width: 200, height: 80 }, color: '#0284c7',
+          slots: [{ id: 'DOCK-01', code: 'D-01', zoneId: 'ZONE-DOCK', type: 'dock_door', canvasCoords: { x: 30, y: 30, width: 75, height: 50 }, dimensions: { lengthIn: 636, widthIn: 102, heightIn: 162 }, maxWeightLbs: 80000, allowedClasses: ['ambient', 'chilled', 'frozen', 'hazmat'], groundOnlyAllowed: true, status: 'available' }],
+        },
+        {
+          id: 'ZONE-STAGING', code: 'STG', name: 'Staging', type: 'inbound_staging',
+          canvasBounds: { x: 240, y: 15, width: 160, height: 80 }, color: '#eab308',
+          slots: [{ id: 'STG-A', code: 'STG-A', zoneId: 'ZONE-STAGING', type: 'staging_lane', canvasCoords: { x: 250, y: 30, width: 95, height: 50 }, dimensions: { lengthIn: 360, widthIn: 120, heightIn: 96 }, maxWeightLbs: 45000, allowedClasses: ['ambient', 'chilled', 'frozen', 'hazmat'], groundOnlyAllowed: true, status: 'available' }],
+        },
+        {
+          id: 'ZONE-RACKS', code: 'RACK', name: 'Pallet Racking', type: 'high_bay_rack',
+          canvasBounds: { x: 20, y: 120, width: 380, height: 120 }, color: '#64748b',
+          slots: [1, 2, 3, 4].map((bay) => ({
+            id: `R01-B0${bay}-L1-A`, code: `R01-B0${bay}-L1-A`, zoneId: 'ZONE-RACKS', type: 'rack_bin' as const,
+            aisle: 'R01', bay: `B0${bay}`, level: 1, position: 'A' as const,
+            canvasCoords: { x: 30 + (bay - 1) * 90, y: 140, width: 80, height: 35 },
+            dimensions: { lengthIn: 48, widthIn: 40, heightIn: 68 }, maxWeightLbs: 2800,
+            allowedClasses: ['ambient' as const], groundOnlyAllowed: false, status: 'available' as const,
+          })),
+        },
+      ],
+    });
+  }
+
+  const handleImportWorkspaceFile = async (file: File) => {
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text) as Record<string, unknown>;
+      const facilityRaw = parsed.facility ?? (Array.isArray(parsed.zones) ? parsed : null);
+      if (!facilityRaw) throw new Error('JSON must include "facility" (with zones/slots) or a facility object.');
+      const importedFacility = validateImportedFacility(facilityRaw);
+      let importedManifest: InboundManifest | null = null;
+      if (parsed.manifest) importedManifest = validateImportedManifest(parsed.manifest);
+      setFacility(importedFacility);
+      setEntities([]);
+      setManifest(importedManifest);
+      setSolverResult(importedManifest ? solvePutawayManifest(importedFacility, importedManifest) : null);
+      setSelectedPalletId(importedManifest?.items[0]?.palletId ?? null);
+      setSelectedSlotId(null);
+      setEpcisEvents([]);
+      setDiscrepancies([]);
+      setNotification({ type: 'success', message: importedManifest ? `Imported workspace: ${importedFacility.name} with ${importedManifest.items.length} manifest item(s).` : `Imported facility: ${importedFacility.name}. Import or create a manifest to run putaway.` });
+    } catch (e) {
+      setNotification({ type: 'warn', message: e instanceof Error ? e.message : 'Failed to import workspace JSON.' });
+    } finally {
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
+  };
+
+  const handleExportWorkspace = () => {
+    if (!displayedFacility) { setNotification({ type: 'warn', message: 'No workspace to export.' }); return; }
+    const payload = { exportedAt: new Date().toISOString(), product: 'product-06-warehouse-space-flow', facility: displayedFacility, manifest, solverResult };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `warehouse-workspace-${displayedFacility.code || 'export'}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleDownloadTemplate = () => {
+    const template = {
+      _instructions: 'Edit this template: define your facility zones/slots and inbound manifest items. Then use Import workspace JSON in the planner.',
+      facility: createStarterFacility(),
+      manifest: {
+        manifestId: 'MANIFEST-001', deliveryOrderNumber: 'DO-001', carrierName: '', vehiclePlate: '', eta: new Date().toISOString(), dockAssigned: 'DOCK-01', stagingLaneAssigned: 'STG-A',
+        items: [{ palletId: 'PLT-001', barcode: '000000000001', sku: 'SKU-001', description: 'Example pallet', packageType: 'Standard GMA 48x40', dimensions: { lengthIn: 48, widthIn: 40, heightIn: 60 }, weightLbs: 1200, environmentalClass: 'ambient', groundOnly: false, stackable: true, customerAccount: '' }],
+      },
+    };
+    const blob = new Blob([JSON.stringify(template, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'warehouse-workspace-template.json'; a.click(); URL.revokeObjectURL(url);
+  };
+
+  const handleCreateStarterWorkspace = () => {
+    const starter = createStarterFacility();
+    setFacility(starter);
+    setEntities([]);
+    setManifest(null);
+    setSolverResult(null);
+    setSelectedPalletId(null);
+    setSelectedSlotId(null);
+    setEpcisEvents([]);
+    setDiscrepancies([]);
+    setNotification({ type: 'success', message: `Created starter facility "${starter.name}". Import a manifest JSON or download the template to add inbound items.` });
+  };
+
+  function importShared(shipment: Shipment): { facility: Facility; manifest: InboundManifest; solverResult: PutawaySolveSummary | null } {
     const incoming = inboundForShipment(shipment);
     const nextFacility = facilityForShipment(shipment, session?.resources ?? null);
     const saved = shipment.results.warehouse;
     const records = saved?.inputRevision === shipment.inputRevision ? saved.details.recommendations as PutawaySolveSummary['recommendations'] | undefined : undefined;
     return { facility: nextFacility, manifest: incoming, solverResult: records ? { totalExpected: incoming.items.length, proposedCount: records.filter(item => item.status === 'proposed').length, alternativeCount: records.filter(item => item.status === 'alternative').length, conflictCount: records.filter(item => item.status === 'conflict').length, recommendations: records, computedAt: saved!.recordedAt } : solvePutawayManifest(planningFacility(nextFacility, shipment, session?.resources ?? null), incoming) };
   }
-  const draft = useShipmentDraft<{ facility: Facility; manifest: InboundManifest; solverResult: PutawaySolveSummary | null }>({
-    value: { facility, manifest, solverResult }, importValue: importShared,
-    applyValue: value => { setFacility(value.facility); setManifest(value.manifest); setSolverResult(value.solverResult); setSelectedPalletId(value.manifest.items[0]?.palletId ?? null); setSelectedSlotId(null); setEpcisEvents([]); setDiscrepancies([]); },
+  const draft = useShipmentDraft<{ facility: Facility | null; manifest: InboundManifest | null; solverResult: PutawaySolveSummary | null }>({
+    value: { facility, manifest, solverResult },
+    importValue: (s) => importShared(s),
+    applyValue: value => { setFacility(value.facility); setManifest(value.manifest); setSolverResult(value.solverResult); setSelectedPalletId(value.manifest?.items[0]?.palletId ?? null); setSelectedSlotId(null); setEpcisEvents([]); setDiscrepancies([]); },
   });
   const publication = useMemo(() => {
-    if (!session?.shipment || !solverResult) return { result: null, error: '' };
+    if (!session?.shipment || !solverResult || !facility || !manifest) return { result: null, error: '' };
     try { return { result: resultForReceivingPlan(session.shipment, facility, manifest, solverResult, session.resources), error: '' }; }
     catch (error) { return { result: null, error: error instanceof Error ? error.message : 'Receiving plan could not be reviewed.' }; }
   }, [session?.shipment, session?.resources, facility, manifest, solverResult]);
@@ -93,7 +209,11 @@ export const Warehouse2DPlanner: React.FC = () => {
     return facility;
   }, [session?.shipment, session?.resources, session?.selectedId, draft.dirty, draft.incoming, facility]);
   // Facility Metrics
-  const metrics = useMemo(() => computeFacilityMetrics(displayedFacility), [displayedFacility]);
+  const metrics = useMemo(() => displayedFacility ? computeFacilityMetrics(displayedFacility) : null, [displayedFacility]);
+
+  useEffect(() => {
+    onWorkspaceChangeRef.current?.({ facility: displayedFacility ?? facility ?? null, manifest: manifest ?? null });
+  }, [displayedFacility, facility, manifest]);
 
   // Filtered Recommendations
   const filteredRecommendations = useMemo(() => {
@@ -120,6 +240,7 @@ export const Warehouse2DPlanner: React.FC = () => {
   }, [solverResult, selectedPalletId]);
 
   const activeSlot = useMemo(() => {
+    if (!displayedFacility) return null;
     if (selectedSlotId) return findSlotById(displayedFacility, selectedSlotId);
     if (selectedRecommendation?.targetSlotId) {
       return findSlotById(displayedFacility, selectedRecommendation.targetSlotId);
@@ -129,6 +250,7 @@ export const Warehouse2DPlanner: React.FC = () => {
 
   // Run Solver Action
   const handleRunSolver = () => {
+    if (!facility || !manifest) return;
     const nextFacility = session?.shipment && session.selectedId ? planningFacility(facility, session.shipment, session.resources) : facility;
     const res = solvePutawayManifest(nextFacility, manifest);
     setFacility(nextFacility);
@@ -141,7 +263,7 @@ export const Warehouse2DPlanner: React.FC = () => {
 
   // Commit Reservations
   const handleCommitReservations = () => {
-    if (!solverResult) return;
+    if (!solverResult || !facility) return;
     const newFacility = JSON.parse(JSON.stringify(facility)) as Facility;
     let committed = 0;
 
@@ -165,7 +287,8 @@ export const Warehouse2DPlanner: React.FC = () => {
   };
 
   // Scan & Putaway Verification
-  const handleVerifyPutaway = (rec: PutawayRecommendation, simulateError = false) => {
+  const handleVerifyPutaway = async (rec: PutawayRecommendation, simulateError = false) => {
+    if (!facility) return;
     const targetCode = simulateError ? 'WRONG-SLOT-99' : rec.targetLocationCode;
     const newFacility = JSON.parse(JSON.stringify(facility)) as Facility;
 
@@ -173,7 +296,10 @@ export const Warehouse2DPlanner: React.FC = () => {
 
     if (result.success && result.slotUpdated && result.eventGenerated) {
       setFacility(newFacility);
-      setEpcisEvents((prev) => [result.eventGenerated!, ...prev]);
+      // Publish via the configured publisher (noop by default -> stays simulated/observed, never falsely "published").
+      const publisher = (window as unknown as { __EPCIS_PUBLISHER__?: { publish: (e: unknown) => Promise<{ published: boolean; receiptId?: string; error?: string }> } }).__EPCIS_PUBLISHER__ ?? noopEpcisPublisher;
+      const publishedEvent = await publishEpcisEvent(result.eventGenerated!, publisher as never);
+      setEpcisEvents((prev) => [publishedEvent, ...prev]);
       setNotification({ type: 'success', message: result.message });
     } else {
       if (result.discrepancyReport) {
@@ -183,91 +309,128 @@ export const Warehouse2DPlanner: React.FC = () => {
     }
   };
 
-  // Import Load from P01 Cargo Fit Bridge
-  const handleImportCargoFit = () => {
-    const mockCargoFitLoad: CargoFitVehicleLoad = {
-      loadId: 'CF-LOAD-ORD-992',
-      vehicleType: '53ft Semi-Trailer (Dry Van)',
-      carrier: 'J.B. Hunt Dedicated',
-      trailerNumber: 'JB-53-8821',
-      destinationFacilityId: 'FACILITY-DC-04',
-      totalWeightLbs: 38200,
-      packedItems: [
-        {
-          itemId: 'BEARING-SKID-01',
-          description: 'High-Precision Tapered Roller Bearings',
-          lengthIn: 48,
-          widthIn: 40,
-          heightIn: 52,
-          weightLbs: 1950,
-          temperatureClass: 'ambient',
+  const handleLoadDemoWorkspace = () => {
+    const demoFacility = createCanonicalFacility();
+    const demoManifest = createCanonical40PalletManifest();
+    const demoEntities = createSeedMoveableEntities();
+    const demoResult = solvePutawayManifest(demoFacility, demoManifest);
+    setFacility(demoFacility);
+    setManifest(demoManifest);
+    setEntities(demoEntities);
+    setSolverResult(demoResult);
+    setSelectedPalletId(demoManifest.items[0]?.palletId ?? null);
+    setSelectedSlotId(null);
+    setDiscrepancies([]);
+    setEpcisEvents([
+      {
+        eventId: 'urn:uuid:demo-receiving-seed',
+        eventType: 'ObjectEvent',
+        eventTime: new Date().toISOString(),
+        action: 'OBSERVE',
+        bizStep: 'urn:epcglobal:cbv:bizstep:receiving',
+        disposition: 'urn:epcglobal:cbv:disp:in_progress',
+        epcList: ['urn:epc:id:sscc:demo.000000000001'],
+        readPoint: 'urn:epc:id:sgln:demo.DOCK-01',
+        bizLocation: 'urn:epc:id:sgln:demo.ZD-REC',
+        verificationEvidence: {
+          scanType: 'MANUAL_DISPATCH',
+          operatorId: 'DEMO-OPERATOR',
+          verifiedTimestamp: new Date().toISOString(),
+          notes: 'Demo workspace seed — not a physical scan, not published to an external EPCIS repository.',
         },
-        {
-          itemId: 'PHARMA-VACCINE-02',
-          description: 'Temperature-Sensitive Biological Totes',
-          lengthIn: 48,
-          widthIn: 40,
-          heightIn: 56,
-          weightLbs: 1250,
-          temperatureClass: 'chilled',
-        },
-        {
-          itemId: 'CHEMICAL-SOLVENT-03',
-          description: '4x 55-Gal Steel Drums (Class 3 Solvent)',
-          lengthIn: 48,
-          widthIn: 48,
-          heightIn: 55,
-          weightLbs: 2350,
-          isHazmat: true,
-        },
-        {
-          itemId: 'HYDRAULIC-VALVE-04',
-          description: 'Solid Bronze Hydraulic Valve Castings',
-          lengthIn: 52,
-          widthIn: 46,
-          heightIn: 48,
-          weightLbs: 3300,
-          groundOnly: true,
-        },
-      ],
-    };
-
-    const newManifest = translateCargoFitLoadToInboundManifest(mockCargoFitLoad, 'DOCK-03', 'STG-C');
-    setManifest(newManifest);
-    const newSolution = solvePutawayManifest(facility, newManifest);
-    setSolverResult(newSolution);
-    setSelectedPalletId(newManifest.items[0]?.palletId || null);
-    setNotification({
-      type: 'success',
-      message: ' Loaded four built-in demonstration items. Use the connected shipment workspace for real cross-product record intake.',
-    });
+        verificationStatus: 'simulated',
+      },
+    ]);
+    setNotification({ type: 'success', message: 'Loaded demo workspace (canonical facility + sample manifest). Data is local/demo unless connected to a shipment session.' });
   };
 
+  // Load a sample Cargo Fit import (standalone demo only — not a real P01 connection)
+  const handleLoadSampleImport = () => {
+    const baseFacility = facility ?? createCanonicalFacility();
+    const mockCargoFitLoad: CargoFitVehicleLoad = {
+      loadId: 'CF-LOAD-SAMPLE',
+      vehicleType: '53ft Semi-Trailer (Dry Van)',
+      carrier: 'Sample Carrier',
+      trailerNumber: 'SAMPLE-53',
+      destinationFacilityId: baseFacility.id,
+      totalWeightLbs: 8850,
+      packedItems: [
+        { itemId: 'BEARING-SKID-01', description: 'High-Precision Tapered Roller Bearings', lengthIn: 48, widthIn: 40, heightIn: 52, weightLbs: 1950, temperatureClass: 'ambient' },
+        { itemId: 'PHARMA-VACCINE-02', description: 'Temperature-Sensitive Biological Totes', lengthIn: 48, widthIn: 40, heightIn: 56, weightLbs: 1250, temperatureClass: 'chilled' },
+        { itemId: 'CHEMICAL-SOLVENT-03', description: '4x 55-Gal Steel Drums (Class 3 Solvent)', lengthIn: 48, widthIn: 48, heightIn: 55, weightLbs: 2350, isHazmat: true },
+        { itemId: 'HYDRAULIC-VALVE-04', description: 'Solid Bronze Hydraulic Valve Castings', lengthIn: 52, widthIn: 46, heightIn: 48, weightLbs: 3300, groundOnly: true },
+      ],
+    };
+    const newManifest = translateCargoFitLoadToInboundManifest(mockCargoFitLoad, 'DOCK-03', 'STG-C');
+    if (!facility) {
+      setFacility(baseFacility);
+      setEntities(createSeedMoveableEntities());
+    }
+    setManifest(newManifest);
+    const newSolution = solvePutawayManifest(baseFacility, newManifest);
+    setSolverResult(newSolution);
+    setSelectedPalletId(newManifest.items[0]?.palletId || null);
+    setEpcisEvents([]);
+    setDiscrepancies([]);
+    setNotification({ type: 'success', message: 'Loaded sample Cargo Fit import (demo). Use the connected shipment workspace for real cross-product record intake.' });
+  };
+
+  const hasWorkspace = Boolean(displayedFacility && manifest);
   return (
     <div className="planner-container">
-      {session?.selectedId && <section className="execution-task" aria-labelledby="receiving-plan-title">
+      <input ref={fileInputRef} type="file" accept="application/json,.json" style={{ display: 'none' }} onChange={(e) => { const f = e.target.files?.[0]; if (f) void handleImportWorkspaceFile(f); }} />
+      {session?.selectedId && displayedFacility && manifest && <section className="execution-task" aria-labelledby="receiving-plan-title">
         <div className="execution-task-heading"><div><span className="execution-eyebrow">DESTINATION RECEIVING · DECLARED LOCAL FACILITY</span><h2 id="receiving-plan-title">Review receiving space</h2></div><button onClick={() => session.inspect('stage:warehouse')}>Inspect saved receiving plan</button></div>
-        <p>{session.shipment?.reference ?? 'Loading selected shipment'} · {manifest.items.length} identified handling units · {facility.name}</p>
+        <p>{session.shipment?.reference ?? 'Loading selected shipment'} · {manifest.items.length} identified handling units · {displayedFacility.name}</p>
         <p className="execution-task-note">The native solver uses the declared facility, exact shipment manifest and current shared reservations. Unknown occupied rack mass consumes its full position rating. This is capacity planning for a local scenario.</p>
         {draft.incoming && <p role="status">Shared planning changed. Your reviewed plan is retained. <button onClick={draft.loadCurrent}>Load current shipment</button></p>}
         {(publication.error || draft.error) && <p role="status">{publication.error || draft.error}</p>}
         {session.shipment && session.shipment.status !== 'draft' && <p>Planning is locked after dispatch. Accepted locations and receipt evidence remain inspectable.</p>}
-        <div className="execution-actions"><button disabled={!draft.canPublish || !publication.result} onClick={async () => { if (!publication.result || !draft.basis) return; const next = await session.submit('evaluate', { stage: 'warehouse', result: publication.result }, draft.basis.revision); if (next) { draft.acknowledge(next, { facility, manifest, solverResult }); setNotification({ type: 'success', message: 'Reviewed receiving plan saved with original unit identities and locations.' }); } }}>Publish reviewed receiving plan</button><a href={session.productUrl('product-07-yard-dock')}>Review dock allocation</a><button onClick={() => session.inspect('shipment')}>Inspect shipment and units</button></div>
+        <div className="execution-actions"><button disabled={!draft.canPublish || !publication.result} onClick={async () => { if (!publication.result || !draft.basis) return; const next = await session.submit('evaluate', { stage: 'warehouse', result: publication.result }, draft.basis.revision); if (next) { draft.acknowledge(next, { facility: displayedFacility, manifest, solverResult }); setNotification({ type: 'success', message: 'Reviewed receiving plan saved with original unit identities and locations.' }); } }}>Publish reviewed receiving plan</button><a href={session.productUrl('product-07-yard-dock')}>Review dock allocation</a><button onClick={() => session.inspect('shipment')}>Inspect shipment and units</button></div>
       </section>}
       {draft.detached && <p className="execution-task-note">Detached receiving draft retained. Native edits affect this independent workbench.</p>}
       <ReceivingTask />
+
+      {!hasWorkspace && !session?.selectedId && (
+        <section className="execution-task" aria-labelledby="warehouse-empty-title">
+          <div className="execution-task-heading"><div><span className="execution-eyebrow">STANDALONE MODE</span><h2 id="warehouse-empty-title">Start a real workspace</h2></div></div>
+          <p className="execution-task-note">
+            Use this planner with <strong>your own data</strong> or as part of the connected Trucking suite.
+            For cross-product receiving, open a shipment from the suite/session (Cargo Fit → Warehouse → Yard/Dock).
+            For standalone planning, import a workspace JSON (facility + manifest), create a starter facility, or download a template to fill in.
+            Demo data is available only for evaluation and is explicitly labeled.
+          </p>
+          <div className="execution-actions">
+            <button onClick={() => fileInputRef.current?.click()}>Import workspace JSON</button>
+            <button className="bridge-button" onClick={handleCreateStarterWorkspace}>Create starter warehouse</button>
+            <button className="bridge-button" onClick={handleDownloadTemplate}>Download JSON template</button>
+          </div>
+          <div className="execution-actions" style={{ marginTop: 8, opacity: 0.9 }}>
+            <button className="bridge-button" onClick={handleLoadDemoWorkspace}>Load demo workspace (evaluation)</button>
+            <button className="bridge-button" onClick={handleLoadSampleImport}>Load sample import (evaluation)</button>
+          </div>
+        </section>
+      )}
+
       {/* Platform & Bridge Status Bar */}
+      {hasWorkspace && displayedFacility && manifest && metrics && (
       <div className="status-strip">
         <div className="strip-group">
           <span className="strip-label">FACILITY:</span>
-          <span className="strip-value">{facility.name} ({facility.code})</span>
-          <span className="strip-badge-live">{session?.selectedId ? 'DECLARED SCENARIO FACILITY' : 'INDEPENDENT FACILITY SIMULATOR'}</span>
+          <span className="strip-value">{displayedFacility.name} ({displayedFacility.code})</span>
+          <span className="strip-badge-live">{session?.selectedId ? 'DECLARED SCENARIO FACILITY' : 'STANDALONE WORKSPACE'}</span>
         </div>
 
         <div className="strip-group">
-          <span className="strip-label">CROSS-PRODUCT BRIDGE:</span>
-          <button className="bridge-button" disabled={Boolean(session?.selectedId)} onClick={handleImportCargoFit} title="Load a demonstration manifest in standalone mode">
-             Import from P01 Cargo Fit (OLLP-v1)
+          <span className="strip-label">WORKSPACE:</span>
+          <button className="bridge-button" onClick={handleExportWorkspace} title="Download current facility/manifest/solver result as JSON">
+            Export JSON
+          </button>
+          <button className="bridge-button" disabled={Boolean(session?.selectedId)} onClick={() => fileInputRef.current?.click()} title="Import facility/manifest workspace JSON">
+            Import JSON
+          </button>
+          <button className="bridge-button" disabled={Boolean(session?.selectedId)} onClick={handleLoadSampleImport} title="Load a sample import manifest in standalone mode (evaluation only)">
+            Sample import (eval)
           </button>
         </div>
 
@@ -290,6 +453,7 @@ export const Warehouse2DPlanner: React.FC = () => {
           </div>
         </div>
       </div>
+      )}
 
       {notification && (
         <div className={`notification-bar ${notification.type}`}>
@@ -299,6 +463,7 @@ export const Warehouse2DPlanner: React.FC = () => {
       )}
 
       {/* Main 3-Column Operational Layout */}
+      {hasWorkspace && displayedFacility && manifest && (
       <div className="operational-grid">
         {/* Left Column: Inbound Manifest & Multi-Constraint Solver */}
         <div className="col-panel manifest-panel">
@@ -685,6 +850,7 @@ export const Warehouse2DPlanner: React.FC = () => {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 };

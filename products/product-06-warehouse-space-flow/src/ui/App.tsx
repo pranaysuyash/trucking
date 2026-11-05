@@ -2,20 +2,30 @@ import { useState } from 'react';
 import { SuiteDock } from './SuiteDock';
 import { Warehouse2DPlanner } from './Warehouse2DPlanner';
 import { WarehouseIsometricCanvas } from './WarehouseIsometricCanvas';
-import { createCanonicalFacility } from '../engine/spatialModel';
+import { useShipmentSession } from '../suite/ShipmentSession';
+import { facilityForShipment } from '../engine/shipmentAdapter';
 import { WavePickingModal } from './WavePickingModal';
 import { CrossDockModal } from './CrossDockModal';
 import { CycleCountModal } from './CycleCountModal';
 import { AbcReslottingModal } from './AbcReslottingModal';
 import { GoodsLedgerModal } from './GoodsLedgerModal';
+import type { Facility, InboundManifest } from '../engine/types';
 
 export function App() {
+  const session = useShipmentSession();
   const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d');
   const [isWaveModalOpen, setIsWaveModalOpen] = useState<boolean>(false);
   const [isCrossDockModalOpen, setIsCrossDockModalOpen] = useState<boolean>(false);
   const [isCycleCountModalOpen, setIsCycleCountModalOpen] = useState<boolean>(false);
   const [isAbcModalOpen, setIsAbcModalOpen] = useState<boolean>(false);
   const [isGoodsLedgerModalOpen, setIsGoodsLedgerModalOpen] = useState<boolean>(false);
+  const [workspaceSnapshot, setWorkspaceSnapshot] = useState<{ facility: Facility | null; manifest: InboundManifest | null } | null>(null);
+
+  const sessionFacility = session?.selectedId && session.shipment
+    ? facilityForShipment(session.shipment, session.resources)
+    : null;
+  const modalFacility = workspaceSnapshot?.facility ?? sessionFacility;
+  const modalManifest = workspaceSnapshot?.manifest ?? null;
 
   return (
     <div className="subproduct-root warehouse-app-container">
@@ -85,8 +95,17 @@ export function App() {
         </header>
 
         {/* Dynamic Operational Content */}
-        <div hidden={viewMode !== '2d'}><Warehouse2DPlanner /></div>
-        {viewMode === '3d' && <><p className="execution-task-note">Independent facility geometry study. This demonstration does not change shipment reservations or establish physical occupancy.</p><WarehouseIsometricCanvas facility={createCanonicalFacility()} /></>}
+        <div hidden={viewMode !== '2d'}><Warehouse2DPlanner onWorkspaceChange={(snapshot) => setWorkspaceSnapshot(snapshot)} /></div>
+        {viewMode === '3d' && (
+          sessionFacility ? (
+            <><p className="execution-task-note">Facility geometry study for the selected shipment scenario. This view does not change shipment reservations or establish physical occupancy.</p><WarehouseIsometricCanvas facility={sessionFacility} /></>
+          ) : (
+            <div className="execution-task-note" style={{ padding: 24 }}>
+              <h3 style={{ marginTop: 0 }}>3D Digital Twin</h3>
+              <p>Load a demo workspace or connect a shipment session in the 2D planner to view facility geometry. No demo facility is auto-seeded in standalone mode.</p>
+            </div>
+          )
+        )}
       </main>
 
       <WavePickingModal
@@ -102,16 +121,20 @@ export function App() {
       <CycleCountModal
         isOpen={isCycleCountModalOpen}
         onClose={() => setIsCycleCountModalOpen(false)}
+        facility={modalFacility}
       />
 
       <AbcReslottingModal
         isOpen={isAbcModalOpen}
         onClose={() => setIsAbcModalOpen(false)}
+        facility={modalFacility}
+        manifest={modalManifest}
       />
 
       <GoodsLedgerModal
         isOpen={isGoodsLedgerModalOpen}
         onClose={() => setIsGoodsLedgerModalOpen(false)}
+        manifest={modalManifest}
       />
     </div>
   );

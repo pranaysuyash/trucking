@@ -17,10 +17,10 @@
 
 ## Phase 1 — P0 Correctness Fixes (P06)
 - [x] Fix chilled (34°F) room eligibility for frozen cargo: temperature overlap check in checkSlotSuitability + defaultTempRangeForClass
-- [x] Add HazMat compatibility/segregation/site-policy engine (hazmatCompatibility.ts) with tests
+- [x] Add HazMat compatibility/segregation/site-policy engine (`hazmatCompatibility.ts`) with tests; `maxQuantityByClass` enforced; putaway segregation wired when class/occupancy metadata + policy available (live metadata linkage still a gap)
 - [x] Distinguish simulated/observed/published in verification events (verificationStatus field on EpcisEvent)
 - [x] Validate EPCIS semantics: routine putaway now uses OBSERVE (ADD reserved for commissioning)
-- [ ] Support user-created facilities/spaces/capability definitions (remove fixed canonical facility dependency)
+- [~] Reduce fixed canonical facility dependency: standalone no longer auto-loads canonical demo (explicit demo action only); session-derived facility path exists; full user-created facility/space/capability definitions still pending
 - [ ] Connect 3D KPIs to operational 2D state (remove hardcoded 100% occupancy)
 - [ ] Mobile task-specific phone layouts (not three-column grid)
 - [ ] Persistent operational records with revision/conflict handling (replace React state)
@@ -50,8 +50,8 @@
 
 ## Phase 3b — Generalization & Shared Core (I-series)
 - [x] I4 Create packages/storage-core foundation (shared types)
-- [x] I9 VerificationStatus state machine concept (simulated→observed→published) + publisher port interface (pending code)
-- [x] I11 Data-driven HazMat policy (config schema pending; matrix done)
+- [x] I9 VerificationStatus state machine (`simulated`→`observed`→`published`) + publisher port/noop in `verificationEngine.ts`; external verified publisher adapter pending
+- [x] I11 Data-driven HazMat policy/parser + max-quantity cap; segregation wired into putaway with metadata; broader config/schema evolution pending
 - [x] I1 Temp range ↔ enum bridge (environmentalClassFromTempRange + defaultTempRangeForClass)
 - [ ] I2 Shared facility factory (P09 createFacility + P06 createCustomFacility done)
 - [ ] I12 Solver cost model
@@ -101,21 +101,19 @@
 - [ ] Typecheck all products
 
 
-## Current Status Summary (2026-11-05, final pass)
-- P06: 92 passing tests (18 files). Hardcoded canonical facility still default; createCustomFacility factory available. Persistent records (localStorage) added. VerificationStatus state machine + publisher port added. Goods ledger engine added. HazMat data-driven policy added. Putaway cost model added. Temperature compatibility fixed. EPCIS OBSERVE for routine putaway.
-- P09: 51 passing tests (4 files). Full tabbed UI with forms, persistence (localStorage), tenant onboarding, lease creation, monthly ledger generation, payment+receipt, maintenance lifecycle, meter readings. createTenant with GSTIN validation.
-- Shared storage-core package: foundation created (packages/storage-core).
-- Research: documented (live verification pending — tool rate limit).
-- Personas: 4 new.
-- Exploration map: addendum appended.
+## Current Status Summary (2026-11-05, evidence-updated)
 
-### Remaining for "all" (requires user decision or larger infra)
-- Phase 3 remaining: B3 scan-backed receiving (camera), B4 offline reconciliation, B5 cycle counts, B6 cross-dock matcher, B7 ABC re-slotting.
-- Phase 4: specialized storage subproducts (cold, agricultural, open yard, container depot, self-storage).
-- Phase 5: mobile PWA (offline drafts, role-based mobile home screens, camera barcode, sensor stages).
-- Phase 6: infra (auth/roles, durable event store, server-side reservations, authenticated multi-user service, unified visual).
-- I-series remaining code: temp-range-replaces-enum (bridge done), shared storage-core migration (foundation done), data-driven HazMat JSON (parser done), VerificationStatus code (done), solver cost integration tuning.
-- Open decisions: P06 fixes vs P09 expansion ordering; specialized storage timing; mobile platform; WDRA/eNWR; Sheet Bharat; auth/infra timing.
+> Evidence date: 2026-11-05 (live recheck this session). Commands: `npm test` + `npm run build` in each product; browser evaluate on P06 `http://127.0.0.1:5178/` for standalone empty state + explicit demo load.
+
+- **P06 (Warehouse Space & Flow, port 5178):** **22 test files, 112 tests passed** (`npm test`). `npm run build` exit 0 (`tsc --noEmit && vite build`). Standalone mode **no longer auto-seeds** canonical facility/manifest/entities/EPCIS; explicit **“Load demo workspace”** and **“Load sample import (demo)”** actions exist. 3D view uses shipment-session facility when available and shows an honest empty state otherwise. HazMat: `maxQuantityByClass` enforced (`hazmatPolicy.ts`/`hazmatPolicy.test.ts`); segregation/conflicts wired into `checkSlotSuitability`/`solvePutawayManifest` when `item.hazmatClass`, co-located slot `hazmatClass` metadata, and `hazmatPolicy` are provided (`putawayEngine.ts`/`hazmatPolicyPutaway.test.ts`). Full segregation still depends on live inventory→slot hazmat metadata linkage. EPCIS: `EpcisPublisher` port + `noopEpcisPublisher` + async `publishEpcisEvent`; planner publishes via injected `window.__EPCIS_PUBLISHER__` or noop and must not mark `published` without verified external evidence. `createHttpEpcisPublisher` adapter/factory added with conservative 2xx+`published:true` contract and mocked tests; default remains noop/injected publisher (no false publication). UI/config wiring for real endpoints remains deployment-specific. Modal wiring (Cycle Count/ABC Re-Slotting/Goods Ledger) remains shallow/sample-driven in places and needs real workspace state integration.
+- **P09 (Storage & Leasing Core, port 5181):** **10 test files, 83 tests passed** (`npm test`). `npm run build` exit 0. Ownership/billing/leases/ledger/maintenance/metering/canonical persistence (`schemaVersion: 1`) implemented; optional `Facility.gstin` capture; GST invoice UI uses `calculateLateFee` (no fabricated GSTIN/state). `offlineOutbox.ts` exists but is **not wired** into `storageClient` full-state persistence (server-authoritative/localStorage fallback preserved) until a reconciliation/conflict model is designed — see decision record. India statutory boundaries remain explicit (GST estimate/helper, not filing/legal advice; e-NWR/WDRA/cold-chain beyond hooks require strategy/implementation decisions).
+- **Services (local dev):** P06 5178, P09 5181, storage-server 5182 healthy during this session.
+- **Shared/infra:** `packages/storage-core` foundation exists; `packages/storage-server` (5182) and `packages/shipment-flow` (5171) placement/dual-tracking remain open decisions.
+
+### Remaining / open decisions (evidence-aware)
+- P06: deep modal wiring to real workspace state; hazmat metadata capture/linkage; safe configurable EPCIS publisher adapter; ReceivingTask assumptions review; remove/gate any remaining standalone demo coupling not covered.
+- P09: offline outbox reconciliation design before wiring to full-state storage model; mobile/capture UX; India-specific capability depth (GST flow completeness, e-NWR/WDRA/cold-chain) with tests/docs and no overclaims.
+- Cross-cutting: auth/RBAC, durable server-side stores, multi-tenant isolation, conflict handling, repo placement for local service packages, root `products/*` dual-tracking.
 
 
 ## Audit Findings (P09, Lighthouse)
@@ -170,7 +168,7 @@ Facility registration now includes ownershipType selector (owned/leased_in/manag
 
 ## Industry Council Findings (addressed this pass)
 ### Indian Warehouse Owner (PER-RT-0201)
-- [x] Simulation banner added (local-only, no server/backup/multi-user)
+- [~] Honest local/session labeling exists in current UIs (evidence varies by product/build); avoid overclaiming “simulation banner added” globally — verify per product surface before closing
 - [ ] Cloud sync + auth + multi-facility (Phase 6)
 - [ ] WhatsApp/SMS rent reminders + PDF receipts + GST invoices
 - [ ] Auto late fees + bank reconciliation + CA export
@@ -199,10 +197,43 @@ Facility registration now includes ownershipType selector (owned/leased_in/manag
 ### Adversarial Stress Tester (PER-RT-0102)
 - [x] Simulation banner added (addresses "label every screen SIMULATION/LOCAL ONLY")
 - [x] Fixed temp range classification (max-only bug)
-- [ ] Gate sample data behind explicit "demo mode" flag (P06 auto-seeds canonical facility)
+- [x] Gate sample/demo data behind explicit actions in P06 standalone (no auto-seeded canonical facility/manifest/entities/EPCIS); browser-verified 2026-11-05
 - [ ] Delete or gate mockCargoFitLoad / SAMPLE_INBOUND_PALLETS / SAMPLE_OUTBOUND_ORDERS
-- [ ] Wire cycleCount, abcReslotting, goodsLedger, hazmatPolicy to UI
-- [ ] Implement real EPCIS publisher (published unreachable)
+- [~] Cycle Count/ABC Re-Slotting/Goods Ledger modals exist but wiring to real workspace state is shallow/sample-driven in places; hazmat policy wired into engine/putaway path with metadata gaps
+- [~] EPCIS publisher port/noop + `createHttpEpcisPublisher` (conservative, tested) added; `published` only on verified evidence. Deployment-specific endpoint/auth/UI wiring and real receiver validation pending
 - [ ] Replace localStorage with server-backed store
 - [ ] Add multi-user end-to-end test
-- [ ] Fix applyHazmatPolicy to enforce maxQuantityByClass
+- [x] `applyHazmatPolicy` enforces `maxQuantityByClass` (tested)
+
+## Persona Council Findings (runtime 2026-11-05, evidence-based)
+
+> Method: reviewed runtime personas `PER-RT-0205/0206/0207` against current P06/P09 code/tests/builds and this session’s verified changes. This is an implementation/boundary review, not live customer validation or statutory certification.
+
+### PER-RT-0205 — Multi-Customer 3PL Warehouse Director
+| Area | Status | Evidence / boundary |
+|---|---|---|
+| Multi-client contract warehouse / tenant isolation | **Gap** | P09 models landlord↔tenant leases/spaces/rent; it does not provide RBAC, multi-tenant SaaS isolation, or proof that Client A cannot access Client B stock/data. |
+| Per-customer goods ledger / on-hand by location | **Partial gap** | P06 contains goods-ledger related engine/UI artifacts (e.g., `GoodsLedgerModal` exists) but modal/workspace wiring is shallow/sample-driven in places; no verified end-to-end per-customer, scan-backed, on-hand-by-location ledger across receiving/putaway/dispatch. |
+| Rate-card billing reconcilable to ledger | **Gap** | No verified 3PL rate-card/proration/escalation/credit-note billing engine reconciled to operational ledger events. |
+| ASN/dock appointments | **Gap** | P06 has receiving/planning concepts and shipment-session integration; no verified ASN/appointment scheduling workflow with conflict rules and customer isolation. |
+| Lot/serial/expiry/FEFO | **Gap** | No verified lot/serial/batch/expiry capture or FEFO enforcement in P06/P09 flows. |
+| Audit readiness / commercial defensibility | **Boundary** | Useful planning/leasing primitives exist, but 3PL commercial claims (client isolation, defensible per-customer ledger, FEFO, billing reconciliation) are not yet substantiated by end-to-end implementation/tests. |
+
+### PER-RT-0206 — Indian GST & Statutory Compliance Auditor
+| Area | Status | Evidence / boundary |
+|---|---|---|
+| GSTIN capture | **Partial** | P09 accepts optional `Facility.gstin` in registration/model; tenant GSTIN validation was present in earlier engine work (verify before claiming complete coverage). Optional capture ≠ validated statutory master-data workflow. |
+| GST on rent/services, SAC, invoicing | **Partial / boundary** | `gstInvoice.ts` and UI provide GST estimate/helper behavior from entered/real values; invoice UI uses `calculateLateFee`. **Not** e-invoicing, GSTR-1/3B filing, SAC/tax determination engine, or legal/tax advice. Missing GSTIN/state inputs must not be fabricated. |
+| TDS 194-I / withholding | **Gap** | No verified TDS 194-I computation, deduction workflow, certificates, or filing support. |
+| Security deposit / late fee treatment | **Partial** | Lease/ledger models include deposit/late-fee related concepts; statutory/tax treatment is not fully modeled or certified. Treat as operational records, not tax determination. |
+| WDRA/eNWR boundary | **Boundary (explicit)** | Platform must not claim WDRA registration, negotiable warehouse receipt issuance, or customs-bonded statutory compliance unless separately implemented and evidenced. |
+| Audit survivability claim | **Boundary** | Current records may support operator workflows but are **not sufficient alone** to claim Indian tax-audit/e-invoice/GSTR/TDS compliance. |
+
+### PER-RT-0207 — Bonded / EXIM Warehouse Operator
+| Area | Status | Evidence / boundary |
+|---|---|---|
+| Bond/licence registers, BOE/IGM linkage | **Gap** | No P06/P09 data model/UI/workflow for customs bond/licence, BOE, or IGM references. |
+| Duty-deferred stock / customs-sealed movement | **Gap** | No verified customs-seal chain, duty-deferment state, or customs movement controls. |
+| Container dwell, free days, demurrage | **Gap** | No container-level dwell tracking with free-day/demurrage computation. |
+| Audit trail / traceability | **Boundary** | P06 has EPCIS/scan verification concepts with truthful local publisher behavior, but this is not a customs-bonded compliance trail. |
+| Overclaim risk | **Boundary (must hold)** | Do not present P06/P09 as bonded-warehouse/CFS/customs-compliant or as a substitute for customs systems/process controls. |

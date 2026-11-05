@@ -48,3 +48,23 @@ Teal primary `#14B8A6` / ink `#01211D` / text `#2DD4BF`; brass reserved for mone
 - Synced `src/engine/gstInvoice.ts` and `src/engine/offlineOutbox.ts` plus their tests from `pranaysuyash/storage-leasing` into the monorepo (finance/billing-adjacent modules; tests cover GST invoice and offline outbox behavior).
 - Synced `src/engine/types.ts` and `src/ui/App.tsx` space-type/billing additions to stay consistent with `storage-leasing`.
 - Validation: `npm run typecheck` pass; `npm test` pass (10 files, 82 tests). Evidence tier 3 for the validated paths.
+
+## 2026-11-05 decision: offline outbox available but not wired to `storageClient`
+
+**Status:** Accepted (interim, evidence-updated 2026-11-05)
+
+**Context:** `src/engine/offlineOutbox.ts` provides an idempotent outbox with replay/retry primitives and has unit coverage. `src/ui/storageClient.ts` persists the full P09 workspace state (`schemaVersion` payload: facility/tenants/leases/ledger/maintenance/meterReadings/receipts) to a loopback storage server or localStorage fallback.
+
+**Decision:** Do **not** wire `offlineOutbox` into `storageClient`’s current full-state save path yet.
+
+**Rationale:**
+- A full-state overwrite queued/replayed without reconciliation can create split-brain, lost updates, duplicate/conflicting writes, or stale-state resurrection when multiple tabs/devices/users or intermittent connectivity are involved.
+- The product currently behaves as server-authoritative when the loopback service is available, with honest local fallback; adding an unsafe outbox would weaken correctness.
+- Offline support requires an explicit design: operation-level or versioned patch model, conflict detection/merge rules, idempotency keys aligned with server semantics, user-visible sync state/errors, and regression tests for partial failure/replay/duplicates.
+
+**Consequences:**
+- `offlineOutbox` remains available as a tested engine primitive for future task-specific/offline flows (e.g., meter reading capture, receipt drafts) once a safe reconciliation model exists.
+- UI/storage behavior remains truthful and conservative; no claim of offline multi-device sync.
+- Follow-up work: design + implement reconciled offline queue for scoped operations, not blind full-state replay.
+
+**Evidence:** `offlineOutbox.ts`/tests exist; `storageClient.ts` has no outbox integration (checked 2026-11-05). P09 tests/build green after adjacent changes (10 files/83 tests, build exit 0).
