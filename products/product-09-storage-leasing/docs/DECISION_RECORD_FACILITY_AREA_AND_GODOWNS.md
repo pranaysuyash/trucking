@@ -46,6 +46,21 @@ No deletion or removal performed. Existing behavior preserved (occupancy denomin
 
 **Evidence/notes:** Persistence `isPersistedState` validates top-level shape only; optional nested fields are backward-compatible. No git commit/push performed.
 
+## 2026-11-05 Addendum — Admin analytics redesigned as a first-principles projection layer
+
+**Why redesigned (responding to "not a long-term 1st-principles approach"):** The initial analytics implementation computed the requested metrics but embedded policy/definitions in ad-hoc code and UI text. The redesign makes analytics a **deterministic, pure projection layer** (`src/engine/analytics.ts`) with:
+
+1. **Explicit `asOfDate`** (day-granular, passed in) — no hidden clock; testable/deterministic.
+2. **Policy as configuration, not magic** — `PaymentDelayPolicy` (`minEntries`, `latePaidCountThreshold`, `problemRatioThreshold`) with `DEFAULT_PAYMENT_DELAY_POLICY`; results include the policy and a per-tenant `delayReason`. UI can evolve to admin-configurable policy without rewriting metric logic.
+3. **Stable metric definitions** — `ANALYTICS_METRIC_DEFINITIONS` returned with results and rendered in UI; definitions/state the honest semantics (occupancy denominator preserved; vacancy duration unknown for legacy records; paid-late/overdue computed from dates).
+4. **Long-term admin dimensions (computed from existing data, no schema break)** — utilization by building/godown (`space.buildingName`), receivables aging buckets (`current/1-30/31-60/61-90/90+`), per-tenant payment behavior with amounts/days/outstanding, vacancy snapshots with `durationKnown` flag.
+5. **Honest unknowns** — legacy vacant spaces without `vacantSince` are reported as `unknown (legacy)`/`durationKnown=false`, never estimated.
+6. **Evolvability path** — current implementation projects from entities + ledger (schema v1 compatible). Future evolution: persist `StorageEvent`/space-status events (`types.ts` already defines `StorageEvent`), backfill or derive `vacantSince` from events, add facility/entity dimensions when true multi-facility lands, and optionally store admin policy. The consumer-facing metric contracts (`AdminAnalytics`, definitions, policy shape) are designed to remain stable while the data source becomes event-backed.
+
+**Limitations / genuine decisions still open:** no persisted event log yet (status timestamps are denormalized projections); policy is not yet admin-editable in UI/persistence; true multi-facility entities/selection not implemented; facility usable-area derivation and occupancy denominator policy remain explicit product decisions (see above).
+
+**Validation (2026-11-05, redesign):** `npm run typecheck` PASS, `npm test` PASS (**11 files, 94 tests**), `npm run build` PASS.
+
 ## Genuine Decisions Required (do not choose arbitrarily)
 
 ### 1) Multi-facility support (separate managed entities)

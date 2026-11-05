@@ -1543,8 +1543,11 @@ export function App() {
 
           <Tabs.Panel value="analytics" pt="md">
             <Stack gap="md">
-              <SectionCard title="Admin / Analysis" subtitle="Computed from current facility, leases, and ledger data. Vacancy duration is tracked for status changes going forward; legacy vacant spaces may show unknown until a status update is recorded.">
-                <Group gap="sm" wrap="wrap">
+              <SectionCard
+                title="Admin / Analysis"
+                subtitle={`As-of ${dateShort(analytics.asOfDate)}. Deterministic projection over current facility, leases, ledger, and tenant records. Vacancy duration is exact only when \`vacantSince\` is recorded on status transitions; legacy vacant spaces without timestamps are reported as unknown (no false precision).`}
+              >
+                <Group gap="sm" wrap="wrap" mb="sm">
                   <StatCard label="Modeled spaces" value={analytics.utilization.totalSpaces} />
                   <StatCard label="Leased spaces" value={analytics.utilization.leasedSpaces} />
                   <StatCard label="Vacant spaces" value={analytics.utilization.vacantSpaces} />
@@ -1552,9 +1555,69 @@ export function App() {
                   <StatCard label="Vacant area" value={sqft(analytics.utilization.vacantAreaSqFt)} />
                   <StatCard label="Blocked/repair area" value={sqft(analytics.utilization.blockedAreaSqFt + analytics.utilization.underRepairAreaSqFt)} />
                 </Group>
+                <Text size="xs" c="dimmed">
+                  Payment-delay policy (explicit): min entries {analytics.policy.paymentDelay.minEntries}, late-paid count ≥ {analytics.policy.paymentDelay.latePaidCountThreshold}, or problem ratio ≥ {(analytics.policy.paymentDelay.problemRatioThreshold * 100).toFixed(0)}%. Metric definitions are stable; policy is configurable in the analytics layer.
+                </Text>
               </SectionCard>
 
-              <SectionCard title="Currently vacant spaces" subtitle="How much is unused now, and how long (when tracked).">
+              {analytics.utilizationByBuilding.length > 0 && (
+                <SectionCard title="Utilization by building / godown" subtitle="Derived from space.buildingName (additive grouping). Supports multiple godowns/buildings at the same facility location.">
+                  <div style={{ overflowX: 'auto' }}>
+                    <table className="data-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Building/Godown</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Spaces</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Leased</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Vacant</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Modeled area</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Leased area</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Vacant area</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {analytics.utilizationByBuilding.map((b) => (
+                          <tr key={b.buildingName}>
+                            <td>{b.buildingName}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{b.totalSpaces}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{b.leasedSpaces}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{b.vacantSpaces}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{sqft(b.modeledAreaSqFt)}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{sqft(b.leasedAreaSqFt)}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{sqft(b.vacantAreaSqFt)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </SectionCard>
+              )}
+
+              <SectionCard title="Receivables aging" subtitle="Outstanding amounts bucketed by days past due as of the analysis date. Computed from ledger due dates, payments, and overdue status.">
+                <div style={{ overflowX: 'auto' }}>
+                  <table className="data-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Bucket</th>
+                        <th scope="col" style={{ textAlign: 'right' }}>Entries</th>
+                        <th scope="col" style={{ textAlign: 'right' }}>Outstanding</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {analytics.receivablesAging.buckets.map((b) => (
+                        <tr key={b.label}>
+                          <td>{b.label}</td>
+                          <td style={{ textAlign: 'right' }} className="num">{b.entryCount}</td>
+                          <td style={{ textAlign: 'right' }} className="num">{inr(b.amount)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <Text size="sm" c="dimmed" mt="xs">Total outstanding {inr(analytics.receivablesAging.totalOutstanding)} · Overdue {inr(analytics.receivablesAging.totalOverdue)}</Text>
+              </SectionCard>
+
+              <SectionCard title="Currently vacant spaces" subtitle="Unused now. Duration is known only when status-transition timestamps were recorded; legacy unknowns are honest gaps, not estimates.">
                 {analytics.vacantNow.length === 0 ? (
                   <EmptyState title="No vacant spaces" hint="All modeled spaces are leased, blocked, reserved, or under repair." />
                 ) : (
@@ -1569,6 +1632,7 @@ export function App() {
                           <th scope="col" style={{ textAlign: 'right' }}>Area</th>
                           <th scope="col">Vacant since</th>
                           <th scope="col" style={{ textAlign: 'right' }}>Days vacant</th>
+                          <th scope="col">Duration</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1579,8 +1643,9 @@ export function App() {
                             <td>{s.buildingName || '—'}</td>
                             <td>{s.type}</td>
                             <td style={{ textAlign: 'right' }} className="num">{s.areaSqFt}</td>
-                            <td>{s.vacantSince ? dateShort(s.vacantSince) : '— (legacy)'}</td>
+                            <td>{s.vacantSince ? dateShort(s.vacantSince) : '—'}</td>
                             <td style={{ textAlign: 'right' }} className="num">{s.daysVacant == null ? '—' : s.daysVacant}</td>
+                            <td>{s.durationKnown ? <StatusBadge tone="info">Tracked</StatusBadge> : <StatusBadge tone="neutral">Unknown (legacy)</StatusBadge>}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -1589,13 +1654,13 @@ export function App() {
                 )}
               </SectionCard>
 
-              <SectionCard title="Renters delaying payments" subtitle="Regularly delays = >=2 late-paid entries, or >=50% late/overdue problem entries with >=2 ledger entries (transparent heuristic). Days late are computed from due date vs paid date; current overdue also increases risk.">
+              <SectionCard title="Renters delaying payments" subtitle="Days late computed from due date vs paid date; overdue-now increases risk. 'Regularly delays' is a transparent, policy-driven heuristic — see reason per renter.">
                 {analytics.tenantPaymentBehavior.length === 0 ? (
                   <EmptyState title="No payment behavior data" hint="Add tenants, leases, and ledger entries to analyze payment delays." />
                 ) : (
                   <>
                     <Text size="sm" c="dimmed" mb="xs">
-                      Tracked tenants: {analytics.totals.tenantsTracked} · Regular delayers: {analytics.regularDelayers.length} · Overdue entries (as of {dateShort(analytics.asOfDate)}): {analytics.totals.overdueEntryCount} totaling <Money value={analytics.totals.overdueAmount} />
+                      Tracked tenants: {analytics.totals.tenantsTracked} · Regular delayers (policy): {analytics.regularDelayers.length} · Overdue entries (as of {dateShort(analytics.asOfDate)}): {analytics.totals.overdueEntryCount} totaling <Money value={analytics.totals.overdueAmount} />
                     </Text>
                     <div style={{ overflowX: 'auto' }}>
                       <table className="data-table">
@@ -1610,6 +1675,7 @@ export function App() {
                             <th scope="col" style={{ textAlign: 'right' }}>Late-paid amount</th>
                             <th scope="col" style={{ textAlign: 'right' }}>Outstanding</th>
                             <th scope="col">Flag</th>
+                            <th scope="col">Reason (policy)</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1624,6 +1690,7 @@ export function App() {
                               <td style={{ textAlign: 'right' }} className="num">{inr(t.totalLatePaidAmount)}</td>
                               <td style={{ textAlign: 'right' }} className="num">{inr(t.totalOutstanding)}</td>
                               <td>{t.regularlyDelays ? <StatusBadge tone="danger">Regularly delays</StatusBadge> : t.overdueEntries > 0 || t.latePaidEntries > 0 ? <StatusBadge tone="warn">Some delay</StatusBadge> : <StatusBadge tone="success">On track</StatusBadge>}</td>
+                              <td><Text size="xs" c="dimmed">{t.delayReason}</Text></td>
                             </tr>
                           ))}
                         </tbody>
@@ -1632,9 +1699,16 @@ export function App() {
                   </>
                 )}
               </SectionCard>
+
+              <SectionCard title="Metric definitions" subtitle="Stable definitions for admin analysis; implementation is a pure projection over current records.">
+                <Stack gap={4}>
+                  {analytics.definitions.map((d) => (
+                    <Text key={d.id} size="sm"><strong>{d.label}:</strong> {d.definition}</Text>
+                  ))}
+                </Stack>
+              </SectionCard>
             </Stack>
-          </Tabs.Panel>
-        </Tabs>
+          </Tabs.Panel>        </Tabs>
       </div>
     </div>
   );
