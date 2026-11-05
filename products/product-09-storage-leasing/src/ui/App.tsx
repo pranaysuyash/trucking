@@ -199,6 +199,7 @@ export function App() {
   const [monthlyYear, setMonthlyYear] = useState(new Date().getFullYear());
   const [monthlyMonth, setMonthlyMonth] = useState(new Date().getMonth() + 1);
 
+  const asOfDate = new Date().toISOString().slice(0, 10);
   const metrics = selectMetrics(facility, leases);
   const rentSummary = selectRentSummary(ledgerEntries);
   const analytics = computeAdminAnalytics({
@@ -217,7 +218,7 @@ export function App() {
           occupancyPercent: metrics.occupancyPercent,
         }
       : null,
-    asOfDate: new Date().toISOString().slice(0, 10),
+    asOfDate,
   });
   const maintSummary = selectMaintSummary(maintenanceTasks);
   const charges = selectCharges(meterReadings);
@@ -734,7 +735,18 @@ export function App() {
     );
   }
 
-  const overdueCount = getOverdueEntries(ledgerEntries, new Date().toISOString().slice(0, 10)).length;
+  const overdueEntries = getOverdueEntries(ledgerEntries, asOfDate);
+  const overdueCount = overdueEntries.length;
+  const vacantSpaces = facility?.spaces.filter((s) => s.status === 'vacant') ?? [];
+  const openMaintTasks = maintenanceTasks.filter((t) => t.status === 'open' || t.status === 'in_progress');
+  const expiringLeases = leases.filter((l) => {
+    if (l.status !== 'active' || !l.endDate) return false;
+    const days = Math.floor((Date.parse(l.endDate.slice(0, 10)) - Date.parse(asOfDate)) / 86400000);
+    return days >= 0 && days <= 30;
+  });
+  const recentEvents = [...events].slice(-5).reverse();
+  const tenantNameById = new Map(tenants.map((t) => [t.id, t.name]));
+  const spaceCodeById = new Map((facility?.spaces ?? []).map((s) => [s.id, s.code]));
 
   return (
     <div className="subproduct-root">
@@ -815,6 +827,67 @@ export function App() {
                 </Group>
               )}
 
+              <SectionCard
+                title="Operations cockpit"
+                subtitle={`As-of ${dateShort(asOfDate)}. Actionable queues derived from current leases, ledger, maintenance, and audit events (read-only navigation).`}
+              >
+                <div className="kpi-row">
+                  <StatCard label="Overdue entries" value={overdueCount} tone={overdueCount > 0 ? 'danger' : 'default'} />
+                  <StatCard label="Vacant spaces" value={vacantSpaces.length} />
+                  <StatCard label="Open/in-progress maintenance" value={openMaintTasks.length} />
+                  <StatCard label="Leases expiring (30d)" value={expiringLeases.length} />
+                </div>
+                <Group mt="md" gap="sm" wrap="wrap">
+                  <Button size="xs" variant="light" onClick={() => setTab('ledger')} disabled={ledgerEntries.length === 0}>Go to Ledger</Button>
+                  <Button size="xs" variant="light" onClick={() => setTab('spaces')}>Go to Spaces</Button>
+                  <Button size="xs" variant="light" onClick={() => setTab('maintenance')} disabled={maintenanceTasks.length === 0 && !facility}>Go to Maintenance</Button>
+                  <Button size="xs" variant="light" onClick={() => setTab('leases')} disabled={leases.length === 0}>Go to Leases</Button>
+                  <Button size="xs" variant="light" onClick={() => setTab('audit')}>Go to Audit log</Button>
+                </Group>
+
+                {overdueEntries.length > 0 && (
+                  <Stack gap={4} mt="md">
+                    <Text size="sm" fw={600}>Overdue queue (top 5)</Text>
+                    {overdueEntries.slice(0, 5).map((e) => (
+                      <Text key={e.id} size="sm">
+                        <strong>{spaceCodeById.get(e.spaceId) ?? e.spaceId}</strong> · {tenantNameById.get(e.tenantId) ?? e.tenantId} · due {dateShort(e.dueDate)} · <Money value={Math.max(0, e.totalDue - e.amountPaid)} /> outstanding
+                      </Text>
+                    ))}
+                    {overdueEntries.length > 5 && <Text size="xs" c="dimmed">+{overdueEntries.length - 5} more in Ledger.</Text>}
+                  </Stack>
+                )}
+
+                {vacantSpaces.length > 0 && (
+                  <Stack gap={4} mt="md">
+                    <Text size="sm" fw={600}>Vacant spaces (top 5)</Text>
+                    <Text size="sm" c="dimmed">
+                      {vacantSpaces.slice(0, 5).map((s) => `${s.code}${s.buildingName ? ` (${s.buildingName})` : ''}`).join(' · ')}
+                      {vacantSpaces.length > 5 ? ` · +${vacantSpaces.length - 5} more` : ''}
+                    </Text>
+                  </Stack>
+                )}
+
+                {expiringLeases.length > 0 && (
+                  <Stack gap={4} mt="md">
+                    <Text size="sm" fw={600}>Leases ending within 30 days</Text>
+                    {expiringLeases.slice(0, 5).map((l) => (
+                      <Text key={l.id} size="sm">
+                        {spaceCodeById.get(l.spaceId) ?? l.spaceId} · {tenantNameById.get(l.tenantId) ?? l.tenantId} · ends {l.endDate ? dateShort(l.endDate) : '—'}
+                      </Text>
+                    ))}
+                  </Stack>
+                )}
+
+                {recentEvents.length > 0 && (
+                  <Stack gap={4} mt="md">
+                    <Text size="sm" fw={600}>Recent audit events</Text>
+                    {recentEvents.map((ev) => (
+                      <Text key={ev.eventId} size="xs" c="dimmed">{new Date(ev.eventTime).toLocaleString()} · {ev.eventType}</Text>
+                    ))}
+                  </Stack>
+                )}
+              </SectionCard>
+
               {receipts.length > 0 && (
                 <SectionCard title="Receipts Issued">
                   <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13 }}>
@@ -832,12 +905,6 @@ export function App() {
                   action="Go to Spaces"
                   onAction={() => setTab('spaces')}
                 />
-              )}
-
-              {overdueCount > 0 && (
-                <div className="notice notice--danger">
-                  <strong>Overdue Entries ({overdueCount})</strong>
-                </div>
               )}
             </Stack>
           </Tabs.Panel>
