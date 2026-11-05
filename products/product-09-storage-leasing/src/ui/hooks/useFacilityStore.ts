@@ -1,0 +1,125 @@
+import { useState, useEffect, useCallback, useRef } from 'react';
+import type { Facility, Tenant, Lease, RentLedgerEntry, MaintenanceTask } from '../../engine/types';
+import type { MeterSubReading } from '../../engine/storageClient';
+import { loadState as loadStateAsync, saveState as saveStateAsync, resetState } from '../../engine/storageClient';
+
+export type Tab =
+  | 'overview'
+  | 'spaces'
+  | 'leases'
+  | 'ledger'
+  | 'maintenance'
+  | 'meters';
+
+export type MeterReading = MeterSubReading;
+
+export interface FacilityStore {
+  facility: Facility | null;
+  tenants: Tenant[];
+  leases: Lease[];
+  ledgerEntries: RentLedgerEntry[];
+  maintenanceTasks: MaintenanceTask[];
+  meterReadings: MeterReading[];
+  receipts: string[];
+  loading: boolean;
+  flashMsg: string | null;
+  tab: Tab;
+  setTab: (t: Tab) => void;
+  flash: (msg: string) => void;
+  setFacility: React.Dispatch<React.SetStateAction<Facility | null>>;
+  setTenants: React.Dispatch<React.SetStateAction<Tenant[]>>;
+  setLeases: React.Dispatch<React.SetStateAction<Lease[]>>;
+  setLedgerEntries: React.Dispatch<React.SetStateAction<RentLedgerEntry[]>>;
+  setMaintenanceTasks: React.Dispatch<React.SetStateAction<MaintenanceTask[]>>;
+  setMeterReadings: React.Dispatch<React.SetStateAction<MeterReading[]>>;
+  setReceipts: React.Dispatch<React.SetStateAction<string[]>>;
+  reset: () => Promise<void>;
+}
+
+export function useFacilityStore(): FacilityStore {
+  const [facility, setFacility] = useState<Facility | null>(null);
+  const [tenants, setTenants] = useState<Tenant[]>([]);
+  const [leases, setLeases] = useState<Lease[]>([]);
+  const [ledgerEntries, setLedgerEntries] = useState<RentLedgerEntry[]>([]);
+  const [maintenanceTasks, setMaintenanceTasks] = useState<MaintenanceTask[]>([]);
+  const [meterReadings, setMeterReadings] = useState<MeterReading[]>([]);
+  const [receipts, setReceipts] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [flashMsg, setFlashMsg] = useState<string | null>(null);
+  const [tab, setTab] = useState<Tab>('overview');
+  const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadStateAsync().then((s) => {
+      if (cancelled) return;
+      if (s && s.facility) {
+        setFacility(s.facility);
+        setTenants(s.tenants ?? []);
+        setLeases(s.leases ?? []);
+        setLedgerEntries(s.ledger ?? []);
+        setMaintenanceTasks(s.maintenance ?? []);
+        setMeterReadings(s.meterReadings ?? []);
+        setReceipts(s.receipts ?? []);
+      }
+      setLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    saveStateAsync({
+      facility,
+      tenants,
+      leases,
+      ledger: ledgerEntries,
+      maintenance: maintenanceTasks,
+      meterReadings,
+      receipts,
+    });
+  }, [facility, tenants, leases, ledgerEntries, maintenanceTasks, meterReadings, receipts, loading]);
+
+  const flash = useCallback((msg: string) => {
+    setFlashMsg(msg);
+    if (flashTimer.current) clearTimeout(flashTimer.current);
+    flashTimer.current = setTimeout(() => setFlashMsg(null), 4000);
+  }, []);
+
+  const reset = useCallback(async () => {
+    await resetState();
+    setFacility(null);
+    setTenants([]);
+    setLeases([]);
+    setLedgerEntries([]);
+    setMaintenanceTasks([]);
+    setMeterReadings([]);
+    setReceipts([]);
+    setTab('overview');
+  }, []);
+
+  return {
+    facility,
+    tenants,
+    leases,
+    ledgerEntries,
+    maintenanceTasks,
+    meterReadings,
+    receipts,
+    loading,
+    flashMsg,
+    tab,
+    setTab,
+    flash,
+    setFacility,
+    setTenants,
+    setLeases,
+    setLedgerEntries,
+    setMaintenanceTasks,
+    setMeterReadings,
+    setReceipts,
+    reset,
+  };
+}

@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-11-05T10:34:45.662Z",
+  "args": {
+    "url": "http://127.0.0.1:5181",
+    "width": 1440,
+    "height": 1000,
+    "dpr": 1,
+    "full": false,
+    "out": "docs/evidence/after"
+  },
+  "page": {
+    "url": "http://127.0.0.1:5181/",
+    "title": "P09 — Storage & Leasing Core",
+    "viewport": {
+      "w": 1440,
+      "h": 1000
+    },
+    "scrollHeight": 1000
+  },
+  "files": [
+    "/Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/evidence/after/overview.png",
+    "/Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/evidence/after/spaces.png",
+    "/Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/evidence/after/leases.png",
+    "/Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/evidence/after/ledger.png",
+    "/Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/evidence/after/maintenance.png",
+    "/Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/evidence/after/meters.png"
+  ]
+}
