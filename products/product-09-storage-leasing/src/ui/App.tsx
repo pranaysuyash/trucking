@@ -27,7 +27,6 @@ import {
   issueReceipt,
   previewRenewal,
   getOverdueEntries,
-  getPendingEntries,
 } from '../engine/leaseEngine';
 import { generateGstInvoice, calculateLateFee } from '../engine/gstInvoice';
 import {
@@ -196,6 +195,7 @@ export function App() {
   const [billAllocation, setBillAllocation] = useState<{ spaceId: string; kwh: number; sharePct: number; allocated: number }[] | null>(null);
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [paymentEntryId, setPaymentEntryId] = useState('');
+  const [ledgerFilter, setLedgerFilter] = useState<'all' | 'pending' | 'overdue' | 'partial' | 'paid'>('all');
   const [monthlyYear, setMonthlyYear] = useState(new Date().getFullYear());
   const [monthlyMonth, setMonthlyMonth] = useState(new Date().getMonth() + 1);
 
@@ -747,6 +747,30 @@ export function App() {
   const recentEvents = [...events].slice(-5).reverse();
   const tenantNameById = new Map(tenants.map((t) => [t.id, t.name]));
   const spaceCodeById = new Map((facility?.spaces ?? []).map((s) => [s.id, s.code]));
+  const actionableLedgerEntries = ledgerEntries.filter((e) => e.paymentStatus !== 'paid' && Math.max(0, e.totalDue - e.amountPaid) > 0);
+  const selectedPaymentEntry = paymentEntryId ? ledgerEntries.find((e) => e.id === paymentEntryId) ?? null : null;
+  const selectedPaymentOutstanding = selectedPaymentEntry ? Math.max(0, selectedPaymentEntry.totalDue - selectedPaymentEntry.amountPaid) : 0;
+  const filteredLedgerEntries = ledgerEntries.filter((e) => {
+    if (ledgerFilter === 'all') return true;
+    if (ledgerFilter === 'pending') return e.paymentStatus === 'pending';
+    if (ledgerFilter === 'overdue') return e.paymentStatus === 'overdue';
+    if (ledgerFilter === 'partial') return e.paymentStatus === 'partial';
+    return e.paymentStatus === 'paid';
+  });
+  const agingBuckets = (() => {
+    const buckets = { current: 0, d1_30: 0, d31_60: 0, d61_90: 0, d90p: 0 };
+    for (const e of ledgerEntries) {
+      const out = Math.max(0, e.totalDue - e.amountPaid);
+      if (out <= 0) continue;
+      const days = Math.floor((Date.parse(asOfDate) - Date.parse(e.dueDate.slice(0, 10))) / 86400000);
+      if (days <= 0) buckets.current += out;
+      else if (days <= 30) buckets.d1_30 += out;
+      else if (days <= 60) buckets.d31_60 += out;
+      else if (days <= 90) buckets.d61_90 += out;
+      else buckets.d90p += out;
+    }
+    return buckets;
+  })();
 
   return (
     <div className="subproduct-root">
@@ -1372,107 +1396,125 @@ export function App() {
 
           <Tabs.Panel value="ledger" pt="md">
             <Stack gap="md">
-              <SectionCard title="Rent Ledger" subtitle={`Total due ${inr(rentSummary.totalDue)} · Paid ${inr(rentSummary.totalPaid)} · Overdue ${inr(rentSummary.totalOverdue)} (${rentSummary.overdueCount}) · Pending ${rentSummary.pendingCount}`}>
+              <SectionCard
+                title="Rent Ledger / Receivables"
+                subtitle={`Total due ${inr(rentSummary.totalDue)} · Paid ${inr(rentSummary.totalPaid)} · Overdue ${inr(rentSummary.totalOverdue)} (${rentSummary.overdueCount}) · Pending ${rentSummary.pendingCount}. As-of ${dateShort(asOfDate)}.`}
+              >
                 <Stack gap="sm">
+                  <Group gap="sm" wrap="wrap">
+                    <Badge variant="light" color="gray">Not yet due (outstanding): <Money value={agingBuckets.current} /></Badge>
+                    <Badge variant="light" color="yellow">1–30d: <Money value={agingBuckets.d1_30} /></Badge>
+                    <Badge variant="light" color="orange">31–60d: <Money value={agingBuckets.d31_60} /></Badge>
+                    <Badge variant="light" color="red">61–90d: <Money value={agingBuckets.d61_90} /></Badge>
+                    <Badge variant="light" color="red">90+d: <Money value={agingBuckets.d90p} /></Badge>
+                  </Group>
                   <Group gap="sm" wrap="wrap" align="flex-end">
-                    <NumberInput
-                      aria-label="Year"
-                      placeholder="Year"
-                      value={monthlyYear}
-                      onChange={(v) => setMonthlyYear(Number(v) || monthlyYear)}
-                      w={80}
-                    />
-                    <NumberInput
-                      aria-label="Month"
-                      placeholder="Month"
-                      value={monthlyMonth}
-                      onChange={(v) => setMonthlyMonth(Number(v) || monthlyMonth)}
-                      w={70}
-                    />
-                    <Button variant="default" onClick={handleGenerateMonthly}>
-                      Generate Monthly
-                    </Button>
+                    <NumberInput aria-label="Year" placeholder="Year" value={monthlyYear} onChange={(v) => setMonthlyYear(Number(v) || monthlyYear)} w={80} />
+                    <NumberInput aria-label="Month" placeholder="Month" value={monthlyMonth} onChange={(v) => setMonthlyMonth(Number(v) || monthlyMonth)} w={70} />
+                    <Button variant="default" onClick={handleGenerateMonthly}>Generate Monthly</Button>
                     <Select
-                      aria-label="Select ledger entry"
-                      placeholder="Select entry"
-                      data={getPendingEntries(ledgerEntries).map((e) => ({
+                      aria-label="Ledger filter"
+                      placeholder="Filter entries"
+                      data={[
+                        { value: 'all', label: 'All entries' },
+                        { value: 'overdue', label: 'Overdue' },
+                        { value: 'partial', label: 'Partial' },
+                        { value: 'pending', label: 'Pending' },
+                        { value: 'paid', label: 'Paid' },
+                      ]}
+                      value={ledgerFilter}
+                      onChange={(v) => setLedgerFilter((v as typeof ledgerFilter) ?? 'all')}
+                      w={150}
+                    />
+                  </Group>
+                  <Group gap="sm" wrap="wrap" align="flex-end">
+                    <Select
+                      aria-label="Select ledger entry to pay"
+                      placeholder="Select entry (actionable)"
+                      data={actionableLedgerEntries.map((e) => ({
                         value: e.id,
-                        label: `${e.id.slice(0, 12)} (₹${e.totalDue - e.amountPaid})`,
+                        label: `${spaceCodeById.get(e.spaceId) ?? e.spaceId.slice(0, 8)} · ${tenantNameById.get(e.tenantId) ?? e.tenantId.slice(0, 8)} · ₹${Math.max(0, e.totalDue - e.amountPaid)} due`,
                       }))}
                       value={paymentEntryId || null}
-                      onChange={(v) => setPaymentEntryId(v ?? '')}
+                      onChange={(v) => {
+                        const id = v ?? '';
+                        setPaymentEntryId(id);
+                        const entry = id ? ledgerEntries.find((x) => x.id === id) : null;
+                        if (entry && paymentAmount <= 0) setPaymentAmount(Math.max(0, entry.totalDue - entry.amountPaid));
+                      }}
+                      w={320}
                     />
-                    <NumberInput
-                      aria-label="Payment amount"
-                      placeholder="Amount"
-                      value={paymentAmount || ''}
-                      onChange={(v) => setPaymentAmount(Number(v) || 0)}
-                      w={100}
-                    />
-                    <Button color="green" onClick={handleRecordPayment}>
-                      Record Payment + Receipt
+                    <NumberInput aria-label="Payment amount" placeholder="Amount" value={paymentAmount || ''} onChange={(v) => setPaymentAmount(Number(v) || 0)} w={120} min={0} />
+                    <Button variant="light" onClick={() => selectedPaymentEntry && setPaymentAmount(selectedPaymentOutstanding)} disabled={!selectedPaymentEntry}>
+                      Fill remaining {selectedPaymentEntry ? `(₹${selectedPaymentOutstanding})` : ''}
                     </Button>
+                    <Button color="green" onClick={handleRecordPayment}>Record Payment + Receipt</Button>
                   </Group>
+                  {selectedPaymentEntry && (
+                    <Text size="xs" c="dimmed">
+                      Selected: {selectedPaymentEntry.id.slice(0, 14)} · due {dateShort(selectedPaymentEntry.dueDate)} · total ₹{selectedPaymentEntry.totalDue} · paid ₹{selectedPaymentEntry.amountPaid} · outstanding ₹{selectedPaymentOutstanding}
+                    </Text>
+                  )}
                 </Stack>
               </SectionCard>
 
-              <SectionCard title={`Entries (${ledgerEntries.length})`}>
+              <SectionCard title={`Entries (${filteredLedgerEntries.length}${ledgerFilter !== 'all' ? ` of ${ledgerEntries.length}` : ''})`}>
                 {ledgerEntries.length === 0 ? (
                   <EmptyState title="No ledger entries" hint="Onboard a tenant on the Leases tab or generate monthly." />
+                ) : filteredLedgerEntries.length === 0 ? (
+                  <EmptyState title="No entries for this filter" hint="Change the filter to view other ledger entries." />
                 ) : (
                   <div style={{ overflowX: 'auto' }}>
                     <table className="data-table">
                       <thead>
                         <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Tenant</th>
+                          <th scope="col">Tenant/Space</th>
                           <th scope="col">Period</th>
+                          <th scope="col">Due date</th>
                           <th scope="col" style={{ textAlign: 'right' }}>Base</th>
                           <th scope="col" style={{ textAlign: 'right' }}>Elec</th>
                           <th scope="col" style={{ textAlign: 'right' }}>Total</th>
                           <th scope="col" style={{ textAlign: 'right' }}>Paid</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Outstanding</th>
                           <th scope="col">Status</th>
+                          <th scope="col">Action</th>
                           <th scope="col">Receipt</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {ledgerEntries.map((e) => (
+                        {filteredLedgerEntries.map((e) => {
+                          const outstanding = Math.max(0, e.totalDue - e.amountPaid);
+                          const daysOver = Math.floor((Date.parse(asOfDate) - Date.parse(e.dueDate.slice(0, 10))) / 86400000);
+                          return (
                           <tr key={e.id}>
                             <td className="mono">{e.id.slice(0, 14)}</td>
-                            <td>{tenants.find((t) => t.id === e.tenantId)?.name ?? e.tenantId.slice(0, 8)}</td>
                             <td>
-                              {e.periodStart}→{e.periodEnd}
+                              <div>{tenantNameById.get(e.tenantId) ?? e.tenantId.slice(0, 8)}</div>
+                              <Text size="xs" c="dimmed">{spaceCodeById.get(e.spaceId) ?? e.spaceId.slice(0, 8)}</Text>
                             </td>
-                            <td style={{ textAlign: 'right' }} className="money">
-                              ₹{e.baseRent}
-                            </td>
-                            <td style={{ textAlign: 'right' }} className="money">
-                              ₹{e.electricityCharge}
-                            </td>
-                            <td style={{ textAlign: 'right' }} className="money">
-                              ₹{e.totalDue}
-                            </td>
-                            <td style={{ textAlign: 'right' }} className="money">
-                              ₹{e.amountPaid}
-                            </td>
+                            <td>{e.periodStart}→{e.periodEnd}</td>
+                            <td>{dateShort(e.dueDate)}{daysOver > 0 && outstanding > 0 ? <Text span size="xs" c="red"> ({daysOver}d)</Text> : null}</td>
+                            <td style={{ textAlign: 'right' }} className="money">₹{e.baseRent}</td>
+                            <td style={{ textAlign: 'right' }} className="money">₹{e.electricityCharge}</td>
+                            <td style={{ textAlign: 'right' }} className="money">₹{e.totalDue}</td>
+                            <td style={{ textAlign: 'right' }} className="money">₹{e.amountPaid}</td>
+                            <td style={{ textAlign: 'right' }} className="money">₹{outstanding}</td>
                             <td>
-                              <StatusBadge
-                                tone={
-                                  e.paymentStatus === 'paid'
-                                    ? 'success'
-                                    : e.paymentStatus === 'overdue'
-                                    ? 'danger'
-                                    : e.paymentStatus === 'partial'
-                                    ? 'warn'
-                                    : 'neutral'
-                                }
-                              >
+                              <StatusBadge tone={e.paymentStatus === 'paid' ? 'success' : e.paymentStatus === 'overdue' ? 'danger' : e.paymentStatus === 'partial' ? 'warn' : 'neutral'}>
                                 {e.paymentStatus}
                               </StatusBadge>
                             </td>
+                            <td>
+                              {outstanding > 0 ? (
+                                <Button size="compact-xs" variant="subtle" onClick={() => { setPaymentEntryId(e.id); setPaymentAmount(outstanding); }}>
+                                  Collect
+                                </Button>
+                              ) : '—'}
+                            </td>
                             <td className="mono">{e.receiptNumber ?? '—'}</td>
                           </tr>
-                        ))}
+                        );})}
                       </tbody>
                     </table>
                   </div>
