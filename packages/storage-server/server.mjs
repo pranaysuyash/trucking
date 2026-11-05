@@ -18,11 +18,13 @@ const emptyStore = () => ({
   maintenance: [],
   meterReadings: [],
   receipts: [],
+  events: [],
 });
 
 // Keys the P09 client owns. Unknown keys are dropped so one product cannot
 // silently accumulate dead fields in the shared store file.
-const STATE_KEYS = ['facility', 'tenants', 'leases', 'ledger', 'maintenance', 'meterReadings', 'receipts'];
+// `events` is additive (audit trail) and schema-v1 compatible.
+const STATE_KEYS = ['facility', 'tenants', 'leases', 'ledger', 'maintenance', 'meterReadings', 'receipts', 'events'];
 
 function normalizeState(input) {
   const next = emptyStore();

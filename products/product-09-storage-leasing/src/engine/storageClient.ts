@@ -15,6 +15,7 @@ import type {
   Lease,
   MaintenanceTask,
   RentLedgerEntry,
+  StorageEvent,
   Tenant,
 } from './types';
 
@@ -39,6 +40,8 @@ export interface PersistedState {
   maintenance: MaintenanceTask[];
   meterReadings: MeterSubReading[];
   receipts: string[];
+  /** Append-only audit trail (additive, schema-v1 compatible; defaults to []). */
+  events?: StorageEvent[];
 }
 
 export function emptyState(): PersistedState {
@@ -51,6 +54,7 @@ export function emptyState(): PersistedState {
     maintenance: [],
     meterReadings: [],
     receipts: [],
+    events: [],
   };
 }
 
@@ -59,9 +63,20 @@ function isPersistedState(value: unknown): value is PersistedState {
   const candidate = value as Record<string, unknown>;
   if (!('facility' in candidate)) return false;
   if (candidate.facility !== null && typeof candidate.facility !== 'object') return false;
-  return ['tenants', 'leases', 'ledger', 'maintenance', 'meterReadings', 'receipts'].every(
+  const requiredArraysOk = ['tenants', 'leases', 'ledger', 'maintenance', 'meterReadings', 'receipts'].every(
     key => Array.isArray(candidate[key]),
   );
+  if (!requiredArraysOk) return false;
+  // events is additive/optional for schema-v1 compatibility; if present it must be an array.
+  if ('events' in candidate && candidate.events !== undefined && !Array.isArray(candidate.events)) return false;
+  return true;
+}
+
+function normalizeState(state: PersistedState): PersistedState {
+  return {
+    ...state,
+    events: Array.isArray(state.events) ? state.events : [],
+  };
 }
 
 function readLocal(): PersistedState | null {
@@ -69,7 +84,7 @@ function readLocal(): PersistedState | null {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    return isPersistedState(parsed) ? parsed : null;
+    return isPersistedState(parsed) ? normalizeState(parsed) : null;
   } catch {
     return null;
   }
@@ -80,7 +95,7 @@ export async function loadState(): Promise<PersistedState | null> {
     const res = await fetch(`${SERVER_URL}/data`, { method: 'GET' });
     if (res.ok) {
       const data = await res.json();
-      if (isPersistedState(data)) return data;
+      if (isPersistedState(data)) return normalizeState(data);
     }
   } catch {
     /* server unavailable, fall through to local */

@@ -4,6 +4,8 @@ import { SuiteDock } from './SuiteDock';
 import { useFacilityStore } from './hooks/useFacilityStore';
 import { selectMetrics, selectRentSummary, selectMaintSummary, selectCharges } from './selectors';
 import { computeAdminAnalytics } from '../engine/analytics';
+import { createStorageEvent } from '../engine/auditEvents';
+import type { StorageEvent } from '../engine/types';
 import { EmptyState } from './components/EmptyState';
 import { StatCard } from './components/StatCard';
 import { SectionCard } from './components/SectionCard';
@@ -127,6 +129,7 @@ export function App() {
     setMaintenanceTasks,
     setMeterReadings,
     setReceipts,
+    setEvents,
     reset,
   } = store;
 
@@ -237,6 +240,14 @@ export function App() {
         landlordContact: reg.landlordContact || undefined,
       });
       setFacility(f);
+      setEvents((prev) => [
+        ...prev,
+        createStorageEvent({
+          eventType: 'facility.created',
+          facilityId: f.id,
+          payload: { code: f.code, name: f.name, totalAreaSqFt: f.totalAreaSqFt, usableAreaSqFt: f.usableAreaSqFt },
+        }),
+      ]);
       setTab('spaces');
       flash('Facility registered.');
     } catch (e) {
@@ -250,7 +261,7 @@ export function App() {
       return;
     }
     try {
-      addSpace(facility, {
+      const added = addSpace(facility, {
         id: `SP-${Date.now()}`,
         code: newSpace.code || `SP-${facility.spaces.length + 1}`,
         name: newSpace.name || newSpace.code,
@@ -262,6 +273,15 @@ export function App() {
         buildingName: newSpace.buildingName.trim() || undefined,
       });
       setFacility({ ...facility, spaces: [...facility.spaces] });
+      setEvents((prev) => [
+        ...prev,
+        createStorageEvent({
+          eventType: 'space.created',
+          facilityId: facility.id,
+          spaceId: added.id,
+          payload: { code: added.code, type: added.type, areaSqFt: added.areaSqFt, status: added.status, buildingName: added.buildingName },
+        }),
+      ]);
       setNewSpace({ code: '', name: '', buildingName: '', type: 'room', floor: 1, lengthFt: 0, widthFt: 0, env: 'ambient' });
       flash('Space added.');
     } catch (e) {
@@ -344,10 +364,67 @@ export function App() {
         dueDate: newLease.start.slice(0, 7) + '-10',
         electricityCharge: 0,
       });
-      if (!newLease.tenantId) setTenants((prev) => [...prev, tenant]);
+      const auditEvents: StorageEvent[] = [];
+      if (!newLease.tenantId) {
+        setTenants((prev) => [...prev, tenant]);
+        auditEvents.push(
+          createStorageEvent({
+            eventType: 'tenant.created',
+            facilityId: facility.id,
+            tenantId: tenant.id,
+            payload: { name: tenant.name, gstin: tenant.gstin, commodityCategory: tenant.commodityCategory },
+          }),
+        );
+      }
       setLeases((prev) => [...prev, lease]);
       setLedgerEntries((prev) => [...prev, entry]);
       setFacility({ ...facility, spaces: [...facility.spaces] });
+      auditEvents.push(
+        createStorageEvent({
+          eventType: 'lease.created',
+          facilityId: facility.id,
+          spaceId: space.id,
+          tenantId: tenant.id,
+          leaseId: lease.id,
+          payload: {
+            leaseType: lease.leaseType,
+            agreementDate: lease.agreementDate,
+            depositDate: lease.depositDate,
+            startDate: lease.startDate,
+            possessionDate: lease.possessionDate,
+            billingStartDate: lease.billingStartDate,
+            endDate: lease.endDate,
+            rate: lease.rate,
+            billingUnit: lease.billingUnit,
+            depositAmount: lease.depositAmount,
+          },
+        }),
+        createStorageEvent({
+          eventType: 'lease.activated',
+          facilityId: facility.id,
+          spaceId: space.id,
+          tenantId: tenant.id,
+          leaseId: lease.id,
+          payload: { status: lease.status, spaceStatus: space.status },
+        }),
+        createStorageEvent({
+          eventType: 'ledger.entry_created',
+          facilityId: facility.id,
+          spaceId: space.id,
+          tenantId: tenant.id,
+          leaseId: lease.id,
+          payload: {
+            ledgerId: entry.id,
+            periodStart: entry.periodStart,
+            periodEnd: entry.periodEnd,
+            dueDate: entry.dueDate,
+            totalDue: entry.totalDue,
+            billedDayCount: entry.billedDayCount,
+            prorationBasis: entry.prorationBasis,
+          },
+        }),
+      );
+      setEvents((prev) => [...prev, ...auditEvents]);
       const wasExisting = !!newLease.tenantId;
       flash((wasExisting ? 'Additional space leased for existing tenant.' : 'Tenant onboarded and lease activated.') + usageWarning);
       setNewLease({ spaceId: '', tenantId: '', start: '', end: '', rate: 0, billing: 'sqft_month', deposit: 0, escalation: 0, leaseType: 'fixed_term', agreementDate: '', depositDate: '', billingStart: '', billingCycleDay: 10 });
@@ -370,6 +447,21 @@ export function App() {
         return;
       }
       setLedgerEntries((prev) => [...prev, ...newEntries]);
+      if (facility) {
+        setEvents((prev) => [
+          ...prev,
+          createStorageEvent({
+            eventType: 'ledger.batch_generated',
+            facilityId: facility.id,
+            payload: {
+              periodYear: monthlyYear,
+              periodMonth: monthlyMonth,
+              count: newEntries.length,
+              ledgerIds: newEntries.map((e) => e.id),
+            },
+          }),
+        ]);
+      }
       flash(`Generated ${newEntries.length} ledger entries.`);
     } catch (e) {
       flash((e as Error).message);
@@ -384,10 +476,46 @@ export function App() {
         return;
       }
       const amt = paymentAmount > 0 ? paymentAmount : entry.totalDue;
-      recordPayment(entry, amt, new Date().toISOString().slice(0, 10));
-      const r = issueReceipt(entry, new Date().toISOString().slice(0, 10));
+      const paidDate = new Date().toISOString().slice(0, 10);
+      recordPayment(entry, amt, paidDate);
+      const r = issueReceipt(entry, paidDate);
       setReceipts((prev) => [...prev, r.receiptNumber]);
       setLedgerEntries((prev) => prev.map((e) => (e.id === entry.id ? { ...entry } : e)));
+      const facilityId = entry.facilityId || facility?.id;
+      if (facilityId) {
+        setEvents((prev) => [
+          ...prev,
+          createStorageEvent({
+            eventType: 'payment.recorded',
+            facilityId,
+            spaceId: entry.spaceId,
+            tenantId: entry.tenantId,
+            leaseId: entry.leaseId,
+            payload: {
+              ledgerId: entry.id,
+              amount: r.amount,
+              paidDate,
+              paymentStatus: entry.paymentStatus,
+              totalDue: entry.totalDue,
+              amountPaid: entry.amountPaid,
+            },
+          }),
+          createStorageEvent({
+            eventType: 'receipt.issued',
+            facilityId,
+            spaceId: entry.spaceId,
+            tenantId: entry.tenantId,
+            leaseId: entry.leaseId,
+            payload: {
+              receiptNumber: r.receiptNumber,
+              ledgerId: entry.id,
+              amount: r.amount,
+              periodStart: r.periodStart,
+              periodEnd: r.periodEnd,
+            },
+          }),
+        ]);
+      }
       flash(`Payment recorded. Receipt ${r.receiptNumber}`);
     } catch (e) {
       flash((e as Error).message);

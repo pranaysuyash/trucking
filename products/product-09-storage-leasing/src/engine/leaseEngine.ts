@@ -92,6 +92,45 @@ export function terminateLease(lease: Lease, space: RentableSpace, terminationDa
   space.vacantSince = space.vacantSince ?? at;
 }
 
+/**
+ * CA/audit building block (explicit, no auto-wiring): create a final prorated
+ * ledger entry up to termination date. Product decision still required for
+ * automatic invocation, due-date policy, idempotency, and whether to supersede/
+ * adjust an existing period entry — do not auto-generate without that decision.
+ */
+export function createTerminationFinalLedgerEntry(input: {
+  id: string;
+  lease: Lease;
+  terminationDate: string;
+  periodStart?: string;
+  dueDate: string;
+  electricityCharge?: number;
+  maintenanceCharge?: number;
+  otherCharges?: number;
+}): RentLedgerEntry {
+  const billStart = input.lease.billingStartDate ?? input.lease.startDate;
+  const rawStart = input.periodStart ?? billStart;
+  const periodStart = rawStart < billStart ? billStart : rawStart;
+  const periodEnd = input.terminationDate;
+  if (periodStart > periodEnd) throw new Error('Termination final ledger period is invalid (start after termination).');
+  const billedDayCount = inclusiveDayCount(periodStart, periodEnd);
+  return generateRentLedgerEntry({
+    id: input.id,
+    lease: input.lease,
+    facilityId: input.lease.facilityId,
+    spaceId: input.lease.spaceId,
+    tenantId: input.lease.tenantId,
+    periodStart,
+    periodEnd,
+    dueDate: input.dueDate,
+    electricityCharge: input.electricityCharge ?? 0,
+    maintenanceCharge: input.maintenanceCharge ?? 0,
+    otherCharges: input.otherCharges ?? 0,
+    billedDayCount,
+    prorationBasis: `Final termination proration: ${billedDayCount} day(s) billed ${periodStart}..${periodEnd} (termination ${input.terminationDate}). Explicit operator action; auto-generation/idempotency policy pending product decision.`,
+  });
+}
+
 export function calculateRentForPeriod(
   lease: Lease,
   periodStart: string,
@@ -138,6 +177,13 @@ function monthsBetween(start: string, end: string): number {
   return Math.max(1, months || 1);
 }
 
+function inclusiveDayCount(startIso: string, endIso: string): number {
+  const s = Date.parse(startIso.slice(0, 10));
+  const e = Date.parse(endIso.slice(0, 10));
+  if (Number.isNaN(s) || Number.isNaN(e)) return 0;
+  return Math.max(0, Math.floor((e - s) / 86400000) + 1);
+}
+
 export function generateRentLedgerEntry(input: {
   id: string;
   lease: Lease;
@@ -150,6 +196,9 @@ export function generateRentLedgerEntry(input: {
   electricityCharge?: number;
   maintenanceCharge?: number;
   otherCharges?: number;
+  billedDayCount?: number;
+  fullPeriodDayCount?: number;
+  prorationBasis?: string;
 }): RentLedgerEntry {
   const { baseRent, totalDue } = calculateRentForPeriod(
     input.lease,
@@ -159,6 +208,7 @@ export function generateRentLedgerEntry(input: {
     input.maintenanceCharge ?? 0,
     input.otherCharges ?? 0
   );
+  const billedDayCount = input.billedDayCount ?? inclusiveDayCount(input.periodStart, input.periodEnd);
   return {
     id: input.id,
     leaseId: input.lease.id,
@@ -167,6 +217,9 @@ export function generateRentLedgerEntry(input: {
     tenantId: input.tenantId,
     periodStart: input.periodStart,
     periodEnd: input.periodEnd,
+    billedDayCount,
+    ...(input.fullPeriodDayCount != null ? { fullPeriodDayCount: input.fullPeriodDayCount } : {}),
+    ...(input.prorationBasis ? { prorationBasis: input.prorationBasis } : {}),
     baseRent,
     electricityCharge: input.electricityCharge ?? 0,
     maintenanceCharge: input.maintenanceCharge ?? 0,
@@ -310,6 +363,12 @@ export function generateMonthlyRentLedgers(input: {
     if (effectiveStart > effectiveEnd) continue;
     const dueDay = Math.min(lease.billingCycleDay ?? (input.dueDayOfMonth ?? 10), new Date(periodEnd).getDate());
     const dueDate = `${periodYear}-${month}-${String(dueDay).padStart(2, '0')}`;
+    const fullPeriodDayCount = inclusiveDayCount(periodStart, periodEnd);
+    const billedDayCount = inclusiveDayCount(effectiveStart, effectiveEnd);
+    const prorated = effectiveStart !== periodStart || effectiveEnd !== periodEnd;
+    const prorationBasis = prorated
+      ? `Prorated: billed ${billedDayCount}/${fullPeriodDayCount} day(s) for ${effectiveStart}..${effectiveEnd} (full month ${periodStart}..${periodEnd}${billStart > periodStart ? `; billing starts ${billStart}` : ''}${leaseEnd && leaseEnd < periodEnd ? `; lease ends ${leaseEnd}` : ''}).`
+      : undefined;
     entries.push(generateRentLedgerEntry({
       id: `RL-${lease.id}-${periodYear}-${month}`,
       lease,
@@ -322,6 +381,9 @@ export function generateMonthlyRentLedgers(input: {
       electricityCharge: input.electricityByLease?.[lease.id] ?? 0,
       maintenanceCharge: input.maintenanceByLease?.[lease.id] ?? 0,
       otherCharges: input.otherByLease?.[lease.id] ?? 0,
+      billedDayCount,
+      fullPeriodDayCount: prorated ? fullPeriodDayCount : undefined,
+      prorationBasis,
     }));
   }
   return entries;

@@ -168,6 +168,12 @@ export interface RentLedgerEntry {
   tenantId: string;
   periodStart: string;
   periodEnd: string;
+  /** Billed days in this entry (additive; for proration auditability). */
+  billedDayCount?: number;
+  /** Full period day count used as proration basis, when prorated (additive). */
+  fullPeriodDayCount?: number;
+  /** Human-auditable proration basis/reason (additive). */
+  prorationBasis?: string;
   baseRent: number;
   electricityCharge: number;
   maintenanceCharge: number;
