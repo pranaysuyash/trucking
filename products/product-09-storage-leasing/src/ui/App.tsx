@@ -1199,6 +1199,18 @@ export function App() {
                       Onboard &amp; Lease
                     </Button>
                   </Group>
+                  {(newLease.agreementDate || newLease.start || newLease.billingStart || newLease.end) && (
+                    <SectionCard title="Lease lifecycle preview (review before creating)" subtitle="Dates and billing terms as entered. No ledger proration amount is computed here because the proration formula is a deferred decision.">
+                      <Stack gap={4}>
+                        <Text size="sm"><strong>Agreement:</strong> {newLease.agreementDate ? dateShort(newLease.agreementDate) : '—'} · <strong>Possession/start:</strong> {newLease.start ? dateShort(newLease.start) : '—'} · <strong>Billing starts:</strong> {(newLease.billingStart || newLease.start) ? dateShort(newLease.billingStart || newLease.start) : '—'}{newLease.billingStart && newLease.start && newLease.billingStart !== newLease.start ? ' (differs from start)' : ''}</Text>
+                        <Text size="sm"><strong>End:</strong> {newLease.leaseType === 'indefinite' ? 'Indefinite (no fixed end)' : (newLease.end ? dateShort(newLease.end) : '—')} · <strong>Type:</strong> {newLease.leaseType} · <strong>Billing cycle day:</strong> {newLease.billingCycleDay}</Text>
+                        <Text size="sm"><strong>Rate:</strong> <Money value={newLease.rate || 0} /> / {BILLING_OPTIONS.find((o) => o.value === newLease.billing)?.label ?? newLease.billing} · <strong>Deposit:</strong> <Money value={newLease.deposit || 0} /> (liability until refunded/adjusted) · <strong>Escalation:</strong> {newLease.escalation || 0}%/yr</Text>
+                        {newLease.billingStart && newLease.start && newLease.billingStart !== newLease.start ? (
+                          <Text size="xs" c="dimmed">Billing start differs from possession/start. Any partial-period treatment requires an explicit proration formula decision; this preview does not calculate a prorated amount.</Text>
+                        ) : null}
+                      </Stack>
+                    </SectionCard>
+                  )}
                 </Stack>
               </SectionCard>
 
@@ -1240,7 +1252,7 @@ export function App() {
                             <td>{tenants.find((t) => t.id === l.tenantId)?.name ?? l.tenantId}</td>
                             <td>{l.spaceId}</td>
                             <td>
-                              {dateShort(l.startDate)} → {dateShort(l.endDate)}
+                              {dateShort(l.startDate)} → {l.endDate ? dateShort(l.endDate) : 'Indefinite'}
                             </td>
                             <td>
                               <StatusBadge tone={l.status === 'active' ? 'success' : l.status === 'expired' ? 'danger' : 'neutral'}>
