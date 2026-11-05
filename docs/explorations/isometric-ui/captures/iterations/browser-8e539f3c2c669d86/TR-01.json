@@ -1,0 +1,36 @@
+{
+  "batchedParts": "70",
+  "quality": "studio",
+  "ready": "TR-01",
+  "entities": "8",
+  "anchors": "6",
+  "geometry": "32",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "21.10",
+  "drawCalls": "110",
+  "camera": "{\"position\":[40.47225378760215,41.902253784472904,40.6222537637603],\"target\":[0,1.4299999968707562,0.1499999761581421],\"zoom\":1}",
+  "painted": "TR-01",
+  "id": "TR-01",
+  "title": "Carrier identity spatial dossier",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:32.016Z"
+}

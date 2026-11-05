@@ -1,0 +1,557 @@
+{
+  "checkedAt": "2026-10-22T17:41:31.146Z",
+  "scope": "Local native shipment UI slice",
+  "checks": [
+    "optional Pricing renderer loads and toggles without replacing native inputs",
+    "completed legacy record keeps saved evidence without an impossible republish instruction"
+  ],
+  "observations": [
+    {
+      "label": "command-desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "offenders": [
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1473
+        },
+        {
+          "tag": "DIV",
+          "class": "step-info-col",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-code-row",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-name",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-tagline",
+          "right": 1490
+        },
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1681
+        },
+        {
+          "tag": "DIV",
+          "class": "step-icon-bubble",
+          "right": 1516
+        },
+        {
+          "tag": "svg",
+          "class": {},
+          "right": 1516
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1500
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1503
+        },
+        {
+          "tag": "circle",
+          "class": {},
+          "right": 1508
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1511
+        }
+      ]
+    },
+    {
+      "product": "command",
+      "size": "desktop",
+      "workspaceHeight": 788
+    },
+    {
+      "label": "command-mobile",
+      "width": 390,
+      "scroll": 390,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "NAV",
+          "class": "fleet-heartbeats-row",
+          "right": 430
+        },
+        {
+          "tag": "A",
+          "class": "heartbeat-pill ",
+          "right": 421
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 410
+        }
+      ]
+    },
+    {
+      "product": "command",
+      "size": "mobile",
+      "workspaceHeight": 1454
+    },
+    {
+      "label": "command-mobile-inspector",
+      "width": 390,
+      "scroll": 390,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "NAV",
+          "class": "fleet-heartbeats-row",
+          "right": 430
+        },
+        {
+          "tag": "A",
+          "class": "heartbeat-pill ",
+          "right": 421
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 410
+        }
+      ]
+    },
+    {
+      "label": "cargo-desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "grid",
+          "right": 1690
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 1690
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 1690
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 1578
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 1690
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 1690
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 1690
+        },
+        {
+          "tag": "TD",
+          "class": "mono dim conv",
+          "right": 1578
+        },
+        {
+          "tag": "TD",
+          "class": "actions-cell",
+          "right": 1690
+        },
+        {
+          "tag": "BUTTON",
+          "class": "btn sm ghost",
+          "right": 1624
+        },
+        {
+          "tag": "BUTTON",
+          "class": "btn sm ghost",
+          "right": 1682
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 1690
+        }
+      ]
+    },
+    {
+      "product": "cargo",
+      "size": "desktop",
+      "workspaceHeight": 203
+    },
+    {
+      "label": "cargo-mobile",
+      "width": 390,
+      "scroll": 390,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DT",
+          "class": "",
+          "right": 476
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "right": 476
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 495
+        }
+      ]
+    },
+    {
+      "product": "cargo",
+      "size": "mobile",
+      "workspaceHeight": 321
+    },
+    {
+      "label": "cargo-mobile-inspector",
+      "width": 390,
+      "scroll": 390,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DT",
+          "class": "",
+          "right": 476
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "right": 476
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 495
+        }
+      ]
+    },
+    {
+      "label": "pricing-desktop",
+      "width": 1440,
+      "scroll": 1440,
+      "offenders": []
+    },
+    {
+      "product": "pricing",
+      "size": "desktop",
+      "workspaceHeight": 203
+    },
+    {
+      "label": "pricing-mobile",
+      "width": 390,
+      "scroll": 390,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        }
+      ]
+    },
+    {
+      "product": "pricing",
+      "size": "mobile",
+      "workspaceHeight": 353
+    },
+    {
+      "label": "pricing-mobile-inspector",
+      "width": 390,
+      "scroll": 390,
+      "offenders": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        }
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "externalProviderCalls": false,
+  "result": "PASS"
+}

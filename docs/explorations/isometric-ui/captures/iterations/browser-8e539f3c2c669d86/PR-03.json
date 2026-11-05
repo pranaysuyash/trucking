@@ -1,0 +1,36 @@
+{
+  "batchedParts": "49",
+  "quality": "studio",
+  "ready": "PR-03",
+  "entities": "6",
+  "anchors": "8",
+  "geometry": "16",
+  "fixtureMetrics": "[{\"label\":\"Operating cost\",\"value\":1800,\"unit\":\"USD\"},{\"label\":\"Quoted revenue\",\"value\":2000,\"unit\":\"USD\"},{\"label\":\"Target ratio\",\"value\":90,\"unit\":\"percent\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "21.60",
+  "drawCalls": "66",
+  "camera": "{\"position\":[5.41942075715838,23.57552511904331,54.194207571583796],\"target\":[0,2.4999999523162844,0],\"zoom\":1}",
+  "painted": "PR-03",
+  "id": "PR-03",
+  "title": "Margin and operating-ratio landscape",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:42.377Z"
+}

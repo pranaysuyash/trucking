@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-22T18:44:56.296491+00:00",
+  "revision": "f0e21e664830ec47",
+  "cases": 120,
+  "groups": {
+    "cargo": 12,
+    "assets": 12,
+    "warehouse": 12,
+    "yard": 12,
+    "telematics": 12,
+    "pricing": 12,
+    "hos": 12,
+    "trust": 12,
+    "command": 12,
+    "platform": 12
+  },
+  "captures": 120,
+  "uniqueImageHashes": 120,
+  "capturesAtCurrentRevision": 120,
+  "captureRevisionCounts": {
+    "f0e21e664830ec47": 120
+  },
+  "allCapturesMatchCurrentRevision": true,
+  "capturesNeedingRefresh": [],
+  "artifactIntegrityPass": true,
+  "errors": [],
+  "pass": true,
+  "scope": "Local artifact/source integrity, Tier 2/S1. No human approval or product validity implied."
+}

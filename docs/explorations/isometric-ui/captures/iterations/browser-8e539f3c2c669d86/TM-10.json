@@ -1,0 +1,36 @@
+{
+  "batchedParts": "296",
+  "quality": "studio",
+  "ready": "TM-10",
+  "entities": "12",
+  "anchors": "4",
+  "geometry": "42",
+  "fixtureMetrics": "[{\"label\":\"Fresh sensors\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Stale sensors\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Missing sensors\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Transport\",\"value\":\"reconnecting\",\"unit\":\"\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "76.20",
+  "drawCalls": "143",
+  "camera": "{\"position\":[49.15750790803715,51.67250791273102,48.84750790520594],\"target\":[0.025000000000000355,2.5400000046938658,-0.28500000283122073],\"zoom\":1}",
+  "painted": "TM-10",
+  "id": "TM-10",
+  "title": "Sensor freshness and dropout",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:38.717Z"
+}

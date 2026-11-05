@@ -1,0 +1,36 @@
+{
+  "batchedParts": "67",
+  "quality": "studio",
+  "ready": "YD-09",
+  "entities": "1",
+  "anchors": "2",
+  "geometry": "15",
+  "fixtureMetrics": "[{\"label\":\"Held trailers\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Inspection bays\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Pending checks\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.20",
+  "drawCalls": "63",
+  "camera": "{\"position\":[22.54552800153106,23.401777995533344,22.545528001531064],\"target\":[0,0.8562499940022826,0],\"zoom\":1}",
+  "painted": "YD-09",
+  "id": "YD-09",
+  "title": "Inspection and hold bay",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:33.325Z"
+}

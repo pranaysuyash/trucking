@@ -1,0 +1,36 @@
+{
+  "anchors": "5",
+  "batchedParts": "647",
+  "camera": "{\"position\":[49.15750790803715,52.370007913252564,48.647507908186164],\"target\":[0.025000000000000355,3.2375000052154066,-0.48499999985098835],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "277",
+  "entities": "13",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "geometry": "86",
+  "id": "AS-12",
+  "pageWidth": 1440,
+  "painted": "AS-12",
+  "quality": "studio",
+  "ready": "AS-12",
+  "renderMs": "79.50",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Sensor topology study",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-12.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:56.793Z"
+}

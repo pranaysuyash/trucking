@@ -1,0 +1,36 @@
+{
+  "batchedParts": "100",
+  "quality": "studio",
+  "ready": "TR-04",
+  "entities": "4",
+  "anchors": "5",
+  "geometry": "24",
+  "fixtureMetrics": "[{\"label\":\"Days remaining\",\"value\":12,\"unit\":\"days\"},{\"label\":\"Policies\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Pending renewals\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "19.50",
+  "drawCalls": "90",
+  "camera": "{\"position\":[36.661742093541235,37.13674209950171,36.299242081620314],\"target\":[0,0.47500000596046443,-0.36250001192092896],\"zoom\":1}",
+  "painted": "TR-04",
+  "id": "TR-04",
+  "title": "Policy expiry timeline",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:34.679Z"
+}

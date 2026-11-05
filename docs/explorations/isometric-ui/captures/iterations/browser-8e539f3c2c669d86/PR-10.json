@@ -1,0 +1,36 @@
+{
+  "batchedParts": "25",
+  "quality": "studio",
+  "ready": "PR-10",
+  "entities": "3",
+  "anchors": "4",
+  "geometry": "8",
+  "fixtureMetrics": "[{\"label\":\"Components total\",\"value\":3600,\"unit\":\"USD\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "19.20",
+  "drawCalls": "42",
+  "camera": "{\"position\":[6.154605500663763,26.57346583591463,62.54605500663763],\"target\":[-0.09999999999999964,2.25,0],\"zoom\":1}",
+  "painted": "PR-10",
+  "id": "PR-10",
+  "title": "Broker buy sell margin study",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:47.682Z"
+}

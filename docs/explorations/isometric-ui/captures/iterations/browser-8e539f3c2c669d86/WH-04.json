@@ -1,0 +1,36 @@
+{
+  "batchedParts": "344",
+  "quality": "studio",
+  "ready": "WH-04",
+  "entities": "11",
+  "anchors": "5",
+  "geometry": "101",
+  "fixtureMetrics": "[{\"label\":\"Handling unit\",\"value\":\"HU-01\",\"unit\":\"\"},{\"label\":\"Load height\",\"value\":1.3,\"unit\":\"m\"},{\"label\":\"Target clear height\",\"value\":1.4,\"unit\":\"m\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "85.10",
+  "drawCalls": "338",
+  "camera": "{\"position\":[30.026359217330665,32.95135922887908,31.101359204664686],\"target\":[-0.4000000115483999,2.5250000000000004,0.6749999757856131],\"zoom\":1}",
+  "painted": "WH-04",
+  "id": "WH-04",
+  "title": "Inbound putaway recommendation",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:07.331Z"
+}

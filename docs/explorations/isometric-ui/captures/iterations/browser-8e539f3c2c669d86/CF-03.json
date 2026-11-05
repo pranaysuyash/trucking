@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "12",
+  "camera": "{\"position\":[18.475208614068023,19.537708607362504,18.475208614068027],\"target\":[0,1.0624999932944774,0],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "46",
+  "entities": "1",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Bounding volume\",\"value\":8.448,\"unit\":\"m³\"}]",
+  "geometry": "10",
+  "id": "CF-03",
+  "pageWidth": 1440,
+  "painted": "CF-03",
+  "quality": "studio",
+  "ready": "CF-03",
+  "renderMs": "94.60",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Irregular cargo envelope",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-03.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:31:34.487Z"
+}

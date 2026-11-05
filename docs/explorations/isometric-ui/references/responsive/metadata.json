@@ -1,0 +1,41 @@
+[
+  {
+    "id": "desktop",
+    "width": 1440,
+    "height": 1024,
+    "pageWidth": 1440,
+    "scrollY": 0,
+    "selected": "HU 01",
+    "sourceRevision": "0699cf5a3dcd7fce",
+    "sourceCase": "CF-02",
+    "quality": "studio",
+    "annotationLayout": "overlay",
+    "capturedAt": "2026-10-22T19:56:27.640Z"
+  },
+  {
+    "id": "tablet",
+    "width": 834,
+    "height": 1112,
+    "pageWidth": 834,
+    "scrollY": 0,
+    "selected": "HU 01",
+    "sourceRevision": "0699cf5a3dcd7fce",
+    "sourceCase": "CF-02",
+    "quality": "studio",
+    "annotationLayout": "linear",
+    "capturedAt": "2026-10-22T19:56:35.949Z"
+  },
+  {
+    "id": "mobile",
+    "width": 390,
+    "height": 844,
+    "pageWidth": 390,
+    "scrollY": 0,
+    "selected": "HU 01",
+    "sourceRevision": "0699cf5a3dcd7fce",
+    "sourceCase": "CF-02",
+    "quality": "simple",
+    "annotationLayout": "linear",
+    "capturedAt": "2026-10-22T19:56:42.309Z"
+  }
+]

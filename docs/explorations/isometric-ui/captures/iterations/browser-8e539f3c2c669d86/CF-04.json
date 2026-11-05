@@ -1,0 +1,36 @@
+{
+  "anchors": "4",
+  "batchedParts": "165",
+  "camera": "{\"position\":[20.160849289497513,21.16084930071436,19.87109929834135],\"target\":[0.29999998807907113,1.2999999992959201,0.010249996922910232],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "112",
+  "entities": "4",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Upper mass\",\"value\":400,\"unit\":\"lb\"},{\"label\":\"Support area\",\"value\":76,\"unit\":\"percent\"},{\"label\":\"Stack height\",\"value\":84,\"unit\":\"in\"}]",
+  "geometry": "31",
+  "id": "CF-04",
+  "pageWidth": 1440,
+  "painted": "CF-04",
+  "quality": "studio",
+  "ready": "CF-04",
+  "renderMs": "145.60",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Stacking and support",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-04.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:31:42.395Z"
+}

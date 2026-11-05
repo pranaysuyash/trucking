@@ -1,0 +1,37 @@
+{
+  "batchedParts": "316",
+  "quality": "studio",
+  "ready": "CF-12",
+  "entities": "8",
+  "anchors": "3",
+  "geometry": "54",
+  "fixtureMetrics": "[{\"label\":\"Units per revision\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "62.50",
+  "drawCalls": "178",
+  "camera": "{\"position\":[21.962515361581804,22.762515360877725,22.462515370522503],\"target\":[-0.1499999999999999,0.6499999992959201,0.35000000894069677],\"zoom\":1}",
+  "painted": "CF-12",
+  "id": "CF-12",
+  "title": "Plan version comparison",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:27:52.700Z"
+}

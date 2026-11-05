@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "583",
+  "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "202",
+  "entities": "9",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Vehicle options\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Dry-van length\",\"value\":53,\"unit\":\"ft\"},{\"label\":\"Reefer payload\",\"value\":43500,\"unit\":\"lb\"}]",
+  "geometry": "61",
+  "id": "AS-01",
+  "pageWidth": 1440,
+  "painted": "AS-01",
+  "quality": "studio",
+  "ready": "AS-01",
+  "renderMs": "98.00",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Equipment catalog comparison",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-01.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:16.533Z"
+}

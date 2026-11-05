@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-22T20:25:58.999Z",
+  "case": "before",
+  "evidenceTier": 4,
+  "sensitivity": "S2",
+  "heldFontRequests": 1,
+  "nativeControlsReadyWhileFontHeld": false,
+  "nativeControlsReadyAfterRelease": true
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "81",
+  "quality": "studio",
+  "ready": "PF-09",
+  "entities": "2",
+  "anchors": "2",
+  "geometry": "18",
+  "fixtureMetrics": "[{\"label\":\"Image width\",\"value\":1600,\"unit\":\"px\"},{\"label\":\"Image height\",\"value\":1000,\"unit\":\"px\"},{\"label\":\"Case revision\",\"value\":1,\"unit\":\"index\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "53.20",
+  "drawCalls": "70",
+  "camera": "{\"position\":[25.737668358910852,26.758893181428974,25.90232613820964],\"target\":[0.19127517062734722,1.2124999931454659,0.3559329499261312],\"zoom\":1}",
+  "painted": "PF-09",
+  "id": "PF-09",
+  "title": "Deterministic review snapshot",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:24.228Z"
+}

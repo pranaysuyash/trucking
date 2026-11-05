@@ -1,0 +1,47 @@
+{
+  "caseId": "CF-02",
+  "modes": [
+    {
+      "name": "Solid",
+      "pressed": "true"
+    },
+    {
+      "name": "X-ray",
+      "pressed": "false"
+    },
+    {
+      "name": "Structure",
+      "pressed": "false"
+    }
+  ],
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "db5b828dd82f6f74",
+  "selected": "HU 01",
+  "values": [
+    {
+      "label": "Length",
+      "unit": "m",
+      "value": 2
+    },
+    {
+      "label": "Width",
+      "unit": "m",
+      "value": 1.1
+    },
+    {
+      "label": "Height",
+      "unit": "m",
+      "value": 1.6
+    },
+    {
+      "label": "Fixture mass",
+      "unit": "lb",
+      "value": 1500
+    },
+    {
+      "label": "Envelope volume",
+      "unit": "m³",
+      "value": 3.5200000000000005
+    }
+  ]
+}

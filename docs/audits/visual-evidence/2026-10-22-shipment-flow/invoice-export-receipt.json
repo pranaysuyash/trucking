@@ -1,0 +1,11 @@
+{
+  "shipmentId": "164d2dfd-ce9b-4273-b663-885a67672688",
+  "downloadedFilename": "164d2dfd-ce9b-4273-b663-885a67672688-invoice-evidence.json",
+  "status": "invoice_ready",
+  "recordRevision": 23,
+  "totalCents": 28787,
+  "eventCount": 23,
+  "originalAndAmendedManifestRetained": true,
+  "sha256": "08ec794f96afe8f6182e464d9a06736124230d2bcbfb9d76934f096078437825",
+  "pageErrors": []
+}

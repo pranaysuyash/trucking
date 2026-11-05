@@ -1,0 +1,36 @@
+{
+  "batchedParts": "104",
+  "quality": "studio",
+  "ready": "PF-03",
+  "entities": "6",
+  "anchors": "5",
+  "geometry": "31",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":3,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "52.00",
+  "drawCalls": "103",
+  "camera": "{\"position\":[43.24353507971236,44.74353507915729,43.243535079712366],\"target\":[0,1.4999999994449318,0],\"zoom\":1}",
+  "painted": "PF-03",
+  "id": "PF-03",
+  "title": "Multi-scale semantic zoom",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:18.846Z"
+}

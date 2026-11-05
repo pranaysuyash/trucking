@@ -1,0 +1,36 @@
+{
+  "batchedParts": "43",
+  "quality": "studio",
+  "ready": "TM-02",
+  "entities": "1",
+  "anchors": "2",
+  "geometry": "14",
+  "fixtureMetrics": "[{\"label\":\"Active faults\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Coolant temperature\",\"value\":218,\"unit\":\"F\"},{\"label\":\"Oil pressure\",\"value\":38,\"unit\":\"psi\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.60",
+  "drawCalls": "60",
+  "camera": "{\"position\":[28.867513459481287,30.692513456501057,28.867513459481295],\"target\":[0,1.8249999970197677,0],\"zoom\":1}",
+  "painted": "TM-02",
+  "id": "TM-02",
+  "title": "Diagnostic fault localization",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:17.167Z"
+}

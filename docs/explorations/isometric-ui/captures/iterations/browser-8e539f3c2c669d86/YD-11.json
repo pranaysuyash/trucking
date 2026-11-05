@@ -1,0 +1,36 @@
+{
+  "batchedParts": "226",
+  "quality": "studio",
+  "ready": "YD-11",
+  "entities": "21",
+  "anchors": "4",
+  "geometry": "101",
+  "fixtureMetrics": "[{\"label\":\"Available doors\",\"value\":0,\"unit\":\"count\"},{\"label\":\"Empty yard spots\",\"value\":0,\"unit\":\"count\"},{\"label\":\"Held arrivals\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Alternative holding capacity\",\"value\":\"undeclared\",\"unit\":\"\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "26.60",
+  "drawCalls": "309",
+  "camera": "{\"position\":[68.9726312259966,68.92263122718869,66.8226312259966],\"target\":[2,1.9500000011920928,-0.14999999999999947],\"zoom\":1}",
+  "painted": "YD-11",
+  "id": "YD-11",
+  "title": "Full-yard recovery",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:39.910Z"
+}

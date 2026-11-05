@@ -1,0 +1,37 @@
+{
+  "batchedParts": "165",
+  "quality": "studio",
+  "ready": "CF-04",
+  "entities": "4",
+  "anchors": "4",
+  "geometry": "31",
+  "fixtureMetrics": "[{\"label\":\"Upper mass\",\"value\":400,\"unit\":\"lb\"},{\"label\":\"Support area\",\"value\":76,\"unit\":\"percent\"},{\"label\":\"Stack height\",\"value\":84,\"unit\":\"in\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "84.60",
+  "drawCalls": "112",
+  "camera": "{\"position\":[20.160849289497513,21.16084930071436,19.87109929834135],\"target\":[0.29999998807907113,1.2999999992959201,0.010249996922910232],\"zoom\":1}",
+  "painted": "CF-04",
+  "id": "CF-04",
+  "title": "Stacking and support",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:04:17.056Z"
+}

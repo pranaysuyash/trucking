@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-22T17:42:38.388Z",
+  "label": "fixed",
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "pageErrors": [],
+  "shipmentId": "9e6b2eea-021d-4bfa-b844-ff12d450f3a1",
+  "expectedX": 20,
+  "actualX": 20,
+  "result": "PASS"
+}

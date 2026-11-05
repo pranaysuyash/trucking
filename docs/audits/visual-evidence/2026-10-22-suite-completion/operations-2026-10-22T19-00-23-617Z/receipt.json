@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-10-22T19:00:23.619Z",
+  "checks": [
+    "historical manifest replay stays separate from current spatial geometry, mass and unit search",
+    "timeline filters retained events and opens the exact canonical event inspector",
+    "invoice and receipt inspect independently, and actual evidence download reconciles to accepted terms",
+    "native equipment changes publish the selected exact snapshot and retained input revisions",
+    "manifest Source retains creation and narrow equipment amendment provenance",
+    "live API rejects overlapping reviewed geometry atomically"
+  ],
+  "observations": [],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "completedShipmentId": "73dd92c0-0232-4156-a853-a72fbf5bb853",
+  "draftShipmentId": "277ff286-941a-4aa1-b54f-ab3742f87fe0",
+  "result": "FAIL",
+  "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"410928\"\nReceived: \"389211\"\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at pollMatcher (/Users/pranay/Projects/pdf_editor/node_modules/playwright/lib/matchers/expect.js:293:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:89:3",
+  "completedAt": "2026-10-22T19:00:54.886Z"
+}

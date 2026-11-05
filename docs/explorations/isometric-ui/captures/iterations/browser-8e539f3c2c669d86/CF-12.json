@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "316",
+  "camera": "{\"position\":[21.962515361581804,22.762515360877725,22.462515370522503],\"target\":[-0.1499999999999999,0.6499999992959201,0.35000000894069677],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "178",
+  "entities": "8",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Units per revision\",\"value\":4,\"unit\":\"count\"}]",
+  "geometry": "54",
+  "id": "CF-12",
+  "pageWidth": 1440,
+  "painted": "CF-12",
+  "quality": "studio",
+  "ready": "CF-12",
+  "renderMs": "80.00",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Plan version comparison",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-12.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:32:32.075Z"
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "277",
+  "quality": "studio",
+  "ready": "YD-12",
+  "entities": "13",
+  "anchors": "3",
+  "geometry": "86",
+  "fixtureMetrics": "[{\"label\":\"Unloaded units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Reserved slots\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Unmatched units\",\"value\":0,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "91.80",
+  "drawCalls": "262",
+  "camera": "{\"position\":[51.3841739578767,53.33417395906879,50.03897856908276],\"target\":[0,1.9500000011920928,-1.345195388793945],\"zoom\":1}",
+  "painted": "YD-12",
+  "id": "YD-12",
+  "title": "Yard-to-warehouse handoff",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:40.737Z"
+}

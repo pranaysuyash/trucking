@@ -1,0 +1,1519 @@
+{
+  "id": "164d2dfd-ce9b-4273-b663-885a67672688",
+  "reference": "Browser verified shipment 1792678455988",
+  "mode": "local_scenario",
+  "revision": 23,
+  "inputRevision": 2,
+  "status": "invoice_ready",
+  "results": {
+    "asset": {
+      "ok": true,
+      "summary": "53' Standard Dry Van (Class 8): declared interior, door and payload snapshot ready.",
+      "details": {
+        "equipmentId": "dry-van-53",
+        "name": "53' Standard Dry Van (Class 8)",
+        "lengthIn": 630,
+        "widthIn": 99.96000000000001,
+        "heightIn": 110.03999999999999,
+        "doorWidthIn": 98.03999999999999,
+        "doorHeightIn": 108,
+        "payloadLbs": 45000,
+        "loadedMpg": 6.8,
+        "source": "Catalog scenario template; actual equipment measurement remains separate"
+      },
+      "inputRevision": 2,
+      "productId": "product-04-asset-studio",
+      "recordedAt": "2026-10-22T14:14:42.846Z"
+    },
+    "carrier": {
+      "ok": true,
+      "summary": "Apex Freight Lines LLC: APPROVED under configured customer policy, using seeded scenario evidence. ",
+      "details": {
+        "dotNumber": "389211",
+        "eligibility": "APPROVED",
+        "evidenceSource": "seeded_scenario",
+        "expiresAt": "2026-10-22T14:29:48.071Z",
+        "blockers": [],
+        "warnings": []
+      },
+      "inputRevision": 2,
+      "productId": "product-08-carrier-trust",
+      "recordedAt": "2026-10-22T14:14:48.832Z"
+    },
+    "hos": {
+      "ok": true,
+      "summary": "2.3 modeled transit hours for SCENARIO-DRIVER-01. Full-rest scenario only; no live ELD or appointment guarantee.",
+      "details": {
+        "driverId": "SCENARIO-DRIVER-01",
+        "priorRestHours": 10,
+        "ruleScope": "full_rest_only",
+        "isLegal": true,
+        "totalTransitHours": 2.3,
+        "waypoints": [
+          {
+            "id": "wp-1",
+            "type": "ORIGIN_PICKUP",
+            "title": "Pre-Trip Inspection & Live Load",
+            "location": "Chicago, IL",
+            "distanceMiles": 0,
+            "cumulativeMiles": 0,
+            "durationMinutes": 15,
+            "cumulativeTimeMinutes": 15,
+            "dutyStatus": "ON_DUTY_NOT_DRIVING",
+            "notes": "Verify commercial equipment, air brake test, bill of lading pickup."
+          },
+          {
+            "id": "wp-2",
+            "type": "DRIVING_LEG",
+            "title": "Interstate Driving Leg (95 mi)",
+            "location": "Corridor Mile 95",
+            "distanceMiles": 95,
+            "cumulativeMiles": 95,
+            "durationMinutes": 104,
+            "cumulativeTimeMinutes": 119,
+            "dutyStatus": "DRIVING",
+            "notes": "Speed maintained at ~55 MPH. Clocks running."
+          },
+          {
+            "id": "wp-3",
+            "type": "DESTINATION_DROPOFF",
+            "title": "Consignee Delivery & Post-Trip DVIR",
+            "location": "Milwaukee, WI",
+            "distanceMiles": 0,
+            "cumulativeMiles": 95,
+            "durationMinutes": 20,
+            "cumulativeTimeMinutes": 139,
+            "dutyStatus": "ON_DUTY_NOT_DRIVING",
+            "notes": "Seal verification, dock delivery receipt signature, driver post-trip inspection."
+          }
+        ],
+        "violations": []
+      },
+      "inputRevision": 2,
+      "productId": "product-03-hos-planner",
+      "recordedAt": "2026-10-22T14:14:53.692Z"
+    },
+    "fit": {
+      "ok": true,
+      "summary": "2/2 handling units placed. Independent geometric checks passed under declared constraints.",
+      "details": {
+        "geometryFeasible": true,
+        "violations": 0,
+        "unitIds": [
+          "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+          "164d2dfd-ce9b-4273-b663-885a67672688-HU-01"
+        ],
+        "placements": [
+          {
+            "unitId": "Replacement parts pallet",
+            "rowUid": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+            "label": "Replacement parts pallet",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "dx": 1219.2,
+            "dy": 1016,
+            "dz": 1320.8,
+            "order": 1,
+            "stop": 1
+          },
+          {
+            "unitId": "Machine components pallet",
+            "rowUid": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+            "label": "Machine components pallet",
+            "x": 0,
+            "y": 1016,
+            "z": 0,
+            "dx": 1219.2,
+            "dy": 1016,
+            "dz": 1219.2,
+            "order": 2,
+            "stop": 1
+          }
+        ],
+        "status": "FEASIBLE_UNDER_MODELED_CONSTRAINTS",
+        "solverVersion": "ep-heuristic-1.0",
+        "checks": [
+          {
+            "id": "bounds",
+            "label": "Inside interior dimensions",
+            "note": "Every box lies within L × W × H of the declared interior.",
+            "state": "verified"
+          },
+          {
+            "id": "overlap",
+            "label": "No overlapping items",
+            "note": "Pairwise axis-aligned box test by an independent validator.",
+            "state": "verified"
+          },
+          {
+            "id": "orientation",
+            "label": "Allowed orientations only",
+            "note": "Each item uses an orientation permitted by its rotation rule.",
+            "state": "verified"
+          },
+          {
+            "id": "support",
+            "label": "Base support & no-stack",
+            "note": "Each raised item rests on surfaces at its exact base height, none marked no-stack.",
+            "state": "verified"
+          },
+          {
+            "id": "payload",
+            "label": "Declared payload",
+            "state": "verified",
+            "note": "Sum of declared unit weights vs the declared payload figure."
+          },
+          {
+            "id": "door",
+            "label": "Door opening",
+            "state": "verified",
+            "note": "Each item's cross-section in its placed orientation fits the declared opening. Interior path and handling equipment are NOT modeled."
+          },
+          {
+            "id": "axle",
+            "label": "Axle / axle-group loads & legal limits",
+            "state": "not_modeled",
+            "note": "Needs vehicle configuration, tare and jurisdiction. Verify with scales and a qualified person."
+          },
+          {
+            "id": "securement",
+            "label": "Load securement",
+            "state": "not_modeled",
+            "note": "Depends on restraint equipment and applicable rules, not on box geometry."
+          },
+          {
+            "id": "handling",
+            "label": "Forklift / manual handling access",
+            "state": "not_modeled",
+            "note": "Loading order, aisle and reach are not simulated."
+          },
+          {
+            "id": "stops",
+            "label": "Multi-stop access order",
+            "state": "not_modeled",
+            "note": "Unload sequence is not modeled."
+          },
+          {
+            "id": "cog",
+            "label": "Centre of gravity (height & lateral)",
+            "state": "not_modeled",
+            "note": "Longitudinal centroid is shown as information only."
+          }
+        ],
+        "limitation": "No physical scale, restraint or road-legal certification."
+      },
+      "inputRevision": 2,
+      "productId": "product-01-cargo-fit",
+      "recordedAt": "2026-10-22T14:14:44.716Z"
+    },
+    "warehouse": {
+      "ok": true,
+      "summary": "2/2 identified units have compatible receiving locations.",
+      "details": {
+        "facilityId": "LOCAL-RECEIVING-01",
+        "assignments": [
+          {
+            "unitId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+            "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+            "slotId": "R01-B02-L1-A",
+            "slotCode": "R01-B02-L1-A"
+          },
+          {
+            "unitId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+            "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+            "slotId": "R01-B02-L1-B",
+            "slotCode": "R01-B02-L1-B"
+          }
+        ],
+        "recommendations": [
+          {
+            "palletId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+            "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+            "sku": "SKU-CF-164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+            "description": "Machine components pallet",
+            "weightLbs": 1250,
+            "dimensions": {
+              "lengthIn": 48,
+              "widthIn": 40,
+              "heightIn": 48
+            },
+            "environmentalClass": "ambient",
+            "status": "proposed",
+            "targetSlotId": "R01-B02-L1-A",
+            "targetLocationCode": "R01-B02-L1-A",
+            "targetZoneName": "Selective High-Bay Racks (Aisles R01–R03)",
+            "suitabilityScore": 90,
+            "reason": "Optimal high-bay rack storage (Level 1)",
+            "violations": [
+              "Zone does not support AMBIENT classification (requires certified storage)",
+              "Exterior yard slots require intermodal or ISO containerized cargo"
+            ],
+            "alternativeSlotIds": [
+              "R01-B02-L1-B",
+              "R01-B02-L2-A",
+              "R01-B02-L3-B"
+            ]
+          },
+          {
+            "palletId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+            "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+            "sku": "SKU-CF-164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+            "description": "Replacement parts pallet",
+            "weightLbs": 1500,
+            "dimensions": {
+              "lengthIn": 48,
+              "widthIn": 40,
+              "heightIn": 52
+            },
+            "environmentalClass": "ambient",
+            "status": "proposed",
+            "targetSlotId": "R01-B02-L1-B",
+            "targetLocationCode": "R01-B02-L1-B",
+            "targetZoneName": "Selective High-Bay Racks (Aisles R01–R03)",
+            "suitabilityScore": 90,
+            "reason": "Optimal high-bay rack storage (Level 1)",
+            "violations": [
+              "Zone does not support AMBIENT classification (requires certified storage)",
+              "Exterior yard slots require intermodal or ISO containerized cargo"
+            ],
+            "alternativeSlotIds": [
+              "R01-B02-L2-A",
+              "R01-B02-L3-B",
+              "R01-B03-L1-A"
+            ]
+          }
+        ]
+      },
+      "inputRevision": 2,
+      "productId": "product-06-warehouse-space-flow",
+      "recordedAt": "2026-10-22T14:14:45.817Z"
+    },
+    "yard": {
+      "ok": true,
+      "summary": "Compatible scenario dock 6 allocated to SCENARIO-TRAILER-01. Seal verification remains an execution task.",
+      "details": {
+        "doorId": "DOOR-06",
+        "trailerId": "SCENARIO-TRAILER-01",
+        "available": true,
+        "facilityId": "LOCAL-ORIGIN-01"
+      },
+      "inputRevision": 2,
+      "productId": "product-07-yard-dock",
+      "recordedAt": "2026-10-22T14:14:47.137Z"
+    },
+    "quote": {
+      "ok": true,
+      "summary": "USD 287.87 carrier estimate using declared costs and dated diesel input. Publishing accepts these terms for this local scenario only.",
+      "details": {
+        "currency": "USD",
+        "lines": [
+          {
+            "label": "Linehaul",
+            "cents": 21690
+          },
+          {
+            "label": "Fuel surcharge",
+            "cents": 7097
+          },
+          {
+            "label": "Approved scenario accessorials",
+            "cents": 0
+          }
+        ],
+        "totalCents": 28787,
+        "accepted": true,
+        "profile": {
+          "id": "local-scenario",
+          "name": "Declared scenario cost profile",
+          "annualMilesBenchmark": 100000,
+          "truckPaymentMonthly": 2100,
+          "trailerPaymentMonthly": 750,
+          "insuranceMonthly": 1250,
+          "permitsLicensesMonthly": 200,
+          "dispatchSoftwareMonthly": 350,
+          "driverCpm": 0.68,
+          "maintenanceTiresCpm": 0.22,
+          "tollsTotal": 0,
+          "miscellaneousCpm": 0.05,
+          "avgMpgLoaded": 6.8,
+          "avgMpgEmpty": 7.5,
+          "currentDieselPricePerGallon": 6.276,
+          "fscPegBasePricePerGallon": 1.2
+        },
+        "dieselObservedOn": "2026-10-19",
+        "scenarioMargin": {
+          "totalShipperInvoice": 287.87,
+          "totalCarrierPayable": 287.87,
+          "grossMarginAmount": 0,
+          "grossMarginPercent": 0,
+          "agentCommissionAmount": 0,
+          "brokerNetRetained": 0,
+          "status": "LOW_MARGIN_WARNING",
+          "requiresManagementApproval": true,
+          "alertMessage": "LOW MARGIN ALERT: Gross margin of 0% is below the mandatory 12% threshold. Manager sign-off required prior to rate confirmation release."
+        }
+      },
+      "inputRevision": 2,
+      "productId": "product-02-freight-pricing",
+      "recordedAt": "2026-10-22T14:14:55.289Z"
+    }
+  },
+  "exceptions": [
+    {
+      "id": "06baac40-4f04-41d2-bd3b-c0f2f5a1ae5d",
+      "message": "Scenario receiving delay requires review.",
+      "resolved": true,
+      "resolution": "Receiving completed; local scenario delay reviewed with no additional charge."
+    }
+  ],
+  "operations": {
+    "3ba70f76-3900-4664-b5cb-afe387461dee": {
+      "fingerprint": "ea305e2df717e2097eb59909fd8b119b46d5b80f139616d5beebbd000ce0f70a"
+    },
+    "f2527e87-6ca4-4f48-9573-bbe04b9f11d4": {
+      "fingerprint": "b40c3dcafc0d90af4040f29b523ed154eb515c4d9a95c8183117c78b28a6a4eb"
+    },
+    "5620d0d0-9f95-4358-90b6-d47b3c0ddf82": {
+      "fingerprint": "0bf3487b54f48bcb48250f5b6c6acd2073d0b8ec47e866025b961fed3cf9259f"
+    },
+    "803ae3a4-f49f-445c-9f49-0caac2f3a64c": {
+      "fingerprint": "815b00a68516c7844fd3322fed1946bd3770aba2034e5ffe969351fe33cd720d"
+    },
+    "381dc2e6-b5ec-48fd-8ff4-b1f9ff409abb": {
+      "fingerprint": "6848e781b8d9a39215c8d77abb483bb7d3f81ca028c998ef5f54094b82c3d054"
+    },
+    "276e50ee-e6f0-4626-a10e-34b3f9241b4b": {
+      "fingerprint": "e6afc3d9596ba91ee2deb7c5915c2293682b0bb751780a609084303b3ef14d15"
+    },
+    "c29e11ae-c255-401f-90fd-4ab97a25ded4": {
+      "fingerprint": "5b469f1952756aa16e61c2a87b607df0ded05eb03c17b6912637e28754827fec"
+    },
+    "45c4e49a-2f53-4a65-85a9-041f5a5683a3": {
+      "fingerprint": "f5ee9f111e8dc0bb8510a91e70e30b8e3bf365ab461e4c234b27b9c08cce6e99"
+    },
+    "8a03d3dc-00bb-40f2-82bb-be7cb767629e": {
+      "fingerprint": "c6fee7d1573ef68efab5944a32122c2971052e23ef8abf562279e2d85045a8a9"
+    },
+    "19d6606d-451d-4bd5-b2ba-ab17afa01752": {
+      "fingerprint": "10dffc4fe0dc5d74bac97c2143ba2c9907843fc4f660be116b892d02702422fe"
+    },
+    "de4d2f80-57f4-48f3-b829-3c284feee940": {
+      "fingerprint": "becde0b4f6252fa4f3cb96dba0e343391b3444c523002440a2d28cc422ecbfcd"
+    },
+    "6caa3391-c104-4e0e-b2ae-58f315625623": {
+      "fingerprint": "5a21c74e9bd6b2e0361b64321785f1104cfa2ccfca2e5f8021f0bcaebbf202ba"
+    },
+    "2debef72-58bb-47dd-9660-b2b746cbbb60": {
+      "fingerprint": "3e0921bc9549d78f5702aa2418072cbe5645f582bb4a0aa43871c9601b829726"
+    },
+    "c615c77a-5655-41ab-a2af-3d7c6bb6b487": {
+      "fingerprint": "e7ec3147ce0fd1c7542550524582b01c42ed2a210453bb19d193f25b0317cdf6"
+    },
+    "166a157a-bb05-4436-b267-cb1cec545181": {
+      "fingerprint": "c6a208ed5921a1a40ef8e347184f1206dd46ea1dfdf75b901b53272021f8b525"
+    },
+    "ee60385d-88a8-4a58-a64e-dfd6ea05bcc3": {
+      "fingerprint": "5aac38fb19c35bf3353657e59d184b039e7a7be8ffa6a7139638c6a5e9bbef11"
+    },
+    "13ccc231-d5d0-4b3b-9d2e-36feacb35244": {
+      "fingerprint": "e70203e28a60497426c9d35d0b2b753e260fdc8fcd0ebd97b9d85433a24ea7b2"
+    },
+    "87ed6a97-1cc0-481e-b005-b394f9aa62d0": {
+      "fingerprint": "15d059373c9e84e9e87977089a5478ead1d84da46996c8ff6b4fb2aff50f63e2"
+    },
+    "06baac40-4f04-41d2-bd3b-c0f2f5a1ae5d": {
+      "fingerprint": "60fee4d325ce685f756b0c6e05b94db77cca19674664ffaebd6139e15645b3a0"
+    },
+    "dd40d60e-0e7d-44b8-8917-d80a6a297abf": {
+      "fingerprint": "0017e28629244c1ade99d70a9fe305c192f2cdaf8e322a3ffa145966c80ca1f5"
+    },
+    "54f74f6c-cea2-4150-adeb-c0043061f622": {
+      "fingerprint": "26176840d58137a55ff86ac7addb691050ebb2b43e8351ec4b664688044e0c30"
+    },
+    "cde0021e-ac0c-4cea-be8a-319e54944c78": {
+      "fingerprint": "1fd89638e175cf28cd510c0be1505e96181381c6b95fd8ec5187ed45bb71fe66"
+    }
+  },
+  "input": {
+    "origin": "Chicago, IL",
+    "destination": "Milwaukee, WI",
+    "loadedMiles": 95,
+    "deadheadMiles": 12,
+    "equipmentId": "dry-van-53",
+    "carrierDot": "389211",
+    "driverId": "SCENARIO-DRIVER-01",
+    "tractorId": "SCENARIO-TRACTOR-01",
+    "trailerId": "SCENARIO-TRAILER-01",
+    "priorRestHours": 10,
+    "units": [
+      {
+        "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+        "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+        "description": "Machine components pallet",
+        "lengthIn": 48,
+        "widthIn": 40,
+        "heightIn": 48,
+        "weightLbs": 1250,
+        "stackable": false,
+        "temperatureClass": "ambient"
+      },
+      {
+        "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+        "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+        "description": "Replacement parts pallet",
+        "lengthIn": 48,
+        "widthIn": 40,
+        "heightIn": 52,
+        "weightLbs": 1500,
+        "stackable": false,
+        "temperatureClass": "ambient"
+      }
+    ]
+  },
+  "events": [
+    {
+      "id": "9ea1f89f-122e-419b-ab8b-c652c4ae8005",
+      "type": "created",
+      "productId": "command-center-portal",
+      "at": "2026-10-22T14:14:16.209Z",
+      "inputRevision": 1,
+      "note": "Explicit local scenario created. No live carrier, device or physical delivery evidence.",
+      "payload": {
+        "input": {
+          "origin": "Chicago, IL",
+          "destination": "Milwaukee, WI",
+          "loadedMiles": 95,
+          "deadheadMiles": 12,
+          "equipmentId": "dry-van-53",
+          "carrierDot": "389211",
+          "driverId": "SCENARIO-DRIVER-01",
+          "tractorId": "SCENARIO-TRACTOR-01",
+          "trailerId": "SCENARIO-TRAILER-01",
+          "priorRestHours": 10,
+          "units": [
+            {
+              "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+              "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+              "description": "Machine components pallet",
+              "lengthIn": 48,
+              "widthIn": 40,
+              "heightIn": 48,
+              "weightLbs": 1200,
+              "stackable": false,
+              "temperatureClass": "ambient"
+            },
+            {
+              "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+              "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+              "description": "Replacement parts pallet",
+              "lengthIn": 48,
+              "widthIn": 40,
+              "heightIn": 52,
+              "weightLbs": 1500,
+              "stackable": false,
+              "temperatureClass": "ambient"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "42aea788-f93c-47be-833b-6d2db06d722d",
+      "type": "evaluate",
+      "productId": "product-04-asset-studio",
+      "at": "2026-10-22T14:14:17.409Z",
+      "inputRevision": 1,
+      "note": "asset: 53' Standard Dry Van (Class 8): declared interior, door and payload snapshot ready.",
+      "payload": {
+        "stage": "asset",
+        "result": {
+          "ok": true,
+          "summary": "53' Standard Dry Van (Class 8): declared interior, door and payload snapshot ready.",
+          "details": {
+            "equipmentId": "dry-van-53",
+            "name": "53' Standard Dry Van (Class 8)",
+            "lengthIn": 630,
+            "widthIn": 99.96000000000001,
+            "heightIn": 110.03999999999999,
+            "doorWidthIn": 98.03999999999999,
+            "doorHeightIn": 108,
+            "payloadLbs": 45000,
+            "loadedMpg": 6.8,
+            "source": "Catalog scenario template; actual equipment measurement remains separate"
+          }
+        }
+      }
+    },
+    {
+      "id": "b8b301a7-45b3-4e31-846e-8f3434a09c84",
+      "type": "evaluate",
+      "productId": "product-01-cargo-fit",
+      "at": "2026-10-22T14:14:19.403Z",
+      "inputRevision": 1,
+      "note": "fit: 2/2 handling units placed. Independent geometric checks passed under declared constraints.",
+      "payload": {
+        "stage": "fit",
+        "result": {
+          "ok": true,
+          "summary": "2/2 handling units placed. Independent geometric checks passed under declared constraints.",
+          "details": {
+            "geometryFeasible": true,
+            "violations": 0,
+            "unitIds": [
+              "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+              "164d2dfd-ce9b-4273-b663-885a67672688-HU-01"
+            ],
+            "placements": [
+              {
+                "unitId": "Replacement parts pallet",
+                "rowUid": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "label": "Replacement parts pallet",
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "dx": 1219.2,
+                "dy": 1016,
+                "dz": 1320.8,
+                "order": 1,
+                "stop": 1
+              },
+              {
+                "unitId": "Machine components pallet",
+                "rowUid": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "label": "Machine components pallet",
+                "x": 0,
+                "y": 1016,
+                "z": 0,
+                "dx": 1219.2,
+                "dy": 1016,
+                "dz": 1219.2,
+                "order": 2,
+                "stop": 1
+              }
+            ],
+            "status": "FEASIBLE_UNDER_MODELED_CONSTRAINTS",
+            "solverVersion": "ep-heuristic-1.0",
+            "checks": [
+              {
+                "id": "bounds",
+                "label": "Inside interior dimensions",
+                "note": "Every box lies within L × W × H of the declared interior.",
+                "state": "verified"
+              },
+              {
+                "id": "overlap",
+                "label": "No overlapping items",
+                "note": "Pairwise axis-aligned box test by an independent validator.",
+                "state": "verified"
+              },
+              {
+                "id": "orientation",
+                "label": "Allowed orientations only",
+                "note": "Each item uses an orientation permitted by its rotation rule.",
+                "state": "verified"
+              },
+              {
+                "id": "support",
+                "label": "Base support & no-stack",
+                "note": "Each raised item rests on surfaces at its exact base height, none marked no-stack.",
+                "state": "verified"
+              },
+              {
+                "id": "payload",
+                "label": "Declared payload",
+                "state": "verified",
+                "note": "Sum of declared unit weights vs the declared payload figure."
+              },
+              {
+                "id": "door",
+                "label": "Door opening",
+                "state": "verified",
+                "note": "Each item's cross-section in its placed orientation fits the declared opening. Interior path and handling equipment are NOT modeled."
+              },
+              {
+                "id": "axle",
+                "label": "Axle / axle-group loads & legal limits",
+                "state": "not_modeled",
+                "note": "Needs vehicle configuration, tare and jurisdiction. Verify with scales and a qualified person."
+              },
+              {
+                "id": "securement",
+                "label": "Load securement",
+                "state": "not_modeled",
+                "note": "Depends on restraint equipment and applicable rules, not on box geometry."
+              },
+              {
+                "id": "handling",
+                "label": "Forklift / manual handling access",
+                "state": "not_modeled",
+                "note": "Loading order, aisle and reach are not simulated."
+              },
+              {
+                "id": "stops",
+                "label": "Multi-stop access order",
+                "state": "not_modeled",
+                "note": "Unload sequence is not modeled."
+              },
+              {
+                "id": "cog",
+                "label": "Centre of gravity (height & lateral)",
+                "state": "not_modeled",
+                "note": "Longitudinal centroid is shown as information only."
+              }
+            ],
+            "limitation": "No physical scale, restraint or road-legal certification."
+          }
+        }
+      }
+    },
+    {
+      "id": "f110f58d-1ea9-4fbf-bec6-fc6925db59d3",
+      "type": "evaluate",
+      "productId": "product-06-warehouse-space-flow",
+      "at": "2026-10-22T14:14:22.695Z",
+      "inputRevision": 1,
+      "note": "warehouse: 2/2 identified units have compatible receiving locations.",
+      "payload": {
+        "stage": "warehouse",
+        "result": {
+          "ok": true,
+          "summary": "2/2 identified units have compatible receiving locations.",
+          "details": {
+            "facilityId": "LOCAL-RECEIVING-01",
+            "assignments": [
+              {
+                "unitId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+                "slotId": "R01-B02-L1-A",
+                "slotCode": "R01-B02-L1-A"
+              },
+              {
+                "unitId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+                "slotId": "R01-B02-L1-B",
+                "slotCode": "R01-B02-L1-B"
+              }
+            ],
+            "recommendations": [
+              {
+                "palletId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+                "sku": "SKU-CF-164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "description": "Machine components pallet",
+                "weightLbs": 1200,
+                "dimensions": {
+                  "lengthIn": 48,
+                  "widthIn": 40,
+                  "heightIn": 48
+                },
+                "environmentalClass": "ambient",
+                "status": "proposed",
+                "targetSlotId": "R01-B02-L1-A",
+                "targetLocationCode": "R01-B02-L1-A",
+                "targetZoneName": "Selective High-Bay Racks (Aisles R01–R03)",
+                "suitabilityScore": 90,
+                "reason": "Optimal high-bay rack storage (Level 1)",
+                "violations": [
+                  "Zone does not support AMBIENT classification (requires certified storage)",
+                  "Exterior yard slots require intermodal or ISO containerized cargo"
+                ],
+                "alternativeSlotIds": [
+                  "R01-B02-L1-B",
+                  "R01-B02-L2-A",
+                  "R01-B02-L3-B"
+                ]
+              },
+              {
+                "palletId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+                "sku": "SKU-CF-164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "description": "Replacement parts pallet",
+                "weightLbs": 1500,
+                "dimensions": {
+                  "lengthIn": 48,
+                  "widthIn": 40,
+                  "heightIn": 52
+                },
+                "environmentalClass": "ambient",
+                "status": "proposed",
+                "targetSlotId": "R01-B02-L1-B",
+                "targetLocationCode": "R01-B02-L1-B",
+                "targetZoneName": "Selective High-Bay Racks (Aisles R01–R03)",
+                "suitabilityScore": 90,
+                "reason": "Optimal high-bay rack storage (Level 1)",
+                "violations": [
+                  "Zone does not support AMBIENT classification (requires certified storage)",
+                  "Exterior yard slots require intermodal or ISO containerized cargo"
+                ],
+                "alternativeSlotIds": [
+                  "R01-B02-L2-A",
+                  "R01-B02-L3-B",
+                  "R01-B03-L1-A"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "bcb0d38c-5a8b-48e7-93be-8e90fce18eb9",
+      "type": "evaluate",
+      "productId": "product-07-yard-dock",
+      "at": "2026-10-22T14:14:26.502Z",
+      "inputRevision": 1,
+      "note": "yard: Compatible scenario dock 6 allocated to SCENARIO-TRAILER-01. Seal verification remains an execution task.",
+      "payload": {
+        "stage": "yard",
+        "result": {
+          "ok": true,
+          "summary": "Compatible scenario dock 6 allocated to SCENARIO-TRAILER-01. Seal verification remains an execution task.",
+          "details": {
+            "doorId": "DOOR-06",
+            "trailerId": "SCENARIO-TRAILER-01",
+            "available": true,
+            "facilityId": "LOCAL-ORIGIN-01"
+          }
+        }
+      }
+    },
+    {
+      "id": "184fd87d-ab5f-41a8-b171-f89ef05581ee",
+      "type": "evaluate",
+      "productId": "product-08-carrier-trust",
+      "at": "2026-10-22T14:14:29.900Z",
+      "inputRevision": 1,
+      "note": "carrier: Apex Freight Lines LLC: APPROVED under configured customer policy, using seeded scenario evidence. ",
+      "payload": {
+        "stage": "carrier",
+        "result": {
+          "ok": true,
+          "summary": "Apex Freight Lines LLC: APPROVED under configured customer policy, using seeded scenario evidence. ",
+          "details": {
+            "dotNumber": "389211",
+            "eligibility": "APPROVED",
+            "evidenceSource": "seeded_scenario",
+            "expiresAt": "2026-10-22T14:29:29.323Z",
+            "blockers": [],
+            "warnings": []
+          }
+        }
+      }
+    },
+    {
+      "id": "dfe519c9-2c09-45e6-a3e0-fc0bff77614d",
+      "type": "evaluate",
+      "productId": "product-03-hos-planner",
+      "at": "2026-10-22T14:14:34.821Z",
+      "inputRevision": 1,
+      "note": "hos: 2.3 modeled transit hours for SCENARIO-DRIVER-01. Full-rest scenario only; no live ELD or appointment guarantee.",
+      "payload": {
+        "stage": "hos",
+        "result": {
+          "ok": true,
+          "summary": "2.3 modeled transit hours for SCENARIO-DRIVER-01. Full-rest scenario only; no live ELD or appointment guarantee.",
+          "details": {
+            "driverId": "SCENARIO-DRIVER-01",
+            "priorRestHours": 10,
+            "ruleScope": "full_rest_only",
+            "isLegal": true,
+            "totalTransitHours": 2.3,
+            "waypoints": [
+              {
+                "id": "wp-1",
+                "type": "ORIGIN_PICKUP",
+                "title": "Pre-Trip Inspection & Live Load",
+                "location": "Chicago, IL",
+                "distanceMiles": 0,
+                "cumulativeMiles": 0,
+                "durationMinutes": 15,
+                "cumulativeTimeMinutes": 15,
+                "dutyStatus": "ON_DUTY_NOT_DRIVING",
+                "notes": "Verify commercial equipment, air brake test, bill of lading pickup."
+              },
+              {
+                "id": "wp-2",
+                "type": "DRIVING_LEG",
+                "title": "Interstate Driving Leg (95 mi)",
+                "location": "Corridor Mile 95",
+                "distanceMiles": 95,
+                "cumulativeMiles": 95,
+                "durationMinutes": 104,
+                "cumulativeTimeMinutes": 119,
+                "dutyStatus": "DRIVING",
+                "notes": "Speed maintained at ~55 MPH. Clocks running."
+              },
+              {
+                "id": "wp-3",
+                "type": "DESTINATION_DROPOFF",
+                "title": "Consignee Delivery & Post-Trip DVIR",
+                "location": "Milwaukee, WI",
+                "distanceMiles": 0,
+                "cumulativeMiles": 95,
+                "durationMinutes": 20,
+                "cumulativeTimeMinutes": 139,
+                "dutyStatus": "ON_DUTY_NOT_DRIVING",
+                "notes": "Seal verification, dock delivery receipt signature, driver post-trip inspection."
+              }
+            ],
+            "violations": []
+          }
+        }
+      }
+    },
+    {
+      "id": "99a12c98-9ccc-4387-8920-408f995216ac",
+      "type": "evaluate",
+      "productId": "product-02-freight-pricing",
+      "at": "2026-10-22T14:14:39.085Z",
+      "inputRevision": 1,
+      "note": "quote: USD 287.87 carrier estimate using declared costs and dated diesel input. Publishing accepts these terms for this local scenario only.",
+      "payload": {
+        "stage": "quote",
+        "result": {
+          "ok": true,
+          "summary": "USD 287.87 carrier estimate using declared costs and dated diesel input. Publishing accepts these terms for this local scenario only.",
+          "details": {
+            "currency": "USD",
+            "lines": [
+              {
+                "label": "Linehaul",
+                "cents": 21690
+              },
+              {
+                "label": "Fuel surcharge",
+                "cents": 7097
+              },
+              {
+                "label": "Approved scenario accessorials",
+                "cents": 0
+              }
+            ],
+            "totalCents": 28787,
+            "accepted": true,
+            "profile": {
+              "id": "local-scenario",
+              "name": "Declared scenario cost profile",
+              "annualMilesBenchmark": 100000,
+              "truckPaymentMonthly": 2100,
+              "trailerPaymentMonthly": 750,
+              "insuranceMonthly": 1250,
+              "permitsLicensesMonthly": 200,
+              "dispatchSoftwareMonthly": 350,
+              "driverCpm": 0.68,
+              "maintenanceTiresCpm": 0.22,
+              "tollsTotal": 0,
+              "miscellaneousCpm": 0.05,
+              "avgMpgLoaded": 6.8,
+              "avgMpgEmpty": 7.5,
+              "currentDieselPricePerGallon": 6.276,
+              "fscPegBasePricePerGallon": 1.2
+            },
+            "dieselObservedOn": "2026-10-19",
+            "scenarioMargin": {
+              "totalShipperInvoice": 287.87,
+              "totalCarrierPayable": 287.87,
+              "grossMarginAmount": 0,
+              "grossMarginPercent": 0,
+              "agentCommissionAmount": 0,
+              "brokerNetRetained": 0,
+              "status": "LOW_MARGIN_WARNING",
+              "requiresManagementApproval": true,
+              "alertMessage": "LOW MARGIN ALERT: Gross margin of 0% is below the mandatory 12% threshold. Manager sign-off required prior to rate confirmation release."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ac03d38e-a983-4e52-9eca-162d24a25d6c",
+      "type": "amend",
+      "productId": "command-center-portal",
+      "at": "2026-10-22T14:14:41.605Z",
+      "inputRevision": 2,
+      "note": "Shipment inputs amended; earlier planning decisions are retained as stale.",
+      "payload": {
+        "input": {
+          "origin": "Chicago, IL",
+          "destination": "Milwaukee, WI",
+          "loadedMiles": 95,
+          "deadheadMiles": 12,
+          "equipmentId": "dry-van-53",
+          "carrierDot": "389211",
+          "driverId": "SCENARIO-DRIVER-01",
+          "tractorId": "SCENARIO-TRACTOR-01",
+          "trailerId": "SCENARIO-TRAILER-01",
+          "priorRestHours": 10,
+          "units": [
+            {
+              "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+              "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+              "description": "Machine components pallet",
+              "lengthIn": 48,
+              "widthIn": 40,
+              "heightIn": 48,
+              "weightLbs": 1250,
+              "stackable": false,
+              "temperatureClass": "ambient"
+            },
+            {
+              "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+              "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+              "description": "Replacement parts pallet",
+              "lengthIn": 48,
+              "widthIn": 40,
+              "heightIn": 52,
+              "weightLbs": 1500,
+              "stackable": false,
+              "temperatureClass": "ambient"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2c68f73-d2e5-457b-a7ac-fc23600af1bd",
+      "type": "evaluate",
+      "productId": "product-04-asset-studio",
+      "at": "2026-10-22T14:14:42.846Z",
+      "inputRevision": 2,
+      "note": "asset: 53' Standard Dry Van (Class 8): declared interior, door and payload snapshot ready.",
+      "payload": {
+        "stage": "asset",
+        "result": {
+          "ok": true,
+          "summary": "53' Standard Dry Van (Class 8): declared interior, door and payload snapshot ready.",
+          "details": {
+            "equipmentId": "dry-van-53",
+            "name": "53' Standard Dry Van (Class 8)",
+            "lengthIn": 630,
+            "widthIn": 99.96000000000001,
+            "heightIn": 110.03999999999999,
+            "doorWidthIn": 98.03999999999999,
+            "doorHeightIn": 108,
+            "payloadLbs": 45000,
+            "loadedMpg": 6.8,
+            "source": "Catalog scenario template; actual equipment measurement remains separate"
+          }
+        }
+      }
+    },
+    {
+      "id": "034ce804-aedb-4052-a81c-94ff8447b0b2",
+      "type": "evaluate",
+      "productId": "product-01-cargo-fit",
+      "at": "2026-10-22T14:14:44.716Z",
+      "inputRevision": 2,
+      "note": "fit: 2/2 handling units placed. Independent geometric checks passed under declared constraints.",
+      "payload": {
+        "stage": "fit",
+        "result": {
+          "ok": true,
+          "summary": "2/2 handling units placed. Independent geometric checks passed under declared constraints.",
+          "details": {
+            "geometryFeasible": true,
+            "violations": 0,
+            "unitIds": [
+              "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+              "164d2dfd-ce9b-4273-b663-885a67672688-HU-01"
+            ],
+            "placements": [
+              {
+                "unitId": "Replacement parts pallet",
+                "rowUid": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "label": "Replacement parts pallet",
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "dx": 1219.2,
+                "dy": 1016,
+                "dz": 1320.8,
+                "order": 1,
+                "stop": 1
+              },
+              {
+                "unitId": "Machine components pallet",
+                "rowUid": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "label": "Machine components pallet",
+                "x": 0,
+                "y": 1016,
+                "z": 0,
+                "dx": 1219.2,
+                "dy": 1016,
+                "dz": 1219.2,
+                "order": 2,
+                "stop": 1
+              }
+            ],
+            "status": "FEASIBLE_UNDER_MODELED_CONSTRAINTS",
+            "solverVersion": "ep-heuristic-1.0",
+            "checks": [
+              {
+                "id": "bounds",
+                "label": "Inside interior dimensions",
+                "note": "Every box lies within L × W × H of the declared interior.",
+                "state": "verified"
+              },
+              {
+                "id": "overlap",
+                "label": "No overlapping items",
+                "note": "Pairwise axis-aligned box test by an independent validator.",
+                "state": "verified"
+              },
+              {
+                "id": "orientation",
+                "label": "Allowed orientations only",
+                "note": "Each item uses an orientation permitted by its rotation rule.",
+                "state": "verified"
+              },
+              {
+                "id": "support",
+                "label": "Base support & no-stack",
+                "note": "Each raised item rests on surfaces at its exact base height, none marked no-stack.",
+                "state": "verified"
+              },
+              {
+                "id": "payload",
+                "label": "Declared payload",
+                "state": "verified",
+                "note": "Sum of declared unit weights vs the declared payload figure."
+              },
+              {
+                "id": "door",
+                "label": "Door opening",
+                "state": "verified",
+                "note": "Each item's cross-section in its placed orientation fits the declared opening. Interior path and handling equipment are NOT modeled."
+              },
+              {
+                "id": "axle",
+                "label": "Axle / axle-group loads & legal limits",
+                "state": "not_modeled",
+                "note": "Needs vehicle configuration, tare and jurisdiction. Verify with scales and a qualified person."
+              },
+              {
+                "id": "securement",
+                "label": "Load securement",
+                "state": "not_modeled",
+                "note": "Depends on restraint equipment and applicable rules, not on box geometry."
+              },
+              {
+                "id": "handling",
+                "label": "Forklift / manual handling access",
+                "state": "not_modeled",
+                "note": "Loading order, aisle and reach are not simulated."
+              },
+              {
+                "id": "stops",
+                "label": "Multi-stop access order",
+                "state": "not_modeled",
+                "note": "Unload sequence is not modeled."
+              },
+              {
+                "id": "cog",
+                "label": "Centre of gravity (height & lateral)",
+                "state": "not_modeled",
+                "note": "Longitudinal centroid is shown as information only."
+              }
+            ],
+            "limitation": "No physical scale, restraint or road-legal certification."
+          }
+        }
+      }
+    },
+    {
+      "id": "de14c7f2-3ed4-4415-9b2a-7683a541e5d8",
+      "type": "evaluate",
+      "productId": "product-06-warehouse-space-flow",
+      "at": "2026-10-22T14:14:45.817Z",
+      "inputRevision": 2,
+      "note": "warehouse: 2/2 identified units have compatible receiving locations.",
+      "payload": {
+        "stage": "warehouse",
+        "result": {
+          "ok": true,
+          "summary": "2/2 identified units have compatible receiving locations.",
+          "details": {
+            "facilityId": "LOCAL-RECEIVING-01",
+            "assignments": [
+              {
+                "unitId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+                "slotId": "R01-B02-L1-A",
+                "slotCode": "R01-B02-L1-A"
+              },
+              {
+                "unitId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+                "slotId": "R01-B02-L1-B",
+                "slotCode": "R01-B02-L1-B"
+              }
+            ],
+            "recommendations": [
+              {
+                "palletId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+                "sku": "SKU-CF-164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+                "description": "Machine components pallet",
+                "weightLbs": 1250,
+                "dimensions": {
+                  "lengthIn": 48,
+                  "widthIn": 40,
+                  "heightIn": 48
+                },
+                "environmentalClass": "ambient",
+                "status": "proposed",
+                "targetSlotId": "R01-B02-L1-A",
+                "targetLocationCode": "R01-B02-L1-A",
+                "targetZoneName": "Selective High-Bay Racks (Aisles R01–R03)",
+                "suitabilityScore": 90,
+                "reason": "Optimal high-bay rack storage (Level 1)",
+                "violations": [
+                  "Zone does not support AMBIENT classification (requires certified storage)",
+                  "Exterior yard slots require intermodal or ISO containerized cargo"
+                ],
+                "alternativeSlotIds": [
+                  "R01-B02-L1-B",
+                  "R01-B02-L2-A",
+                  "R01-B02-L3-B"
+                ]
+              },
+              {
+                "palletId": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+                "sku": "SKU-CF-164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+                "description": "Replacement parts pallet",
+                "weightLbs": 1500,
+                "dimensions": {
+                  "lengthIn": 48,
+                  "widthIn": 40,
+                  "heightIn": 52
+                },
+                "environmentalClass": "ambient",
+                "status": "proposed",
+                "targetSlotId": "R01-B02-L1-B",
+                "targetLocationCode": "R01-B02-L1-B",
+                "targetZoneName": "Selective High-Bay Racks (Aisles R01–R03)",
+                "suitabilityScore": 90,
+                "reason": "Optimal high-bay rack storage (Level 1)",
+                "violations": [
+                  "Zone does not support AMBIENT classification (requires certified storage)",
+                  "Exterior yard slots require intermodal or ISO containerized cargo"
+                ],
+                "alternativeSlotIds": [
+                  "R01-B02-L2-A",
+                  "R01-B02-L3-B",
+                  "R01-B03-L1-A"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "7dfac377-8427-4ead-a349-c2f3b73eb2a2",
+      "type": "evaluate",
+      "productId": "product-07-yard-dock",
+      "at": "2026-10-22T14:14:47.137Z",
+      "inputRevision": 2,
+      "note": "yard: Compatible scenario dock 6 allocated to SCENARIO-TRAILER-01. Seal verification remains an execution task.",
+      "payload": {
+        "stage": "yard",
+        "result": {
+          "ok": true,
+          "summary": "Compatible scenario dock 6 allocated to SCENARIO-TRAILER-01. Seal verification remains an execution task.",
+          "details": {
+            "doorId": "DOOR-06",
+            "trailerId": "SCENARIO-TRAILER-01",
+            "available": true,
+            "facilityId": "LOCAL-ORIGIN-01"
+          }
+        }
+      }
+    },
+    {
+      "id": "32631b5b-1cea-4d2b-aa60-03898516a004",
+      "type": "evaluate",
+      "productId": "product-08-carrier-trust",
+      "at": "2026-10-22T14:14:48.832Z",
+      "inputRevision": 2,
+      "note": "carrier: Apex Freight Lines LLC: APPROVED under configured customer policy, using seeded scenario evidence. ",
+      "payload": {
+        "stage": "carrier",
+        "result": {
+          "ok": true,
+          "summary": "Apex Freight Lines LLC: APPROVED under configured customer policy, using seeded scenario evidence. ",
+          "details": {
+            "dotNumber": "389211",
+            "eligibility": "APPROVED",
+            "evidenceSource": "seeded_scenario",
+            "expiresAt": "2026-10-22T14:29:48.071Z",
+            "blockers": [],
+            "warnings": []
+          }
+        }
+      }
+    },
+    {
+      "id": "9dde0f3b-7c0c-40fc-994f-fc8454f84b68",
+      "type": "evaluate",
+      "productId": "product-03-hos-planner",
+      "at": "2026-10-22T14:14:53.692Z",
+      "inputRevision": 2,
+      "note": "hos: 2.3 modeled transit hours for SCENARIO-DRIVER-01. Full-rest scenario only; no live ELD or appointment guarantee.",
+      "payload": {
+        "stage": "hos",
+        "result": {
+          "ok": true,
+          "summary": "2.3 modeled transit hours for SCENARIO-DRIVER-01. Full-rest scenario only; no live ELD or appointment guarantee.",
+          "details": {
+            "driverId": "SCENARIO-DRIVER-01",
+            "priorRestHours": 10,
+            "ruleScope": "full_rest_only",
+            "isLegal": true,
+            "totalTransitHours": 2.3,
+            "waypoints": [
+              {
+                "id": "wp-1",
+                "type": "ORIGIN_PICKUP",
+                "title": "Pre-Trip Inspection & Live Load",
+                "location": "Chicago, IL",
+                "distanceMiles": 0,
+                "cumulativeMiles": 0,
+                "durationMinutes": 15,
+                "cumulativeTimeMinutes": 15,
+                "dutyStatus": "ON_DUTY_NOT_DRIVING",
+                "notes": "Verify commercial equipment, air brake test, bill of lading pickup."
+              },
+              {
+                "id": "wp-2",
+                "type": "DRIVING_LEG",
+                "title": "Interstate Driving Leg (95 mi)",
+                "location": "Corridor Mile 95",
+                "distanceMiles": 95,
+                "cumulativeMiles": 95,
+                "durationMinutes": 104,
+                "cumulativeTimeMinutes": 119,
+                "dutyStatus": "DRIVING",
+                "notes": "Speed maintained at ~55 MPH. Clocks running."
+              },
+              {
+                "id": "wp-3",
+                "type": "DESTINATION_DROPOFF",
+                "title": "Consignee Delivery & Post-Trip DVIR",
+                "location": "Milwaukee, WI",
+                "distanceMiles": 0,
+                "cumulativeMiles": 95,
+                "durationMinutes": 20,
+                "cumulativeTimeMinutes": 139,
+                "dutyStatus": "ON_DUTY_NOT_DRIVING",
+                "notes": "Seal verification, dock delivery receipt signature, driver post-trip inspection."
+              }
+            ],
+            "violations": []
+          }
+        }
+      }
+    },
+    {
+      "id": "02729181-c609-4d06-a248-e842630f8b5e",
+      "type": "evaluate",
+      "productId": "product-02-freight-pricing",
+      "at": "2026-10-22T14:14:55.289Z",
+      "inputRevision": 2,
+      "note": "quote: USD 287.87 carrier estimate using declared costs and dated diesel input. Publishing accepts these terms for this local scenario only.",
+      "payload": {
+        "stage": "quote",
+        "result": {
+          "ok": true,
+          "summary": "USD 287.87 carrier estimate using declared costs and dated diesel input. Publishing accepts these terms for this local scenario only.",
+          "details": {
+            "currency": "USD",
+            "lines": [
+              {
+                "label": "Linehaul",
+                "cents": 21690
+              },
+              {
+                "label": "Fuel surcharge",
+                "cents": 7097
+              },
+              {
+                "label": "Approved scenario accessorials",
+                "cents": 0
+              }
+            ],
+            "totalCents": 28787,
+            "accepted": true,
+            "profile": {
+              "id": "local-scenario",
+              "name": "Declared scenario cost profile",
+              "annualMilesBenchmark": 100000,
+              "truckPaymentMonthly": 2100,
+              "trailerPaymentMonthly": 750,
+              "insuranceMonthly": 1250,
+              "permitsLicensesMonthly": 200,
+              "dispatchSoftwareMonthly": 350,
+              "driverCpm": 0.68,
+              "maintenanceTiresCpm": 0.22,
+              "tollsTotal": 0,
+              "miscellaneousCpm": 0.05,
+              "avgMpgLoaded": 6.8,
+              "avgMpgEmpty": 7.5,
+              "currentDieselPricePerGallon": 6.276,
+              "fscPegBasePricePerGallon": 1.2
+            },
+            "dieselObservedOn": "2026-10-19",
+            "scenarioMargin": {
+              "totalShipperInvoice": 287.87,
+              "totalCarrierPayable": 287.87,
+              "grossMarginAmount": 0,
+              "grossMarginPercent": 0,
+              "agentCommissionAmount": 0,
+              "brokerNetRetained": 0,
+              "status": "LOW_MARGIN_WARNING",
+              "requiresManagementApproval": true,
+              "alertMessage": "LOW MARGIN ALERT: Gross margin of 0% is below the mandatory 12% threshold. Manager sign-off required prior to rate confirmation release."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "a358f207-fdb2-42a9-ab80-6628d23e93f1",
+      "type": "dispatch",
+      "productId": "command-center-portal",
+      "at": "2026-10-22T14:14:58.118Z",
+      "inputRevision": 2,
+      "note": "Scenario dispatch approved against current planning decisions.",
+      "payload": {}
+    },
+    {
+      "id": "0c24491f-0d8d-4ff0-a71c-aaa5e88cc064",
+      "type": "depart",
+      "productId": "product-05-fleet-telematics",
+      "at": "2026-10-22T14:15:00.562Z",
+      "inputRevision": 2,
+      "note": "Scenario departure recorded; this is simulated motion evidence.",
+      "payload": {
+        "tractorId": "SCENARIO-TRACTOR-01"
+      }
+    },
+    {
+      "id": "56aef341-dbb8-4122-ad70-9ade849df99f",
+      "type": "arrive",
+      "productId": "product-05-fleet-telematics",
+      "at": "2026-10-22T14:15:00.661Z",
+      "inputRevision": 2,
+      "note": "Scenario arrival recorded at receiving facility.",
+      "payload": {
+        "tractorId": "SCENARIO-TRACTOR-01"
+      }
+    },
+    {
+      "id": "387bf0f3-d106-4fac-91da-14ea5401b689",
+      "type": "exception.open",
+      "productId": "product-05-fleet-telematics",
+      "at": "2026-10-22T14:15:00.870Z",
+      "inputRevision": 2,
+      "note": "Scenario receiving delay requires review.",
+      "payload": {
+        "message": "Scenario receiving delay requires review."
+      }
+    },
+    {
+      "id": "c1de0211-ca5b-4230-9362-3ff35c913708",
+      "type": "deliver",
+      "productId": "product-06-warehouse-space-flow",
+      "at": "2026-10-22T14:15:04.298Z",
+      "inputRevision": 2,
+      "note": "Manually entered scenario receipt confirmed by Local scenario receiver.",
+      "payload": {
+        "receiver": "Local scenario receiver",
+        "units": [
+          {
+            "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+            "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+            "slotCode": "R01-B02-L1-A"
+          },
+          {
+            "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+            "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+            "slotCode": "R01-B02-L1-B"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fdd82deb-304c-4720-803c-d1024694ad70",
+      "type": "exception.resolve",
+      "productId": "command-center-portal",
+      "at": "2026-10-22T14:15:06.825Z",
+      "inputRevision": 2,
+      "note": "Receiving completed; local scenario delay reviewed with no additional charge.",
+      "payload": {
+        "id": "06baac40-4f04-41d2-bd3b-c0f2f5a1ae5d",
+        "resolution": "Receiving completed; local scenario delay reviewed with no additional charge."
+      }
+    },
+    {
+      "id": "196b31bb-a855-4bbd-8017-4b4a66bf70a7",
+      "type": "invoice",
+      "productId": "command-center-portal",
+      "at": "2026-10-22T14:15:07.112Z",
+      "inputRevision": 2,
+      "note": "Scenario invoice reconciled to accepted quote and receipt; ready for local export, not paid.",
+      "payload": {
+        "totalCents": 28787
+      }
+    }
+  ],
+  "creationOperationId": "0553b090-0acc-46ed-9645-50a021410ef7",
+  "delivery": {
+    "receiver": "Local scenario receiver",
+    "receivedAt": "2026-10-22T14:15:04.298Z",
+    "units": [
+      {
+        "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-01",
+        "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-01",
+        "slotCode": "R01-B02-L1-A"
+      },
+      {
+        "id": "164d2dfd-ce9b-4273-b663-885a67672688-HU-02",
+        "barcode": "164d2dfd-ce9b-4273-b663-885a67672688-02",
+        "slotCode": "R01-B02-L1-B"
+      }
+    ]
+  },
+  "invoice": {
+    "number": "DRAFT-164d2dfd-ce9b-4273-b663-885a67672688",
+    "totalCents": 28787,
+    "currency": "USD",
+    "preparedAt": "2026-10-22T14:15:07.112Z",
+    "evidenceEventIds": [
+      "9ea1f89f-122e-419b-ab8b-c652c4ae8005",
+      "42aea788-f93c-47be-833b-6d2db06d722d",
+      "b8b301a7-45b3-4e31-846e-8f3434a09c84",
+      "f110f58d-1ea9-4fbf-bec6-fc6925db59d3",
+      "bcb0d38c-5a8b-48e7-93be-8e90fce18eb9",
+      "184fd87d-ab5f-41a8-b171-f89ef05581ee",
+      "dfe519c9-2c09-45e6-a3e0-fc0bff77614d",
+      "99a12c98-9ccc-4387-8920-408f995216ac",
+      "ac03d38e-a983-4e52-9eca-162d24a25d6c",
+      "c2c68f73-d2e5-457b-a7ac-fc23600af1bd",
+      "034ce804-aedb-4052-a81c-94ff8447b0b2",
+      "de14c7f2-3ed4-4415-9b2a-7683a541e5d8",
+      "7dfac377-8427-4ead-a349-c2f3b73eb2a2",
+      "32631b5b-1cea-4d2b-aa60-03898516a004",
+      "9dde0f3b-7c0c-40fc-994f-fc8454f84b68",
+      "02729181-c609-4d06-a248-e842630f8b5e",
+      "a358f207-fdb2-42a9-ab80-6628d23e93f1",
+      "0c24491f-0d8d-4ff0-a71c-aaa5e88cc064",
+      "56aef341-dbb8-4122-ad70-9ade849df99f",
+      "387bf0f3-d106-4fac-91da-14ea5401b689",
+      "c1de0211-ca5b-4230-9362-3ff35c913708",
+      "fdd82deb-304c-4720-803c-d1024694ad70"
+    ]
+  }
+}

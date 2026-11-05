@@ -1,0 +1,21 @@
+{
+  "caseCount": 120,
+  "uniqueIds": 120,
+  "groups": {
+    "cargo": 12,
+    "assets": 12,
+    "warehouse": 12,
+    "yard": 12,
+    "telematics": 12,
+    "pricing": 12,
+    "hos": 12,
+    "trust": 12,
+    "command": 12,
+    "platform": 12
+  },
+  "missingSources": [],
+  "missingVisuals": [],
+  "hashMismatches": [],
+  "nonPending": [],
+  "currentGalleryRevision": "57a6a189fd04d3e8"
+}

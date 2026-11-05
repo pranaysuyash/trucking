@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-10-22T18:17:35.528811+00:00",
+  "source": ".local/shipment-flow/store.json",
+  "sourceSha256": "d81982f566f48bbd425edb7848053fc258eca6daf040950e79cf83a1a2f4c2f4",
+  "shipmentId": "70f8260d-d243-42c3-86b2-25ed91f78f79",
+  "recordRevision": 23,
+  "scope": "Read-only retained synthetic local scenario snapshot. This isolated study never writes shipment state.",
+  "humanDesignApproval": "Not established. Additive study; previous 120 cases remain preserved."
+}

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-22T18:44:28.956821+00:00",
+  "revision": "f0e21e664830ec47",
+  "decisions": {},
+  "checks": [
+    {
+      "name": "missing context",
+      "expected": 400,
+      "status": 400,
+      "pass": true,
+      "response": {
+        "error": "Reload the study to save its reviewed fixture and scene state."
+      }
+    },
+    {
+      "name": "invalid fixture context",
+      "expected": 400,
+      "status": 400,
+      "pass": true,
+      "response": {
+        "error": "Invalid reviewed fixture values."
+      }
+    },
+    {
+      "name": "stale revision",
+      "expected": 409,
+      "status": 409,
+      "pass": true,
+      "response": {
+        "error": "The visual has changed. Reload and review this revision before saving."
+      }
+    },
+    {
+      "name": "foreign origin",
+      "expected": 403,
+      "status": 403,
+      "pass": true,
+      "response": {
+        "error": "Use the local review page to save a decision."
+      }
+    }
+  ],
+  "pass": true,
+  "scope": "Loopback negative paths only; no successful human decision created"
+}

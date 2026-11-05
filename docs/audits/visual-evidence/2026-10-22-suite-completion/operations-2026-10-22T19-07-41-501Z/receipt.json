@@ -1,0 +1,17 @@
+{
+  "startedAt": "2026-10-22T19:07:41.518Z",
+  "checks": [
+    "historical manifest replay stays separate from current spatial geometry, mass and unit search",
+    "timeline filters retained events and opens the exact canonical event inspector",
+    "invoice and receipt inspect independently, and actual evidence download reconciles to accepted terms"
+  ],
+  "observations": [],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "completedShipmentId": "73dd92c0-0232-4156-a853-a72fbf5bb853",
+  "result": "FAIL",
+  "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('.shipment-strip')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for locator('.shipment-strip')\n\n    at Proxy.<anonymous> (/Users/pranay/Projects/pdf_editor/node_modules/playwright/lib/matchers/expect.js:213:24)\n    at /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:67:137\n    at runNextTicks (node:internal/process/task_queues:64:5)\n    at process.processImmediate (node:internal/timers:472:9)",
+  "completedAt": "2026-10-22T19:09:07.557Z"
+}

@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-22T17:57:13.580946+00:00",
+  "result": "PASS",
+  "scope": "Bounded local shipment task/page review and Command Center Cargo Fit Pricing implementation",
+  "tests": {
+    "workspaces": 11,
+    "count": 280,
+    "log": "test-all.log"
+  },
+  "builds": {
+    "products": 9,
+    "includesDeclaredTypeChecks": true,
+    "log": "build-all.log"
+  },
+  "nativeUI": {
+    "receipt": "browser-verification.json",
+    "checkGroups": 12,
+    "pageErrors": []
+  },
+  "fullFlow": {
+    "receipt": "full-flow-regression/run-2026-10-22T17-53-16.060Z-25807/browser-flow-receipt.json",
+    "shipmentId": "70f8260d-d243-42c3-86b2-25ed91f78f79",
+    "status": "invoice_ready",
+    "inputRevision": 2,
+    "recordRevision": 23,
+    "events": 23,
+    "invoiceCents": 28787,
+    "checkGroups": 17,
+    "pageErrors": []
+  },
+  "sensitivity": {
+    "browserFlow": "Tier4/S1",
+    "mobileOverflow": "Tier4/S2 compared with measured baseline",
+    "sameHashDraftRecovery": "Tier4/S2 before/fixed pair",
+    "twoIsolatedMutations": "Tier2/S3"
+  },
+  "preservation": {
+    "gitIndexes": {
+      "products/product-05-fleet-telematics": true,
+      "products/product-04-asset-studio": true,
+      "products/product-01-cargo-fit": true,
+      "products/command-center-portal": true,
+      "products/product-02-freight-pricing": true,
+      "products/product-06-warehouse-space-flow": true,
+      "products/product-03-hos-planner": true,
+      "products/product-08-carrier-trust": true
+    },
+    "baselineShipmentUnchanged": true,
+    "baselineFilesRetained": 104,
+    "finalSourceHashesVerified": 207,
+    "removedFiles": []
+  },
+  "limits": [
+    "Synthetic single-operator loopback scenario; no physical/provider/production/commercial receipt.",
+    "No exhaustive screen reader/device/operator task acceptance.",
+    "No staging, commit, push or deletion."
+  ],
+  "reviewPreviews": "5170,5171,5173-5180 remain running on loopback",
+  "finalSourceChange": "Planning summary label clarified to dispatch blockers; regenerated nine clients; all nine builds and full browser regression repeated."
+}

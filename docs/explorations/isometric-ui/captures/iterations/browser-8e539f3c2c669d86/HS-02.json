@@ -1,0 +1,36 @@
+{
+  "batchedParts": "36",
+  "quality": "studio",
+  "ready": "HS-02",
+  "entities": "0",
+  "anchors": "11",
+  "geometry": "10",
+  "fixtureMetrics": "[{\"label\":\"Driving\",\"value\":8,\"unit\":\"h\"},{\"label\":\"On duty\",\"value\":2,\"unit\":\"h\"},{\"label\":\"Sleeper\",\"value\":10,\"unit\":\"h\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "70.00",
+  "drawCalls": "48",
+  "camera": "{\"position\":[32.366256089996135,33.521256091896035,32.81625609297637],\"target\":[0,1.155000001899898,0.4500000029802323],\"zoom\":1}",
+  "painted": "HS-02",
+  "id": "HS-02",
+  "title": "Three-dimensional ELD logbook",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:23.469Z"
+}

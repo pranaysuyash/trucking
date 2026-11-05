@@ -1,0 +1,36 @@
+{
+  "batchedParts": "170",
+  "quality": "studio",
+  "ready": "WH-10",
+  "entities": "6",
+  "anchors": "4",
+  "geometry": "45",
+  "fixtureMetrics": "[{\"label\":\"Canonical handling unit\",\"value\":\"HU-01\",\"unit\":\"\"},{\"label\":\"Sequence stages\",\"value\":3,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "75.80",
+  "drawCalls": "151",
+  "camera": "{\"position\":[38.15467759750607,40.49967760301951,40.17467761680308],\"target\":[-0.3950000166893006,1.949999988824129,1.625000002607703],\"zoom\":1}",
+  "painted": "WH-10",
+  "id": "WH-10",
+  "title": "Dock-to-rack receiving sequence",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:14.441Z"
+}

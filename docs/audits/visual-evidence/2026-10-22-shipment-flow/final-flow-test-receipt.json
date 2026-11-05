@@ -1,0 +1,18 @@
+{
+  "command": "node --test packages/shipment-flow/tests/domain.test.mjs packages/shipment-flow/tests/server.test.mjs",
+  "exitCode": 0,
+  "seconds": 0.32,
+  "testCount": 11,
+  "sourceSha256": {
+    "packages/shipment-flow/package.json": "e4085435f14be0c5db457858f58f8ea77c3d63b484a8d9b59ed2c839847597e6",
+    "packages/shipment-flow/server.mjs": "c077a8f6e23d4b32573e789a603b48732ed28be48945dc66d8fcb61e1a6dd541",
+    "packages/shipment-flow/tests/domain.test.mjs": "fec9adf99575e5fdde7e487afc8a9ae44620ae8e9d715ae7387b35077d41e14f",
+    "packages/shipment-flow/tests/server.test.mjs": "8e584cbc4873faeec96cf9d235cfa1993dead14f172763ab518a4941fcf5cef1",
+    "packages/shipment-flow/src/shipment.css": "2136dd984a16c09012508f279e1f23740ea961ed61c65417387625b5d2c0f9f5",
+    "packages/shipment-flow/src/types.ts": "e23dd459a084747e10e2fcad4df4e8866204e1f5e5a8da2bc00edea499485be1",
+    "packages/shipment-flow/src/domain.mjs": "5385d455306240513159cd5b07cadbb5f6a84bbf73a9b6d3c364883faf52dfd2",
+    "packages/shipment-flow/src/ShipmentWorkspace.tsx": "ac9bb5ed9be84bb67145eecc947b5aca24de71413b6b71d05e6f35fb699b57d8",
+    "packages/shipment-flow/src/useShipmentContext.ts": "c7156df2f54826f675611ba9d3b09b5eec3459cdc8978c28b6550248d304bbec"
+  },
+  "sourcesUnchangedDuringRun": true
+}

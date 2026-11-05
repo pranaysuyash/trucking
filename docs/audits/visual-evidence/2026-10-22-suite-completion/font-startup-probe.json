@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-22T20:22:38.296Z",
+  "scope": "Cargo native page startup and optional remote font dependency",
+  "evidenceTier": 4,
+  "normal": {
+    "ready": true,
+    "ms": 1605
+  },
+  "fontUnavailable": {
+    "ready": true,
+    "ms": 1081,
+    "bodyLength": 2321
+  }
+}

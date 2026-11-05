@@ -1,0 +1,37 @@
+{
+  "batchedParts": "635",
+  "quality": "studio",
+  "ready": "CF-08",
+  "entities": "13",
+  "anchors": "3",
+  "geometry": "86",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "94.50",
+  "drawCalls": "277",
+  "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+  "painted": "CF-08",
+  "id": "CF-08",
+  "title": "Axle and center of gravity",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:27:46.999Z"
+}

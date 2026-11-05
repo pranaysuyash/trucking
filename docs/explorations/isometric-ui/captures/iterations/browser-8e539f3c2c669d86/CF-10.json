@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "29",
+  "camera": "{\"position\":[25.403411844343534,26.6284118445298,25.403411844343537],\"target\":[0,1.2250000001862644,0],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "45",
+  "entities": "1",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Cargo mass\",\"value\":6200,\"unit\":\"lb\"},{\"label\":\"Straps\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Anchor spacing\",\"value\":48,\"unit\":\"in\"}]",
+  "geometry": "9",
+  "id": "CF-10",
+  "pageWidth": 1440,
+  "painted": "CF-10",
+  "quality": "studio",
+  "ready": "CF-10",
+  "renderMs": "33.50",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Securement arrangement",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-10.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:32:27.600Z"
+}

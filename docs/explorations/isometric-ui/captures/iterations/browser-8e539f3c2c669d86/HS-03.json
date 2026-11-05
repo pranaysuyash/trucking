@@ -1,0 +1,36 @@
+{
+  "batchedParts": "25",
+  "quality": "studio",
+  "ready": "HS-03",
+  "entities": "3",
+  "anchors": "3",
+  "geometry": "10",
+  "fixtureMetrics": "[{\"label\":\"Driving remaining\",\"value\":4.5,\"unit\":\"h\"},{\"label\":\"Shift remaining\",\"value\":6,\"unit\":\"h\"},{\"label\":\"Break remaining\",\"value\":2,\"unit\":\"h\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "24.60",
+  "drawCalls": "42",
+  "camera": "{\"position\":[4.779112471061627,19.835437381501414,47.791124710616266],\"target\":[0,1.2499999940395354,0],\"zoom\":1}",
+  "painted": "HS-03",
+  "id": "HS-03",
+  "title": "Remaining-duty clock volumes",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:24.210Z"
+}

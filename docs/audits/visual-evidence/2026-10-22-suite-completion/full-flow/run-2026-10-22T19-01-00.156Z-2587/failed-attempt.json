@@ -1,0 +1,9 @@
+{
+  "startedAt": "2026-10-22T19:01:00.156Z",
+  "failedAt": "2026-10-22T19:02:11.055Z",
+  "step": "standalone product 5170",
+  "shipmentId": null,
+  "evidenceDirectory": "/Users/pranay/Projects/trucking/docs/audits/visual-evidence/2026-10-22-suite-completion/full-flow/run-2026-10-22T19-01-00.156Z-2587",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:5170/\", waiting until \"networkidle\"\u001b[22m\n\n    at /Users/pranay/Projects/trucking/tools/verify-shipment-flow.cjs:79:18",
+  "pageErrors": []
+}

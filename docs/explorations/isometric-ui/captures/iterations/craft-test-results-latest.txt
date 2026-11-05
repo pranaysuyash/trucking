@@ -1,0 +1,19 @@
+✔ all 120 crafted studies retain physical bounds, semantic selection IDs and finite geometry (8658.178834ms)
+✔ batched cargo remains ray-selectable through its retained handling-unit owner (13.325542ms)
+✔ warehouse batching reduces opaque meshes without removing rack or unit identities (63.989959ms)
+✔ portrait and wide camera fits keep every asymmetric envelope corner visible with reserved label rails (8.063708ms)
+✔ independent repeated subjects resolve uniquely and evidence/thermal studies expose their declared unknowns (57.617ms)
+✔ centred cargo dimension changes twice its face displacement at any projected angle (1.950333ms)
+✔ height and wheelbase use full displacement and respect exact-input limits (0.203291ms)
+✔ one committed gesture is one undo step; new edit replaces the redo branch (1.980958ms)
+✔ missing, fresh and changed reviews remain different without writing human records (0.36475ms)
+✔ review context distinguishes edited fixtures and delayed responses stay with submitted case (0.629292ms)
+✔ rendered handles use the edited fixture axes, dimensions and centered multipliers (140.046083ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9137.919875

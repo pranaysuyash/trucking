@@ -1,0 +1,36 @@
+{
+  "batchedParts": "74",
+  "quality": "studio",
+  "ready": "CC-06",
+  "entities": "8",
+  "anchors": "6",
+  "geometry": "32",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "21.30",
+  "drawCalls": "114",
+  "camera": "{\"position\":[38.163408060790154,39.66340806041763,37.86340808463202],\"target\":[-0.75,0.7499999996274711,-1.049999976158142],\"zoom\":1}",
+  "painted": "CC-06",
+  "id": "CC-06",
+  "title": "Exception focus and recovery",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-06.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:12.391Z"
+}

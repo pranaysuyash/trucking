@@ -1,0 +1,36 @@
+{
+  "batchedParts": "89",
+  "quality": "studio",
+  "ready": "TR-11",
+  "entities": "9",
+  "anchors": "6",
+  "geometry": "31",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "15.30",
+  "drawCalls": "111",
+  "camera": "{\"position\":[40.47225378760215,41.22225378722962,40.6222537637603],\"target\":[0,0.749999999627471,0.1499999761581421],\"zoom\":1}",
+  "painted": "TR-11",
+  "id": "TR-11",
+  "title": "Carrier event propagation",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:40.316Z"
+}

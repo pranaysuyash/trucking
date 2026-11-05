@@ -1,0 +1,7 @@
+{
+  "beforeGuardRemovedExitCode": 1,
+  "fixedExitCode": 0,
+  "sensitivity": "S2",
+  "isolatedCopy": "/var/folders/fc/xwynjqm94t39_jvz88fhcpfc0000gn/T/trucking-retry-before-3j11550h",
+  "failureDetected": "Receiving retry fails after upstream result invalidation when guard is removed."
+}

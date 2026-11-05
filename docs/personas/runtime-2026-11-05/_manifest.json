@@ -1,0 +1,73 @@
+{
+  "session": "2026-11-05T15:10:00Z",
+  "project": "TRUCKING — Warehouse Space & Flow (P06) / Storage & Leasing Core (P09)",
+  "council_type": "Storage & Warehousing Persona Council",
+  "canonical_repo": "/Users/pranay/Projects/trucking",
+  "persona_root": "docs/personas/runtime-2026-11-05",
+  "seats": [
+    {
+      "seat": "Property Owner & Landlord",
+      "id": "PER-RT-0201",
+      "title": "Indian Warehouse Owner / Landlord",
+      "source": "runtime-generated",
+      "file": "PER-RT-0201-Indian-Warehouse-Owner-Landlord.md",
+      "mandate": "Facility registration, space leasing, rent collection, electricity metering, repairs, tenant management, dues visibility, and Indian business context."
+    },
+    {
+      "seat": "Floor Execution",
+      "id": "PER-RT-0202",
+      "title": "Warehouse Floor Operator",
+      "source": "runtime-generated",
+      "file": "PER-RT-0202-Warehouse-Floor-Operator.md",
+      "mandate": "Mobile receiving, putaway, dispatch, damage capture, scan-backed verification, and offline reconciliation on inexpensive Android devices."
+    },
+    {
+      "seat": "Cold Chain",
+      "id": "PER-RT-0203",
+      "title": "Cold Storage Specialist",
+      "source": "runtime-generated",
+      "file": "PER-RT-0203-Cold-Storage-Specialist.md",
+      "mandate": "Chamber-wise temperature/humidity truth, active vs decommissioned refrigeration, commodity rules, power failure, and FSSAI licensing."
+    },
+    {
+      "seat": "Agricultural Storage",
+      "id": "PER-RT-0204",
+      "title": "Agricultural Godown Operator",
+      "source": "runtime-generated",
+      "file": "PER-RT-0204-Agricultural-Godown-Operator.md",
+      "mandate": "Farmer/trader lots, bag counts, weighbridge weight, grade, moisture, fumigation, tenure billing, and WDRA/eNWR boundaries."
+    },
+    {
+      "seat": "Contract Warehousing",
+      "id": "PER-RT-0205",
+      "title": "Multi-Customer 3PL Warehouse Director",
+      "source": "runtime-generated",
+      "file": "PER-RT-0205-Multi-Customer-3PL-Warehouse-Director.md",
+      "mandate": "Per-customer goods ledgers, tenant isolation, rate-card billing, ASN/dock appointments, lot/serial/expiry/FEFO, and on-hand-by-location reporting."
+    },
+    {
+      "seat": "Indirect Tax & Statutory",
+      "id": "PER-RT-0206",
+      "title": "Indian GST & Statutory Compliance Auditor",
+      "source": "runtime-generated",
+      "file": "PER-RT-0206-Indian-GST-Statutory-Compliance-Auditor.md",
+      "mandate": "GSTIN validation, GST/SAC treatment on rent, TDS 194-I, e-invoice and GSTR reconciliability, deposit and late-fee treatment, WDRA boundaries."
+    },
+    {
+      "seat": "Bonded & EXIM",
+      "id": "PER-RT-0207",
+      "title": "Bonded / EXIM Warehouse Operator",
+      "source": "runtime-generated",
+      "file": "PER-RT-0207-Bonded-EXIM-Warehouse-Operator.md",
+      "mandate": "Bond registers, BOE/IGM linkage, duty-deferred stock, container dwell, free days and demurrage, seal integrity, customs audit trail."
+    },
+    {
+      "seat": "Adversarial Stress Tester",
+      "id": "PER-RT-0102",
+      "title": "Logistics Adversarial & Boundary Stress Tester",
+      "source": "runtime-saved",
+      "file": "../runtime-2026-10-21/PER-RT-0102-Logistics-Adversarial-Stress-Tester.md",
+      "mandate": "Extreme inputs, empty states, impossible allocations, rapid resize, and crash resilience across the storage and warehouse surfaces."
+    }
+  ]
+}

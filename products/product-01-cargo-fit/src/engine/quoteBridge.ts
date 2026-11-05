@@ -1,0 +1,59 @@
+/**
+ * Cross-Product Bridge: Product 01 (Cargo Fit) → Product 02 (Freight Pricing)
+ * Converts a verified physical load plan into commercial rate parameters.
+ */
+
+import type { PlanFile } from './report';
+
+export function getFreightPricingBaseUrl(): string {
+  if (typeof window !== 'undefined' && window.location.hostname.includes('pages.dev')) {
+    return 'https://freightpricing.pages.dev';
+  }
+  return 'http://localhost:5174';
+}
+
+export function buildFreightQuoteUrl(plan: PlanFile, baseUrl?: string): string {
+  const targetBase = baseUrl || getFreightPricingBaseUrl();
+  const m = plan.metrics;
+  const rawEquipment = plan.scenario.equipment.find((e) => e.id === plan.equipmentId);
+  const eqName = (rawEquipment?.name || '').toLowerCase();
+
+  let equipCategory = 'dry_van';
+  if (eqName.includes('reefer') || eqName.includes('refrigerat')) {
+    equipCategory = 'reefer';
+  } else if (eqName.includes('step') || eqName.includes('drop')) {
+    equipCategory = 'step_deck';
+  } else if (eqName.includes('flat') || eqName.includes('platform')) {
+    equipCategory = 'flatbed';
+  }
+
+  // Detect stops
+  const maxStop = plan.placements.reduce((max, p) => Math.max(max, p.stop ?? 1), 1);
+  const extraStops = Math.max(0, maxStop - 1);
+
+  // Detect hazmat or special labels
+  const isHazmat = plan.scenario.rows.some((r) =>
+    /haz|class\s*[1-9]|un\s*\d{4}|flamm|danger/i.test(r.label)
+  );
+
+  const isReefer = equipCategory === 'reefer' || plan.scenario.rows.some((r) =>
+    /frozen|chilled|perish|temp|deg|celsius|fahrenheit/i.test(r.label)
+  );
+
+  const weightLbs = Math.round(m.loadedWeightKg * 2.20462);
+
+  const params = new URLSearchParams({
+    source: 'cargofit',
+    scenario: plan.scenario.name,
+    equipment: equipCategory,
+    equipmentName: rawEquipment?.name || equipCategory,
+    loadedKg: String(Math.round(m.loadedWeightKg)),
+    loadedLbs: String(weightLbs),
+    placedUnits: String(m.placedUnits),
+    extraStops: String(extraStops),
+    hazmat: isHazmat ? '1' : '0',
+    reefer: isReefer ? '1' : '0',
+  });
+
+  return `${targetBase}/?${params.toString()}`;
+}

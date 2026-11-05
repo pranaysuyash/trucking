@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-22T17:19:34.599176+00:00",
+  "revision": "db5b828dd82f6f74",
+  "cases": 120,
+  "groups": {
+    "cargo": 12,
+    "assets": 12,
+    "warehouse": 12,
+    "yard": 12,
+    "telematics": 12,
+    "pricing": 12,
+    "hos": 12,
+    "trust": 12,
+    "command": 12,
+    "platform": 12
+  },
+  "captures": 120,
+  "uniqueImageHashes": 120,
+  "allCapturesMatchCurrentRevision": true,
+  "errors": [],
+  "pass": true,
+  "scope": "Local artifact/source integrity, Tier 2/S1. No human approval or product validity implied."
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "433",
+  "quality": "studio",
+  "ready": "CC-05",
+  "entities": "14",
+  "anchors": "7",
+  "geometry": "70",
+  "fixtureMetrics": "[{\"label\":\"Earlier payload\",\"value\":12000,\"unit\":\"lb\"},{\"label\":\"Revised payload\",\"value\":13200,\"unit\":\"lb\"},{\"label\":\"Mass amendment\",\"value\":1200,\"unit\":\"lb\"},{\"label\":\"Stale downstream results\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "60.30",
+  "drawCalls": "226",
+  "camera": "{\"position\":[37.70097257808257,38.3509725773785,38.82097258702328],\"target\":[8.881784197001252e-16,0.6499999992959201,1.1200000089406967],\"zoom\":1}",
+  "painted": "CC-05",
+  "id": "CC-05",
+  "title": "Amendment before and after",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:11.692Z"
+}

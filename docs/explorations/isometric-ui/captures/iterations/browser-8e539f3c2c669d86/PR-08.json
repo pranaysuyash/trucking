@@ -1,0 +1,36 @@
+{
+  "batchedParts": "61",
+  "quality": "studio",
+  "ready": "PR-08",
+  "entities": "1",
+  "anchors": "3",
+  "geometry": "17",
+  "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "21.00",
+  "drawCalls": "69",
+  "camera": "{\"position\":[50.241364161695635,51.23444412444329,50.00444412503935],\"target\":[-0.06307996334370358,0.9299999994039535,-0.2999999999999999],\"zoom\":1}",
+  "painted": "PR-08",
+  "id": "PR-08",
+  "title": "Cold-chain shock and seal route",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:46.099Z"
+}

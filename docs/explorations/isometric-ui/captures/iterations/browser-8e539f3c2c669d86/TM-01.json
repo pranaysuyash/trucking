@@ -1,0 +1,36 @@
+{
+  "batchedParts": "637",
+  "quality": "studio",
+  "ready": "TM-01",
+  "entities": "13",
+  "anchors": "4",
+  "geometry": "85",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "90.90",
+  "drawCalls": "274",
+  "camera": "{\"position\":[49.15750790803715,51.44250791638181,49.132507908037155],\"target\":[0.025000000000000355,2.3100000083446504,0],\"zoom\":1}",
+  "painted": "TM-01",
+  "id": "TM-01",
+  "title": "Selected vehicle telemetry twin",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:14.147Z"
+}

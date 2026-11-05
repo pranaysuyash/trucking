@@ -1,0 +1,36 @@
+{
+  "batchedParts": "29",
+  "quality": "studio",
+  "ready": "PF-06",
+  "entities": "0",
+  "anchors": "5",
+  "geometry": "11",
+  "fixtureMetrics": "[{\"label\":\"State tokens\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Source classes\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Unknown values\",\"value\":2,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.00",
+  "drawCalls": "49",
+  "camera": "{\"position\":[37.5277675799163,38.027767582151476,37.52776757991631],\"target\":[0,0.5000000022351743,0],\"zoom\":1}",
+  "painted": "PF-06",
+  "id": "PF-06",
+  "title": "State and provenance grammar",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-06.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:21.314Z"
+}

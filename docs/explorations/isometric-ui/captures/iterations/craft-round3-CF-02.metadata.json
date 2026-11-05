@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Script ran on page and returned:\n```json\n{\"batchedParts\":\"52\",\"quality\":\"studio\",\"ready\":\"CF-02\",\"entities\":\"1\",\"anchors\":\"4\",\"geometry\":\"15\",\"fixtureMetrics\":\"[{\\\"label\\\":\\\"Length\\\",\\\"value\\\":1.2192,\\\"unit\\\":\\\"m\\\"},{\\\"label\\\":\\\"Width\\\",\\\"value\\\":1.016,\\\"unit\\\":\\\"m\\\"},{\\\"label\\\":\\\"Height\\\",\\\"value\\\":1.3,\\\"unit\\\":\\\"m\\\"},{\\\"label\\\":\\\"Fixture mass\\\",\\\"value\\\":1200,\\\"unit\\\":\\\"lb\\\"},{\\\"label\\\":\\\"Envelope volume\\\",\\\"value\\\":1.6103193600000003,\\\"unit\\\":\\\"m³\\\"}]\",\"valuesOrigin\":\"authored scene fixture\",\"revision\":\"fef592cb4f30534a\",\"renderMs\":\"86.70\",\"drawCalls\":\"61\",\"camera\":\"{\\\"position\\\":[18.507708609108917,19.157708611981864,18.507214858518836],\\\"target\\\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\\\"zoom\\\":1}\",\"painted\":\"CF-02\",\"id\":\"CF-02\",\"title\":\"CF-02 · Cargo dimensions and weight editor / Trucking studies\",\"review\":\"AWAITING YOUR REVIEW\",\"viewport\":{\"width\":1440,\"height\":1024},\"clip\":{\"left\":251,\"top\":197,\"width\":1156,\"height\":532},\"error\":null}\n```"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Script ran on page and returned:\n```json\n{\"batchedParts\":\"627\",\"quality\":\"studio\",\"ready\":\"TM-03\",\"entities\":\"13\",\"anchors\":\"3\",\"geometry\":\"86\",\"fixtureMetrics\":\"[{\\\"label\\\":\\\"Cavity volume\\\",\\\"value\\\":105.84,\\\"unit\\\":\\\"m³\\\"},{\\\"label\\\":\\\"Shown handling units\\\",\\\"value\\\":10,\\\"unit\\\":\\\"count\\\"}]\",\"valuesOrigin\":\"authored scene fixture\",\"revision\":\"fef592cb4f30534a\",\"renderMs\":\"102.00\",\"drawCalls\":\"280\",\"camera\":\"{\\\"position\\\":[48.420931145530645,50.56343115089506,48.560931144636584],\\\"target\\\":[-0.13999999910592995,2.002500006258488,0],\\\"zoom\\\":1}\",\"painted\":\"TM-03\",\"id\":\"TM-03\",\"title\":\"TM-03 · Reefer zone cutaway / Trucking studies\",\"review\":\"AWAITING YOUR REVIEW\",\"viewport\":{\"width\":1440,\"height\":1024},\"clip\":{\"left\":251,\"top\":197,\"width\":1156,\"height\":532},\"error\":null}\n```\nPage navigated to http://127.0.0.1:5195/review.html?case=TM-03."
+    }
+  ]
+}

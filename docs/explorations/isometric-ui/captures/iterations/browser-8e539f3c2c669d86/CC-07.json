@@ -1,0 +1,36 @@
+{
+  "batchedParts": "75",
+  "quality": "studio",
+  "ready": "CC-07",
+  "entities": "3",
+  "anchors": "3",
+  "geometry": "17",
+  "fixtureMetrics": "[{\"label\":\"Transactions\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Linked identifiers\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Unmatched fields\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.50",
+  "drawCalls": "69",
+  "camera": "{\"position\":[33.197640478403486,33.50914047761745,33.19764047840349],\"target\":[0,0.31149999921396376,0],\"zoom\":1}",
+  "painted": "CC-07",
+  "id": "CC-07",
+  "title": "EDI transaction evidence flow",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-07.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:13.140Z"
+}

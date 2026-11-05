@@ -1,0 +1,37 @@
+{
+  "batchedParts": "784",
+  "quality": "studio",
+  "ready": "CF-01",
+  "entities": "19",
+  "anchors": "5",
+  "geometry": "108",
+  "fixtureMetrics": "[{\"label\":\"Handling units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Occupied cube\",\"value\":26.064,\"unit\":\"m³\"},{\"label\":\"Usable cavity\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Cube utilization\",\"value\":24.625850340136054,\"unit\":\"%\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "101.80",
+  "drawCalls": "341",
+  "camera": "{\"position\":[40.147721938589186,42.05272194227723,40.06222194236664],\"target\":[0.08249999720603185,1.9875000008940702,-0.0029999990165234802],\"zoom\":1}",
+  "painted": "CF-01",
+  "id": "CF-01",
+  "title": "Mixed manifest fit",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:04:07.866Z"
+}

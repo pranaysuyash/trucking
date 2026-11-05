@@ -1,0 +1,36 @@
+{
+  "batchedParts": "728",
+  "quality": "studio",
+  "ready": "TR-02",
+  "entities": "9",
+  "anchors": "3",
+  "geometry": "64",
+  "fixtureMetrics": "[{\"label\":\"Assigned tractors\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Assigned trailers\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Open reviews\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "53.00",
+  "drawCalls": "213",
+  "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+  "painted": "TR-02",
+  "id": "TR-02",
+  "title": "Assigned fleet eligibility scene",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:32.844Z"
+}

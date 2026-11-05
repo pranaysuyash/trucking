@@ -1,0 +1,36 @@
+{
+  "batchedParts": "101",
+  "quality": "studio",
+  "ready": "TR-12",
+  "entities": "4",
+  "anchors": "10",
+  "geometry": "22",
+  "fixtureMetrics": "[{\"label\":\"Declared limit\",\"value\":1000000,\"unit\":\"USD\"},{\"label\":\"Source records\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Unknown fields\",\"value\":2,\"unit\":\"count\"},{\"label\":\"As-of date\",\"value\":\"23 Oct 2026\",\"unit\":\"UTC\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "17.00",
+  "drawCalls": "84",
+  "camera": "{\"position\":[35.27610144748613,35.9376014467001,35.82610144748613],\"target\":[0,0.6614999992139637,0.5499999999999998],\"zoom\":1}",
+  "painted": "TR-12",
+  "id": "TR-12",
+  "title": "Evidence provenance inspection",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:41.046Z"
+}

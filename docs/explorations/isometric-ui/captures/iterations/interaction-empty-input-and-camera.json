@@ -1,0 +1,88 @@
+{
+  "numericBefore": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "083a5d207f9b20f2",
+    "status": "Numeric inputs edit this temporary fixture.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "emptyDimension": {
+    "invalid": "true",
+    "rendered": [
+      {
+        "label": "Length",
+        "unit": "m",
+        "value": 1.2192
+      },
+      {
+        "label": "Width",
+        "unit": "m",
+        "value": 1.016
+      },
+      {
+        "label": "Height",
+        "unit": "m",
+        "value": 1.3
+      },
+      {
+        "label": "Fixture mass",
+        "unit": "lb",
+        "value": 1200
+      },
+      {
+        "label": "Envelope volume",
+        "unit": "m³",
+        "value": 1.6103193600000003
+      }
+    ]
+  },
+  "emptyRestored": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "083a5d207f9b20f2",
+    "status": "Invalid input discarded; the last valid fixture value is restored.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "numericAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "083a5d207f9b20f2",
+    "status": "Exact input applied. Use Fit if you want to reframe the fixture.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 2,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "emptyMassRestored": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "083a5d207f9b20f2",
+    "status": "Invalid input discarded; the last valid fixture value is restored.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 2,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  }
+}

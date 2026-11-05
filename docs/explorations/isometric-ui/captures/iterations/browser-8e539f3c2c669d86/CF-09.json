@@ -1,0 +1,36 @@
+{
+  "anchors": "5",
+  "batchedParts": "210",
+  "camera": "{\"position\":[39.44095992165341,41.43370992642179,39.44820992114678],\"target\":[-0.010249998509883618,1.9825000062584883,-0.0029999990165234802],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "176",
+  "entities": "3",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Setting A distance\",\"value\":36,\"unit\":\"ft\"},{\"label\":\"Setting B distance\",\"value\":38,\"unit\":\"ft\"},{\"label\":\"Rear group load change\",\"value\":-900,\"unit\":\"lb\"},{\"label\":\"Kingpin reaction change\",\"value\":900,\"unit\":\"lb\"}]",
+  "geometry": "45",
+  "id": "CF-09",
+  "pageWidth": 1440,
+  "painted": "CF-09",
+  "quality": "studio",
+  "ready": "CF-09",
+  "renderMs": "124.50",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Tandem slider comparison",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-09.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:32:25.018Z"
+}

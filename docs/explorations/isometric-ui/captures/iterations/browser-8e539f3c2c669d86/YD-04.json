@@ -1,0 +1,36 @@
+{
+  "batchedParts": "45",
+  "quality": "studio",
+  "ready": "YD-04",
+  "entities": "2",
+  "anchors": "2",
+  "geometry": "20",
+  "fixtureMetrics": "[{\"label\":\"Queue size\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Destination door\",\"value\":6,\"unit\":\"index\"},{\"label\":\"Travel length\",\"value\":420,\"unit\":\"ft\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "22.50",
+  "drawCalls": "76",
+  "camera": "{\"position\":[39.29108776302405,40.84608773560593,38.796087734246186],\"target\":[0.3950000286102293,1.9500000011920928,-0.10000000016763799],\"zoom\":1}",
+  "painted": "YD-04",
+  "id": "YD-04",
+  "title": "Gate check-in destination",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:26.095Z"
+}

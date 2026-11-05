@@ -1,0 +1,36 @@
+{
+  "batchedParts": "81",
+  "quality": "studio",
+  "ready": "PR-12",
+  "entities": "5",
+  "anchors": "4",
+  "geometry": "24",
+  "fixtureMetrics": "[{\"label\":\"Candidate A all-in\",\"value\":2650,\"unit\":\"USD\"},{\"label\":\"Candidate B all-in\",\"value\":2820,\"unit\":\"USD\"},{\"label\":\"Cost difference\",\"value\":170,\"unit\":\"USD\"},{\"label\":\"Service duration difference\",\"value\":4,\"unit\":\"h\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "25.70",
+  "drawCalls": "90",
+  "camera": "{\"position\":[4.862630994529308,21.730231564329433,48.50880994767726],\"target\":[0,2.8199999189376834,-0.11749999761581398],\"zoom\":1}",
+  "painted": "PR-12",
+  "id": "PR-12",
+  "title": "Quote scenario comparison",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:49.274Z"
+}

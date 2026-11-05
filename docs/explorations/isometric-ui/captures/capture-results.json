@@ -1,0 +1,4571 @@
+{
+  "capturedAt": "2026-10-29T18:49:28.345Z",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "revision": "8e539f3c2c669d86",
+  "captureMethod": "Browser originals retained with SHA-256; JPEG originals converted to PNG without resize",
+  "cases": [
+    {
+      "anchors": "5",
+      "batchedParts": "784",
+      "camera": "{\"position\":[40.147721938589186,42.05272194227723,40.06222194236664],\"target\":[0.08249999720603185,1.9875000008940702,-0.0029999990165234802],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "341",
+      "entities": "19",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Handling units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Occupied cube\",\"value\":26.064,\"unit\":\"m³\"},{\"label\":\"Usable cavity\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Cube utilization\",\"value\":24.625850340136054,\"unit\":\"%\"}]",
+      "geometry": "108",
+      "id": "CF-01",
+      "pageWidth": 1440,
+      "painted": "CF-01",
+      "quality": "studio",
+      "ready": "CF-01",
+      "renderMs": "134.20",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Mixed manifest fit",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-01.jpg",
+        "format": "jpeg",
+        "sha256": "133c1bb12bb336fce007fa54050ec7aa0e70e8955ed5619dbf66fa972430ce7e"
+      },
+      "capturedAt": "2026-10-29T17:31:12.854Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "52",
+      "camera": "{\"position\":[18.42970861312925,19.117708612130876,18.725208614068027],\"target\":[-0.045500000938773155,0.642499998062849,0.25],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "61",
+      "entities": "1",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Length\",\"value\":1.2192,\"unit\":\"m\"},{\"label\":\"Width\",\"value\":1.016,\"unit\":\"m\"},{\"label\":\"Height\",\"value\":1.3,\"unit\":\"m\"},{\"label\":\"Mass\",\"value\":1200,\"unit\":\"lb\"},{\"label\":\"Envelope volume\",\"value\":1.6103193600000003,\"unit\":\"m³\"}]",
+      "geometry": "15",
+      "id": "CF-02",
+      "pageWidth": 1440,
+      "painted": "CF-02",
+      "quality": "studio",
+      "ready": "CF-02",
+      "renderMs": "116.50",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Cargo dimensions and weight editor",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-02.jpg",
+        "format": "jpeg",
+        "sha256": "7962751fdb579da989225c8af949534247d2ff542dfb81b09f5b3f1c75e2f103"
+      },
+      "capturedAt": "2026-10-29T17:31:18.669Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "12",
+      "camera": "{\"position\":[18.475208614068023,19.537708607362504,18.475208614068027],\"target\":[0,1.0624999932944774,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "46",
+      "entities": "1",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Bounding volume\",\"value\":8.448,\"unit\":\"m³\"}]",
+      "geometry": "10",
+      "id": "CF-03",
+      "pageWidth": 1440,
+      "painted": "CF-03",
+      "quality": "studio",
+      "ready": "CF-03",
+      "renderMs": "94.60",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Irregular cargo envelope",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-03.jpg",
+        "format": "jpeg",
+        "sha256": "bbc9651bae851dd7830da517a8db9451f1b30a35dfd916793ef8e5c87dd2b60f"
+      },
+      "capturedAt": "2026-10-29T17:31:34.487Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "165",
+      "camera": "{\"position\":[20.160849289497513,21.16084930071436,19.87109929834135],\"target\":[0.29999998807907113,1.2999999992959201,0.010249996922910232],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "112",
+      "entities": "4",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Upper mass\",\"value\":400,\"unit\":\"lb\"},{\"label\":\"Support area\",\"value\":76,\"unit\":\"percent\"},{\"label\":\"Stack height\",\"value\":84,\"unit\":\"in\"}]",
+      "geometry": "31",
+      "id": "CF-04",
+      "pageWidth": 1440,
+      "painted": "CF-04",
+      "quality": "studio",
+      "ready": "CF-04",
+      "renderMs": "145.60",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Stacking and support",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-04.jpg",
+        "format": "jpeg",
+        "sha256": "9a1909a4ead0a2fdb0cd1bd82b76bb8bbd8ec4a64b8ad1adb0ab6814b1c6a7d7"
+      },
+      "capturedAt": "2026-10-29T17:31:42.395Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "30",
+      "camera": "{\"position\":[24.840977694548098,26.140978291339607,23.829978331073555],\"target\":[0.6499993920326235,1.949999988824129,-0.3609999714419245],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "55",
+      "entities": "2",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Door width\",\"value\":96,\"unit\":\"in\"},{\"label\":\"Cargo width\",\"value\":92,\"unit\":\"in\"},{\"label\":\"Side gap\",\"value\":2,\"unit\":\"in\"}]",
+      "geometry": "13",
+      "id": "CF-05",
+      "pageWidth": 1440,
+      "painted": "CF-05",
+      "quality": "studio",
+      "ready": "CF-05",
+      "renderMs": "56.30",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Door passage and maneuver",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-05.jpg",
+        "format": "jpeg",
+        "sha256": "8625df56d63d45c05efa99504f64811d4194218e519baf249946dc19301b294e"
+      },
+      "capturedAt": "2026-10-29T17:31:45.943Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "146",
+      "camera": "{\"position\":[18.99123410044308,19.991234099739007,19.666234109383783],\"target\":[-0.35,0.6499999992959201,0.3250000089406967],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "185",
+      "entities": "4",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Selected unit\",\"value\":7,\"unit\":\"index\"},{\"label\":\"Move distance\",\"value\":24,\"unit\":\"in\"},{\"label\":\"Candidate overlap\",\"value\":0,\"unit\":\"in3\"}]",
+      "geometry": "49",
+      "id": "CF-06",
+      "pageWidth": 1440,
+      "painted": "CF-06",
+      "quality": "studio",
+      "ready": "CF-06",
+      "renderMs": "128.20",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Manual repack preview",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-06.jpg",
+        "format": "jpeg",
+        "sha256": "670d78f6619f5ea817733f13a52355b065b215627a2fa1fc5b9b59d26a534ffc"
+      },
+      "capturedAt": "2026-10-29T17:31:52.589Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "724",
+      "camera": "{\"position\":[40.147721938589186,42.05272194227723,40.06222194236664],\"target\":[0.08249999720603185,1.9875000008940702,-0.0029999990165234802],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "307",
+      "entities": "13",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Stops\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Remaining units\",\"value\":11,\"unit\":\"count\"},{\"label\":\"Rehandled units\",\"value\":2,\"unit\":\"count\"}]",
+      "geometry": "96",
+      "id": "CF-07",
+      "pageWidth": 1440,
+      "painted": "CF-07",
+      "quality": "studio",
+      "ready": "CF-07",
+      "renderMs": "113.70",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Stop sequence accessibility",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-07.jpg",
+        "format": "jpeg",
+        "sha256": "cfb3aa94c20894336c8fb03c1320eba74ee40698c4258bdfb74b04ba341a80ad"
+      },
+      "capturedAt": "2026-10-29T17:32:18.210Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "635",
+      "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "277",
+      "entities": "13",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "geometry": "86",
+      "id": "CF-08",
+      "pageWidth": 1440,
+      "painted": "CF-08",
+      "quality": "studio",
+      "ready": "CF-08",
+      "renderMs": "118.60",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Axle and center of gravity",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-08.jpg",
+        "format": "jpeg",
+        "sha256": "33c4447866b0d9bff262c1454ffd172c367b3f7c2b515e6b00be526c3c2b4ac4"
+      },
+      "capturedAt": "2026-10-29T17:32:21.665Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "5",
+      "batchedParts": "210",
+      "camera": "{\"position\":[39.44095992165341,41.43370992642179,39.44820992114678],\"target\":[-0.010249998509883618,1.9825000062584883,-0.0029999990165234802],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "176",
+      "entities": "3",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Setting A distance\",\"value\":36,\"unit\":\"ft\"},{\"label\":\"Setting B distance\",\"value\":38,\"unit\":\"ft\"},{\"label\":\"Rear group load change\",\"value\":-900,\"unit\":\"lb\"},{\"label\":\"Kingpin reaction change\",\"value\":900,\"unit\":\"lb\"}]",
+      "geometry": "45",
+      "id": "CF-09",
+      "pageWidth": 1440,
+      "painted": "CF-09",
+      "quality": "studio",
+      "ready": "CF-09",
+      "renderMs": "124.50",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Tandem slider comparison",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-09.jpg",
+        "format": "jpeg",
+        "sha256": "7145e4755692ae0edc81e719db08520bc3c11d92badcd354cb1537376af0f158"
+      },
+      "capturedAt": "2026-10-29T17:32:25.018Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "29",
+      "camera": "{\"position\":[25.403411844343534,26.6284118445298,25.403411844343537],\"target\":[0,1.2250000001862644,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "45",
+      "entities": "1",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Cargo mass\",\"value\":6200,\"unit\":\"lb\"},{\"label\":\"Straps\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Anchor spacing\",\"value\":48,\"unit\":\"in\"}]",
+      "geometry": "9",
+      "id": "CF-10",
+      "pageWidth": 1440,
+      "painted": "CF-10",
+      "quality": "studio",
+      "ready": "CF-10",
+      "renderMs": "33.50",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Securement arrangement",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-10.jpg",
+        "format": "jpeg",
+        "sha256": "ecd9718d2d0496dced19508b76534090acb8fac2e81bfe78bc7ca2a641e0af50"
+      },
+      "capturedAt": "2026-10-29T17:32:27.600Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "60",
+      "camera": "{\"position\":[25.57661692510042,26.06536692536119,25.73261691323165],\"target\":[0,0.48875000026077037,0.15599998813122506],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "114",
+      "entities": "8",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Groups\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Separation\",\"value\":12,\"unit\":\"ft\"},{\"label\":\"Unclassified units\",\"value\":1,\"unit\":\"count\"}]",
+      "geometry": "32",
+      "id": "CF-11",
+      "pageWidth": 1440,
+      "painted": "CF-11",
+      "quality": "studio",
+      "ready": "CF-11",
+      "renderMs": "35.00",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Hazardous cargo separation",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-11.jpg",
+        "format": "jpeg",
+        "sha256": "ce67adfd208b79cadcf36983c8136a1aac8fc5a2d125d00885eb9ddd8610a1f4"
+      },
+      "capturedAt": "2026-10-29T17:32:30.031Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "316",
+      "camera": "{\"position\":[21.962515361581804,22.762515360877725,22.462515370522503],\"target\":[-0.1499999999999999,0.6499999992959201,0.35000000894069677],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "178",
+      "entities": "8",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Units per revision\",\"value\":4,\"unit\":\"count\"}]",
+      "geometry": "54",
+      "id": "CF-12",
+      "pageWidth": 1440,
+      "painted": "CF-12",
+      "quality": "studio",
+      "ready": "CF-12",
+      "renderMs": "80.00",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Plan version comparison",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CF-12.jpg",
+        "format": "jpeg",
+        "sha256": "4cde1b74c0a7c970fdec08289a25f95627cf68c6700a4a168fa2c766bd4c752c"
+      },
+      "capturedAt": "2026-10-29T17:32:32.075Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "583",
+      "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "202",
+      "entities": "9",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Vehicle options\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Dry-van length\",\"value\":53,\"unit\":\"ft\"},{\"label\":\"Reefer payload\",\"value\":43500,\"unit\":\"lb\"}]",
+      "geometry": "61",
+      "id": "AS-01",
+      "pageWidth": 1440,
+      "painted": "AS-01",
+      "quality": "studio",
+      "ready": "AS-01",
+      "renderMs": "98.00",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Equipment catalog comparison",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-01.jpg",
+        "format": "jpeg",
+        "sha256": "259d1597df0628a6903ff5c5f9b6b9206e1b70ddb316a061c4d45e8831335f6d"
+      },
+      "capturedAt": "2026-10-29T17:33:16.533Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "625",
+      "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "279",
+      "entities": "13",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "geometry": "87",
+      "id": "AS-02",
+      "pageWidth": 1440,
+      "painted": "AS-02",
+      "quality": "studio",
+      "ready": "AS-02",
+      "renderMs": "94.30",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Vehicle interior cutaway",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-02.jpg",
+        "format": "jpeg",
+        "sha256": "336d5c6636357774142ade2a199b4c51c59684b6a2a05515fb03661e0ce1ac4c"
+      },
+      "capturedAt": "2026-10-29T17:33:18.844Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "76",
+      "camera": "{\"position\":[24.69745699749164,25.040002954027653,24.427502959984388],\"target\":[0.30745403173305474,0.6499999882690608,0.03749999422580008],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "69",
+      "entities": "4",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"External volume\",\"value\":64,\"unit\":\"ft3\"},{\"label\":\"Tare mass\",\"value\":120,\"unit\":\"lb\"},{\"label\":\"Payload\",\"value\":900,\"unit\":\"lb\"}]",
+      "geometry": "17",
+      "id": "AS-03",
+      "pageWidth": 1440,
+      "painted": "AS-03",
+      "quality": "studio",
+      "ready": "AS-03",
+      "renderMs": "85.70",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Packaging asset twin",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-03.jpg",
+        "format": "jpeg",
+        "sha256": "6f02e8551065a50a6d36c64a8794b97273c4b84fbed3a0cf1f062f9f6aa5cfc1"
+      },
+      "capturedAt": "2026-10-29T17:33:20.893Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "144",
+      "camera": "{\"position\":[26.853994027189543,28.446494028903174,26.82023441555315],\"target\":[0.040000000000000036,1.6325000017136337,0.006240388363599746],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "62",
+      "entities": "2",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Body length\",\"value\":28,\"unit\":\"ft\"},{\"label\":\"Door width\",\"value\":92,\"unit\":\"in\"},{\"label\":\"Tare\",\"value\":7200,\"unit\":\"lb\"},{\"label\":\"Geometric cavity\",\"value\":56.45505600000001,\"unit\":\"m³\"},{\"label\":\"Payload rating\",\"value\":\"undeclared\",\"unit\":\"\"}]",
+      "geometry": "15",
+      "id": "AS-04",
+      "pageWidth": 1440,
+      "painted": "AS-04",
+      "quality": "studio",
+      "ready": "AS-04",
+      "renderMs": "82.00",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Custom asset forge",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-04.jpg",
+        "format": "jpeg",
+        "sha256": "34fb9d615d55b0a463c5bbef3880d9f126709aae35f65f961043ef01c7cc9c24"
+      },
+      "capturedAt": "2026-10-29T17:33:23.420Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "4",
+      "batchedParts": "240",
+      "camera": "{\"position\":[46.75129015808844,50.541290168221224,48.651290169264314],\"target\":[-1.7750000111758701,2.014999998956919,0.125],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "73",
+      "entities": "2",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Deck length\",\"value\":16,\"unit\":\"m\"},{\"label\":\"Body width\",\"value\":2.45,\"unit\":\"m\"},{\"label\":\"Body height\",\"value\":2.7,\"unit\":\"m\"},{\"label\":\"Tractor wheelbase\",\"value\":6.1,\"unit\":\"m\"},{\"label\":\"Declared fixture mass\",\"value\":18000,\"unit\":\"lb\"}]",
+      "geometry": "18",
+      "id": "AS-05",
+      "pageWidth": 1440,
+      "painted": "AS-05",
+      "quality": "studio",
+      "ready": "AS-05",
+      "renderMs": "94.00",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Dimension tuner",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-05.jpg",
+        "format": "jpeg",
+        "sha256": "cdb6453b7d0b30b23378ab310e1ba32a2db30b8f5a5b2b63e8a512bead0fb65f"
+      },
+      "capturedAt": "2026-10-29T17:33:26.500Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "2393",
+      "camera": "{\"position\":[40.14772193858919,42.05272194227723,40.07997194167374],\"target\":[0.08249999720603186,1.9875000008940702,0.014750000290572496],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "1061",
+      "entities": "55",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Units\",\"value\":54,\"unit\":\"count\"},{\"label\":\"Occupied cube\",\"value\":67.39200000000001,\"unit\":\"m³\"},{\"label\":\"Cube utilization\",\"value\":63.67346938775511,\"unit\":\"%\"}]",
+      "geometry": "348",
+      "id": "AS-06",
+      "pageWidth": 1440,
+      "painted": "AS-06",
+      "quality": "studio",
+      "ready": "AS-06",
+      "renderMs": "109.10",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Container volume and mass budget",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-06.jpg",
+        "format": "jpeg",
+        "sha256": "022367c14484313767fc89c9f1546713697677b684a63c9ca93e5a07f3f65f57"
+      },
+      "capturedAt": "2026-10-29T17:33:28.943Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "2393",
+      "camera": "{\"position\":[40.14772193858919,42.05272194227723,40.07997194167374],\"target\":[0.08249999720603186,1.9875000008940702,0.014750000290572496],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "1061",
+      "entities": "55",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Units\",\"value\":54,\"unit\":\"count\"},{\"label\":\"Occupied cube\",\"value\":67.39200000000001,\"unit\":\"m³\"},{\"label\":\"Cube utilization\",\"value\":63.67346938775511,\"unit\":\"%\"}]",
+      "geometry": "348",
+      "id": "AS-07",
+      "pageWidth": 1440,
+      "painted": "AS-07",
+      "quality": "studio",
+      "ready": "AS-07",
+      "renderMs": "101.60",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Spatial capacity study",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-07.jpg",
+        "format": "jpeg",
+        "sha256": "86eb8316615c5a0b9b05ce05a461a745e68a354a41a380028f0c8c4795564aba"
+      },
+      "capturedAt": "2026-10-29T17:33:31.486Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "57",
+      "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "72",
+      "entities": "1",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "geometry": "18",
+      "id": "AS-08",
+      "pageWidth": 1440,
+      "painted": "AS-08",
+      "quality": "studio",
+      "ready": "AS-08",
+      "renderMs": "29.90",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Trip fuel time and range",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-08.jpg",
+        "format": "jpeg",
+        "sha256": "5a14ea958b44567913382861b3f11179c53887fbf654445cb6a60ae3a6e9a08b"
+      },
+      "capturedAt": "2026-10-29T17:33:35.506Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "6",
+      "batchedParts": "35",
+      "camera": "{\"position\":[4.709513745754905,20.56477566601481,47.09513745754905],\"target\":[0,2.249999988079071,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "48",
+      "entities": "3",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Baseline fuel\",\"value\":100,\"unit\":\"gal\"},{\"label\":\"Alternative fuel\",\"value\":92,\"unit\":\"gal\"},{\"label\":\"Difference\",\"value\":8,\"unit\":\"percent\"}]",
+      "geometry": "10",
+      "id": "AS-09",
+      "pageWidth": 1440,
+      "painted": "AS-09",
+      "quality": "studio",
+      "ready": "AS-09",
+      "renderMs": "26.30",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Carbon and energy study",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-09.jpg",
+        "format": "jpeg",
+        "sha256": "5ffd5e0eae9ea6ab73ceec792fa015fb8108b3c437de5ea4b5ca73abff62eb7f"
+      },
+      "capturedAt": "2026-10-29T17:33:43.902Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "709",
+      "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "313",
+      "entities": "15",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":12,\"unit\":\"count\"}]",
+      "geometry": "98",
+      "id": "AS-10",
+      "pageWidth": 1440,
+      "painted": "AS-10",
+      "quality": "studio",
+      "ready": "AS-10",
+      "renderMs": "85.60",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Multi-stop axle evolution",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-10.jpg",
+        "format": "jpeg",
+        "sha256": "7e5ba9fb069d9da4872e22027d43c4de2376d7e18d01ebe2fc0ed5fe69457457"
+      },
+      "capturedAt": "2026-10-29T17:33:48.828Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "3",
+      "batchedParts": "1172",
+      "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "429",
+      "entities": "21",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Vehicles\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Total units\",\"value\":48,\"unit\":\"count\"},{\"label\":\"Unassigned units\",\"value\":2,\"unit\":\"count\"}]",
+      "geometry": "136",
+      "id": "AS-11",
+      "pageWidth": 1440,
+      "painted": "AS-11",
+      "quality": "studio",
+      "ready": "AS-11",
+      "renderMs": "90.40",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Fleet split alternatives",
+      "top": 0,
+      "valuesOrigin": "example scenario inputs",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-11.jpg",
+        "format": "jpeg",
+        "sha256": "8e26130cf85f8e9c21057939f27cc2fe9a8b7d4faa212b1f2308cba31acc6f72"
+      },
+      "capturedAt": "2026-10-29T17:33:52.629Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "anchors": "5",
+      "batchedParts": "647",
+      "camera": "{\"position\":[49.15750790803715,52.370007913252564,48.647507908186164],\"target\":[0.025000000000000355,3.2375000052154066,-0.48499999985098835],\"zoom\":1}",
+      "clip": {
+        "height": 532,
+        "left": 251,
+        "top": 197,
+        "width": 1156
+      },
+      "drawCalls": "277",
+      "entities": "13",
+      "error": null,
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "geometry": "86",
+      "id": "AS-12",
+      "pageWidth": 1440,
+      "painted": "AS-12",
+      "quality": "studio",
+      "ready": "AS-12",
+      "renderMs": "79.50",
+      "review": "AWAITING YOUR REVIEW",
+      "revision": "8e539f3c2c669d86",
+      "title": "Sensor topology study",
+      "top": 0,
+      "valuesOrigin": "authored scene fixture",
+      "viewport": {
+        "height": 1024,
+        "width": 1440
+      },
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/AS-12.jpg",
+        "format": "jpeg",
+        "sha256": "3ee3fe31b8c0ad3a8a3974cf9b1e0520b9137b6375c3b96ed99943554f8c8399"
+      },
+      "capturedAt": "2026-10-29T17:33:56.793Z",
+      "deliveredEncoding": "PNG conversion of preserved JPEG original; no resize or composition change"
+    },
+    {
+      "batchedParts": "2275",
+      "quality": "studio",
+      "ready": "WH-01",
+      "entities": "63",
+      "anchors": "2",
+      "geometry": "372",
+      "fixtureMetrics": "[{\"label\":\"Fixture rack bays\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Floor area\",\"value\":432,\"unit\":\"m²\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "89.30",
+      "drawCalls": "1126",
+      "camera": "{\"position\":[38.49833089390015,42.89333092213785,42.2933309098444],\"target\":[-1.8700000282377,2.5250000000000004,1.924999987706542],\"zoom\":1}",
+      "painted": "WH-01",
+      "id": "WH-01",
+      "title": "Facility spatial overview",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-01.png",
+        "format": "png",
+        "sha256": "9bfb6d876af09db3638ab5f25262504d93da2619213f41ca3173676de6ea0a8e"
+      },
+      "capturedAt": "2026-10-29T18:43:58.837Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "71",
+      "quality": "studio",
+      "ready": "WH-02",
+      "entities": "2",
+      "anchors": "3",
+      "geometry": "16",
+      "fixtureMetrics": "[{\"label\":\"Cell width\",\"value\":52,\"unit\":\"in\"},{\"label\":\"Unit width\",\"value\":48,\"unit\":\"in\"},{\"label\":\"Unit mass\",\"value\":1200,\"unit\":\"lb\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "116.80",
+      "drawCalls": "62",
+      "camera": "{\"position\":[20.726874666488524,22.45187466648853,20.726874666488527],\"target\":[0,1.725,0],\"zoom\":1}",
+      "painted": "WH-02",
+      "id": "WH-02",
+      "title": "Rack cell dimensional fit",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-02.png",
+        "format": "png",
+        "sha256": "fd1dddc6b1969501298d917a11e9c3be3cc7e5d3f43bce21863393f3ecb4a582"
+      },
+      "capturedAt": "2026-10-29T18:44:04.760Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "524",
+      "quality": "studio",
+      "ready": "WH-03",
+      "entities": "16",
+      "anchors": "4",
+      "geometry": "99",
+      "fixtureMetrics": "[{\"label\":\"Chilled units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Frozen units\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Mismatched units\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "64.60",
+      "drawCalls": "313",
+      "camera": "{\"position\":[44.10956089644988,45.83456089644989,44.109560896449885],\"target\":[0,1.725,0],\"zoom\":1}",
+      "painted": "WH-03",
+      "id": "WH-03",
+      "title": "Environmental zone allocation",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-03.png",
+        "format": "png",
+        "sha256": "f26ba65da040e0623103a8bd08f3b34ec2f357eec8ecf229d510b4bbca846e16"
+      },
+      "capturedAt": "2026-10-29T18:44:06.124Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "344",
+      "quality": "studio",
+      "ready": "WH-04",
+      "entities": "11",
+      "anchors": "5",
+      "geometry": "101",
+      "fixtureMetrics": "[{\"label\":\"Handling unit\",\"value\":\"HU-01\",\"unit\":\"\"},{\"label\":\"Load height\",\"value\":1.3,\"unit\":\"m\"},{\"label\":\"Target clear height\",\"value\":1.4,\"unit\":\"m\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "85.10",
+      "drawCalls": "338",
+      "camera": "{\"position\":[30.026359217330665,32.95135922887908,31.101359204664686],\"target\":[-0.4000000115483999,2.5250000000000004,0.6749999757856131],\"zoom\":1}",
+      "painted": "WH-04",
+      "id": "WH-04",
+      "title": "Inbound putaway recommendation",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-04.png",
+        "format": "png",
+        "sha256": "fbb0b0b69d80ca236a51e6163942faa212a0855f64638caed400623b49feffaf"
+      },
+      "capturedAt": "2026-10-29T18:44:07.331Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "212",
+      "quality": "studio",
+      "ready": "WH-05",
+      "entities": "4",
+      "anchors": "3",
+      "geometry": "32",
+      "fixtureMetrics": "[{\"label\":\"Container interior fixture\",\"value\":38.25275636,\"unit\":\"m³\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "67.90",
+      "drawCalls": "111",
+      "camera": "{\"position\":[22.22091079280363,23.608660793027152,22.210660792595018],\"target\":[-0.01024999850988384,1.3775000017136338,-0.020499998718500168],\"zoom\":1}",
+      "painted": "WH-05",
+      "id": "WH-05",
+      "title": "Nested moveable containers",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-05.png",
+        "format": "png",
+        "sha256": "0b423d6b29c93c5892431cb5c29d74eb0e542ca7b771198e4f3d536ccf385df0"
+      },
+      "capturedAt": "2026-10-29T18:44:08.489Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "60",
+      "quality": "studio",
+      "ready": "WH-06",
+      "entities": "2",
+      "anchors": "3",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Expected units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Matched scans\",\"value\":17,\"unit\":\"count\"},{\"label\":\"Open discrepancies\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "56.90",
+      "drawCalls": "68",
+      "camera": "{\"position\":[22.22770771986472,23.577707731413128,22.172707732828737],\"target\":[0.37499998845159993,1.725,0.32000000141561025],\"zoom\":1}",
+      "painted": "WH-06",
+      "id": "WH-06",
+      "title": "Receiving scan verification",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-06.png",
+        "format": "png",
+        "sha256": "f649abf782075e84a482a4f8b01c568b3a3ed067b11053726f5f509fd632d062"
+      },
+      "capturedAt": "2026-10-29T18:44:09.473Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "514",
+      "quality": "studio",
+      "ready": "WH-07",
+      "entities": "13",
+      "anchors": "3",
+      "geometry": "87",
+      "fixtureMetrics": "[{\"label\":\"Travel distance\",\"value\":180,\"unit\":\"ft\"},{\"label\":\"Turns\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Lift height\",\"value\":10,\"unit\":\"ft\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "64.20",
+      "drawCalls": "275",
+      "camera": "{\"position\":[30.98378796190787,32.65230846006551,30.933899620975588],\"target\":[0.05494560336398768,1.723466101521626,0.005057262431702014],\"zoom\":1}",
+      "painted": "WH-07",
+      "id": "WH-07",
+      "title": "Forklift travel preview",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-07.png",
+        "format": "png",
+        "sha256": "9a3d7b444acb026466e707ac7a8cc8c11dd5ec1c7952ac3a329a198cbd8807aa"
+      },
+      "capturedAt": "2026-10-29T18:44:10.388Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "166",
+      "quality": "studio",
+      "ready": "WH-08",
+      "entities": "3",
+      "anchors": "2",
+      "geometry": "28",
+      "fixtureMetrics": "[{\"label\":\"Held units\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Reserved cells\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Released units\",\"value\":0,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "61.50",
+      "drawCalls": "100",
+      "camera": "{\"position\":[22.54552800153106,23.401777995533344,22.545528001531064],\"target\":[0,0.8562499940022826,0],\"zoom\":1}",
+      "painted": "WH-08",
+      "id": "WH-08",
+      "title": "Inventory hold and quarantine",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-08.png",
+        "format": "png",
+        "sha256": "48000b89c4d65191d59af71929365b30405dcd02a7c2fd73c5e3fb824da483b8"
+      },
+      "capturedAt": "2026-10-29T18:44:11.170Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "2830",
+      "quality": "studio",
+      "ready": "WH-09",
+      "entities": "78",
+      "anchors": "3",
+      "geometry": "465",
+      "fixtureMetrics": "[{\"label\":\"Fixture rack bays\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Floor area\",\"value\":432,\"unit\":\"m²\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "80.30",
+      "drawCalls": "1399",
+      "camera": "{\"position\":[38.49833089390015,42.89333092213785,42.2933309098444],\"target\":[-1.8700000282377,2.5250000000000004,1.924999987706542],\"zoom\":1}",
+      "painted": "WH-09",
+      "id": "WH-09",
+      "title": "Capacity and occupancy layers",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-09.png",
+        "format": "png",
+        "sha256": "87516d6e235477988a4d371fb4d9d3a866c84d71ac60b28573fa61968fc28861"
+      },
+      "capturedAt": "2026-10-29T18:44:13.122Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "170",
+      "quality": "studio",
+      "ready": "WH-10",
+      "entities": "6",
+      "anchors": "4",
+      "geometry": "45",
+      "fixtureMetrics": "[{\"label\":\"Canonical handling unit\",\"value\":\"HU-01\",\"unit\":\"\"},{\"label\":\"Sequence stages\",\"value\":3,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "75.80",
+      "drawCalls": "151",
+      "camera": "{\"position\":[38.15467759750607,40.49967760301951,40.17467761680308],\"target\":[-0.3950000166893006,1.949999988824129,1.625000002607703],\"zoom\":1}",
+      "painted": "WH-10",
+      "id": "WH-10",
+      "title": "Dock-to-rack receiving sequence",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-10.png",
+        "format": "png",
+        "sha256": "b9cb14a8448714378bf94a3fa5466ef48f55f0977d6e8b6b15b8640a1e839331"
+      },
+      "capturedAt": "2026-10-29T18:44:14.441Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "473",
+      "quality": "studio",
+      "ready": "WH-11",
+      "entities": "14",
+      "anchors": "3",
+      "geometry": "90",
+      "fixtureMetrics": "[{\"label\":\"Inbound units\",\"value\":24,\"unit\":\"count\"},{\"label\":\"Transferred units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Staged units\",\"value\":6,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "68.80",
+      "drawCalls": "288",
+      "camera": "{\"position\":[46.895617671386155,48.00811768449918,46.05811768330709],\"target\":[0.8374999880790712,1.950000001192093,0],\"zoom\":1}",
+      "painted": "WH-11",
+      "id": "WH-11",
+      "title": "Cross-dock staging experiment",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-11.png",
+        "format": "png",
+        "sha256": "9ee48bc95714a853c687664361a20cba184620df28a4857561436099ae5f2a3a"
+      },
+      "capturedAt": "2026-10-29T18:44:15.415Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "69",
+      "quality": "studio",
+      "ready": "WH-12",
+      "entities": "2",
+      "anchors": "3",
+      "geometry": "14",
+      "fixtureMetrics": "[{\"label\":\"Expected units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Scanned units\",\"value\":17,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "27.40",
+      "drawCalls": "58",
+      "camera": "{\"position\":[27.941040623358326,28.221040623358327,27.572607670451966],\"target\":[0,0.28,-0.36843295290636346],\"zoom\":1}",
+      "painted": "WH-12",
+      "id": "WH-12",
+      "title": "Receipt discrepancy and evidence",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/WH-12.png",
+        "format": "png",
+        "sha256": "758d7ba62727b367d7b59b00b18367f5a3636a2698a4c0e9cff89ef52ad9188d"
+      },
+      "capturedAt": "2026-10-29T18:44:16.473Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "129",
+      "quality": "studio",
+      "ready": "YD-01",
+      "entities": "9",
+      "anchors": "2",
+      "geometry": "62",
+      "fixtureMetrics": "[{\"label\":\"Dock doors\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Yard spots\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Parked trailers\",\"value\":9,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "31.20",
+      "drawCalls": "190",
+      "camera": "{\"position\":[51.3841739578767,53.33417395906879,50.03897856908276],\"target\":[0,1.9500000011920928,-1.345195388793945],\"zoom\":1}",
+      "painted": "YD-01",
+      "id": "YD-01",
+      "title": "Yard and dock overview",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-01.png",
+        "format": "png",
+        "sha256": "e6feb68cd0e38b0f57f9348fbb182894347b8425a0492e72833ddb7d49c1f680"
+      },
+      "capturedAt": "2026-10-29T18:44:17.287Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "112",
+      "quality": "studio",
+      "ready": "YD-02",
+      "entities": "7",
+      "anchors": "2",
+      "geometry": "42",
+      "fixtureMetrics": "[{\"label\":\"Available doors\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Occupied doors\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Reserved doors\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "24.80",
+      "drawCalls": "142",
+      "camera": "{\"position\":[38.18594700241934,40.135947003611435,37.12469700251248],\"target\":[0,1.9500000011920928,-1.0612499999068676],\"zoom\":1}",
+      "painted": "YD-02",
+      "id": "YD-02",
+      "title": "Door compatibility and occupancy",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-02.png",
+        "format": "png",
+        "sha256": "02b3b697289d8fa36c12a05d7c674629da3845af9e292c4173b11e10b50d9ad4"
+      },
+      "capturedAt": "2026-10-29T18:44:22.863Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "623",
+      "quality": "studio",
+      "ready": "YD-03",
+      "entities": "9",
+      "anchors": "2",
+      "geometry": "42",
+      "fixtureMetrics": "[{\"label\":\"Trailer length\",\"value\":53,\"unit\":\"ft\"},{\"label\":\"Payload\",\"value\":22000,\"unit\":\"lb\"},{\"label\":\"Dwell time\",\"value\":85,\"unit\":\"min\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "68.90",
+      "drawCalls": "139",
+      "camera": "{\"position\":[37.90156446786733,38.86978947433443,36.75808946741135],\"target\":[1.2407750013411047,2.2090000078082084,0.09730000088512858],\"zoom\":1}",
+      "painted": "YD-03",
+      "id": "YD-03",
+      "title": "Drop-lot trailer locator",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-03.png",
+        "format": "png",
+        "sha256": "f850fbb7be6b5a455deed18b3c0f00ea31cda56bb7e89d0082fa00c6718dc4cd"
+      },
+      "capturedAt": "2026-10-29T18:44:24.828Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "45",
+      "quality": "studio",
+      "ready": "YD-04",
+      "entities": "2",
+      "anchors": "2",
+      "geometry": "20",
+      "fixtureMetrics": "[{\"label\":\"Queue size\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Destination door\",\"value\":6,\"unit\":\"index\"},{\"label\":\"Travel length\",\"value\":420,\"unit\":\"ft\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "22.50",
+      "drawCalls": "76",
+      "camera": "{\"position\":[39.29108776302405,40.84608773560593,38.796087734246186],\"target\":[0.3950000286102293,1.9500000011920928,-0.10000000016763799],\"zoom\":1}",
+      "painted": "YD-04",
+      "id": "YD-04",
+      "title": "Gate check-in destination",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-04.png",
+        "format": "png",
+        "sha256": "0ab79f5395d7fbc545590751e164e1d43c023dd05e3776ab6b1f5a5e88451489"
+      },
+      "capturedAt": "2026-10-29T18:44:26.095Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "222",
+      "quality": "studio",
+      "ready": "YD-05",
+      "entities": "3",
+      "anchors": "2",
+      "geometry": "28",
+      "fixtureMetrics": "[{\"label\":\"Move length\",\"value\":280,\"unit\":\"ft\"},{\"label\":\"Assigned hostler\",\"value\":3,\"unit\":\"index\"},{\"label\":\"Queue priority\",\"value\":1,\"unit\":\"index\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "68.60",
+      "drawCalls": "99",
+      "camera": "{\"position\":[41.694609180816634,42.171428260317086,42.39681182911804],\"target\":[0.4980470104083272,0.974866089908779,1.200249658709727],\"zoom\":1}",
+      "painted": "YD-05",
+      "id": "YD-05",
+      "title": "Hostler move preview",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-05.png",
+        "format": "png",
+        "sha256": "949b8b405927083bc1453bfd4fc8c7dc5a3de997939021869b5f6e252126156e"
+      },
+      "capturedAt": "2026-10-29T18:44:28.297Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "222",
+      "quality": "studio",
+      "ready": "YD-06",
+      "entities": "3",
+      "anchors": "2",
+      "geometry": "28",
+      "fixtureMetrics": "[{\"label\":\"Move duration\",\"value\":6,\"unit\":\"min\"},{\"label\":\"Source occupancy\",\"value\":0,\"unit\":\"count\"},{\"label\":\"Target occupancy\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "70.40",
+      "drawCalls": "99",
+      "camera": "{\"position\":[41.694609180816634,42.171428260317086,42.39681182911804],\"target\":[0.4980470104083272,0.974866089908779,1.200249658709727],\"zoom\":1}",
+      "painted": "YD-06",
+      "id": "YD-06",
+      "title": "Hostler move execution replay",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-06.png",
+        "format": "png",
+        "sha256": "082e08e0716686e9b2a9f712181ccdcf045af96da7752b4a4165df7cd6652550"
+      },
+      "capturedAt": "2026-10-29T18:44:29.459Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "61",
+      "quality": "studio",
+      "ready": "YD-07",
+      "entities": "6",
+      "anchors": "4",
+      "geometry": "30",
+      "fixtureMetrics": "[{\"label\":\"Elapsed dwell\",\"value\":135,\"unit\":\"min\"},{\"label\":\"Free time\",\"value\":120,\"unit\":\"min\"},{\"label\":\"Scenario charge\",\"value\":21.25,\"unit\":\"USD\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "35.10",
+      "drawCalls": "100",
+      "camera": "{\"position\":[5.112910045297788,21.87451128763135,52.37410044139222],\"target\":[-0.12625000009313192,1.5,-0.017500012516975305],\"zoom\":1}",
+      "painted": "YD-07",
+      "id": "YD-07",
+      "title": "Detention urgency on location",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-07.png",
+        "format": "png",
+        "sha256": "add600d547cf8a8075bbf2d7cc9455951692657e4a38dcc09cc9c2625c134485"
+      },
+      "capturedAt": "2026-10-29T18:44:31.356Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "629",
+      "quality": "studio",
+      "ready": "YD-08",
+      "entities": "9",
+      "anchors": "2",
+      "geometry": "45",
+      "fixtureMetrics": "[{\"label\":\"Setpoint\",\"value\":34,\"unit\":\"F\"},{\"label\":\"Current temperature\",\"value\":35.2,\"unit\":\"F\"},{\"label\":\"Dwell\",\"value\":46,\"unit\":\"min\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "63.90",
+      "drawCalls": "148",
+      "camera": "{\"position\":[38.582950167819455,39.827700174621825,37.71600016769876],\"target\":[0.9642500010058281,2.2090000078082084,0.09730000088512857],\"zoom\":1}",
+      "painted": "YD-08",
+      "id": "YD-08",
+      "title": "Reefer parking and condition",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-08.png",
+        "format": "png",
+        "sha256": "56206e4b7644a117117fdf39ea74059ed0e3ad26c291a14845e74ad9ebb590c7"
+      },
+      "capturedAt": "2026-10-29T18:44:32.236Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "67",
+      "quality": "studio",
+      "ready": "YD-09",
+      "entities": "1",
+      "anchors": "2",
+      "geometry": "15",
+      "fixtureMetrics": "[{\"label\":\"Held trailers\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Inspection bays\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Pending checks\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.20",
+      "drawCalls": "63",
+      "camera": "{\"position\":[22.54552800153106,23.401777995533344,22.545528001531064],\"target\":[0,0.8562499940022826,0],\"zoom\":1}",
+      "painted": "YD-09",
+      "id": "YD-09",
+      "title": "Inspection and hold bay",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-09.png",
+        "format": "png",
+        "sha256": "38b1bc2698279f298d0a2b04a164a8fd32bc84d617925a211ab7156166afb20c"
+      },
+      "capturedAt": "2026-10-29T18:44:33.325Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "123",
+      "quality": "studio",
+      "ready": "YD-10",
+      "entities": "7",
+      "anchors": "3",
+      "geometry": "44",
+      "fixtureMetrics": "[{\"label\":\"Appointments\",\"value\":8,\"unit\":\"count\"},{\"label\":\"Parallel doors\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Window length\",\"value\":30,\"unit\":\"min\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "23.40",
+      "drawCalls": "148",
+      "camera": "{\"position\":[38.18594700241934,40.135947003611435,39.52344700539958],\"target\":[0,1.950000001192093,1.3375000029802324],\"zoom\":1}",
+      "painted": "YD-10",
+      "id": "YD-10",
+      "title": "Appointment capacity over time",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-10.png",
+        "format": "png",
+        "sha256": "14b395b07af82ff3240309484114ecdb49c0a9b094dc7ea069c53b75e0f0b1e6"
+      },
+      "capturedAt": "2026-10-29T18:44:34.307Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "226",
+      "quality": "studio",
+      "ready": "YD-11",
+      "entities": "21",
+      "anchors": "4",
+      "geometry": "101",
+      "fixtureMetrics": "[{\"label\":\"Available doors\",\"value\":0,\"unit\":\"count\"},{\"label\":\"Empty yard spots\",\"value\":0,\"unit\":\"count\"},{\"label\":\"Held arrivals\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Alternative holding capacity\",\"value\":\"undeclared\",\"unit\":\"\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "26.60",
+      "drawCalls": "309",
+      "camera": "{\"position\":[68.9726312259966,68.92263122718869,66.8226312259966],\"target\":[2,1.9500000011920928,-0.14999999999999947],\"zoom\":1}",
+      "painted": "YD-11",
+      "id": "YD-11",
+      "title": "Full-yard recovery",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-11.png",
+        "format": "png",
+        "sha256": "b0ca2e7b10c483e80e962897997182215e2e2996597e6a5ed2641b7d7f3be046"
+      },
+      "capturedAt": "2026-10-29T18:44:39.910Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "277",
+      "quality": "studio",
+      "ready": "YD-12",
+      "entities": "13",
+      "anchors": "3",
+      "geometry": "86",
+      "fixtureMetrics": "[{\"label\":\"Unloaded units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Reserved slots\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Unmatched units\",\"value\":0,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "91.80",
+      "drawCalls": "262",
+      "camera": "{\"position\":[51.3841739578767,53.33417395906879,50.03897856908276],\"target\":[0,1.9500000011920928,-1.345195388793945],\"zoom\":1}",
+      "painted": "YD-12",
+      "id": "YD-12",
+      "title": "Yard-to-warehouse handoff",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/YD-12.png",
+        "format": "png",
+        "sha256": "a300c227c63d8a57515b945ed5faf2f0beaac921a231766c389d22f28b51ebd0"
+      },
+      "capturedAt": "2026-10-29T18:44:40.737Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "637",
+      "quality": "studio",
+      "ready": "TM-01",
+      "entities": "13",
+      "anchors": "4",
+      "geometry": "85",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "90.90",
+      "drawCalls": "274",
+      "camera": "{\"position\":[49.15750790803715,51.44250791638181,49.132507908037155],\"target\":[0.025000000000000355,2.3100000083446504,0],\"zoom\":1}",
+      "painted": "TM-01",
+      "id": "TM-01",
+      "title": "Selected vehicle telemetry twin",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-01.png",
+        "format": "png",
+        "sha256": "26acbee5993205a897ef3885a94d14a986cb880e69f2c04ef67c0f35c2e9112a"
+      },
+      "capturedAt": "2026-10-29T18:45:14.147Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "43",
+      "quality": "studio",
+      "ready": "TM-02",
+      "entities": "1",
+      "anchors": "2",
+      "geometry": "14",
+      "fixtureMetrics": "[{\"label\":\"Active faults\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Coolant temperature\",\"value\":218,\"unit\":\"F\"},{\"label\":\"Oil pressure\",\"value\":38,\"unit\":\"psi\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.60",
+      "drawCalls": "60",
+      "camera": "{\"position\":[28.867513459481287,30.692513456501057,28.867513459481295],\"target\":[0,1.8249999970197677,0],\"zoom\":1}",
+      "painted": "TM-02",
+      "id": "TM-02",
+      "title": "Diagnostic fault localization",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-02.png",
+        "format": "png",
+        "sha256": "5da438705d090d644f0a2dbe6526c9cb4463fb8b1423bc7b1911be134c7c4d0d"
+      },
+      "capturedAt": "2026-10-29T18:45:17.167Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "485",
+      "quality": "studio",
+      "ready": "TM-03",
+      "entities": "9",
+      "anchors": "4",
+      "geometry": "65",
+      "fixtureMetrics": "[{\"label\":\"Zone 1\",\"value\":35.2,\"unit\":\"°F\"},{\"label\":\"Zone 1 setpoint\",\"value\":34,\"unit\":\"°F\"},{\"label\":\"Zone 2\",\"value\":2,\"unit\":\"°F\"},{\"label\":\"Return air\",\"value\":\"unknown\",\"unit\":\"\"},{\"label\":\"Compressor\",\"value\":\"unknown\",\"unit\":\"\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "61.80",
+      "drawCalls": "212",
+      "camera": "{\"position\":[48.420931145530645,50.670931152981225,48.560931144636584],\"target\":[-0.13999999910592997,2.11000000834465,0],\"zoom\":1}",
+      "painted": "TM-03",
+      "id": "TM-03",
+      "title": "Reefer zone cutaway",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-03.png",
+        "format": "png",
+        "sha256": "9c82fad87c17755f01d7596167efe2a9cd735315e3b2d468fdf868629394e99d"
+      },
+      "capturedAt": "2026-10-29T18:45:18.278Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "627",
+      "quality": "studio",
+      "ready": "TM-04",
+      "entities": "13",
+      "anchors": "3",
+      "geometry": "89",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "53.80",
+      "drawCalls": "289",
+      "camera": "{\"position\":[49.45499996849543,51.36585900505702,49.74671814125637],\"target\":[0.09164096969689961,2.002500006258488,0.3833591424578367],\"zoom\":1}",
+      "painted": "TM-04",
+      "id": "TM-04",
+      "title": "Door-open thermal sequence",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-04.png",
+        "format": "png",
+        "sha256": "caa69c94b020182da6f7da2a0cbecb3f3bc3272d0bfbce2a026061406a1f9f13"
+      },
+      "capturedAt": "2026-10-29T18:45:31.992Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "79",
+      "quality": "studio",
+      "ready": "TM-05",
+      "entities": "3",
+      "anchors": "4",
+      "geometry": "29",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "24.90",
+      "drawCalls": "105",
+      "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+      "painted": "TM-05",
+      "id": "TM-05",
+      "title": "Fleet on corridor",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-05.png",
+        "format": "png",
+        "sha256": "13a434cd05327b61fac6c94098bdc3d5832f2870f64918e4b7b0c33c49266be2"
+      },
+      "capturedAt": "2026-10-29T18:45:33.727Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "56",
+      "quality": "studio",
+      "ready": "TM-06",
+      "entities": "1",
+      "anchors": "2",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "49.40",
+      "drawCalls": "73",
+      "camera": "{\"position\":[50.241364161695635,51.00944412742353,50.00444412503935],\"target\":[-0.06307996334370358,0.7050000023841858,-0.2999999999999998],\"zoom\":1}",
+      "painted": "TM-06",
+      "id": "TM-06",
+      "title": "Geofence approach and arrival",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-06.png",
+        "format": "png",
+        "sha256": "3596efa2b5bc7f00f7075c84b1442561eec41a8514f897d6083db76974b969b7"
+      },
+      "capturedAt": "2026-10-29T18:45:34.787Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "42",
+      "quality": "studio",
+      "ready": "TM-07",
+      "entities": "1",
+      "anchors": "2",
+      "geometry": "15",
+      "fixtureMetrics": "[{\"label\":\"Engine load\",\"value\":64,\"unit\":\"percent\"},{\"label\":\"Fuel level\",\"value\":72,\"unit\":\"percent\"},{\"label\":\"DEF level\",\"value\":81,\"unit\":\"percent\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "21.30",
+      "drawCalls": "63",
+      "camera": "{\"position\":[28.867513459481287,30.692513456501057,28.867513459481295],\"target\":[0,1.8249999970197677,0],\"zoom\":1}",
+      "painted": "TM-07",
+      "id": "TM-07",
+      "title": "Engine and fuel circuit",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-07.png",
+        "format": "png",
+        "sha256": "a3c8a1bc6d8051877504aaf06e17c933c0332db5f922c226decd6a9be5dac70e"
+      },
+      "capturedAt": "2026-10-29T18:45:35.984Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "680",
+      "quality": "studio",
+      "ready": "TM-08",
+      "entities": "13",
+      "anchors": "2",
+      "geometry": "87",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "50.10",
+      "drawCalls": "280",
+      "camera": "{\"position\":[48.420931145530645,50.55743114547849,48.560931144636584],\"target\":[-0.13999999910592997,1.996500000841916,0],\"zoom\":1}",
+      "painted": "TM-08",
+      "id": "TM-08",
+      "title": "Driver safety event replay",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-08.png",
+        "format": "png",
+        "sha256": "dc119f501e95f19f9d0da153f33c7232e61976dc7ee6956d0c3f4698247584a6"
+      },
+      "capturedAt": "2026-10-29T18:45:36.857Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "622",
+      "quality": "studio",
+      "ready": "TM-09",
+      "entities": "16",
+      "anchors": "2",
+      "geometry": "267",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "69.80",
+      "drawCalls": "885",
+      "camera": "{\"position\":[48.420931145530645,50.638431150895066,48.77343114508362],\"target\":[-0.13999999910592997,2.0775000062584876,0.21250000044703476],\"zoom\":1}",
+      "painted": "TM-09",
+      "id": "TM-09",
+      "title": "Planned versus reported vehicle",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-09.png",
+        "format": "png",
+        "sha256": "44141b14f4c8f75741fcceeb0473f9b49e03494174b8f21bb9dcb81690b57535"
+      },
+      "capturedAt": "2026-10-29T18:45:37.848Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "296",
+      "quality": "studio",
+      "ready": "TM-10",
+      "entities": "12",
+      "anchors": "4",
+      "geometry": "42",
+      "fixtureMetrics": "[{\"label\":\"Fresh sensors\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Stale sensors\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Missing sensors\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Transport\",\"value\":\"reconnecting\",\"unit\":\"\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "76.20",
+      "drawCalls": "143",
+      "camera": "{\"position\":[49.15750790803715,51.67250791273102,48.84750790520594],\"target\":[0.025000000000000355,2.5400000046938658,-0.28500000283122073],\"zoom\":1}",
+      "painted": "TM-10",
+      "id": "TM-10",
+      "title": "Sensor freshness and dropout",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-10.png",
+        "format": "png",
+        "sha256": "c6848eff44b13a3eed095ac180f39bcf3ceac6ec84bb5e98a66bf72e91595b8e"
+      },
+      "capturedAt": "2026-10-29T18:45:38.717Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "60",
+      "quality": "studio",
+      "ready": "TM-11",
+      "entities": "1",
+      "anchors": "3",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.00",
+      "drawCalls": "72",
+      "camera": "{\"position\":[50.210443209536265,51.909100883403624,49.84362158643116],\"target\":[-0.06865767744363804,1.6299999964237215,-0.43547930054874856],\"zoom\":1}",
+      "painted": "TM-11",
+      "id": "TM-11",
+      "title": "Elevation load and range",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-11.png",
+        "format": "png",
+        "sha256": "01cbbacd611421259891de6c6b53759104b5aa3e3869e5545e45eed32f3d80aa"
+      },
+      "capturedAt": "2026-10-29T18:45:39.425Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "132",
+      "quality": "studio",
+      "ready": "TM-12",
+      "entities": "9",
+      "anchors": "2",
+      "geometry": "63",
+      "fixtureMetrics": "[{\"label\":\"Arrival vehicles\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Appointment window\",\"value\":30,\"unit\":\"min\"},{\"label\":\"Gate wait\",\"value\":9,\"unit\":\"min\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "26.10",
+      "drawCalls": "193",
+      "camera": "{\"position\":[51.3841739578767,53.33417395906879,50.03897856908276],\"target\":[0,1.9500000011920928,-1.345195388793945],\"zoom\":1}",
+      "painted": "TM-12",
+      "id": "TM-12",
+      "title": "Telemetry-to-yard arrival",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TM-12.png",
+        "format": "png",
+        "sha256": "65481d9868e44286c97f131bca5142ed6dfe6ee5e646ff51b9fa46051ffa661b"
+      },
+      "capturedAt": "2026-10-29T18:45:40.157Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "40",
+      "quality": "studio",
+      "ready": "PR-01",
+      "entities": "4",
+      "anchors": "4",
+      "geometry": "14",
+      "fixtureMetrics": "[{\"label\":\"Linehaul\",\"value\":2200,\"unit\":\"USD\"},{\"label\":\"Fuel surcharge\",\"value\":420,\"unit\":\"USD\"},{\"label\":\"Accessorials\",\"value\":150,\"unit\":\"USD\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "22.10",
+      "drawCalls": "60",
+      "camera": "{\"position\":[4.431118844528014,19.23212883779918,42.73118844468409],\"target\":[0,1.9999999979680232,-1.5800000005960464],\"zoom\":1}",
+      "painted": "PR-01",
+      "id": "PR-01",
+      "title": "Equipment-linked quote",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-01.png",
+        "format": "png",
+        "sha256": "6ced877f7f3a0349127aa4dd4e02176c05b897dbcebc29ca875777584838d452"
+      },
+      "capturedAt": "2026-10-29T18:45:40.882Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "49",
+      "quality": "studio",
+      "ready": "PR-02",
+      "entities": "6",
+      "anchors": "18",
+      "geometry": "13",
+      "fixtureMetrics": "[{\"label\":\"Cost subtotal\",\"value\":875,\"unit\":\"USD\"},{\"label\":\"Margin\",\"value\":165,\"unit\":\"USD\"},{\"label\":\"Components total\",\"value\":1040,\"unit\":\"USD\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "18.80",
+      "drawCalls": "57",
+      "camera": "{\"position\":[8.994777662739441,30.696135411540947,73.01377666354463],\"target\":[1.6599999964237204,2.1720000425353647,-0.33399999961256976],\"zoom\":1}",
+      "painted": "PR-02",
+      "id": "PR-02",
+      "title": "Three-dimensional cost waterfall",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-02.png",
+        "format": "png",
+        "sha256": "d37bd28729b44f1ff032f3d31720e9edd6a77aeb0f4c587dbe96dabb951444c1"
+      },
+      "capturedAt": "2026-10-29T18:45:41.604Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "49",
+      "quality": "studio",
+      "ready": "PR-03",
+      "entities": "6",
+      "anchors": "8",
+      "geometry": "16",
+      "fixtureMetrics": "[{\"label\":\"Operating cost\",\"value\":1800,\"unit\":\"USD\"},{\"label\":\"Quoted revenue\",\"value\":2000,\"unit\":\"USD\"},{\"label\":\"Target ratio\",\"value\":90,\"unit\":\"percent\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "21.60",
+      "drawCalls": "66",
+      "camera": "{\"position\":[5.41942075715838,23.57552511904331,54.194207571583796],\"target\":[0,2.4999999523162844,0],\"zoom\":1}",
+      "painted": "PR-03",
+      "id": "PR-03",
+      "title": "Margin and operating-ratio landscape",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-03.png",
+        "format": "png",
+        "sha256": "8f1da4afc792e654061b81cfc60d859c24c5b7d36aa206193c2d9e2a69e2c384"
+      },
+      "capturedAt": "2026-10-29T18:45:42.377Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "56",
+      "quality": "studio",
+      "ready": "PR-04",
+      "entities": "1",
+      "anchors": "3",
+      "geometry": "17",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.60",
+      "drawCalls": "69",
+      "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+      "painted": "PR-04",
+      "id": "PR-04",
+      "title": "Loaded and deadhead economics",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-04.png",
+        "format": "png",
+        "sha256": "ae3213187a262109308ca98572c6da31aad2eec485fcdba5e677a93295002b4f"
+      },
+      "capturedAt": "2026-10-29T18:45:43.075Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "39",
+      "quality": "studio",
+      "ready": "PR-05",
+      "entities": "4",
+      "anchors": "9",
+      "geometry": "14",
+      "fixtureMetrics": "[{\"label\":\"Benchmark\",\"value\":3.8,\"unit\":\"USD/gal\"},{\"label\":\"Operator price\",\"value\":4.1,\"unit\":\"USD/gal\"},{\"label\":\"Trip fuel\",\"value\":150,\"unit\":\"gal\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "17.70",
+      "drawCalls": "60",
+      "camera": "{\"position\":[5.110624567963308,22.34687326025266,52.9787456849975],\"target\":[-0.09999999999999964,2.0833332737286887,0.8725000053644181],\"zoom\":1}",
+      "painted": "PR-05",
+      "id": "PR-05",
+      "title": "Fuel index sensitivity",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-05.png",
+        "format": "png",
+        "sha256": "c66c52ba6440528770c62071ac828ab2f24296b06b33c2ef1dec9d97dd033b8a"
+      },
+      "capturedAt": "2026-10-29T18:45:43.765Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "65",
+      "quality": "studio",
+      "ready": "PR-06",
+      "entities": "4",
+      "anchors": "6",
+      "geometry": "20",
+      "fixtureMetrics": "[{\"label\":\"Tarp fee\",\"value\":100,\"unit\":\"USD\"},{\"label\":\"Extra-stop fee\",\"value\":75,\"unit\":\"USD\"},{\"label\":\"Detention\",\"value\":85,\"unit\":\"USD/h\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "46.20",
+      "drawCalls": "78",
+      "camera": "{\"position\":[4.5284182071813746,19.117459693700162,43.29668207181375],\"target\":[0.06249999999999999,1.7499999991059303,-1.3624999999999998],\"zoom\":1}",
+      "painted": "PR-06",
+      "id": "PR-06",
+      "title": "Accessorial action anchors",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-06.png",
+        "format": "png",
+        "sha256": "58a6d5e972fb6a02007421af1040c6a9787d6aeae29dc1475be10c6a5f511cf5"
+      },
+      "capturedAt": "2026-10-29T18:45:44.518Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "844",
+      "quality": "studio",
+      "ready": "PR-07",
+      "entities": "22",
+      "anchors": "4",
+      "geometry": "127",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":16,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "57.50",
+      "drawCalls": "400",
+      "camera": "{\"position\":[48.420931145530645,50.553431125662435,49.58343114448757],\"target\":[-0.13999999910592997,1.9924999810258552,1.0224999998509885],\"zoom\":1}",
+      "painted": "PR-07",
+      "id": "PR-07",
+      "title": "Payload fuel sensitivity",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-07.png",
+        "format": "png",
+        "sha256": "2ef0be3d732f5819130d5aa6eb1e99c866c1f155d977d7d85ac0ed97c168a002"
+      },
+      "capturedAt": "2026-10-29T18:45:45.349Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "61",
+      "quality": "studio",
+      "ready": "PR-08",
+      "entities": "1",
+      "anchors": "3",
+      "geometry": "17",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "21.00",
+      "drawCalls": "69",
+      "camera": "{\"position\":[50.241364161695635,51.23444412444329,50.00444412503935],\"target\":[-0.06307996334370358,0.9299999994039535,-0.2999999999999999],\"zoom\":1}",
+      "painted": "PR-08",
+      "id": "PR-08",
+      "title": "Cold-chain shock and seal route",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-08.png",
+        "format": "png",
+        "sha256": "6be040dffb25f432eb0cb82fb82793dd3040d199cfb080f9a9ec8b6fd00fbc4d"
+      },
+      "capturedAt": "2026-10-29T18:45:46.099Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "636",
+      "quality": "studio",
+      "ready": "PR-09",
+      "entities": "13",
+      "anchors": "4",
+      "geometry": "86",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "51.90",
+      "drawCalls": "277",
+      "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+      "painted": "PR-09",
+      "id": "PR-09",
+      "title": "Fuel mass and axle evolution",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-09.png",
+        "format": "png",
+        "sha256": "74f798f6e44e65f465023e3cb43305896ab2b72d5facca23b1fa514b04c24c6f"
+      },
+      "capturedAt": "2026-10-29T18:45:46.984Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "25",
+      "quality": "studio",
+      "ready": "PR-10",
+      "entities": "3",
+      "anchors": "4",
+      "geometry": "8",
+      "fixtureMetrics": "[{\"label\":\"Components total\",\"value\":3600,\"unit\":\"USD\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "19.20",
+      "drawCalls": "42",
+      "camera": "{\"position\":[6.154605500663763,26.57346583591463,62.54605500663763],\"target\":[-0.09999999999999964,2.25,0],\"zoom\":1}",
+      "painted": "PR-10",
+      "id": "PR-10",
+      "title": "Broker buy sell margin study",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-10.png",
+        "format": "png",
+        "sha256": "3b1881168cab30fc13a965dc9cbb81eb446d3618a46699f6419bf7ec21305b22"
+      },
+      "capturedAt": "2026-10-29T18:45:47.682Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "74",
+      "quality": "studio",
+      "ready": "PR-11",
+      "entities": "3",
+      "anchors": "3",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Linehaul\",\"value\":1800,\"unit\":\"USD\"},{\"label\":\"Accessorial\",\"value\":150,\"unit\":\"USD\"},{\"label\":\"Document total\",\"value\":1950,\"unit\":\"USD\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "24.00",
+      "drawCalls": "72",
+      "camera": "{\"position\":[30.85544236766297,31.257942366545382,30.33829150802352],\"target\":[0,0.40249999888241295,-0.517150859639453],\"zoom\":1}",
+      "painted": "PR-11",
+      "id": "PR-11",
+      "title": "Rate confirmation evidence stack",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-11.png",
+        "format": "png",
+        "sha256": "8a5f74b06f9d3ef3f9a84b69e648a18b75630acf865d7c28d8dbe77b2dc5ab90"
+      },
+      "capturedAt": "2026-10-29T18:45:48.422Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "81",
+      "quality": "studio",
+      "ready": "PR-12",
+      "entities": "5",
+      "anchors": "4",
+      "geometry": "24",
+      "fixtureMetrics": "[{\"label\":\"Candidate A all-in\",\"value\":2650,\"unit\":\"USD\"},{\"label\":\"Candidate B all-in\",\"value\":2820,\"unit\":\"USD\"},{\"label\":\"Cost difference\",\"value\":170,\"unit\":\"USD\"},{\"label\":\"Service duration difference\",\"value\":4,\"unit\":\"h\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "25.70",
+      "drawCalls": "90",
+      "camera": "{\"position\":[4.862630994529308,21.730231564329433,48.50880994767726],\"target\":[0,2.8199999189376834,-0.11749999761581398],\"zoom\":1}",
+      "painted": "PR-12",
+      "id": "PR-12",
+      "title": "Quote scenario comparison",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PR-12.png",
+        "format": "png",
+        "sha256": "690b8aec36da1bf9aec91462f2312b1b140ad7b2d17c5e0be9819cfff05c961a"
+      },
+      "capturedAt": "2026-10-29T18:45:49.274Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "55",
+      "quality": "studio",
+      "ready": "HS-01",
+      "entities": "1",
+      "anchors": "4",
+      "geometry": "17",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "27.20",
+      "drawCalls": "69",
+      "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+      "painted": "HS-01",
+      "id": "HS-01",
+      "title": "Semantic corridor itinerary",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-01.png",
+        "format": "png",
+        "sha256": "26e3d695070b458dcf1877365080a7ff90fbe73cc3f080d0e1964b581579bf42"
+      },
+      "capturedAt": "2026-10-29T18:46:17.342Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "36",
+      "quality": "studio",
+      "ready": "HS-02",
+      "entities": "0",
+      "anchors": "11",
+      "geometry": "10",
+      "fixtureMetrics": "[{\"label\":\"Driving\",\"value\":8,\"unit\":\"h\"},{\"label\":\"On duty\",\"value\":2,\"unit\":\"h\"},{\"label\":\"Sleeper\",\"value\":10,\"unit\":\"h\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "70.00",
+      "drawCalls": "48",
+      "camera": "{\"position\":[32.366256089996135,33.521256091896035,32.81625609297637],\"target\":[0,1.155000001899898,0.4500000029802323],\"zoom\":1}",
+      "painted": "HS-02",
+      "id": "HS-02",
+      "title": "Three-dimensional ELD logbook",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-02.png",
+        "format": "png",
+        "sha256": "162bfab2e5f9aeb4b93ca6f5b250b5fdfc1882ae89c4747182bc200bd15c7f1f"
+      },
+      "capturedAt": "2026-10-29T18:46:23.469Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "25",
+      "quality": "studio",
+      "ready": "HS-03",
+      "entities": "3",
+      "anchors": "3",
+      "geometry": "10",
+      "fixtureMetrics": "[{\"label\":\"Driving remaining\",\"value\":4.5,\"unit\":\"h\"},{\"label\":\"Shift remaining\",\"value\":6,\"unit\":\"h\"},{\"label\":\"Break remaining\",\"value\":2,\"unit\":\"h\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "24.60",
+      "drawCalls": "42",
+      "camera": "{\"position\":[4.779112471061627,19.835437381501414,47.791124710616266],\"target\":[0,1.2499999940395354,0],\"zoom\":1}",
+      "painted": "HS-03",
+      "id": "HS-03",
+      "title": "Remaining-duty clock volumes",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-03.png",
+        "format": "png",
+        "sha256": "b1c0def2841a48723f1dfe466ae9d1fa6446d06aeb778f4242986c3f718d2b37"
+      },
+      "capturedAt": "2026-10-29T18:46:24.210Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "60",
+      "quality": "studio",
+      "ready": "HS-04",
+      "entities": "1",
+      "anchors": "7",
+      "geometry": "20",
+      "fixtureMetrics": "[{\"label\":\"Remaining synthetic budget\",\"value\":1.5,\"unit\":\"h\"},{\"label\":\"Scenario speed\",\"value\":50,\"unit\":\"mph\"},{\"label\":\"Reachable chainage\",\"value\":75,\"unit\":\"mi\"},{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.80",
+      "drawCalls": "78",
+      "camera": "{\"position\":[50.241364161695635,51.37444412444329,50.00444412503935],\"target\":[-0.06307996334370358,1.0699999994039535,-0.2999999999999998],\"zoom\":1}",
+      "painted": "HS-04",
+      "id": "HS-04",
+      "title": "Stop reachability envelope",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-04.png",
+        "format": "png",
+        "sha256": "2c4f214262446944cc83bf4744273e134d69203c127f77d00a47ea53e50ff00e"
+      },
+      "capturedAt": "2026-10-29T18:46:24.934Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "59",
+      "quality": "studio",
+      "ready": "HS-05",
+      "entities": "1",
+      "anchors": "3",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.60",
+      "drawCalls": "72",
+      "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+      "painted": "HS-05",
+      "id": "HS-05",
+      "title": "Solo and team comparison",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-05.png",
+        "format": "png",
+        "sha256": "d8c0b5d5168a5bc932cd830446fec8dc83b412efc97465f1909d9b5bbd0ba13b"
+      },
+      "capturedAt": "2026-10-29T18:46:25.683Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "17",
+      "quality": "studio",
+      "ready": "HS-06",
+      "entities": "0",
+      "anchors": "2",
+      "geometry": "11",
+      "fixtureMetrics": "[{\"label\":\"Driving stint\",\"value\":5,\"unit\":\"h\"},{\"label\":\"Resting stint\",\"value\":5,\"unit\":\"h\"},{\"label\":\"Handoffs\",\"value\":2,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "47.30",
+      "drawCalls": "52",
+      "camera": "{\"position\":[18.475208614068023,19.950208613322967,18.435208614068028],\"target\":[0,1.4749999992549416,-0.04000000000000003],\"zoom\":1}",
+      "painted": "HS-06",
+      "id": "HS-06",
+      "title": "Sleeper and driver handoff",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-06.png",
+        "format": "png",
+        "sha256": "27de2274659336064125618f5784c86e6071af80f5cb92a490c0d395ef57eb3a"
+      },
+      "capturedAt": "2026-10-29T18:46:26.415Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "56",
+      "quality": "studio",
+      "ready": "HS-07",
+      "entities": "1",
+      "anchors": "3",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "48.30",
+      "drawCalls": "73",
+      "camera": "{\"position\":[50.241364161695635,51.18444411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.8799999904632568,-0.2999999999999998],\"zoom\":1}",
+      "painted": "HS-07",
+      "id": "HS-07",
+      "title": "Duty violation and remedy focus",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-07.png",
+        "format": "png",
+        "sha256": "fd9b7dbe518f6b2a69a228a0b1865c133cb5b1142070c026d850aacd395988e8"
+      },
+      "capturedAt": "2026-10-29T18:46:27.135Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "123",
+      "quality": "studio",
+      "ready": "HS-08",
+      "entities": "7",
+      "anchors": "3",
+      "geometry": "44",
+      "fixtureMetrics": "[{\"label\":\"Original dwell\",\"value\":45,\"unit\":\"min\"},{\"label\":\"Added delay\",\"value\":90,\"unit\":\"min\"},{\"label\":\"ETA change\",\"value\":2,\"unit\":\"h\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.70",
+      "drawCalls": "148",
+      "camera": "{\"position\":[38.18594700241934,40.135947003611435,39.52344700539958],\"target\":[0,1.950000001192093,1.3375000029802324],\"zoom\":1}",
+      "painted": "HS-08",
+      "id": "HS-08",
+      "title": "Detention schedule impact",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-08.png",
+        "format": "png",
+        "sha256": "e7d495ddb45d8048c3fb6b1724f7dc6ad8104954ebd66e241da20c49a0985e49"
+      },
+      "capturedAt": "2026-10-29T18:46:27.952Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "139",
+      "quality": "studio",
+      "ready": "HS-09",
+      "entities": "14",
+      "anchors": "8",
+      "geometry": "50",
+      "fixtureMetrics": "[{\"label\":\"Day 1 duty\",\"value\":10,\"unit\":\"h\"},{\"label\":\"Day 2 duty\",\"value\":9,\"unit\":\"h\"},{\"label\":\"Scenario cycle total\",\"value\":54,\"unit\":\"h\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "19.50",
+      "drawCalls": "168",
+      "camera": "{\"position\":[36.661742093541235,38.13924209264717,36.32424210546217],\"target\":[0,1.4774999991059303,-0.337499988079071],\"zoom\":1}",
+      "painted": "HS-09",
+      "id": "HS-09",
+      "title": "Multi-day recap experiment",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-09.png",
+        "format": "png",
+        "sha256": "e78cafdd19c255a64737ef479ba00e8b50e4d6915d92486f6d83e4089b346021"
+      },
+      "capturedAt": "2026-10-29T18:46:28.654Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "75",
+      "quality": "studio",
+      "ready": "HS-10",
+      "entities": "6",
+      "anchors": "12",
+      "geometry": "29",
+      "fixtureMetrics": "[{\"label\":\"50 mph elapsed time\",\"value\":22,\"unit\":\"h\"},{\"label\":\"60 mph elapsed time\",\"value\":10,\"unit\":\"h\"},{\"label\":\"65 mph elapsed time\",\"value\":9.23076923076923,\"unit\":\"h\"},{\"label\":\"Lane distance\",\"value\":600,\"unit\":\"mi\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "24.40",
+      "drawCalls": "105",
+      "camera": "{\"position\":[31.7934617704962,33.44371176165237,32.69621177059306],\"target\":[-0.9027500000968578,0.7474999910593033,0],\"zoom\":1}",
+      "painted": "HS-10",
+      "id": "HS-10",
+      "title": "Departure speed sensitivity",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-10.png",
+        "format": "png",
+        "sha256": "342842fb7726113ddf712fcbc5deeb0ecd70878a395cdfce4bc7dc899b970321"
+      },
+      "capturedAt": "2026-10-29T18:46:29.360Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "83",
+      "quality": "studio",
+      "ready": "HS-11",
+      "entities": "3",
+      "anchors": "3",
+      "geometry": "20",
+      "fixtureMetrics": "[{\"label\":\"Intervals\",\"value\":14,\"unit\":\"count\"},{\"label\":\"Source gaps\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Reviewed intervals\",\"value\":12,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "50.00",
+      "drawCalls": "81",
+      "camera": "{\"position\":[28.867513459481287,30.53651346003636,28.867513459481295],\"target\":[0,1.6690000005550683,0],\"zoom\":1}",
+      "painted": "HS-11",
+      "id": "HS-11",
+      "title": "Audit evidence and exception layers",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-11.png",
+        "format": "png",
+        "sha256": "e1c545cf02fdb74b025564e7cd9bfc82507bb19a8e5690e875b1b43ec2f698b5"
+      },
+      "capturedAt": "2026-10-29T18:46:30.174Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "797",
+      "quality": "studio",
+      "ready": "HS-12",
+      "entities": "12",
+      "anchors": "2",
+      "geometry": "91",
+      "fixtureMetrics": "[{\"label\":\"Parking bays\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Vehicle length\",\"value\":70,\"unit\":\"ft\"},{\"label\":\"Available bays\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "61.80",
+      "drawCalls": "285",
+      "camera": "{\"position\":[43.28570885842559,42.17870884704111,40.8832088584256],\"target\":[2.3025,1.195499988615513,-0.10000000000000053],\"zoom\":1}",
+      "painted": "HS-12",
+      "id": "HS-12",
+      "title": "Rest-site parking study",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/HS-12.png",
+        "format": "png",
+        "sha256": "ad32fd02693b76a5d1b5eaed2e15ef866e47894fec71532919e67ad55cf237bc"
+      },
+      "capturedAt": "2026-10-29T18:46:31.119Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "70",
+      "quality": "studio",
+      "ready": "TR-01",
+      "entities": "8",
+      "anchors": "6",
+      "geometry": "32",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "21.10",
+      "drawCalls": "110",
+      "camera": "{\"position\":[40.47225378760215,41.902253784472904,40.6222537637603],\"target\":[0,1.4299999968707562,0.1499999761581421],\"zoom\":1}",
+      "painted": "TR-01",
+      "id": "TR-01",
+      "title": "Carrier identity spatial dossier",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-01.png",
+        "format": "png",
+        "sha256": "a3a4f1b967287fef97c9496a6a324d2c281ee7d31151b117b0f73132db7580d8"
+      },
+      "capturedAt": "2026-10-29T18:46:32.016Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "728",
+      "quality": "studio",
+      "ready": "TR-02",
+      "entities": "9",
+      "anchors": "3",
+      "geometry": "64",
+      "fixtureMetrics": "[{\"label\":\"Assigned tractors\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Assigned trailers\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Open reviews\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "53.00",
+      "drawCalls": "213",
+      "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+      "painted": "TR-02",
+      "id": "TR-02",
+      "title": "Assigned fleet eligibility scene",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-02.png",
+        "format": "png",
+        "sha256": "26fe39c88604e401a880b161628179bdafc5b24daef8c4afe17c5b24dbc88a15"
+      },
+      "capturedAt": "2026-10-29T18:46:32.844Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "57",
+      "quality": "studio",
+      "ready": "TR-03",
+      "entities": "3",
+      "anchors": "4",
+      "geometry": "14",
+      "fixtureMetrics": "[{\"label\":\"Declared auto liability\",\"value\":1000000,\"unit\":\"USD\"},{\"label\":\"Scenario requirement\",\"value\":1250000,\"unit\":\"USD\"},{\"label\":\"Coverage gap\",\"value\":250000,\"unit\":\"USD\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "75.60",
+      "drawCalls": "59",
+      "camera": "{\"position\":[4.862630994529308,21.427731645466256,48.62630994529307],\"target\":[0,2.517500000074506,0],\"zoom\":1}",
+      "painted": "TR-03",
+      "id": "TR-03",
+      "title": "Insurance coverage volumes",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-03.png",
+        "format": "png",
+        "sha256": "89c9bccf6bd45778f1eb9698c8b11377cd70b92351a8fde97a618010910847a2"
+      },
+      "capturedAt": "2026-10-29T18:46:33.643Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "100",
+      "quality": "studio",
+      "ready": "TR-04",
+      "entities": "4",
+      "anchors": "5",
+      "geometry": "24",
+      "fixtureMetrics": "[{\"label\":\"Days remaining\",\"value\":12,\"unit\":\"days\"},{\"label\":\"Policies\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Pending renewals\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "19.50",
+      "drawCalls": "90",
+      "camera": "{\"position\":[36.661742093541235,37.13674209950171,36.299242081620314],\"target\":[0,0.47500000596046443,-0.36250001192092896],\"zoom\":1}",
+      "painted": "TR-04",
+      "id": "TR-04",
+      "title": "Policy expiry timeline",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-04.png",
+        "format": "png",
+        "sha256": "221c42d780a455fb4b58963619b5a5a0970d898931c8ecd6ecd2e66aa6b63e71"
+      },
+      "capturedAt": "2026-10-29T18:46:34.679Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "28",
+      "quality": "studio",
+      "ready": "TR-05",
+      "entities": "4",
+      "anchors": "5",
+      "geometry": "17",
+      "fixtureMetrics": "[{\"label\":\"Driving percentile\",\"value\":42,\"unit\":\"percent\"},{\"label\":\"Maintenance percentile\",\"value\":68,\"unit\":\"percent\"},{\"label\":\"Displayed threshold\",\"value\":80,\"unit\":\"percent\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "25.30",
+      "drawCalls": "61",
+      "camera": "{\"position\":[5.210624567963308,22.063539938840258,52.10624567963308],\"target\":[0,1.799999952316284,0],\"zoom\":1}",
+      "painted": "TR-05",
+      "id": "TR-05",
+      "title": "BASIC percentile comparison",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-05.png",
+        "format": "png",
+        "sha256": "17d5b7cefd395b221b7daa5a10c4a70be7307e6ee89a945aa4ef7d38053abce5"
+      },
+      "capturedAt": "2026-10-29T18:46:35.433Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "49",
+      "quality": "studio",
+      "ready": "TR-06",
+      "entities": "3",
+      "anchors": "4",
+      "geometry": "13",
+      "fixtureMetrics": "[{\"label\":\"Base score\",\"value\":100,\"unit\":\"points\"},{\"label\":\"Combined deductions\",\"value\":18,\"unit\":\"points\"},{\"label\":\"Scenario score\",\"value\":82,\"unit\":\"points\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.90",
+      "drawCalls": "57",
+      "camera": "{\"position\":[5.341581402888267,23.472760634534104,53.886313057706936],\"target\":[-0.04999990314245207,2.5054999999701977,-0.029500002600252654],\"zoom\":1}",
+      "painted": "TR-06",
+      "id": "TR-06",
+      "title": "Composite score explanation",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-06.png",
+        "format": "png",
+        "sha256": "a2978b3213e1c826894a5958917f59e02c13413f34721784b5a2cc38198c41cf"
+      },
+      "capturedAt": "2026-10-29T18:46:36.411Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "78",
+      "quality": "studio",
+      "ready": "TR-07",
+      "entities": "9",
+      "anchors": "8",
+      "geometry": "37",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":7,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "24.80",
+      "drawCalls": "123",
+      "camera": "{\"position\":[38.04738265700573,39.47738265387648,37.897382680847585],\"target\":[0,1.4299999968707562,-0.1499999761581421],\"zoom\":1}",
+      "painted": "TR-07",
+      "id": "TR-07",
+      "title": "Fraud relationship evidence graph",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-07.png",
+        "format": "png",
+        "sha256": "05e1218902af03ab281599cbc2e3acbc39ecaf0ff6b32e2f6f8d473926b87ea1"
+      },
+      "capturedAt": "2026-10-29T18:46:37.076Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "92",
+      "quality": "studio",
+      "ready": "TR-08",
+      "entities": "6",
+      "anchors": "3",
+      "geometry": "32",
+      "fixtureMetrics": "[{\"label\":\"Required checks\",\"value\":7,\"unit\":\"count\"},{\"label\":\"Recorded checks\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Unknown checks\",\"value\":2,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "17.90",
+      "drawCalls": "112",
+      "camera": "{\"position\":[34.02902506425403,35.97902506544612,36.035592114327905],\"target\":[0,1.950000001192093,2.006567050073869],\"zoom\":1}",
+      "painted": "TR-08",
+      "id": "TR-08",
+      "title": "Authority and policy gate structure",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-08.png",
+        "format": "png",
+        "sha256": "4ba4af6ee8823b2e2c245079e080fe50bf2491fad4208abde4d67c1283731cf5"
+      },
+      "capturedAt": "2026-10-29T18:46:37.745Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "72",
+      "quality": "studio",
+      "ready": "TR-09",
+      "entities": "9",
+      "anchors": "7",
+      "geometry": "35",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":3,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "18.70",
+      "drawCalls": "117",
+      "camera": "{\"position\":[38.04738265700573,39.37738265387648,38.19738263316387],\"target\":[0,1.329999996870756,0.1499999761581421],\"zoom\":1}",
+      "painted": "TR-09",
+      "id": "TR-09",
+      "title": "Carrier comparison workspace",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-09.png",
+        "format": "png",
+        "sha256": "86fe2a26948e4a246f7d292e58b770048662c9911f9121323252dde005688e9c"
+      },
+      "capturedAt": "2026-10-29T18:46:38.960Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "48",
+      "quality": "studio",
+      "ready": "TR-10",
+      "entities": "3",
+      "anchors": "4",
+      "geometry": "16",
+      "fixtureMetrics": "[{\"label\":\"Synthetic evidence records\",\"value\":3,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "15.50",
+      "drawCalls": "66",
+      "camera": "{\"position\":[30.42635918629328,30.6728591849112,31.07635917735259],\"target\":[0,0.24649999861791733,0.6499999910593033],\"zoom\":1}",
+      "painted": "TR-10",
+      "id": "TR-10",
+      "title": "Review decision and recovery",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-10.png",
+        "format": "png",
+        "sha256": "5e4f7df7a5f69c835370e16b431bf499ceb1de219acffa134a4ad7033de8f159"
+      },
+      "capturedAt": "2026-10-29T18:46:39.584Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "89",
+      "quality": "studio",
+      "ready": "TR-11",
+      "entities": "9",
+      "anchors": "6",
+      "geometry": "31",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "15.30",
+      "drawCalls": "111",
+      "camera": "{\"position\":[40.47225378760215,41.22225378722962,40.6222537637603],\"target\":[0,0.749999999627471,0.1499999761581421],\"zoom\":1}",
+      "painted": "TR-11",
+      "id": "TR-11",
+      "title": "Carrier event propagation",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-11.png",
+        "format": "png",
+        "sha256": "5a698529dab16a48b93bb0273259dec494bd36332cb564d9fa57c954fd2b69e1"
+      },
+      "capturedAt": "2026-10-29T18:46:40.316Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "101",
+      "quality": "studio",
+      "ready": "TR-12",
+      "entities": "4",
+      "anchors": "10",
+      "geometry": "22",
+      "fixtureMetrics": "[{\"label\":\"Declared limit\",\"value\":1000000,\"unit\":\"USD\"},{\"label\":\"Source records\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Unknown fields\",\"value\":2,\"unit\":\"count\"},{\"label\":\"As-of date\",\"value\":\"23 Oct 2026\",\"unit\":\"UTC\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "17.00",
+      "drawCalls": "84",
+      "camera": "{\"position\":[35.27610144748613,35.9376014467001,35.82610144748613],\"target\":[0,0.6614999992139637,0.5499999999999998],\"zoom\":1}",
+      "painted": "TR-12",
+      "id": "TR-12",
+      "title": "Evidence provenance inspection",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/TR-12.png",
+        "format": "png",
+        "sha256": "e2000c9b54eec5afa5ad909f5023a5431d06c5ba2cbe1f579e1e9e1a86827b29"
+      },
+      "capturedAt": "2026-10-29T18:46:41.046Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "99",
+      "quality": "studio",
+      "ready": "CC-01",
+      "entities": "8",
+      "anchors": "6",
+      "geometry": "32",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "57.00",
+      "drawCalls": "114",
+      "camera": "{\"position\":[51.90378911755675,52.741289110851234,51.75378914139861],\"target\":[0,0.8374999932944774,-0.1499999761581421],\"zoom\":1}",
+      "painted": "CC-01",
+      "id": "CC-01",
+      "title": "End-to-end shipment world",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-01.png",
+        "format": "png",
+        "sha256": "3536fa0da515694bcc6ae37011724a723409c6d310bcc58176eae295825614f8"
+      },
+      "capturedAt": "2026-10-29T18:47:08.276Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "38",
+      "quality": "studio",
+      "ready": "CC-02",
+      "entities": "8",
+      "anchors": "5",
+      "geometry": "24",
+      "fixtureMetrics": "[{\"label\":\"Recorded stages at current revision\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Stale stages\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Rejected stages\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Missing stages\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "100.20",
+      "drawCalls": "87",
+      "camera": "{\"position\":[60.04442791313045,60.94442791730279,60.12192789882534],\"target\":[0,0.9000000041723253,0.07749998569488525],\"zoom\":1}",
+      "painted": "CC-02",
+      "id": "CC-02",
+      "title": "Spatial lifecycle status",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-02.png",
+        "format": "png",
+        "sha256": "c19418fe85ab676f173320b4fe6a4a82647b640e06ee41f57ba2c8bdb1fc081d"
+      },
+      "capturedAt": "2026-10-29T18:47:09.304Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "784",
+      "quality": "studio",
+      "ready": "CC-03",
+      "entities": "19",
+      "anchors": "5",
+      "geometry": "108",
+      "fixtureMetrics": "[{\"label\":\"Handling units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Occupied cube\",\"value\":26.064,\"unit\":\"m³\"},{\"label\":\"Usable cavity\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Cube utilization\",\"value\":24.625850340136054,\"unit\":\"%\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "55.40",
+      "drawCalls": "341",
+      "camera": "{\"position\":[40.147721938589186,42.05272194227723,40.06222194236664],\"target\":[0.08249999720603185,1.9875000008940702,-0.0029999990165234802],\"zoom\":1}",
+      "painted": "CC-03",
+      "id": "CC-03",
+      "title": "Master manifest dimensional view",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-03.png",
+        "format": "png",
+        "sha256": "6c3cd05405d2d5aa751551abd8e39d256460ffe803386267deb18bcbe0042321"
+      },
+      "capturedAt": "2026-10-29T18:47:10.132Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "107",
+      "quality": "studio",
+      "ready": "CC-04",
+      "entities": "9",
+      "anchors": "6",
+      "geometry": "34",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "56.40",
+      "drawCalls": "118",
+      "camera": "{\"position\":[38.04738265700573,39.177382653876485,38.04738265700573],\"target\":[0,1.1299999968707561,0],\"zoom\":1}",
+      "painted": "CC-04",
+      "id": "CC-04",
+      "title": "Dispatch prerequisite scene",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-04.png",
+        "format": "png",
+        "sha256": "d2b1a3c8bb576b952841c72a0b8c78da64f3de03fd2f8de7e19abf31dd55291b"
+      },
+      "capturedAt": "2026-10-29T18:47:10.897Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "433",
+      "quality": "studio",
+      "ready": "CC-05",
+      "entities": "14",
+      "anchors": "7",
+      "geometry": "70",
+      "fixtureMetrics": "[{\"label\":\"Earlier payload\",\"value\":12000,\"unit\":\"lb\"},{\"label\":\"Revised payload\",\"value\":13200,\"unit\":\"lb\"},{\"label\":\"Mass amendment\",\"value\":1200,\"unit\":\"lb\"},{\"label\":\"Stale downstream results\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "60.30",
+      "drawCalls": "226",
+      "camera": "{\"position\":[37.70097257808257,38.3509725773785,38.82097258702328],\"target\":[8.881784197001252e-16,0.6499999992959201,1.1200000089406967],\"zoom\":1}",
+      "painted": "CC-05",
+      "id": "CC-05",
+      "title": "Amendment before and after",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-05.png",
+        "format": "png",
+        "sha256": "675f8f5536246cac1f4b5eeebed313d4d0e913f9497105610040d4ad804be819"
+      },
+      "capturedAt": "2026-10-29T18:47:11.692Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "74",
+      "quality": "studio",
+      "ready": "CC-06",
+      "entities": "8",
+      "anchors": "6",
+      "geometry": "32",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "21.30",
+      "drawCalls": "114",
+      "camera": "{\"position\":[38.163408060790154,39.66340806041763,37.86340808463202],\"target\":[-0.75,0.7499999996274711,-1.049999976158142],\"zoom\":1}",
+      "painted": "CC-06",
+      "id": "CC-06",
+      "title": "Exception focus and recovery",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-06.png",
+        "format": "png",
+        "sha256": "e9789dc3e4a66915fe84f5afabd8845437f270c3dc116863cc69b0faf5e48fd0"
+      },
+      "capturedAt": "2026-10-29T18:47:12.391Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "75",
+      "quality": "studio",
+      "ready": "CC-07",
+      "entities": "3",
+      "anchors": "3",
+      "geometry": "17",
+      "fixtureMetrics": "[{\"label\":\"Transactions\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Linked identifiers\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Unmatched fields\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.50",
+      "drawCalls": "69",
+      "camera": "{\"position\":[33.197640478403486,33.50914047761745,33.19764047840349],\"target\":[0,0.31149999921396376,0],\"zoom\":1}",
+      "painted": "CC-07",
+      "id": "CC-07",
+      "title": "EDI transaction evidence flow",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-07.png",
+        "format": "png",
+        "sha256": "51b1a6f92fe94e9a151acdd170b95237bf62c48ffb010eca57664c39f81b0b4c"
+      },
+      "capturedAt": "2026-10-29T18:47:13.140Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "128",
+      "quality": "studio",
+      "ready": "CC-08",
+      "entities": "6",
+      "anchors": "3",
+      "geometry": "31",
+      "fixtureMetrics": "[{\"label\":\"Documents\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Handling units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Missing signatures\",\"value\":1,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "48.70",
+      "drawCalls": "109",
+      "camera": "{\"position\":[29.73119668307481,30.26532274550512,29.62327468574415],\"target\":[0.11587392583875156,0.6499999882690607,0.007951928508088457],\"zoom\":1}",
+      "painted": "CC-08",
+      "id": "CC-08",
+      "title": "Dispatch packet and BOL scene",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-08.png",
+        "format": "png",
+        "sha256": "e86a5071cc97d687fb3b8f1f252aa63c89adf9bf65478ee179f013e8096c222e"
+      },
+      "capturedAt": "2026-10-29T18:47:13.864Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "80",
+      "quality": "studio",
+      "ready": "CC-09",
+      "entities": "5",
+      "anchors": "4",
+      "geometry": "20",
+      "fixtureMetrics": "[{\"label\":\"Accepted quote\",\"value\":2770,\"unit\":\"USD\"},{\"label\":\"Invoice total\",\"value\":2770,\"unit\":\"USD\"},{\"label\":\"Difference\",\"value\":0,\"unit\":\"USD\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "17.70",
+      "drawCalls": "78",
+      "camera": "{\"position\":[5.196704822901963,22.985407654207638,51.96704822901962],\"target\":[0,2.7760000095888975,0],\"zoom\":1}",
+      "painted": "CC-09",
+      "id": "CC-09",
+      "title": "Invoice reconciliation landscape",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-09.png",
+        "format": "png",
+        "sha256": "09262b62c3536bba92a3ce853d75d30632c1844b150af05f15cd5637f06b4499"
+      },
+      "capturedAt": "2026-10-29T18:47:14.557Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "100",
+      "quality": "studio",
+      "ready": "CC-10",
+      "entities": "12",
+      "anchors": "7",
+      "geometry": "47",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":5,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "19.80",
+      "drawCalls": "159",
+      "camera": "{\"position\":[38.04738265700573,38.634882650300206,38.04738265700573],\"target\":[0,0.5874999932944776,0],\"zoom\":1}",
+      "painted": "CC-10",
+      "id": "CC-10",
+      "title": "Fleet and shipment portfolio",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-10.png",
+        "format": "png",
+        "sha256": "ad9e698c915a4608425b19ff81d9f4fe7f5996effc977305ae53c1871997973d"
+      },
+      "capturedAt": "2026-10-29T18:47:15.262Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "70",
+      "quality": "studio",
+      "ready": "CC-11",
+      "entities": "4",
+      "anchors": "4",
+      "geometry": "19",
+      "fixtureMetrics": "[{\"label\":\"Synthetic evidence records\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.00",
+      "drawCalls": "75",
+      "camera": "{\"position\":[33.44405063991725,34.25555063913122,33.54405063991726],\"target\":[-0.10000000000000053,0.7114999992139638,0],\"zoom\":1}",
+      "painted": "CC-11",
+      "id": "CC-11",
+      "title": "Evidence revision replay",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-11.png",
+        "format": "png",
+        "sha256": "27d713bd21b184d4b275133602d28bd4e40d68577975d6828389ba7ae1204497"
+      },
+      "capturedAt": "2026-10-29T18:47:15.955Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "54",
+      "quality": "studio",
+      "ready": "CC-12",
+      "entities": "7",
+      "anchors": "6",
+      "geometry": "32",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.10",
+      "drawCalls": "108",
+      "camera": "{\"position\":[38.74020298003327,39.87020297690403,38.59020300387513],\"target\":[0,1.1299999968707561,-0.1499999761581421],\"zoom\":1}",
+      "painted": "CC-12",
+      "id": "CC-12",
+      "title": "Role-specific spatial workspace",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/CC-12.png",
+        "format": "png",
+        "sha256": "2edb1fbe20b4654210ad62060c2d68d665255ca157ef1cc96d9f818c27ade6e5"
+      },
+      "capturedAt": "2026-10-29T18:47:16.640Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "153",
+      "quality": "studio",
+      "ready": "PF-01",
+      "entities": "8",
+      "anchors": "5",
+      "geometry": "31",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":3,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "40.00",
+      "drawCalls": "111",
+      "camera": "{\"position\":[51.90378911755675,52.903789117001686,51.75378914139861],\"target\":[0,0.9999999994449318,-0.1499999761581421],\"zoom\":1}",
+      "painted": "PF-01",
+      "id": "PF-01",
+      "title": "Canonical spatial identity",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-01.png",
+        "format": "png",
+        "sha256": "6ac5aebc20b5f45d1c25992afcba54d31aed27e2f1d67f43624fd0f86009cf31"
+      },
+      "capturedAt": "2026-10-29T18:47:17.343Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "16",
+      "quality": "studio",
+      "ready": "PF-02",
+      "entities": "0",
+      "anchors": "3",
+      "geometry": "11",
+      "fixtureMetrics": "[{\"label\":\"Calibration volume\",\"value\":1,\"unit\":\"m³\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.80",
+      "drawCalls": "49",
+      "camera": "{\"position\":[23.67136103677466,24.706361034539484,23.671361036774666],\"target\":[0,1.0349999977648257,0],\"zoom\":1}",
+      "painted": "PF-02",
+      "id": "PF-02",
+      "title": "Projection and unit calibration",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-02.png",
+        "format": "png",
+        "sha256": "59519b3f8a33dcae555e0bdb7b249bb908f5cf679b5b8faf49fb03c04db7a7ad"
+      },
+      "capturedAt": "2026-10-29T18:47:18.093Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "104",
+      "quality": "studio",
+      "ready": "PF-03",
+      "entities": "6",
+      "anchors": "5",
+      "geometry": "31",
+      "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":3,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "52.00",
+      "drawCalls": "103",
+      "camera": "{\"position\":[43.24353507971236,44.74353507915729,43.243535079712366],\"target\":[0,1.4999999994449318,0],\"zoom\":1}",
+      "painted": "PF-03",
+      "id": "PF-03",
+      "title": "Multi-scale semantic zoom",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-03.png",
+        "format": "png",
+        "sha256": "031172480b01c50d44a6545ea3150a5a5059d20c2d4ccec8594768917f51a2d2"
+      },
+      "capturedAt": "2026-10-29T18:47:18.846Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "196",
+      "quality": "studio",
+      "ready": "PF-04",
+      "entities": "5",
+      "anchors": "2",
+      "geometry": "36",
+      "fixtureMetrics": "[{\"label\":\"Selected objects\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Related objects\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Detail fields\",\"value\":9,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "50.10",
+      "drawCalls": "124",
+      "camera": "{\"position\":[23.3249509578515,24.63288285686493,23.73135356631271],\"target\":[0,1.3079318990134334,0.4064026084612069],\"zoom\":1}",
+      "painted": "PF-04",
+      "id": "PF-04",
+      "title": "Selection focus and linked details",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-04.png",
+        "format": "png",
+        "sha256": "5377157ff8ebbbeea0d3ae18095ad66f4a1d083159ed9451ecdeea0bfe607e2e"
+      },
+      "capturedAt": "2026-10-29T18:47:19.639Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "1808",
+      "quality": "studio",
+      "ready": "PF-05",
+      "entities": "51",
+      "anchors": "5",
+      "geometry": "300",
+      "fixtureMetrics": "[{\"label\":\"Fixture rack bays\",\"value\":9,\"unit\":\"count\"},{\"label\":\"Floor area\",\"value\":432,\"unit\":\"m²\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "61.00",
+      "drawCalls": "910",
+      "camera": "{\"position\":[35.61398521173224,40.88398519526647,40.058985227676494],\"target\":[-2.5200000282377,2.749999955296517,1.924999987706542],\"zoom\":1}",
+      "painted": "PF-05",
+      "id": "PF-05",
+      "title": "Annotation density and occlusion",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-05.png",
+        "format": "png",
+        "sha256": "bdd7e9715af238437138c311eb75c5f65712aef98f9d8a7dfbe6e7083e74d111"
+      },
+      "capturedAt": "2026-10-29T18:47:20.614Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "29",
+      "quality": "studio",
+      "ready": "PF-06",
+      "entities": "0",
+      "anchors": "5",
+      "geometry": "11",
+      "fixtureMetrics": "[{\"label\":\"State tokens\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Source classes\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Unknown values\",\"value\":2,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "20.00",
+      "drawCalls": "49",
+      "camera": "{\"position\":[37.5277675799163,38.027767582151476,37.52776757991631],\"target\":[0,0.5000000022351743,0],\"zoom\":1}",
+      "painted": "PF-06",
+      "id": "PF-06",
+      "title": "State and provenance grammar",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-06.png",
+        "format": "png",
+        "sha256": "726144086863b39bf6aefeb15fe11fd2e48691c6cf678f28e148d7dbf83334d1"
+      },
+      "capturedAt": "2026-10-29T18:47:21.314Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "127",
+      "quality": "studio",
+      "ready": "PF-07",
+      "entities": "3",
+      "anchors": "3",
+      "geometry": "27",
+      "fixtureMetrics": "[{\"label\":\"Used volume\",\"value\":64,\"unit\":\"percent\"},{\"label\":\"Payload use\",\"value\":82,\"unit\":\"percent\"},{\"label\":\"Temperature\",\"value\":35,\"unit\":\"F\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "50.80",
+      "drawCalls": "95",
+      "camera": "{\"position\":[22.624534416017234,23.41203440339223,22.76203440409631],\"target\":[-0.13749998807907104,0.6499999992959201,0],\"zoom\":1}",
+      "painted": "PF-07",
+      "id": "PF-07",
+      "title": "Thermal mass volume layer composition",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-07.png",
+        "format": "png",
+        "sha256": "f71f14146f8200d46f0c9ef09cb072377ab0938e862ec01a6b64c4d25c832d89"
+      },
+      "capturedAt": "2026-10-29T18:47:22.071Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "146",
+      "quality": "studio",
+      "ready": "PF-08",
+      "entities": "4",
+      "anchors": "3",
+      "geometry": "49",
+      "fixtureMetrics": "[{\"label\":\"Moved objects\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Affected results\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Uncommitted changes\",\"value\":2,\"unit\":\"count\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "50.20",
+      "drawCalls": "185",
+      "camera": "{\"position\":[18.99123410044308,19.991234099739007,19.666234109383783],\"target\":[-0.35,0.6499999992959201,0.3250000089406967],\"zoom\":1}",
+      "painted": "PF-08",
+      "id": "PF-08",
+      "title": "Spatial command preview",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-08.png",
+        "format": "png",
+        "sha256": "ee02cbba2e6bae9d5864fc79d50f83ff980bf5c66a413d0abcdc7828a931d948"
+      },
+      "capturedAt": "2026-10-29T18:47:23.357Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "81",
+      "quality": "studio",
+      "ready": "PF-09",
+      "entities": "2",
+      "anchors": "2",
+      "geometry": "18",
+      "fixtureMetrics": "[{\"label\":\"Image width\",\"value\":1600,\"unit\":\"px\"},{\"label\":\"Image height\",\"value\":1000,\"unit\":\"px\"},{\"label\":\"Case revision\",\"value\":1,\"unit\":\"index\"}]",
+      "valuesOrigin": "example scenario inputs",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "53.20",
+      "drawCalls": "70",
+      "camera": "{\"position\":[25.737668358910852,26.758893181428974,25.90232613820964],\"target\":[0.19127517062734722,1.2124999931454659,0.3559329499261312],\"zoom\":1}",
+      "painted": "PF-09",
+      "id": "PF-09",
+      "title": "Deterministic review snapshot",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-09.png",
+        "format": "png",
+        "sha256": "061e249c38d9611df4dc4b0d6c0aceb83f88a0fef82781925376b9809ad899e1"
+      },
+      "capturedAt": "2026-10-29T18:47:24.228Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "0",
+      "quality": "studio",
+      "ready": "PF-10",
+      "entities": "3",
+      "anchors": "3",
+      "geometry": "8",
+      "fixtureMetrics": "[{\"label\":\"Desktop CSS width\",\"value\":1440,\"unit\":\"px\"},{\"label\":\"Tablet CSS width\",\"value\":834,\"unit\":\"px\"},{\"label\":\"Phone CSS width\",\"value\":390,\"unit\":\"px\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "514.50",
+      "drawCalls": "39",
+      "camera": "{\"position\":[-1.9982264161109926,9.766377013246464,66.16927013313527],\"target\":[-1.9982264161109926,3.15,0.00550000067055225],\"zoom\":1}",
+      "painted": "PF-10",
+      "id": "PF-10",
+      "title": "Responsive spatial workspace",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-10.png",
+        "format": "png",
+        "sha256": "cfbcbf8c33e865ed591905c7759deb93a41e85a9089eadeb7312739d7078cf01"
+      },
+      "capturedAt": "2026-10-29T18:47:31.432Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "252",
+      "quality": "studio",
+      "ready": "PF-11",
+      "entities": "3",
+      "anchors": "2",
+      "geometry": "27",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "56.50",
+      "drawCalls": "100",
+      "camera": "{\"position\":[48.420931145530645,50.56343115089506,49.69593115044804],\"target\":[-0.13999999910592997,2.002500006258488,1.1350000058114529],\"zoom\":1}",
+      "painted": "PF-11",
+      "id": "PF-11",
+      "title": "Reference-driven visual language",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-11.png",
+        "format": "png",
+        "sha256": "ceb838cff1dded6b6920ffafc083cad95739c557a3796084657514ff012cf3fa"
+      },
+      "capturedAt": "2026-10-29T18:47:32.339Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    },
+    {
+      "batchedParts": "363",
+      "quality": "studio",
+      "ready": "PF-12",
+      "entities": "6",
+      "anchors": "3",
+      "geometry": "42",
+      "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+      "valuesOrigin": "authored scene fixture",
+      "revision": "8e539f3c2c669d86",
+      "renderMs": "50.70",
+      "drawCalls": "145",
+      "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+      "painted": "PF-12",
+      "id": "PF-12",
+      "title": "Cross-product model reuse study",
+      "review": "AWAITING YOUR REVIEW",
+      "viewport": {
+        "width": 1440,
+        "height": 1024
+      },
+      "top": 0,
+      "clip": {
+        "left": 251,
+        "top": 197,
+        "width": 1156,
+        "height": 532
+      },
+      "error": null,
+      "pageWidth": 1440,
+      "browserOriginal": {
+        "path": "captures/iterations/browser-8e539f3c2c669d86/PF-12.png",
+        "format": "png",
+        "sha256": "44c4fda9a8f027fb5b47f2eeb0cf3d2a5202a2de1fef64b05f57ad6b83bd23c6"
+      },
+      "capturedAt": "2026-10-29T18:47:33.414Z",
+      "deliveredEncoding": "Original PNG; no resize or composition change"
+    }
+  ]
+}

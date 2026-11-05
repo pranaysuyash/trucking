@@ -1,0 +1,36 @@
+{
+  "batchedParts": "107",
+  "quality": "studio",
+  "ready": "CC-04",
+  "entities": "9",
+  "anchors": "6",
+  "geometry": "34",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "56.40",
+  "drawCalls": "118",
+  "camera": "{\"position\":[38.04738265700573,39.177382653876485,38.04738265700573],\"target\":[0,1.1299999968707561,0],\"zoom\":1}",
+  "painted": "CC-04",
+  "id": "CC-04",
+  "title": "Dispatch prerequisite scene",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:10.897Z"
+}

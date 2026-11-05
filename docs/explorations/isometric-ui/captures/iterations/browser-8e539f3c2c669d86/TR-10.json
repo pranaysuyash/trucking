@@ -1,0 +1,36 @@
+{
+  "batchedParts": "48",
+  "quality": "studio",
+  "ready": "TR-10",
+  "entities": "3",
+  "anchors": "4",
+  "geometry": "16",
+  "fixtureMetrics": "[{\"label\":\"Synthetic evidence records\",\"value\":3,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "15.50",
+  "drawCalls": "66",
+  "camera": "{\"position\":[30.42635918629328,30.6728591849112,31.07635917735259],\"target\":[0,0.24649999861791733,0.6499999910593033],\"zoom\":1}",
+  "painted": "TR-10",
+  "id": "TR-10",
+  "title": "Review decision and recovery",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:39.584Z"
+}

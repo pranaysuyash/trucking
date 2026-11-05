@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-10-22T18:54:30.307Z",
+  "checks": [
+    "historical manifest replay stays separate from current spatial geometry, mass and unit search"
+  ],
+  "observations": [],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "completedShipmentId": "73dd92c0-0232-4156-a853-a72fbf5bb853",
+  "result": "FAIL",
+  "failure": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Event type', { exact: true })\u001b[22m\n\n    at /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:47:56",
+  "completedAt": "2026-10-22T18:55:14.312Z"
+}

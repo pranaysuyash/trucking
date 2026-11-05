@@ -1,0 +1,140 @@
+{
+  "startedAt": "2026-10-22T20:03:07.776Z",
+  "checks": [
+    "historical manifest replay stays separate from current spatial geometry, mass and unit search",
+    "timeline filters retained events and opens the exact canonical event inspector",
+    "invoice and receipt inspect independently, and actual evidence download reconciles to accepted terms",
+    "native equipment changes publish the selected exact snapshot and retained input revisions",
+    "manifest Source retains creation and narrow equipment amendment provenance",
+    "live API rejects overlapping reviewed geometry atomically",
+    "native carrier choice preserves a blocked policy outcome and explicit approved recovery",
+    "pending-save edits and newer polled revisions survive delayed older acknowledgement, with explicit recovery",
+    "modeled duty report has contained keyboard focus, Escape recovery and actual print output"
+  ],
+  "observations": [
+    {
+      "label": "connected-5170-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 434
+        }
+      ]
+    },
+    {
+      "label": "inspector-5170-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 434
+        }
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "completedShipmentId": "73dd92c0-0232-4156-a853-a72fbf5bb853",
+  "draftShipmentId": "c460bc6d-6145-4646-8cc7-4e4113c73a71",
+  "submittedDutySpeed": 60,
+  "result": "FAIL",
+  "failure": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:5173/?shipment=73dd92c0-0232-4156-a853-a72fbf5bb853#/app/cargo\", waiting until \"load\"\u001b[22m\n\n    at /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:129:16",
+  "completedAt": "2026-10-22T20:06:41.800Z"
+}

@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-22T16:29:46.659755+00:00",
+  "baseline": "docs/audits/visual-evidence/2026-10-22-shipment-flow/final-source-manifest.json",
+  "filesCompared": 131,
+  "changedPaths": [],
+  "priorCheckpointSourcesPreserved": true,
+  "studyScope": "docs/design/page-ui-study only",
+  "gitMutationsPerformed": false,
+  "existingSpatialExplorationModified": false
+}

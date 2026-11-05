@@ -1,0 +1,3916 @@
+{
+  "startedAt": "2026-10-21T06:41:24.592Z",
+  "completedAt": "2026-10-21T06:43:54.711Z",
+  "totalPersonas": 7,
+  "personas": [
+    {
+      "id": "PER-950374",
+      "title": "Fleet Operations Manager",
+      "source": "desktop_canonical",
+      "mandate": "Real-world commercial fleet efficiency, turnaround time, driver satisfaction, equipment utilization across all 4 products.",
+      "simulationMission": "Audit cross-portfolio end-to-end operational viability, check Fit-to-Quote bridge and cross-system export continuity.",
+      "surfacesCount": 7
+    },
+    {
+      "id": "PER-0395",
+      "title": "Logistics & Supply Chain Systems Architect",
+      "source": "desktop_canonical",
+      "mandate": "End-to-end data pipelines, equipment spec integrity, Bridge Law axle rules, tare weights, fuel burn physics, Open Logistics Asset Schema.",
+      "simulationMission": "Inspect Product 01 3D packing validator & tie-downs; Product 04 digital twin 3D/2.5D/CAD projections and JSON schema bridge.",
+      "surfacesCount": 5
+    },
+    {
+      "id": "PER-0995",
+      "title": "Transport Planner",
+      "source": "desktop_canonical",
+      "mandate": "Interstate lane routing, multi-stop drop sequencing, dispatch rates, spot market margin calculations, solo vs team hours of service schedules.",
+      "simulationMission": "Stress-test Product 02 Tactical Dispatch HUD (Operating Ratio, diesel surcharges) and Product 03 HOS Planner (Chicago-Dallas, LA-Atlanta corridors, 11h/14h/70h rules).",
+      "surfacesCount": 5
+    },
+    {
+      "id": "PER-0384",
+      "title": "Legal & Compliance Workflow Architect",
+      "source": "desktop_canonical",
+      "mandate": "FMCSA Part 395 regulatory compliance, Federal Bridge Formula B axle weight limits, 49 CFR § 393.102 cargo securement, audit logs.",
+      "simulationMission": "Scrutinize HOS compliance engine, ELD 24-hr record of duty status visualization, axle weight violation alerts in Cargo Fit.",
+      "surfacesCount": 3
+    },
+    {
+      "id": "PER-0080",
+      "title": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "source": "desktop_canonical",
+      "mandate": "Web accessibility (WCAG 2.1 AA/AAA), keyboard accessibility of complex 3D canvases, color contrast of status badges, screen-reader text alternatives.",
+      "simulationMission": "Run full WCAG 2.1 accessibility scans across all 4 products; audit focus indicators, ARIA landmarks, color contrast, and keyboard operability.",
+      "surfacesCount": 4
+    },
+    {
+      "id": "PER-RT-0101",
+      "title": "Independent Owner-Operator & Freight Buyer",
+      "source": "runtime_saved",
+      "mandate": "Evaluate first-impression clarity, zero-onboarding cognitive overhead, quick rate confirmations, mobile readability from a truck cab, and commercial WTP.",
+      "simulationMission": "Arrive cold at landing screens, test intuitive discoverability of barcode scanning, rate generation, and truck twin customization without prior training.",
+      "surfacesCount": 6
+    },
+    {
+      "id": "PER-RT-0102",
+      "title": "Logistics Adversarial & Boundary Stress Tester",
+      "source": "runtime_saved",
+      "mandate": "Test extreme inputs, edge cases, zero-division, oversized cargo exceedances, impossible routes, rapid viewport resize, and UI crash resilience.",
+      "simulationMission": "Examine all subproducts under stress: extreme cargo rotations, rapid viewport switching, reefer temperature accessorials, team duty switches, CAD viewport collapses.",
+      "surfacesCount": 5
+    }
+  ],
+  "surfaces": [
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "cargo-manifest",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p01-cargo-fit--cargo-manifest--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Cargo manifest"
+        ],
+        "buttonsCount": 23,
+        "inputsCount": 68,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 12,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th[aria-label=\"Row actions\"]"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "cargo-manifest",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p01-cargo-fit--cargo-manifest--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Cargo manifest"
+        ],
+        "buttonsCount": 23,
+        "inputsCount": 68,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 5,
+          "targetSample": ":root"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th[aria-label=\"Row actions\"]"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p01-cargo-fit--plan-3d-dock--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 15,
+          "targetSample": "div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p01-cargo-fit--plan-3d-dock--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 8,
+          "targetSample": ":root"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p01-cargo-fit--decision-bridge--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 12,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p01-cargo-fit--decision-bridge--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 5,
+          "targetSample": ":root"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p02-freight-pricing--hud-overview--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p02-freight-pricing--hud-overview--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "rate-confirmation",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p02-freight-pricing--rate-confirmation--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "rate-confirmation",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p02-freight-pricing--rate-confirmation--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p03-hos-planner--corridor-chicago-dallas--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p03-hos-planner--corridor-chicago-dallas--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "catalog-3d-cutaway",
+      "viewport": "desktop",
+      "screenshot": "PER-950374--p04-asset-studio--catalog-3d-cutaway--desktop.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 38,
+        "inputsCount": 14,
+        "canvasesCount": 1,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 40,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-950374",
+      "personaTitle": "Fleet Operations Manager",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "catalog-3d-cutaway",
+      "viewport": "mobile",
+      "screenshot": "PER-950374--p04-asset-studio--catalog-3d-cutaway--mobile.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 38,
+        "inputsCount": 14,
+        "canvasesCount": 1,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 37,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "equipment-select",
+      "viewport": "desktop",
+      "screenshot": "PER-0395--p01-cargo-fit--equipment-select--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Equipment & loading spaces"
+        ],
+        "buttonsCount": 30,
+        "inputsCount": 116,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 139,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "equipment-select",
+      "viewport": "mobile",
+      "screenshot": "PER-0395--p01-cargo-fit--equipment-select--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Equipment & loading spaces"
+        ],
+        "buttonsCount": 30,
+        "inputsCount": 116,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 132,
+          "targetSample": ":root"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "desktop",
+      "screenshot": "PER-0395--p01-cargo-fit--plan-3d-dock--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 15,
+          "targetSample": "div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "mobile",
+      "screenshot": "PER-0395--p01-cargo-fit--plan-3d-dock--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 8,
+          "targetSample": ":root"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "desktop",
+      "screenshot": "PER-0395--p01-cargo-fit--decision-bridge--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 12,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "mobile",
+      "screenshot": "PER-0395--p01-cargo-fit--decision-bridge--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 5,
+          "targetSample": ":root"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "catalog-3d-cutaway",
+      "viewport": "desktop",
+      "screenshot": "PER-0395--p04-asset-studio--catalog-3d-cutaway--desktop.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 38,
+        "inputsCount": 14,
+        "canvasesCount": 1,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 40,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "catalog-3d-cutaway",
+      "viewport": "mobile",
+      "screenshot": "PER-0395--p04-asset-studio--catalog-3d-cutaway--mobile.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 38,
+        "inputsCount": 14,
+        "canvasesCount": 1,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 37,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "blueprint-2d-cad",
+      "viewport": "desktop",
+      "screenshot": "PER-0395--p04-asset-studio--blueprint-2d-cad--desktop.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 28,
+        "inputsCount": 14,
+        "canvasesCount": 0,
+        "svgCount": 3,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 44,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0395",
+      "personaTitle": "Logistics & Supply Chain Systems Architect",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "blueprint-2d-cad",
+      "viewport": "mobile",
+      "screenshot": "PER-0395--p04-asset-studio--blueprint-2d-cad--mobile.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 28,
+        "inputsCount": 14,
+        "canvasesCount": 0,
+        "svgCount": 3,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 32,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "desktop",
+      "screenshot": "PER-0995--p02-freight-pricing--hud-overview--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "mobile",
+      "screenshot": "PER-0995--p02-freight-pricing--hud-overview--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "reefer-temp-control",
+      "viewport": "desktop",
+      "screenshot": "PER-0995--p02-freight-pricing--reefer-temp-control--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "reefer-temp-control",
+      "viewport": "mobile",
+      "screenshot": "PER-0995--p02-freight-pricing--reefer-temp-control--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "rate-confirmation",
+      "viewport": "desktop",
+      "screenshot": "PER-0995--p02-freight-pricing--rate-confirmation--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "rate-confirmation",
+      "viewport": "mobile",
+      "screenshot": "PER-0995--p02-freight-pricing--rate-confirmation--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "desktop",
+      "screenshot": "PER-0995--p03-hos-planner--corridor-chicago-dallas--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "mobile",
+      "screenshot": "PER-0995--p03-hos-planner--corridor-chicago-dallas--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "team-driving-mode",
+      "viewport": "desktop",
+      "screenshot": "PER-0995--p03-hos-planner--team-driving-mode--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0995",
+      "personaTitle": "Transport Planner",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "team-driving-mode",
+      "viewport": "mobile",
+      "screenshot": "PER-0995--p03-hos-planner--team-driving-mode--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0384",
+      "personaTitle": "Legal & Compliance Workflow Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "desktop",
+      "screenshot": "PER-0384--p01-cargo-fit--decision-bridge--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 12,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0384",
+      "personaTitle": "Legal & Compliance Workflow Architect",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "mobile",
+      "screenshot": "PER-0384--p01-cargo-fit--decision-bridge--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 5,
+          "targetSample": ":root"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0384",
+      "personaTitle": "Legal & Compliance Workflow Architect",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "desktop",
+      "screenshot": "PER-0384--p03-hos-planner--corridor-chicago-dallas--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0384",
+      "personaTitle": "Legal & Compliance Workflow Architect",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "mobile",
+      "screenshot": "PER-0384--p03-hos-planner--corridor-chicago-dallas--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0384",
+      "personaTitle": "Legal & Compliance Workflow Architect",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "team-driving-mode",
+      "viewport": "desktop",
+      "screenshot": "PER-0384--p03-hos-planner--team-driving-mode--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0384",
+      "personaTitle": "Legal & Compliance Workflow Architect",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "team-driving-mode",
+      "viewport": "mobile",
+      "screenshot": "PER-0384--p03-hos-planner--team-driving-mode--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "desktop",
+      "screenshot": "PER-0080--p01-cargo-fit--plan-3d-dock--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 15,
+          "targetSample": "div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "mobile",
+      "screenshot": "PER-0080--p01-cargo-fit--plan-3d-dock--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 8,
+          "targetSample": ":root"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "desktop",
+      "screenshot": "PER-0080--p02-freight-pricing--hud-overview--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "mobile",
+      "screenshot": "PER-0080--p02-freight-pricing--hud-overview--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "desktop",
+      "screenshot": "PER-0080--p03-hos-planner--corridor-chicago-dallas--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "mobile",
+      "screenshot": "PER-0080--p03-hos-planner--corridor-chicago-dallas--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "isometric-projection",
+      "viewport": "desktop",
+      "screenshot": "PER-0080--p04-asset-studio--isometric-projection--desktop.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 29,
+        "inputsCount": 14,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 39,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-0080",
+      "personaTitle": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "isometric-projection",
+      "viewport": "mobile",
+      "screenshot": "PER-0080--p04-asset-studio--isometric-projection--mobile.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 29,
+        "inputsCount": 14,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 35,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "landing",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0101--p01-cargo-fit--landing--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Know what fits — and exactly what that answer rests on.",
+          "Five honest outcomes, never a bare percentage",
+          "Fits under modeled constraints",
+          "Proven not to fit",
+          "No plan found"
+        ],
+        "buttonsCount": 7,
+        "inputsCount": 0,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "description": "Ensure the document has a main landmark",
+          "help": "Document should have one main landmark",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-one-main?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 26,
+          "targetSample": ".eyebrow"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "landing",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0101--p01-cargo-fit--landing--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Know what fits — and exactly what that answer rests on.",
+          "Five honest outcomes, never a bare percentage",
+          "Fits under modeled constraints",
+          "Proven not to fit",
+          "No plan found"
+        ],
+        "buttonsCount": 7,
+        "inputsCount": 0,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "description": "Ensure the document has a main landmark",
+          "help": "Document should have one main landmark",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-one-main?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 26,
+          "targetSample": ".eyebrow"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "cargo-manifest",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0101--p01-cargo-fit--cargo-manifest--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Cargo manifest"
+        ],
+        "buttonsCount": 23,
+        "inputsCount": 68,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 12,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th[aria-label=\"Row actions\"]"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "cargo-manifest",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0101--p01-cargo-fit--cargo-manifest--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Cargo manifest"
+        ],
+        "buttonsCount": 23,
+        "inputsCount": 68,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 5,
+          "targetSample": ":root"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th[aria-label=\"Row actions\"]"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0101--p02-freight-pricing--hud-overview--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "hud-overview",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0101--p02-freight-pricing--hud-overview--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "rate-confirmation",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0101--p02-freight-pricing--rate-confirmation--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "rate-confirmation",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0101--p02-freight-pricing--rate-confirmation--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0101--p03-hos-planner--corridor-chicago-dallas--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "corridor-chicago-dallas",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0101--p03-hos-planner--corridor-chicago-dallas--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "catalog-3d-cutaway",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0101--p04-asset-studio--catalog-3d-cutaway--desktop.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 38,
+        "inputsCount": 14,
+        "canvasesCount": 1,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 40,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0101",
+      "personaTitle": "Independent Owner-Operator & Freight Buyer",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "catalog-3d-cutaway",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0101--p04-asset-studio--catalog-3d-cutaway--mobile.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 38,
+        "inputsCount": 14,
+        "canvasesCount": 1,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 37,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0102--p01-cargo-fit--plan-3d-dock--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 15,
+          "targetSample": "div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "plan-3d-dock",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0102--p01-cargo-fit--plan-3d-dock--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Plan & 3D Spatial Arrangements"
+        ],
+        "buttonsCount": 55,
+        "inputsCount": 8,
+        "canvasesCount": 0,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 8,
+          "targetSample": ":root"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0102--p01-cargo-fit--decision-bridge--desktop.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 12,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(2) > button"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p01-cargo-fit",
+      "productName": "Product 01: Cargo Fit & 3D Load Optimization",
+      "step": "decision-bridge",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0102--p01-cargo-fit--decision-bridge--mobile.png",
+      "title": "Cargo Fit — load planning you can check",
+      "domMetrics": {
+        "title": "Cargo Fit — load planning you can check",
+        "headings": [
+          "Compare options"
+        ],
+        "buttonsCount": 17,
+        "inputsCount": 3,
+        "canvasesCount": 0,
+        "svgCount": 0,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 5,
+          "targetSample": ":root"
+        },
+        {
+          "id": "empty-table-header",
+          "impact": "minor",
+          "description": "Ensure table headers have discernible text",
+          "help": "Table header text should not be empty",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/empty-table-header?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "th:nth-child(9)"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".shell > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "reefer-temp-control",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0102--p02-freight-pricing--reefer-temp-control--desktop.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p02-freight-pricing",
+      "productName": "Product 02: Freight Pricing & Tactical Dispatch HUD",
+      "step": "reefer-temp-control",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0102--p02-freight-pricing--reefer-temp-control--mobile.png",
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "domMetrics": {
+        "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+        "headings": [
+          "Dynamic Freight Pricing & Fuel Surcharge Engine"
+        ],
+        "buttonsCount": 8,
+        "inputsCount": 23,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 7,
+          "targetSample": ".floor > .tiny.mono"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "input[max=\"80\"]"
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": ".panel > div:nth-child(4)"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "description": "Ensure select element has an accessible name",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/select-name?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "div:nth-child(2) > select"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "team-driving-mode",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0102--p03-hos-planner--team-driving-mode--desktop.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p03-hos-planner",
+      "productName": "Product 03: HOS Compliance & Corridor Legality Planner",
+      "step": "team-driving-mode",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0102--p03-hos-planner--team-driving-mode--mobile.png",
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "domMetrics": {
+        "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+        "headings": [
+          "HOS Compliance & Interstate Corridor Legality Planner"
+        ],
+        "buttonsCount": 9,
+        "inputsCount": 6,
+        "canvasesCount": 1,
+        "svgCount": 1,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 14,
+          "targetSample": ".clock-card:nth-child(1) > .clock-value > span"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "blueprint-2d-cad",
+      "viewport": "desktop",
+      "screenshot": "PER-RT-0102--p04-asset-studio--blueprint-2d-cad--desktop.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 28,
+        "inputsCount": 14,
+        "canvasesCount": 0,
+        "svgCount": 3,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 44,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    },
+    {
+      "personaId": "PER-RT-0102",
+      "personaTitle": "Logistics Adversarial & Boundary Stress Tester",
+      "productKey": "p04-asset-studio",
+      "productName": "Product 04: Fleet & Cargo Asset Studio",
+      "step": "blueprint-2d-cad",
+      "viewport": "mobile",
+      "screenshot": "PER-RT-0102--p04-asset-studio--blueprint-2d-cad--mobile.png",
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "domMetrics": {
+        "title": "Fleet & Cargo Asset Studio — Product 04",
+        "headings": [
+          "53' Standard Dry Van (Class 8)",
+          "📦 Spatial Cargo Fit & Clearance Engine",
+          "⏱ Temporal Fuel Burn & Range Dynamics",
+          "🚚 Multi-Stop Drop Sequence & Dynamic CG Axle Simulator",
+          "🚚 Multi-Vehicle Fleet Splitter & Allocation Heuristic"
+        ],
+        "buttonsCount": 28,
+        "inputsCount": 14,
+        "canvasesCount": 0,
+        "svgCount": 3,
+        "hasHorizontalOverflow": false
+      },
+      "logs": [
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        },
+        {
+          "type": "warning",
+          "text": "THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead."
+        }
+      ],
+      "axeViolations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+          "nodesCount": 32,
+          "targetSample": ".sidebar-group-label"
+        },
+        {
+          "id": "label",
+          "impact": "critical",
+          "description": "Ensure every form element has a label",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": "input[max=\"120\"]"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/page-has-heading-one?application=axeAPI",
+          "nodesCount": 1,
+          "targetSample": "html"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+          "nodesCount": 2,
+          "targetSample": ".studio-app-container > div:nth-child(1) > div:nth-child(1) > div"
+        }
+      ]
+    }
+  ],
+  "axeSummary": {
+    "critical": 48,
+    "serious": 77,
+    "moderate": 50,
+    "minor": 12,
+    "totalViolations": 187,
+    "violationsByProduct": {
+      "p01-cargo-fit": 60,
+      "p02-freight-pricing": 63,
+      "p03-hos-planner": 16,
+      "p04-asset-studio": 48
+    }
+  },
+  "consoleErrors": []
+}

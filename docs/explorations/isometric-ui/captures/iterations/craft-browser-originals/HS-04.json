@@ -1,0 +1,36 @@
+{
+  "batchedParts": "61",
+  "quality": "studio",
+  "ready": "HS-04",
+  "entities": "1",
+  "anchors": "5",
+  "geometry": "20",
+  "fixtureMetrics": "[{\"label\":\"Remaining synthetic budget\",\"value\":1.5,\"unit\":\"h\"},{\"label\":\"Scenario speed\",\"value\":50,\"unit\":\"mph\"},{\"label\":\"Reachable chainage\",\"value\":75,\"unit\":\"mi\"},{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "28.30",
+  "drawCalls": "78",
+  "camera": "{\"position\":[50.241364161695635,51.37444412444329,50.00444412503935],\"target\":[-0.06307996334370358,1.0699999994039535,-0.2999999999999998],\"zoom\":1}",
+  "painted": "HS-04",
+  "id": "HS-04",
+  "title": "Stop reachability envelope",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/HS-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T19:59:24.843Z"
+}

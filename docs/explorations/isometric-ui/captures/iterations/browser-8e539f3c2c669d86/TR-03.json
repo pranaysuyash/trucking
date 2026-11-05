@@ -1,0 +1,36 @@
+{
+  "batchedParts": "57",
+  "quality": "studio",
+  "ready": "TR-03",
+  "entities": "3",
+  "anchors": "4",
+  "geometry": "14",
+  "fixtureMetrics": "[{\"label\":\"Declared auto liability\",\"value\":1000000,\"unit\":\"USD\"},{\"label\":\"Scenario requirement\",\"value\":1250000,\"unit\":\"USD\"},{\"label\":\"Coverage gap\",\"value\":250000,\"unit\":\"USD\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "75.60",
+  "drawCalls": "59",
+  "camera": "{\"position\":[4.862630994529308,21.427731645466256,48.62630994529307],\"target\":[0,2.517500000074506,0],\"zoom\":1}",
+  "painted": "TR-03",
+  "id": "TR-03",
+  "title": "Insurance coverage volumes",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:33.643Z"
+}

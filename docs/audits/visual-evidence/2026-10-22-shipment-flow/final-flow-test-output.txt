@@ -1,0 +1,19 @@
+✔ dispatch is blocked before every current specialist decision exists (2.365792ms)
+✔ an amended manifest preserves history and invalidates all prior approvals (1.205334ms)
+✔ stale writers and mismatched operation reuse are rejected (1.069792ms)
+✔ expired carrier decision and open exceptions prevent dispatch (0.701709ms)
+✔ upstream reevaluation invalidates downstream receiving and yard decisions (0.526167ms)
+✔ handling-unit loss or duplication cannot become a successful fit (0.544833ms)
+✔ complete sequence requires actual ordered scenario events and matching receipt (3.01875ms)
+✔ API persists across restart, rejects foreign origins and deduplicates creation (58.454333ms)
+✔ delivered warehouse stock remains held while departed origin doors become available (4.255083ms)
+✔ an unreadable or incompatible store is preserved instead of silently reset (1.339792ms)
+✔ a saved receiving operation can be retried after upstream invalidation without replaying its reservation (16.620208ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 227.956166

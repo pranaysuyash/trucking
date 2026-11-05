@@ -1,0 +1,36 @@
+{
+  "batchedParts": "38",
+  "quality": "studio",
+  "ready": "CC-02",
+  "entities": "8",
+  "anchors": "5",
+  "geometry": "24",
+  "fixtureMetrics": "[{\"label\":\"Recorded stages at current revision\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Stale stages\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Rejected stages\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Missing stages\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "100.20",
+  "drawCalls": "87",
+  "camera": "{\"position\":[60.04442791313045,60.94442791730279,60.12192789882534],\"target\":[0,0.9000000041723253,0.07749998569488525],\"zoom\":1}",
+  "painted": "CC-02",
+  "id": "CC-02",
+  "title": "Spatial lifecycle status",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:09.304Z"
+}

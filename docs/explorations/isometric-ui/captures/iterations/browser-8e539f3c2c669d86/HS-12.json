@@ -1,0 +1,36 @@
+{
+  "batchedParts": "797",
+  "quality": "studio",
+  "ready": "HS-12",
+  "entities": "12",
+  "anchors": "2",
+  "geometry": "91",
+  "fixtureMetrics": "[{\"label\":\"Parking bays\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Vehicle length\",\"value\":70,\"unit\":\"ft\"},{\"label\":\"Available bays\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "61.80",
+  "drawCalls": "285",
+  "camera": "{\"position\":[43.28570885842559,42.17870884704111,40.8832088584256],\"target\":[2.3025,1.195499988615513,-0.10000000000000053],\"zoom\":1}",
+  "painted": "HS-12",
+  "id": "HS-12",
+  "title": "Rest-site parking study",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:31.119Z"
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "83",
+  "quality": "studio",
+  "ready": "HS-11",
+  "entities": "3",
+  "anchors": "3",
+  "geometry": "20",
+  "fixtureMetrics": "[{\"label\":\"Intervals\",\"value\":14,\"unit\":\"count\"},{\"label\":\"Source gaps\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Reviewed intervals\",\"value\":12,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "50.00",
+  "drawCalls": "81",
+  "camera": "{\"position\":[28.867513459481287,30.53651346003636,28.867513459481295],\"target\":[0,1.6690000005550683,0],\"zoom\":1}",
+  "painted": "HS-11",
+  "id": "HS-11",
+  "title": "Audit evidence and exception layers",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:30.174Z"
+}

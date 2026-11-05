@@ -1,0 +1,36 @@
+{
+  "batchedParts": "70",
+  "quality": "studio",
+  "ready": "CC-11",
+  "entities": "4",
+  "anchors": "4",
+  "geometry": "19",
+  "fixtureMetrics": "[{\"label\":\"Synthetic evidence records\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.00",
+  "drawCalls": "75",
+  "camera": "{\"position\":[33.44405063991725,34.25555063913122,33.54405063991726],\"target\":[-0.10000000000000053,0.7114999992139638,0],\"zoom\":1}",
+  "painted": "CC-11",
+  "id": "CC-11",
+  "title": "Evidence revision replay",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:15.955Z"
+}

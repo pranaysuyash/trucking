@@ -1,0 +1,36 @@
+{
+  "batchedParts": "71",
+  "quality": "studio",
+  "ready": "WH-02",
+  "entities": "2",
+  "anchors": "3",
+  "geometry": "16",
+  "fixtureMetrics": "[{\"label\":\"Cell width\",\"value\":52,\"unit\":\"in\"},{\"label\":\"Unit width\",\"value\":48,\"unit\":\"in\"},{\"label\":\"Unit mass\",\"value\":1200,\"unit\":\"lb\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "116.80",
+  "drawCalls": "62",
+  "camera": "{\"position\":[20.726874666488524,22.45187466648853,20.726874666488527],\"target\":[0,1.725,0],\"zoom\":1}",
+  "painted": "WH-02",
+  "id": "WH-02",
+  "title": "Rack cell dimensional fit",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:04.760Z"
+}

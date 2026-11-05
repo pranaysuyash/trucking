@@ -1,0 +1,37 @@
+{
+  "batchedParts": "210",
+  "quality": "studio",
+  "ready": "CF-09",
+  "entities": "3",
+  "anchors": "5",
+  "geometry": "45",
+  "fixtureMetrics": "[{\"label\":\"Setting A distance\",\"value\":36,\"unit\":\"ft\"},{\"label\":\"Setting B distance\",\"value\":38,\"unit\":\"ft\"},{\"label\":\"Rear group load change\",\"value\":-900,\"unit\":\"lb\"},{\"label\":\"Kingpin reaction change\",\"value\":900,\"unit\":\"lb\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "175.50",
+  "drawCalls": "176",
+  "camera": "{\"position\":[39.44095992165341,41.43370992642179,39.44820992114678],\"target\":[-0.010249998509883618,1.9825000062584883,-0.0029999990165234802],\"zoom\":1}",
+  "painted": "CF-09",
+  "id": "CF-09",
+  "title": "Tandem slider comparison",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:27:48.165Z"
+}

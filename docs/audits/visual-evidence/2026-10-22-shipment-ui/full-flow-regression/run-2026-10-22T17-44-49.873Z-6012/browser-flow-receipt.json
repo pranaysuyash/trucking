@@ -1,0 +1,37 @@
+{
+  "startedAt": "2026-10-22T17:44:49.873Z",
+  "completedAt": "2026-10-22T17:45:31.091Z",
+  "evidenceDirectory": "/Users/pranay/Projects/trucking/docs/audits/visual-evidence/2026-10-22-shipment-ui/full-flow-regression/run-2026-10-22T17-44-49.873Z-6012",
+  "evidenceTier": 4,
+  "testSensitivity": "S1",
+  "shipmentId": "05c03ee5-2cae-47e6-a631-e9a1171885cc",
+  "status": "invoice_ready",
+  "inputRevision": 2,
+  "recordRevision": 23,
+  "handlingUnitIds": [
+    "05c03ee5-2cae-47e6-a631-e9a1171885cc-HU-01",
+    "05c03ee5-2cae-47e6-a631-e9a1171885cc-HU-02"
+  ],
+  "totalCents": 28787,
+  "eventCount": 23,
+  "pageErrors": [],
+  "checks": [
+    "nine standalone renders",
+    "seven native engine adapters",
+    "native reviewed cargo publication and retained solve",
+    "native exact quote and assumptions retained",
+    "cross-origin portal updates",
+    "full manifest amendment invalidates decisions",
+    "all stages reevaluated at input revision 2",
+    "original and amended event payloads preserved",
+    "stale write rejected",
+    "dispatch gate",
+    "departure and arrival ordering",
+    "wrong barcode rejected",
+    "exact receipt IDs barcodes and assignments retained",
+    "exception blocks finance",
+    "resolution and exact invoice match",
+    "reload persistence",
+    "mobile workspace bounds"
+  ]
+}

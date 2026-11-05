@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "30",
+  "camera": "{\"position\":[24.840977694548098,26.140978291339607,23.829978331073555],\"target\":[0.6499993920326235,1.949999988824129,-0.3609999714419245],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "55",
+  "entities": "2",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Door width\",\"value\":96,\"unit\":\"in\"},{\"label\":\"Cargo width\",\"value\":92,\"unit\":\"in\"},{\"label\":\"Side gap\",\"value\":2,\"unit\":\"in\"}]",
+  "geometry": "13",
+  "id": "CF-05",
+  "pageWidth": 1440,
+  "painted": "CF-05",
+  "quality": "studio",
+  "ready": "CF-05",
+  "renderMs": "56.30",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Door passage and maneuver",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-05.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:31:45.943Z"
+}

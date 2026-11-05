@@ -1,0 +1,5885 @@
+[
+  {
+    "id": "CF-01",
+    "product": "cargo",
+    "title": "Mixed manifest fit",
+    "intent": "Explain where every identified handling unit fits inside the selected equipment.",
+    "family": "cargo",
+    "focus": "mixed_manifest_fit",
+    "state": "normal",
+    "labels": [
+      "Trailer interior",
+      "Pallet HU-01",
+      "Crate HU-14",
+      "Unused cavity"
+    ],
+    "metrics": [
+      {
+        "label": "Loaded units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Payload",
+        "value": 12600,
+        "unit": "lb"
+      },
+      {
+        "label": "Used cube",
+        "value": 68,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Trailer interior to focus the technical model; inspect Pallet HU-01 and Crate HU-14 in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/ui/PlanStep.tsx",
+    "modules": [
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M10",
+      "M12"
+    ],
+    "prerequisite": "Canonical placements and independent validation remain the source of fit truth.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-01",
+      "capture": "captures/CF-01.png",
+      "thumbnail": "thumbnails/CF-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-02",
+    "product": "cargo",
+    "title": "Cargo dimensions and weight editor",
+    "intent": "Explore direct spatial editing of dimensions and mass with exact numeric controls.",
+    "family": "cargo",
+    "focus": "cargo_dimensions_and_weight_editor",
+    "state": "selected",
+    "labels": [
+      "Length handle",
+      "Width handle",
+      "Height handle",
+      "Mass label"
+    ],
+    "metrics": [
+      {
+        "label": "Length",
+        "value": 48,
+        "unit": "in"
+      },
+      {
+        "label": "Width",
+        "value": 40,
+        "unit": "in"
+      },
+      {
+        "label": "Mass",
+        "value": 1200,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Enable Edit dimensions and drag the L, W or H handle, or use exact numeric fields. Arrow keys adjust 0.01 m and Shift adjusts 0.10 m. Inspect volume, undo or redo the complete drag, and use Escape to cancel. Fixture edits remain local to this visual study.",
+    "source": "products/product-01-cargo-fit/src/ui/CargoStep.tsx",
+    "modules": [
+      "M02",
+      "M04",
+      "M05",
+      "M09"
+    ],
+    "prerequisite": "Constrain editing to a local synthetic fixture until edit and revalidation contracts exist.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-02",
+      "capture": "captures/CF-02.png",
+      "thumbnail": "thumbnails/CF-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-03",
+    "product": "cargo",
+    "title": "Irregular cargo envelope",
+    "intent": "Compare an irregular object with its declared packing envelope and unused envelope space.",
+    "family": "cargo",
+    "focus": "irregular_cargo_envelope",
+    "state": "inspection",
+    "labels": [
+      "Declared envelope",
+      "Stepped object",
+      "Orientation axis",
+      "Envelope excess"
+    ],
+    "metrics": [
+      {
+        "label": "Envelope volume",
+        "value": 128,
+        "unit": "ft3"
+      },
+      {
+        "label": "Object volume",
+        "value": 96,
+        "unit": "ft3"
+      },
+      {
+        "label": "Mass",
+        "value": 1800,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Declared envelope to focus the technical model; inspect Stepped object and Orientation axis in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M10"
+    ],
+    "prerequisite": "Actual shape geometry is required before claiming exact irregular-object fit.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-03",
+      "capture": "captures/CF-03.png",
+      "thumbnail": "thumbnails/CF-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-04",
+    "product": "cargo",
+    "title": "Stacking and support",
+    "intent": "Reveal supported contact area and stacking relationships for fragile or heavy units.",
+    "family": "cargo",
+    "focus": "stacking_and_support",
+    "state": "warning",
+    "labels": [
+      "Upper crate",
+      "Support contact",
+      "No-stack pallet",
+      "Unsupported edge"
+    ],
+    "metrics": [
+      {
+        "label": "Upper mass",
+        "value": 400,
+        "unit": "lb"
+      },
+      {
+        "label": "Support area",
+        "value": 76,
+        "unit": "percent"
+      },
+      {
+        "label": "Stack height",
+        "value": 84,
+        "unit": "in"
+      }
+    ],
+    "interaction": "Select Upper crate to focus the technical model; inspect Support contact and No-stack pallet in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/validator.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M07",
+      "M12"
+    ],
+    "prerequisite": "Use validator outputs where supported and label unsupported physics as a proposed study.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-04",
+      "capture": "captures/CF-04.png",
+      "thumbnail": "thumbnails/CF-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-05",
+    "product": "cargo",
+    "title": "Door passage and maneuver",
+    "intent": "Explore the difference between internal cargo fit and passage through the opening.",
+    "family": "cargo",
+    "focus": "door_passage_and_maneuver",
+    "state": "inspection",
+    "labels": [
+      "Door aperture",
+      "Cargo envelope",
+      "Entry path",
+      "Clearance marker"
+    ],
+    "metrics": [
+      {
+        "label": "Door width",
+        "value": 96,
+        "unit": "in"
+      },
+      {
+        "label": "Cargo width",
+        "value": 92,
+        "unit": "in"
+      },
+      {
+        "label": "Side gap",
+        "value": 2,
+        "unit": "in"
+      }
+    ],
+    "interaction": "Select Door aperture to focus the technical model; inspect Cargo envelope and Entry path in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/validator.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M08",
+      "M12"
+    ],
+    "prerequisite": "Exact swept-path and equipment-opening data must precede operational maneuver claims.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-05",
+      "capture": "captures/CF-05.png",
+      "thumbnail": "thumbnails/CF-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-06",
+    "product": "cargo",
+    "title": "Manual repack preview",
+    "intent": "Review a proposed pallet relocation before recalculating fit and distribution.",
+    "family": "cargo",
+    "focus": "manual_repack_preview",
+    "state": "selected",
+    "labels": [
+      "Original placement",
+      "Ghost placement",
+      "Collision region",
+      "Apply preview"
+    ],
+    "metrics": [
+      {
+        "label": "Selected unit",
+        "value": 7,
+        "unit": "index"
+      },
+      {
+        "label": "Move distance",
+        "value": 24,
+        "unit": "in"
+      },
+      {
+        "label": "Candidate overlap",
+        "value": 0,
+        "unit": "in3"
+      }
+    ],
+    "interaction": "Select Original placement to focus the technical model; inspect Ghost placement and Collision region in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/ui/PlanStep.tsx",
+    "modules": [
+      "M02",
+      "M04",
+      "M07",
+      "M12",
+      "M20"
+    ],
+    "prerequisite": "Exploration is a reversible preview and does not edit the production load plan.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-06",
+      "capture": "captures/CF-06.png",
+      "thumbnail": "thumbnails/CF-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-07",
+    "product": "cargo",
+    "title": "Stop sequence accessibility",
+    "intent": "Show which cargo is removed at each destination and where access is blocked.",
+    "family": "cargo",
+    "focus": "stop_sequence_accessibility",
+    "state": "sequence",
+    "labels": [
+      "Stop 1 cargo",
+      "Stop 2 cargo",
+      "Rear access",
+      "Blocked unit"
+    ],
+    "metrics": [
+      {
+        "label": "Stops",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Remaining units",
+        "value": 11,
+        "unit": "count"
+      },
+      {
+        "label": "Rehandled units",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Stop 1 cargo to focus the technical model; inspect Stop 2 cargo and Rear access in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/types.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M11",
+      "M12"
+    ],
+    "prerequisite": "Require handling-unit stop assignment and access rules for actionable sequencing.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-07",
+      "capture": "captures/CF-07.png",
+      "thumbnail": "thumbnails/CF-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-08",
+    "product": "cargo",
+    "title": "Axle and center of gravity",
+    "intent": "Connect physical cargo placement to the modeled axle and center-of-gravity estimate.",
+    "family": "vehicle",
+    "focus": "axle_and_center_of_gravity",
+    "state": "inspection",
+    "labels": [
+      "Cargo center",
+      "Steer axle",
+      "Drive tandem",
+      "Trailer tandem"
+    ],
+    "metrics": [
+      {
+        "label": "Payload",
+        "value": 24000,
+        "unit": "lb"
+      },
+      {
+        "label": "Cargo center",
+        "value": 26,
+        "unit": "ft"
+      },
+      {
+        "label": "Rear tandem",
+        "value": 28700,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Cargo center to focus the technical model; inspect Steer axle and Drive tandem in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/analyze.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M12",
+      "M14"
+    ],
+    "prerequisite": "These illustrative loads are not scale measurements or a legal determination.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-08",
+      "capture": "captures/CF-08.png",
+      "thumbnail": "thumbnails/CF-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-09",
+    "product": "cargo",
+    "title": "Tandem slider comparison",
+    "intent": "Compare two slider positions and their predicted load distribution.",
+    "family": "vehicle",
+    "focus": "tandem_slider_comparison",
+    "state": "comparison",
+    "labels": [
+      "Slider setting A",
+      "Slider setting B",
+      "Kingpin",
+      "Rear axle group"
+    ],
+    "metrics": [
+      {
+        "label": "Setting A",
+        "value": 36,
+        "unit": "ft"
+      },
+      {
+        "label": "Setting B",
+        "value": 38,
+        "unit": "ft"
+      },
+      {
+        "label": "Load difference",
+        "value": 900,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Slider setting A to focus the technical model; inspect Slider setting B and Kingpin in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/tandemSlider.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M15"
+    ],
+    "prerequisite": "Use the modeled solver contract and show its assumptions beside the scene.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-09",
+      "capture": "captures/CF-09.png",
+      "thumbnail": "thumbnails/CF-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-10",
+    "product": "cargo",
+    "title": "Securement arrangement",
+    "intent": "Explore anchor positions and restraint directions alongside exact calculations.",
+    "family": "cargo",
+    "focus": "securement_arrangement",
+    "state": "inspection",
+    "labels": [
+      "Forward restraint",
+      "Lateral strap",
+      "Anchor point",
+      "Cargo mass"
+    ],
+    "metrics": [
+      {
+        "label": "Cargo mass",
+        "value": 6200,
+        "unit": "lb"
+      },
+      {
+        "label": "Straps",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Anchor spacing",
+        "value": 48,
+        "unit": "in"
+      }
+    ],
+    "interaction": "Select Forward restraint to focus the technical model; inspect Lateral strap and Anchor point in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/securement.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M07",
+      "M12",
+      "M14"
+    ],
+    "prerequisite": "Anchor geometry and qualified restraint inputs are required for operational securement.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-10",
+      "capture": "captures/CF-10.png",
+      "thumbnail": "thumbnails/CF-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-11",
+    "product": "cargo",
+    "title": "Hazardous cargo separation",
+    "intent": "Make declared segregation groups and proposed separation distances visible.",
+    "family": "cargo",
+    "focus": "hazardous_cargo_separation",
+    "state": "warning",
+    "labels": [
+      "Group A",
+      "Group B",
+      "Separation corridor",
+      "Unclassified cargo"
+    ],
+    "metrics": [
+      {
+        "label": "Groups",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Separation",
+        "value": 12,
+        "unit": "ft"
+      },
+      {
+        "label": "Unclassified units",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Group A to focus the technical model; inspect Group B and Separation corridor in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/hazmatSegregation.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M07",
+      "M12",
+      "M27"
+    ],
+    "prerequisite": "Labels express a synthetic policy scenario and make no regulatory approval claim.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-11",
+      "capture": "captures/CF-11.png",
+      "thumbnail": "thumbnails/CF-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CF-12",
+    "product": "cargo",
+    "title": "Plan version comparison",
+    "intent": "Show moved units and distribution changes between two saved plan states.",
+    "family": "cargo",
+    "focus": "plan_version_comparison",
+    "state": "comparison",
+    "labels": [
+      "Earlier placement",
+      "Revised placement",
+      "Changed cargo",
+      "Revision marker"
+    ],
+    "metrics": [
+      {
+        "label": "Earlier units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Moved units",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Cube change",
+        "value": 6,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Earlier placement to focus the technical model; inspect Revised placement and Changed cargo in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/ui/VersionsStep.tsx",
+    "modules": [
+      "M02",
+      "M11",
+      "M15",
+      "M20",
+      "M30"
+    ],
+    "prerequisite": "Retain version identity and compare canonical snapshots without rewriting either.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CF-12",
+      "capture": "captures/CF-12.png",
+      "thumbnail": "thumbnails/CF-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-01",
+    "product": "assets",
+    "title": "Equipment catalog comparison",
+    "intent": "Compare vehicle dimensions capacity and configuration in a spatial catalog.",
+    "family": "vehicle",
+    "focus": "equipment_catalog_comparison",
+    "state": "comparison",
+    "labels": [
+      "Dry van",
+      "Reefer",
+      "Step deck",
+      "Shared scale ruler"
+    ],
+    "metrics": [
+      {
+        "label": "Vehicle options",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Dry-van length",
+        "value": 53,
+        "unit": "ft"
+      },
+      {
+        "label": "Reefer payload",
+        "value": 43500,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Dry van to focus the technical model; inspect Reefer and Step deck in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/App.tsx",
+    "modules": [
+      "M01",
+      "M03",
+      "M04",
+      "M15",
+      "M21"
+    ],
+    "prerequisite": "Catalog geometry remains a template rather than a verified available vehicle.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-01",
+      "capture": "captures/AS-01.png",
+      "thumbnail": "thumbnails/AS-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-02",
+    "product": "assets",
+    "title": "Vehicle interior cutaway",
+    "intent": "Expose interior envelope door aperture and usable loading region.",
+    "family": "vehicle",
+    "focus": "vehicle_interior_cutaway",
+    "state": "inspection",
+    "labels": [
+      "Interior wall",
+      "Rear aperture",
+      "Wheel arch",
+      "Usable floor"
+    ],
+    "metrics": [
+      {
+        "label": "Interior length",
+        "value": 636,
+        "unit": "in"
+      },
+      {
+        "label": "Interior width",
+        "value": 100,
+        "unit": "in"
+      },
+      {
+        "label": "Door height",
+        "value": 108,
+        "unit": "in"
+      }
+    ],
+    "interaction": "Select Interior wall to focus the technical model; inspect Rear aperture and Wheel arch in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/Realtime3DCanvas.tsx",
+    "modules": [
+      "M01",
+      "M03",
+      "M04",
+      "M05",
+      "M08"
+    ],
+    "prerequisite": "Use declared catalog dimensions and preserve uncertainty about specific equipment.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-02",
+      "capture": "captures/AS-02.png",
+      "thumbnail": "thumbnails/AS-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-03",
+    "product": "assets",
+    "title": "Packaging asset twin",
+    "intent": "Explore pallet cage drum and crate shape with dimensions volume and weight.",
+    "family": "cargo",
+    "focus": "packaging_asset_twin",
+    "state": "selected",
+    "labels": [
+      "Package shell",
+      "Usable cavity",
+      "Tare mass",
+      "Payload mass"
+    ],
+    "metrics": [
+      {
+        "label": "External volume",
+        "value": 64,
+        "unit": "ft3"
+      },
+      {
+        "label": "Tare mass",
+        "value": 120,
+        "unit": "lb"
+      },
+      {
+        "label": "Payload",
+        "value": 900,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Package shell to focus the technical model; inspect Usable cavity and Tare mass in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M09",
+      "M10"
+    ],
+    "prerequisite": "External envelope usable capacity tare and gross mass must retain distinct meanings.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-03",
+      "capture": "captures/AS-03.png",
+      "thumbnail": "thumbnails/AS-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-04",
+    "product": "assets",
+    "title": "Custom asset forge",
+    "intent": "Review a custom container or equipment template before saving a candidate.",
+    "family": "vehicle",
+    "focus": "custom_asset_forge",
+    "state": "selected",
+    "labels": [
+      "Length control",
+      "Door control",
+      "Tare control",
+      "Capacity preview"
+    ],
+    "metrics": [
+      {
+        "label": "Body length",
+        "value": 28,
+        "unit": "ft"
+      },
+      {
+        "label": "Door width",
+        "value": 92,
+        "unit": "in"
+      },
+      {
+        "label": "Tare",
+        "value": 7200,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Length control to focus the technical model; inspect Door control and Tare control in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/AssetForgeModal.tsx",
+    "modules": [
+      "M02",
+      "M03",
+      "M04",
+      "M09",
+      "M20"
+    ],
+    "prerequisite": "Keep the review fixture separate from the canonical asset catalog.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-04",
+      "capture": "captures/AS-04.png",
+      "thumbnail": "thumbnails/AS-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-05",
+    "product": "assets",
+    "title": "Dimension tuner",
+    "intent": "Explore linked geometric handles and precise fields for proportions.",
+    "family": "vehicle",
+    "focus": "dimension_tuner",
+    "state": "selected",
+    "labels": [
+      "Wheelbase handle",
+      "Deck length",
+      "Overall height",
+      "Scale grid"
+    ],
+    "metrics": [
+      {
+        "label": "Wheelbase",
+        "value": 22,
+        "unit": "ft"
+      },
+      {
+        "label": "Deck length",
+        "value": 48,
+        "unit": "ft"
+      },
+      {
+        "label": "Height",
+        "value": 13.2,
+        "unit": "ft"
+      }
+    ],
+    "interaction": "Enable Edit dimensions and drag deck length, width, body height or tractor wheelbase handles. Compare exact numeric values, undo/redo, cancel a drag or reset the temporary fixture. Use Fit to reframe when desired; no canonical catalog asset is changed.",
+    "source": "products/product-04-asset-studio/src/ui/DialKitTuner.tsx",
+    "modules": [
+      "M02",
+      "M04",
+      "M09",
+      "M16"
+    ],
+    "prerequisite": "Dimensional changes require downstream invalidation before production adoption.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-05",
+      "capture": "captures/AS-05.png",
+      "thumbnail": "thumbnails/AS-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-06",
+    "product": "assets",
+    "title": "Container volume and mass budget",
+    "intent": "Show nested container volume payload tare and remaining capacity explicitly.",
+    "family": "cargo",
+    "focus": "container_volume_and_mass_budget",
+    "state": "inspection",
+    "labels": [
+      "Outer container",
+      "Inner container",
+      "Tare block",
+      "Remaining payload"
+    ],
+    "metrics": [
+      {
+        "label": "Outer capacity",
+        "value": 2400,
+        "unit": "ft3"
+      },
+      {
+        "label": "Used volume",
+        "value": 1560,
+        "unit": "ft3"
+      },
+      {
+        "label": "Remaining payload",
+        "value": 12000,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Outer container to focus the technical model; inspect Inner container and Tare block in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/engine/spatial.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M10",
+      "M12"
+    ],
+    "prerequisite": "Volume and mass budgets are independent constraints and cannot stand in for fit validation.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-06",
+      "capture": "captures/AS-06.png",
+      "thumbnail": "thumbnails/AS-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-07",
+    "product": "assets",
+    "title": "Spatial capacity study",
+    "intent": "Compare homogeneous package layouts and display the limiting dimension.",
+    "family": "cargo",
+    "focus": "spatial_capacity_study",
+    "state": "comparison",
+    "labels": [
+      "Package grid",
+      "Rejected row",
+      "Roof clearance",
+      "Payload budget"
+    ],
+    "metrics": [
+      {
+        "label": "Packages",
+        "value": 24,
+        "unit": "count"
+      },
+      {
+        "label": "Roof gap",
+        "value": 8,
+        "unit": "in"
+      },
+      {
+        "label": "Payload use",
+        "value": 82,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Package grid to focus the technical model; inspect Rejected row and Roof clearance in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/SpatialCapacityPanel.tsx",
+    "modules": [
+      "M03",
+      "M04",
+      "M10",
+      "M12",
+      "M15"
+    ],
+    "prerequisite": "Capacity heuristics need P01 mixed-placement validation before operational use.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-07",
+      "capture": "captures/AS-07.png",
+      "thumbnail": "thumbnails/AS-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-08",
+    "product": "assets",
+    "title": "Trip fuel time and range",
+    "intent": "Explore range fuel depletion and elapsed time on the selected vehicle.",
+    "family": "route",
+    "focus": "trip_fuel_time_and_range",
+    "state": "sequence",
+    "labels": [
+      "Start tank",
+      "Fuel stop",
+      "Range boundary",
+      "Arrival marker"
+    ],
+    "metrics": [
+      {
+        "label": "Trip length",
+        "value": 620,
+        "unit": "mi"
+      },
+      {
+        "label": "Fuel used",
+        "value": 95,
+        "unit": "gal"
+      },
+      {
+        "label": "Elapsed time",
+        "value": 11.4,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Start tank to focus the technical model; inspect Fuel stop and Range boundary in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/TemporalSimulatorPanel.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M06",
+      "M11",
+      "M14"
+    ],
+    "prerequisite": "Show model assumptions and do not imply an actual vehicle fuel reading.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-08",
+      "capture": "captures/AS-08.png",
+      "thumbnail": "thumbnails/AS-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-09",
+    "product": "assets",
+    "title": "Carbon and energy study",
+    "intent": "Make energy and emissions scenario contributions inspectable around the asset.",
+    "family": "finance",
+    "focus": "carbon_and_energy_study",
+    "state": "comparison",
+    "labels": [
+      "Baseline vehicle",
+      "Efficient vehicle",
+      "Fuel contribution",
+      "Energy total"
+    ],
+    "metrics": [
+      {
+        "label": "Baseline fuel",
+        "value": 100,
+        "unit": "gal"
+      },
+      {
+        "label": "Alternative fuel",
+        "value": 92,
+        "unit": "gal"
+      },
+      {
+        "label": "Difference",
+        "value": 8,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Baseline vehicle to focus the technical model; inspect Efficient vehicle and Fuel contribution in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/CarbonInsettingPanel.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M15",
+      "M17",
+      "M27"
+    ],
+    "prerequisite": "Keep emission factors sourced and distinguish scenario accounting from verified savings.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-09",
+      "capture": "captures/AS-09.png",
+      "thumbnail": "thumbnails/AS-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-10",
+    "product": "assets",
+    "title": "Multi-stop axle evolution",
+    "intent": "Replay changing cargo center and axle estimates after deliveries.",
+    "family": "vehicle",
+    "focus": "multi_stop_axle_evolution",
+    "state": "sequence",
+    "labels": [
+      "Departure cargo",
+      "Stop 1 removal",
+      "Cargo center trail",
+      "Axle estimate"
+    ],
+    "metrics": [
+      {
+        "label": "Stops",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Final payload",
+        "value": 5200,
+        "unit": "lb"
+      },
+      {
+        "label": "Center shift",
+        "value": 7,
+        "unit": "ft"
+      }
+    ],
+    "interaction": "Select Departure cargo to focus the technical model; inspect Stop 1 removal and Cargo center trail in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/MultiStopUnloadPanel.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M11",
+      "M12",
+      "M14"
+    ],
+    "prerequisite": "Preserve handling-unit identity and stop order across remaining cargo states.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-10",
+      "capture": "captures/AS-10.png",
+      "thumbnail": "thumbnails/AS-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-11",
+    "product": "assets",
+    "title": "Fleet split alternatives",
+    "intent": "Compare cargo partitions across several candidate vehicles at common scale.",
+    "family": "vehicle",
+    "focus": "fleet_split_alternatives",
+    "state": "comparison",
+    "labels": [
+      "Vehicle A partition",
+      "Vehicle B partition",
+      "Unassigned cargo",
+      "Capacity balance"
+    ],
+    "metrics": [
+      {
+        "label": "Vehicles",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Total units",
+        "value": 48,
+        "unit": "count"
+      },
+      {
+        "label": "Unassigned units",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Vehicle A partition to focus the technical model; inspect Vehicle B partition and Unassigned cargo in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/FleetSplitterPanel.tsx",
+    "modules": [
+      "M02",
+      "M03",
+      "M12",
+      "M15",
+      "M21"
+    ],
+    "prerequisite": "The heuristic split is a candidate allocation until each vehicle passes fit checks.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-11",
+      "capture": "captures/AS-11.png",
+      "thumbnail": "thumbnails/AS-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "AS-12",
+    "product": "assets",
+    "title": "Sensor topology study",
+    "intent": "Locate proposed sensor anchors and attach precise readings and provenance.",
+    "family": "vehicle",
+    "focus": "sensor_topology_study",
+    "state": "inspection",
+    "labels": [
+      "Door reed switch",
+      "Reefer sensor",
+      "Wheel sensor",
+      "Battery sensor"
+    ],
+    "metrics": [
+      {
+        "label": "Sensor anchors",
+        "value": 8,
+        "unit": "count"
+      },
+      {
+        "label": "Reefer temperature",
+        "value": 35,
+        "unit": "F"
+      },
+      {
+        "label": "Battery voltage",
+        "value": 13.6,
+        "unit": "V"
+      }
+    ],
+    "interaction": "Select Door reed switch to focus the technical model; inspect Reefer sensor and Wheel sensor in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M18",
+      "M27"
+    ],
+    "prerequisite": "Actual sensor identities locations calibrations and timestamped input feeds are prerequisites.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=AS-12",
+      "capture": "captures/AS-12.png",
+      "thumbnail": "thumbnails/AS-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-01",
+    "product": "warehouse",
+    "title": "Facility spatial overview",
+    "intent": "Explore the entire facility zones storage and dock relationships.",
+    "family": "facility",
+    "focus": "facility_spatial_overview",
+    "state": "normal",
+    "labels": [
+      "Receiving zone",
+      "Storage racks",
+      "Outbound zone",
+      "Dock D-02"
+    ],
+    "metrics": [
+      {
+        "label": "Floor area",
+        "value": 48000,
+        "unit": "ft2"
+      },
+      {
+        "label": "Storage slots",
+        "value": 240,
+        "unit": "count"
+      },
+      {
+        "label": "Occupied slots",
+        "value": 168,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Receiving zone to focus the technical model; inspect Storage racks and Outbound zone in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/ui/WarehouseIsometricCanvas.tsx",
+    "modules": [
+      "M01",
+      "M02",
+      "M04",
+      "M05",
+      "M08",
+      "M21"
+    ],
+    "prerequisite": "Use canonical facility geometry rather than decorative grid positions.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-01",
+      "capture": "captures/WH-01.png",
+      "thumbnail": "thumbnails/WH-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-02",
+    "product": "warehouse",
+    "title": "Rack cell dimensional fit",
+    "intent": "Inspect a handling unit against a specific storage cell and weight budget.",
+    "family": "facility",
+    "focus": "rack_cell_dimensional_fit",
+    "state": "inspection",
+    "labels": [
+      "Rack bay",
+      "Unit envelope",
+      "Shelf underside",
+      "Load label"
+    ],
+    "metrics": [
+      {
+        "label": "Cell width",
+        "value": 52,
+        "unit": "in"
+      },
+      {
+        "label": "Unit width",
+        "value": 48,
+        "unit": "in"
+      },
+      {
+        "label": "Unit mass",
+        "value": 1200,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Rack bay to focus the technical model; inspect Unit envelope and Shelf underside in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/spatialModel.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M10",
+      "M12"
+    ],
+    "prerequisite": "Cell dimensions load limits and orientation must be declared in the source model.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-02",
+      "capture": "captures/WH-02.png",
+      "thumbnail": "thumbnails/WH-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-03",
+    "product": "warehouse",
+    "title": "Environmental zone allocation",
+    "intent": "Show chilled frozen ambient and controlled zones with assigned units.",
+    "family": "facility",
+    "focus": "environmental_zone_allocation",
+    "state": "warning",
+    "labels": [
+      "Chilled zone",
+      "Frozen zone",
+      "Ambient unit",
+      "Mismatch marker"
+    ],
+    "metrics": [
+      {
+        "label": "Chilled units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Frozen units",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Mismatched units",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Chilled zone to focus the technical model; inspect Frozen zone and Ambient unit in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/putawayEngine.ts",
+    "modules": [
+      "M05",
+      "M07",
+      "M10",
+      "M12",
+      "M18"
+    ],
+    "prerequisite": "Color indicates declared classes rather than measured temperature fields.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-03",
+      "capture": "captures/WH-03.png",
+      "thumbnail": "thumbnails/WH-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-04",
+    "product": "warehouse",
+    "title": "Inbound putaway recommendation",
+    "intent": "Explain why a pallet is assigned to a slot and show alternatives.",
+    "family": "facility",
+    "focus": "inbound_putaway_recommendation",
+    "state": "selected",
+    "labels": [
+      "Inbound pallet",
+      "Preferred slot",
+      "Alternative slot",
+      "Reason card"
+    ],
+    "metrics": [
+      {
+        "label": "Candidate slots",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Travel estimate",
+        "value": 140,
+        "unit": "ft"
+      },
+      {
+        "label": "Unit mass",
+        "value": 900,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Inbound pallet to focus the technical model; inspect Preferred slot and Alternative slot in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/putawayEngine.ts",
+    "modules": [
+      "M02",
+      "M05",
+      "M07",
+      "M12",
+      "M20"
+    ],
+    "prerequisite": "Keep recommendation scoring distinct from an executed inventory movement.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-04",
+      "capture": "captures/WH-04.png",
+      "thumbnail": "thumbnails/WH-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-05",
+    "product": "warehouse",
+    "title": "Nested moveable containers",
+    "intent": "Trace assets containing assets with dimensions volume and gross mass at each level.",
+    "family": "cargo",
+    "focus": "nested_moveable_containers",
+    "state": "inspection",
+    "labels": [
+      "Parent tote",
+      "Contained cartons",
+      "Gross mass",
+      "Free cavity"
+    ],
+    "metrics": [
+      {
+        "label": "Contained units",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Inner volume",
+        "value": 48,
+        "unit": "ft3"
+      },
+      {
+        "label": "Gross mass",
+        "value": 680,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Parent tote to focus the technical model; inspect Contained cartons and Gross mass in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M10",
+      "M12"
+    ],
+    "prerequisite": "Containment needs stable parent-child identity and independent tare gross capacity semantics.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-05",
+      "capture": "captures/WH-05.png",
+      "thumbnail": "thumbnails/WH-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-06",
+    "product": "warehouse",
+    "title": "Receiving scan verification",
+    "intent": "Highlight the unit and reserved slot being independently verified.",
+    "family": "facility",
+    "focus": "receiving_scan_verification",
+    "state": "inspection",
+    "labels": [
+      "Expected barcode",
+      "Scanned unit",
+      "Reserved slot",
+      "Verification outcome"
+    ],
+    "metrics": [
+      {
+        "label": "Expected units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Matched scans",
+        "value": 17,
+        "unit": "count"
+      },
+      {
+        "label": "Open discrepancies",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Expected barcode to focus the technical model; inspect Scanned unit and Reserved slot in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/verificationEngine.ts",
+    "modules": [
+      "M02",
+      "M05",
+      "M12",
+      "M18",
+      "M27"
+    ],
+    "prerequisite": "Use actual scan inputs only when connected and label review fixtures synthetic.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-06",
+      "capture": "captures/WH-06.png",
+      "thumbnail": "thumbnails/WH-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-07",
+    "product": "warehouse",
+    "title": "Forklift travel preview",
+    "intent": "Explore proposed aisle paths between receiving and selected storage.",
+    "family": "facility",
+    "focus": "forklift_travel_preview",
+    "state": "sequence",
+    "labels": [
+      "Receiving start",
+      "Aisle junction",
+      "Destination bay",
+      "Path length"
+    ],
+    "metrics": [
+      {
+        "label": "Travel distance",
+        "value": 180,
+        "unit": "ft"
+      },
+      {
+        "label": "Turns",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Lift height",
+        "value": 10,
+        "unit": "ft"
+      }
+    ],
+    "interaction": "Select Receiving start to focus the technical model; inspect Aisle junction and Destination bay in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/spatialModel.ts",
+    "modules": [
+      "M04",
+      "M06",
+      "M08",
+      "M11",
+      "M13"
+    ],
+    "prerequisite": "A navigable aisle graph and equipment clearance data are needed for route claims.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-07",
+      "capture": "captures/WH-07.png",
+      "thumbnail": "thumbnails/WH-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-08",
+    "product": "warehouse",
+    "title": "Inventory hold and quarantine",
+    "intent": "Show held units unavailable space and the physical recovery path.",
+    "family": "facility",
+    "focus": "inventory_hold_and_quarantine",
+    "state": "warning",
+    "labels": [
+      "Held pallet",
+      "Quarantine cell",
+      "Blocked allocation",
+      "Release evidence"
+    ],
+    "metrics": [
+      {
+        "label": "Held units",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Reserved cells",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Released units",
+        "value": 0,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Held pallet to focus the technical model; inspect Quarantine cell and Blocked allocation in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/types.ts",
+    "modules": [
+      "M05",
+      "M07",
+      "M12",
+      "M18",
+      "M20"
+    ],
+    "prerequisite": "Hold authority and release events must be defined before operational actions.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-08",
+      "capture": "captures/WH-08.png",
+      "thumbnail": "thumbnails/WH-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-09",
+    "product": "warehouse",
+    "title": "Capacity and occupancy layers",
+    "intent": "Explore independent floor volume mass and slot occupancy constraints.",
+    "family": "facility",
+    "focus": "capacity_and_occupancy_layers",
+    "state": "comparison",
+    "labels": [
+      "Floor utilization",
+      "Cube utilization",
+      "Mass utilization",
+      "Remaining cells"
+    ],
+    "metrics": [
+      {
+        "label": "Floor use",
+        "value": 72,
+        "unit": "percent"
+      },
+      {
+        "label": "Cube use",
+        "value": 61,
+        "unit": "percent"
+      },
+      {
+        "label": "Mass use",
+        "value": 84,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Floor utilization to focus the technical model; inspect Cube utilization and Mass utilization in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/spatialModel.ts",
+    "modules": [
+      "M04",
+      "M05",
+      "M10",
+      "M15",
+      "M17"
+    ],
+    "prerequisite": "Do not collapse volume occupancy and weight into a single unlabeled percentage.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-09",
+      "capture": "captures/WH-09.png",
+      "thumbnail": "thumbnails/WH-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-10",
+    "product": "warehouse",
+    "title": "Dock-to-rack receiving sequence",
+    "intent": "Replay gate dock unload scan and storage assignment for one shipment.",
+    "family": "facility",
+    "focus": "dock_to_rack_receiving_sequence",
+    "state": "sequence",
+    "labels": [
+      "Trailer at door",
+      "Unloaded unit",
+      "Scan checkpoint",
+      "Receiving slot"
+    ],
+    "metrics": [
+      {
+        "label": "Handling units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Verified units",
+        "value": 16,
+        "unit": "count"
+      },
+      {
+        "label": "Pending units",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Trailer at door to focus the technical model; inspect Unloaded unit and Scan checkpoint in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/cargoFitBridge.ts",
+    "modules": [
+      "M02",
+      "M06",
+      "M11",
+      "M12",
+      "M23"
+    ],
+    "prerequisite": "P07 owns yard location and P06 owns receiving and inventory; handoff must retain identity.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-10",
+      "capture": "captures/WH-10.png",
+      "thumbnail": "thumbnails/WH-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-11",
+    "product": "warehouse",
+    "title": "Cross-dock staging experiment",
+    "intent": "Review direct movement from inbound door to outbound staging lanes.",
+    "family": "facility",
+    "focus": "cross_dock_staging_experiment",
+    "state": "sequence",
+    "labels": [
+      "Inbound door",
+      "Transfer staging",
+      "Outbound door",
+      "Departure load"
+    ],
+    "metrics": [
+      {
+        "label": "Inbound units",
+        "value": 24,
+        "unit": "count"
+      },
+      {
+        "label": "Transferred units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Staged units",
+        "value": 6,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Inbound door to focus the technical model; inspect Transfer staging and Outbound door in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M06",
+      "M11",
+      "M12",
+      "M13"
+    ],
+    "prerequisite": "Cross-dock workflow matching and outbound allocations are proposed extensions.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-11",
+      "capture": "captures/WH-11.png",
+      "thumbnail": "thumbnails/WH-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "WH-12",
+    "product": "warehouse",
+    "title": "Receipt discrepancy and evidence",
+    "intent": "Connect missing damaged or mislocated units to receiving evidence and recovery.",
+    "family": "evidence",
+    "focus": "receipt_discrepancy_and_evidence",
+    "state": "warning",
+    "labels": [
+      "Expected unit",
+      "Missing unit outline",
+      "Observed location",
+      "Recovery note"
+    ],
+    "metrics": [
+      {
+        "label": "Expected units",
+        "value": 20,
+        "unit": "count"
+      },
+      {
+        "label": "Received units",
+        "value": 19,
+        "unit": "count"
+      },
+      {
+        "label": "Discrepancies",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Expected unit to focus the technical model; inspect Missing unit outline and Observed location in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/engine/verificationEngine.ts",
+    "modules": [
+      "M02",
+      "M05",
+      "M18",
+      "M20",
+      "M27"
+    ],
+    "prerequisite": "Physical receipt remains manual or observed evidence according to its actual source.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=WH-12",
+      "capture": "captures/WH-12.png",
+      "thumbnail": "thumbnails/WH-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-01",
+    "product": "yard",
+    "title": "Yard and dock overview",
+    "intent": "Explore guard shack docks lots staging and trailer locations in one facility scene.",
+    "family": "facility",
+    "focus": "yard_and_dock_overview",
+    "state": "normal",
+    "labels": [
+      "North dock doors",
+      "Drop lot A",
+      "Staging lanes",
+      "Gate entrance"
+    ],
+    "metrics": [
+      {
+        "label": "Dock doors",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Yard spots",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Parked trailers",
+        "value": 9,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select North dock doors to focus the technical model; inspect Drop lot A and Staging lanes in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/ui/App.tsx",
+    "modules": [
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M08"
+    ],
+    "prerequisite": "Current yard data supplies logical places; measured coordinates require a facility model.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-01",
+      "capture": "captures/YD-01.png",
+      "thumbnail": "thumbnails/YD-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-02",
+    "product": "yard",
+    "title": "Door compatibility and occupancy",
+    "intent": "Show trailer class door state and availability at each loading position.",
+    "family": "facility",
+    "focus": "door_compatibility_and_occupancy",
+    "state": "selected",
+    "labels": [
+      "Reefer door",
+      "Available door",
+      "Occupied trailer",
+      "Maintenance door"
+    ],
+    "metrics": [
+      {
+        "label": "Available doors",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Occupied doors",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Reserved doors",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Reefer door to focus the technical model; inspect Available door and Occupied trailer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/yardEngine.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M07",
+      "M12",
+      "M20"
+    ],
+    "prerequisite": "A visual assignment must not silently reserve or occupy production capacity.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-02",
+      "capture": "captures/YD-02.png",
+      "thumbnail": "thumbnails/YD-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-03",
+    "product": "yard",
+    "title": "Drop-lot trailer locator",
+    "intent": "Find a specific trailer and inspect its load and location identity.",
+    "family": "vehicle",
+    "focus": "drop_lot_trailer_locator",
+    "state": "selected",
+    "labels": [
+      "Trailer TLR-6112",
+      "Spot A-01",
+      "Carrier identity",
+      "Load state"
+    ],
+    "metrics": [
+      {
+        "label": "Trailer length",
+        "value": 53,
+        "unit": "ft"
+      },
+      {
+        "label": "Payload",
+        "value": 22000,
+        "unit": "lb"
+      },
+      {
+        "label": "Dwell time",
+        "value": 85,
+        "unit": "min"
+      }
+    ],
+    "interaction": "Select Trailer TLR-6112 to focus the technical model; inspect Spot A-01 and Carrier identity in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/types.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M05",
+      "M12",
+      "M21"
+    ],
+    "prerequisite": "Trailer identities must resolve consistently between door spot task and shipment records.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-03",
+      "capture": "captures/YD-03.png",
+      "thumbnail": "thumbnails/YD-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-04",
+    "product": "yard",
+    "title": "Gate check-in destination",
+    "intent": "Preview assigned destination and show a clear gate-to-location instruction.",
+    "family": "facility",
+    "focus": "gate_check_in_destination",
+    "state": "sequence",
+    "labels": [
+      "Gate queue",
+      "Assigned door",
+      "Trailer identity",
+      "Destination path"
+    ],
+    "metrics": [
+      {
+        "label": "Queue size",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Destination door",
+        "value": 6,
+        "unit": "index"
+      },
+      {
+        "label": "Travel length",
+        "value": 420,
+        "unit": "ft"
+      }
+    ],
+    "interaction": "Select Gate queue to focus the technical model; inspect Assigned door and Trailer identity in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/ui/App.tsx",
+    "modules": [
+      "M02",
+      "M03",
+      "M06",
+      "M11",
+      "M20"
+    ],
+    "prerequisite": "The current form is manual; OCR or physical identity verification requires actual input evidence.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-04",
+      "capture": "captures/YD-04.png",
+      "thumbnail": "thumbnails/YD-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-05",
+    "product": "yard",
+    "title": "Hostler move preview",
+    "intent": "Inspect source destination and reservation before confirming a trailer move.",
+    "family": "vehicle",
+    "focus": "hostler_move_preview",
+    "state": "selected",
+    "labels": [
+      "Source spot",
+      "Target door",
+      "Ghost trailer",
+      "Reservation state"
+    ],
+    "metrics": [
+      {
+        "label": "Move length",
+        "value": 280,
+        "unit": "ft"
+      },
+      {
+        "label": "Assigned hostler",
+        "value": 3,
+        "unit": "index"
+      },
+      {
+        "label": "Queue priority",
+        "value": 1,
+        "unit": "index"
+      }
+    ],
+    "interaction": "Select Source spot to focus the technical model; inspect Target door and Ghost trailer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/yardEngine.ts",
+    "modules": [
+      "M03",
+      "M06",
+      "M07",
+      "M13",
+      "M20"
+    ],
+    "prerequisite": "Atomic source target and trailer-state updates must precede operational move execution.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-05",
+      "capture": "captures/YD-05.png",
+      "thumbnail": "thumbnails/YD-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-06",
+    "product": "yard",
+    "title": "Hostler move execution replay",
+    "intent": "Show how location occupancy changes while a trailer is in motion.",
+    "family": "vehicle",
+    "focus": "hostler_move_execution_replay",
+    "state": "sequence",
+    "labels": [
+      "Released source",
+      "In-transit trailer",
+      "Reserved target",
+      "Completed move"
+    ],
+    "metrics": [
+      {
+        "label": "Move duration",
+        "value": 6,
+        "unit": "min"
+      },
+      {
+        "label": "Source occupancy",
+        "value": 0,
+        "unit": "count"
+      },
+      {
+        "label": "Target occupancy",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Released source to focus the technical model; inspect In-transit trailer and Reserved target in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/types.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M11",
+      "M13",
+      "M20"
+    ],
+    "prerequisite": "Current task completion alone does not update trailer location; replay is proposed behavior.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-06",
+      "capture": "captures/YD-06.png",
+      "thumbnail": "thumbnails/YD-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-07",
+    "product": "yard",
+    "title": "Detention urgency on location",
+    "intent": "Anchor remaining free time and modeled charges on the affected trailer.",
+    "family": "finance",
+    "focus": "detention_urgency_on_location",
+    "state": "warning",
+    "labels": [
+      "Trailer countdown",
+      "Free-time boundary",
+      "Accrued charge",
+      "Dock delay"
+    ],
+    "metrics": [
+      {
+        "label": "Elapsed dwell",
+        "value": 135,
+        "unit": "min"
+      },
+      {
+        "label": "Free time",
+        "value": 120,
+        "unit": "min"
+      },
+      {
+        "label": "Scenario charge",
+        "value": 21.25,
+        "unit": "USD"
+      }
+    ],
+    "interaction": "Select Trailer countdown to focus the technical model; inspect Free-time boundary and Accrued charge in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/yardEngine.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M11",
+      "M17",
+      "M27"
+    ],
+    "prerequisite": "Charges are illustrative and need contractual terms and supported timestamps for real billing.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-07",
+      "capture": "captures/YD-07.png",
+      "thumbnail": "thumbnails/YD-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-08",
+    "product": "yard",
+    "title": "Reefer parking and condition",
+    "intent": "Inspect trailer temperature door seal and proposed powered-parking availability.",
+    "family": "vehicle",
+    "focus": "reefer_parking_and_condition",
+    "state": "inspection",
+    "labels": [
+      "Reefer unit",
+      "Rear door",
+      "Seal marker",
+      "Parking power"
+    ],
+    "metrics": [
+      {
+        "label": "Setpoint",
+        "value": 34,
+        "unit": "F"
+      },
+      {
+        "label": "Current temperature",
+        "value": 35.2,
+        "unit": "F"
+      },
+      {
+        "label": "Dwell",
+        "value": 46,
+        "unit": "min"
+      }
+    ],
+    "interaction": "Select Reefer unit to focus the technical model; inspect Rear door and Seal marker in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M18",
+      "M27"
+    ],
+    "prerequisite": "Power availability and sensor readings are proposed until linked to actual facility and device data.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-08",
+      "capture": "captures/YD-08.png",
+      "thumbnail": "thumbnails/YD-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-09",
+    "product": "yard",
+    "title": "Inspection and hold bay",
+    "intent": "Show an isolated trailer its reason for hold and required release evidence.",
+    "family": "facility",
+    "focus": "inspection_and_hold_bay",
+    "state": "warning",
+    "labels": [
+      "Inspection bay",
+      "Held trailer",
+      "Hold reason",
+      "Release checkpoint"
+    ],
+    "metrics": [
+      {
+        "label": "Held trailers",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Inspection bays",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Pending checks",
+        "value": 4,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Inspection bay to focus the technical model; inspect Held trailer and Hold reason in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M07",
+      "M18",
+      "M20"
+    ],
+    "prerequisite": "Authorized hold and release rules require a domain contract and audit trail.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-09",
+      "capture": "captures/YD-09.png",
+      "thumbnail": "thumbnails/YD-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-10",
+    "product": "yard",
+    "title": "Appointment capacity over time",
+    "intent": "Explore time-based door reservations with a spatial facility and exact schedule.",
+    "family": "facility",
+    "focus": "appointment_capacity_over_time",
+    "state": "sequence",
+    "labels": [
+      "Reserved reefer door",
+      "Next appointment",
+      "Overlapping window",
+      "Clear-time marker"
+    ],
+    "metrics": [
+      {
+        "label": "Appointments",
+        "value": 8,
+        "unit": "count"
+      },
+      {
+        "label": "Parallel doors",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Window length",
+        "value": 30,
+        "unit": "min"
+      }
+    ],
+    "interaction": "Select Reserved reefer door to focus the technical model; inspect Next appointment and Overlapping window in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/yardEngine.ts",
+    "modules": [
+      "M05",
+      "M11",
+      "M17",
+      "M20",
+      "M23"
+    ],
+    "prerequisite": "Seeded appointment types are not yet a complete reservation and scheduling engine.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-10",
+      "capture": "captures/YD-10.png",
+      "thumbnail": "thumbnails/YD-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-11",
+    "product": "yard",
+    "title": "Full-yard recovery",
+    "intent": "Explore capacity exhaustion and authorized holding alternatives without double allocation.",
+    "family": "facility",
+    "focus": "full_yard_recovery",
+    "state": "warning",
+    "labels": [
+      "Full compatible doors",
+      "Occupied lots",
+      "Gate hold",
+      "Alternative area"
+    ],
+    "metrics": [
+      {
+        "label": "Available doors",
+        "value": 0,
+        "unit": "count"
+      },
+      {
+        "label": "Empty spots",
+        "value": 0,
+        "unit": "count"
+      },
+      {
+        "label": "Held arrivals",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Full compatible doors to focus the technical model; inspect Occupied lots and Gate hold in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/yardEngine.ts",
+    "modules": [
+      "M05",
+      "M07",
+      "M08",
+      "M13",
+      "M20"
+    ],
+    "prerequisite": "Recovery alternatives need explicit authorized capacity rather than invented fallback locations.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-11",
+      "capture": "captures/YD-11.png",
+      "thumbnail": "thumbnails/YD-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "YD-12",
+    "product": "yard",
+    "title": "Yard-to-warehouse handoff",
+    "intent": "Connect the assigned door trailer and unloading units to receiving allocations.",
+    "family": "facility",
+    "focus": "yard_to_warehouse_handoff",
+    "state": "sequence",
+    "labels": [
+      "Docked trailer",
+      "Unloading unit",
+      "Receiving zone",
+      "Matched shipment"
+    ],
+    "metrics": [
+      {
+        "label": "Unloaded units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Reserved slots",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Unmatched units",
+        "value": 0,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Docked trailer to focus the technical model; inspect Unloading unit and Receiving zone in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-07-yard-dock/src/engine/bridges.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M06",
+      "M11",
+      "M12",
+      "M23"
+    ],
+    "prerequisite": "Share stable door trailer shipment and handling-unit IDs across the ownership boundary.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=YD-12",
+      "capture": "captures/YD-12.png",
+      "thumbnail": "thumbnails/YD-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-01",
+    "product": "telematics",
+    "title": "Selected vehicle telemetry twin",
+    "intent": "Explore vehicle status with precisely anchored engine and trailer readings.",
+    "family": "vehicle",
+    "focus": "selected_vehicle_telemetry_twin",
+    "state": "normal",
+    "labels": [
+      "Engine status",
+      "Fuel tank",
+      "Reefer unit",
+      "Last observation"
+    ],
+    "metrics": [
+      {
+        "label": "Road speed",
+        "value": 62,
+        "unit": "mph"
+      },
+      {
+        "label": "Fuel level",
+        "value": 74,
+        "unit": "percent"
+      },
+      {
+        "label": "Coolant temperature",
+        "value": 196,
+        "unit": "F"
+      }
+    ],
+    "interaction": "Select Engine status to focus the technical model; inspect Fuel tank and Reefer unit in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/ui/App.tsx",
+    "modules": [
+      "M01",
+      "M03",
+      "M05",
+      "M14",
+      "M27"
+    ],
+    "prerequisite": "Current feed is a seeded timer simulation and must retain that provenance.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-01",
+      "capture": "captures/TM-01.png",
+      "thumbnail": "thumbnails/TM-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-02",
+    "product": "telematics",
+    "title": "Diagnostic fault localization",
+    "intent": "Locate the component associated with a fault and inspect exact diagnostic details.",
+    "family": "vehicle",
+    "focus": "diagnostic_fault_localization",
+    "state": "warning",
+    "labels": [
+      "Coolant component",
+      "Fault pin",
+      "SPN detail",
+      "Severity annotation"
+    ],
+    "metrics": [
+      {
+        "label": "Active faults",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Coolant temperature",
+        "value": 218,
+        "unit": "F"
+      },
+      {
+        "label": "Oil pressure",
+        "value": 38,
+        "unit": "psi"
+      }
+    ],
+    "interaction": "Select Coolant component to focus the technical model; inspect Fault pin and SPN detail in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/ui/DtcAlertPanel.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M07",
+      "M14",
+      "M18"
+    ],
+    "prerequisite": "SPN source data needs an explicit component-anchor mapping before precise localization.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-02",
+      "capture": "captures/TM-02.png",
+      "thumbnail": "thumbnails/TM-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-03",
+    "product": "telematics",
+    "title": "Reefer zone cutaway",
+    "intent": "Expose thermal zones return air setpoints and compressor state.",
+    "family": "vehicle",
+    "focus": "reefer_zone_cutaway",
+    "state": "inspection",
+    "labels": [
+      "Zone 1",
+      "Zone 2",
+      "Return-air sensor",
+      "Compressor mode"
+    ],
+    "metrics": [
+      {
+        "label": "Zone 1",
+        "value": 35.2,
+        "unit": "F"
+      },
+      {
+        "label": "Zone 1 setpoint",
+        "value": 34,
+        "unit": "F"
+      },
+      {
+        "label": "Zone 2",
+        "value": 2,
+        "unit": "F"
+      }
+    ],
+    "interaction": "Select Zone 1 to focus the technical model; inspect Zone 2 and Return-air sensor in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/ui/ColdChainLogger.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M08",
+      "M14",
+      "M18"
+    ],
+    "prerequisite": "Scalar sensor values do not establish a measured continuous thermal field.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-03",
+      "capture": "captures/TM-03.png",
+      "thumbnail": "thumbnails/TM-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-04",
+    "product": "telematics",
+    "title": "Door-open thermal sequence",
+    "intent": "Explain rear-door opening and modeled zone temperature change over time.",
+    "family": "vehicle",
+    "focus": "door_open_thermal_sequence",
+    "state": "sequence",
+    "labels": [
+      "Open rear door",
+      "Ambient air arrows",
+      "Cargo sensor",
+      "Excursion marker"
+    ],
+    "metrics": [
+      {
+        "label": "Door-open duration",
+        "value": 60,
+        "unit": "s"
+      },
+      {
+        "label": "Start temperature",
+        "value": 34,
+        "unit": "F"
+      },
+      {
+        "label": "End temperature",
+        "value": 38,
+        "unit": "F"
+      }
+    ],
+    "interaction": "Select Open rear door to focus the technical model; inspect Ambient air arrows and Cargo sensor in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/telematics.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M11",
+      "M14",
+      "M27"
+    ],
+    "prerequisite": "Air arrows illustrate the model and are not computational-fluid-dynamics evidence.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-04",
+      "capture": "captures/TM-04.png",
+      "thumbnail": "thumbnails/TM-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-05",
+    "product": "telematics",
+    "title": "Fleet on corridor",
+    "intent": "Locate multiple monitored units and compare current operational states.",
+    "family": "route",
+    "focus": "fleet_on_corridor",
+    "state": "normal",
+    "labels": [
+      "Selected tractor",
+      "Second vehicle",
+      "Rest stop",
+      "Destination terminal"
+    ],
+    "metrics": [
+      {
+        "label": "Visible units",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Selected mile",
+        "value": 965,
+        "unit": "mi"
+      },
+      {
+        "label": "Corridor length",
+        "value": 1390,
+        "unit": "mi"
+      }
+    ],
+    "interaction": "Select Selected tractor to focus the technical model; inspect Second vehicle and Rest stop in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/ui/CorridorMapCanvas.tsx",
+    "modules": [
+      "M02",
+      "M03",
+      "M05",
+      "M06",
+      "M21"
+    ],
+    "prerequisite": "Use real route geometry only when a sourced polyline is available; otherwise label schematic.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-05",
+      "capture": "captures/TM-05.png",
+      "thumbnail": "thumbnails/TM-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-06",
+    "product": "telematics",
+    "title": "Geofence approach and arrival",
+    "intent": "Show terminal weigh-station or rest-stop boundary transitions.",
+    "family": "route",
+    "focus": "geofence_approach_and_arrival",
+    "state": "sequence",
+    "labels": [
+      "Approach segment",
+      "Geofence boundary",
+      "Entry event",
+      "Terminal marker"
+    ],
+    "metrics": [
+      {
+        "label": "Distance to stop",
+        "value": 4.2,
+        "unit": "mi"
+      },
+      {
+        "label": "Reported speed",
+        "value": 42,
+        "unit": "mph"
+      },
+      {
+        "label": "Event age",
+        "value": 8,
+        "unit": "s"
+      }
+    ],
+    "interaction": "Select Approach segment to focus the technical model; inspect Geofence boundary and Entry event in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/corridors.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M06",
+      "M11",
+      "M18"
+    ],
+    "prerequisite": "Existing waypoint tags are not surveyed geofence polygons or observed device events.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-06",
+      "capture": "captures/TM-06.png",
+      "thumbnail": "thumbnails/TM-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-07",
+    "product": "telematics",
+    "title": "Engine and fuel circuit",
+    "intent": "Explore how engine load speed fuel and DEF readings relate physically.",
+    "family": "vehicle",
+    "focus": "engine_and_fuel_circuit",
+    "state": "inspection",
+    "labels": [
+      "Engine load",
+      "Fuel tank",
+      "DEF tank",
+      "Powertrain path"
+    ],
+    "metrics": [
+      {
+        "label": "Engine load",
+        "value": 64,
+        "unit": "percent"
+      },
+      {
+        "label": "Fuel level",
+        "value": 72,
+        "unit": "percent"
+      },
+      {
+        "label": "DEF level",
+        "value": 81,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Engine load to focus the technical model; inspect Fuel tank and DEF tank in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/ui/LiveGauges.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M17"
+    ],
+    "prerequisite": "Readings and illustrative mechanical connections must be distinguished from measured flow.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-07",
+      "capture": "captures/TM-07.png",
+      "thumbnail": "thumbnails/TM-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-08",
+    "product": "telematics",
+    "title": "Driver safety event replay",
+    "intent": "Replay the vehicle orientation and event context around braking or cornering.",
+    "family": "vehicle",
+    "focus": "driver_safety_event_replay",
+    "state": "sequence",
+    "labels": [
+      "Brake event",
+      "Direction arrow",
+      "Event timestamp",
+      "Vehicle position"
+    ],
+    "metrics": [
+      {
+        "label": "Brake events",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Speed before",
+        "value": 61,
+        "unit": "mph"
+      },
+      {
+        "label": "Speed after",
+        "value": 43,
+        "unit": "mph"
+      }
+    ],
+    "interaction": "Select Brake event to focus the technical model; inspect Direction arrow and Event timestamp in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/telematics.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M06",
+      "M11",
+      "M18"
+    ],
+    "prerequisite": "Snapshot counters do not supply a trajectory; event history must be recorded for real replay.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-08",
+      "capture": "captures/TM-08.png",
+      "thumbnail": "thumbnails/TM-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-09",
+    "product": "telematics",
+    "title": "Planned versus reported vehicle",
+    "intent": "Compare assigned equipment and cargo expectations with the selected telemetry unit.",
+    "family": "vehicle",
+    "focus": "planned_versus_reported_vehicle",
+    "state": "comparison",
+    "labels": [
+      "Planned tractor",
+      "Reported tractor",
+      "Assigned trailer",
+      "Identity mismatch"
+    ],
+    "metrics": [
+      {
+        "label": "Matched identifiers",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Open mismatches",
+        "value": 1,
+        "unit": "count"
+      },
+      {
+        "label": "Observation age",
+        "value": 12,
+        "unit": "s"
+      }
+    ],
+    "interaction": "Select Planned tractor to focus the technical model; inspect Reported tractor and Assigned trailer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/bridges.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M15",
+      "M23",
+      "M27"
+    ],
+    "prerequisite": "Exact shared identity and field-level provenance must exist across products.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-09",
+      "capture": "captures/TM-09.png",
+      "thumbnail": "thumbnails/TM-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-10",
+    "product": "telematics",
+    "title": "Sensor freshness and dropout",
+    "intent": "Explore stale missing and reconnecting sensor states on the relevant components.",
+    "family": "vehicle",
+    "focus": "sensor_freshness_and_dropout",
+    "state": "warning",
+    "labels": [
+      "Fresh engine sensor",
+      "Stale door sensor",
+      "Unknown zone sensor",
+      "Reconnect state"
+    ],
+    "metrics": [
+      {
+        "label": "Fresh sensors",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Stale sensors",
+        "value": 1,
+        "unit": "count"
+      },
+      {
+        "label": "Missing sensors",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Fresh engine sensor to focus the technical model; inspect Stale door sensor and Unknown zone sensor in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M18",
+      "M27"
+    ],
+    "prerequisite": "Connection state requires timestamp policy and transport status beyond the current fixture.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-10",
+      "capture": "captures/TM-10.png",
+      "thumbnail": "thumbnails/TM-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-11",
+    "product": "telematics",
+    "title": "Elevation load and range",
+    "intent": "Explore grade engine demand and remaining range on an explicit corridor model.",
+    "family": "route",
+    "focus": "elevation_load_and_range",
+    "state": "inspection",
+    "labels": [
+      "Uphill segment",
+      "Selected vehicle",
+      "Engine demand",
+      "Range boundary"
+    ],
+    "metrics": [
+      {
+        "label": "Grade",
+        "value": 3.5,
+        "unit": "percent"
+      },
+      {
+        "label": "Engine load",
+        "value": 78,
+        "unit": "percent"
+      },
+      {
+        "label": "Remaining range",
+        "value": 410,
+        "unit": "mi"
+      }
+    ],
+    "interaction": "Select Uphill segment to focus the technical model; inspect Selected vehicle and Engine demand in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/telematics.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M06",
+      "M14",
+      "M17"
+    ],
+    "prerequisite": "Use sourced elevation data for actual terrain and label modeled range assumptions.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-11",
+      "capture": "captures/TM-11.png",
+      "thumbnail": "thumbnails/TM-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TM-12",
+    "product": "telematics",
+    "title": "Telemetry-to-yard arrival",
+    "intent": "Connect the reported vehicle arrival to the correct gate trailer and appointment.",
+    "family": "facility",
+    "focus": "telemetry_to_yard_arrival",
+    "state": "sequence",
+    "labels": [
+      "Approaching tractor",
+      "Gate event",
+      "Assigned trailer",
+      "Receiving appointment"
+    ],
+    "metrics": [
+      {
+        "label": "Arrival vehicles",
+        "value": 1,
+        "unit": "count"
+      },
+      {
+        "label": "Appointment window",
+        "value": 30,
+        "unit": "min"
+      },
+      {
+        "label": "Gate wait",
+        "value": 9,
+        "unit": "min"
+      }
+    ],
+    "interaction": "Select Approaching tractor to focus the technical model; inspect Gate event and Assigned trailer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-05-fleet-telematics/src/engine/bridges.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M06",
+      "M11",
+      "M23"
+    ],
+    "prerequisite": "Arrival must become a canonical event rather than a decorative transition.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TM-12",
+      "capture": "captures/TM-12.png",
+      "thumbnail": "thumbnails/TM-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-01",
+    "product": "pricing",
+    "title": "Equipment-linked quote",
+    "intent": "Explain how equipment and physical handling requirements contribute to the quote.",
+    "family": "finance",
+    "focus": "equipment_linked_quote",
+    "state": "inspection",
+    "labels": [
+      "Selected reefer",
+      "Equipment line",
+      "Fuel line",
+      "Scenario total"
+    ],
+    "metrics": [
+      {
+        "label": "Linehaul",
+        "value": 2200,
+        "unit": "USD"
+      },
+      {
+        "label": "Fuel surcharge",
+        "value": 420,
+        "unit": "USD"
+      },
+      {
+        "label": "Accessorials",
+        "value": 150,
+        "unit": "USD"
+      }
+    ],
+    "interaction": "Select Selected reefer to focus the technical model; inspect Equipment line and Fuel line in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/ui/App.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M17",
+      "M27"
+    ],
+    "prerequisite": "The visual uses illustrative quote values and does not accept a commercial offer.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-01",
+      "capture": "captures/PR-01.png",
+      "thumbnail": "thumbnails/PR-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-02",
+    "product": "pricing",
+    "title": "Three-dimensional cost waterfall",
+    "intent": "Explore spatial cost blocks with exact labels and a reconciled companion breakdown.",
+    "family": "finance",
+    "focus": "three_dimensional_cost_waterfall",
+    "state": "normal",
+    "labels": [
+      "Fixed equipment",
+      "Driver labor",
+      "Fuel cost",
+      "Total floor"
+    ],
+    "metrics": [
+      {
+        "label": "Equipment",
+        "value": 340,
+        "unit": "USD"
+      },
+      {
+        "label": "Driver labor",
+        "value": 680,
+        "unit": "USD"
+      },
+      {
+        "label": "Fuel",
+        "value": 610,
+        "unit": "USD"
+      }
+    ],
+    "interaction": "Select Fixed equipment to focus the technical model; inspect Driver labor and Fuel cost in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/costs.ts",
+    "modules": [
+      "M04",
+      "M05",
+      "M17",
+      "M19",
+      "M26"
+    ],
+    "prerequisite": "Block dimensions must encode a declared scale with exact amounts visible.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-02",
+      "capture": "captures/PR-02.png",
+      "thumbnail": "thumbnails/PR-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-03",
+    "product": "pricing",
+    "title": "Margin and operating-ratio landscape",
+    "intent": "Explore cost revenue and target margin as a manipulable spatial relationship.",
+    "family": "finance",
+    "focus": "margin_and_operating_ratio_landscape",
+    "state": "comparison",
+    "labels": [
+      "Cost plane",
+      "Revenue column",
+      "Target margin",
+      "Operating-ratio marker"
+    ],
+    "metrics": [
+      {
+        "label": "Operating cost",
+        "value": 1800,
+        "unit": "USD"
+      },
+      {
+        "label": "Quoted revenue",
+        "value": 2000,
+        "unit": "USD"
+      },
+      {
+        "label": "Target ratio",
+        "value": 90,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Cost plane to focus the technical model; inspect Revenue column and Target margin in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/quote.ts",
+    "modules": [
+      "M05",
+      "M09",
+      "M15",
+      "M17",
+      "M19"
+    ],
+    "prerequisite": "Preserve the distinction between margin-bearing revenue pass-throughs and all-in revenue.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-03",
+      "capture": "captures/PR-03.png",
+      "thumbnail": "thumbnails/PR-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-04",
+    "product": "pricing",
+    "title": "Loaded and deadhead economics",
+    "intent": "Connect trip segments to loaded empty fuel and cost contributions.",
+    "family": "route",
+    "focus": "loaded_and_deadhead_economics",
+    "state": "sequence",
+    "labels": [
+      "Empty positioning",
+      "Loaded corridor",
+      "Pickup",
+      "Delivery"
+    ],
+    "metrics": [
+      {
+        "label": "Loaded miles",
+        "value": 920,
+        "unit": "mi"
+      },
+      {
+        "label": "Deadhead miles",
+        "value": 85,
+        "unit": "mi"
+      },
+      {
+        "label": "Empty fuel",
+        "value": 11.3,
+        "unit": "gal"
+      }
+    ],
+    "interaction": "Select Empty positioning to focus the technical model; inspect Loaded corridor and Pickup in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M06",
+      "M11",
+      "M17"
+    ],
+    "prerequisite": "A schematic route must not imply verified truck-safe road mileage.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-04",
+      "capture": "captures/PR-04.png",
+      "thumbnail": "thumbnails/PR-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-05",
+    "product": "pricing",
+    "title": "Fuel index sensitivity",
+    "intent": "Explore a fuel-price axis across equipment range and quote outcomes.",
+    "family": "finance",
+    "focus": "fuel_index_sensitivity",
+    "state": "comparison",
+    "labels": [
+      "Benchmark price",
+      "Operator price",
+      "Fuel delta",
+      "Quote response"
+    ],
+    "metrics": [
+      {
+        "label": "Benchmark",
+        "value": 3.8,
+        "unit": "USD/gal"
+      },
+      {
+        "label": "Operator price",
+        "value": 4.1,
+        "unit": "USD/gal"
+      },
+      {
+        "label": "Trip fuel",
+        "value": 150,
+        "unit": "gal"
+      }
+    ],
+    "interaction": "Select Benchmark price to focus the technical model; inspect Operator price and Fuel delta in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/dieselBenchmark.ts",
+    "modules": [
+      "M05",
+      "M09",
+      "M15",
+      "M17",
+      "M27"
+    ],
+    "prerequisite": "The dated benchmark and operator override need separate source and observation labels.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-05",
+      "capture": "captures/PR-05.png",
+      "thumbnail": "thumbnails/PR-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-06",
+    "product": "pricing",
+    "title": "Accessorial action anchors",
+    "intent": "Attach each fee to the physical action or equipment feature it represents.",
+    "family": "finance",
+    "focus": "accessorial_action_anchors",
+    "state": "selected",
+    "labels": [
+      "Tarp operation",
+      "Reefer unit",
+      "Extra stop",
+      "Detention clock"
+    ],
+    "metrics": [
+      {
+        "label": "Tarp fee",
+        "value": 100,
+        "unit": "USD"
+      },
+      {
+        "label": "Extra-stop fee",
+        "value": 75,
+        "unit": "USD"
+      },
+      {
+        "label": "Detention",
+        "value": 85,
+        "unit": "USD/h"
+      }
+    ],
+    "interaction": "Select Tarp operation to focus the technical model; inspect Reefer unit and Extra stop in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/accessorials.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M17",
+      "M20"
+    ],
+    "prerequisite": "Illustrative rates are not universal tariff or contractual facts.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-06",
+      "capture": "captures/PR-06.png",
+      "thumbnail": "thumbnails/PR-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-07",
+    "product": "pricing",
+    "title": "Payload fuel sensitivity",
+    "intent": "Compare cargo mass vehicle fuel demand and trip economics.",
+    "family": "vehicle",
+    "focus": "payload_fuel_sensitivity",
+    "state": "comparison",
+    "labels": [
+      "Light payload",
+      "Heavy payload",
+      "Fuel estimate",
+      "Cost difference"
+    ],
+    "metrics": [
+      {
+        "label": "Light payload",
+        "value": 18000,
+        "unit": "lb"
+      },
+      {
+        "label": "Heavy payload",
+        "value": 36000,
+        "unit": "lb"
+      },
+      {
+        "label": "Modeled fuel delta",
+        "value": 12,
+        "unit": "gal"
+      }
+    ],
+    "interaction": "Select Light payload to focus the technical model; inspect Heavy payload and Fuel estimate in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/ui/App.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M14",
+      "M15",
+      "M17"
+    ],
+    "prerequisite": "Expose the empirical model rather than implying measured causal accuracy.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-07",
+      "capture": "captures/PR-07.png",
+      "thumbnail": "thumbnails/PR-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-08",
+    "product": "pricing",
+    "title": "Cold-chain shock and seal route",
+    "intent": "Locate modeled thermal shock and seal events along the trip.",
+    "family": "route",
+    "focus": "cold_chain_shock_and_seal_route",
+    "state": "sequence",
+    "labels": [
+      "Thermal excursion",
+      "Shock vector",
+      "Seal event",
+      "Scheduled dock"
+    ],
+    "metrics": [
+      {
+        "label": "Peak shock",
+        "value": 2.4,
+        "unit": "g"
+      },
+      {
+        "label": "Setpoint",
+        "value": 4,
+        "unit": "C"
+      },
+      {
+        "label": "Excursion duration",
+        "value": 0.7,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Thermal excursion to focus the technical model; inspect Shock vector and Seal event in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/ui/ColdChainTelematicsPanel.tsx",
+    "modules": [
+      "M03",
+      "M05",
+      "M06",
+      "M11",
+      "M18"
+    ],
+    "prerequisite": "All current readings are synthesized scenario data without a physical logger.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-08",
+      "capture": "captures/PR-08.png",
+      "thumbnail": "thumbnails/PR-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-09",
+    "product": "pricing",
+    "title": "Fuel mass and axle evolution",
+    "intent": "Explore changing fuel mass axle estimates and checkpoint outcomes along a route.",
+    "family": "vehicle",
+    "focus": "fuel_mass_and_axle_evolution",
+    "state": "sequence",
+    "labels": [
+      "Saddle tank",
+      "Steer load",
+      "Drive load",
+      "Checkpoint"
+    ],
+    "metrics": [
+      {
+        "label": "Fuel at start",
+        "value": 150,
+        "unit": "gal"
+      },
+      {
+        "label": "Fuel at finish",
+        "value": 50,
+        "unit": "gal"
+      },
+      {
+        "label": "Mass consumed",
+        "value": 710,
+        "unit": "lb"
+      }
+    ],
+    "interaction": "Select Saddle tank to focus the technical model; inspect Steer load and Drive load in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/routeCompliance.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M06",
+      "M11",
+      "M14"
+    ],
+    "prerequisite": "The engine is a scenario model and does not verify legal road compliance.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-09",
+      "capture": "captures/PR-09.png",
+      "thumbnail": "thumbnails/PR-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-10",
+    "product": "pricing",
+    "title": "Broker buy sell margin study",
+    "intent": "Explore the relationship of buy rate sell rate fees and margin in spatial layers.",
+    "family": "finance",
+    "focus": "broker_buy_sell_margin_study",
+    "state": "comparison",
+    "labels": [
+      "Carrier buy rate",
+      "Customer sell rate",
+      "Pass-through layer",
+      "Margin block"
+    ],
+    "metrics": [
+      {
+        "label": "Carrier rate",
+        "value": 2400,
+        "unit": "USD"
+      },
+      {
+        "label": "Customer rate",
+        "value": 2700,
+        "unit": "USD"
+      },
+      {
+        "label": "Gross spread",
+        "value": 300,
+        "unit": "USD"
+      }
+    ],
+    "interaction": "Select Carrier buy rate to focus the technical model; inspect Customer sell rate and Pass-through layer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/brokerMargin.ts",
+    "modules": [
+      "M05",
+      "M15",
+      "M17",
+      "M19",
+      "M26"
+    ],
+    "prerequisite": "Keep broker and carrier economics distinct and show exact arithmetic beside the experiment.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-10",
+      "capture": "captures/PR-10.png",
+      "thumbnail": "thumbnails/PR-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-11",
+    "product": "pricing",
+    "title": "Rate confirmation evidence stack",
+    "intent": "Explore quote versions accepted terms and required shipment identifiers spatially.",
+    "family": "evidence",
+    "focus": "rate_confirmation_evidence_stack",
+    "state": "inspection",
+    "labels": [
+      "Quote revision",
+      "Equipment identity",
+      "Accepted terms",
+      "Export packet"
+    ],
+    "metrics": [
+      {
+        "label": "Quote revision",
+        "value": 3,
+        "unit": "index"
+      },
+      {
+        "label": "Line items",
+        "value": 7,
+        "unit": "count"
+      },
+      {
+        "label": "Missing fields",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Quote revision to focus the technical model; inspect Equipment identity and Accepted terms in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/ui/RateConfirmationModal.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M18",
+      "M20",
+      "M22"
+    ],
+    "prerequisite": "A local visual is not a binding rate confirmation or external acceptance receipt.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-11",
+      "capture": "captures/PR-11.png",
+      "thumbnail": "thumbnails/PR-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PR-12",
+    "product": "pricing",
+    "title": "Quote scenario comparison",
+    "intent": "Compare candidate equipment lane cost and service trade-offs at common scale.",
+    "family": "finance",
+    "focus": "quote_scenario_comparison",
+    "state": "comparison",
+    "labels": [
+      "Candidate A",
+      "Candidate B",
+      "Service duration",
+      "All-in total"
+    ],
+    "metrics": [
+      {
+        "label": "Candidate A",
+        "value": 2650,
+        "unit": "USD"
+      },
+      {
+        "label": "Candidate B",
+        "value": 2820,
+        "unit": "USD"
+      },
+      {
+        "label": "Duration difference",
+        "value": 4,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Candidate A to focus the technical model; inspect Candidate B and Service duration in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-02-freight-pricing/src/engine/quote.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M15",
+      "M17",
+      "M21"
+    ],
+    "prerequisite": "Each candidate requires its own assumptions provenance and physical feasibility result.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PR-12",
+      "capture": "captures/PR-12.png",
+      "thumbnail": "thumbnails/PR-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-01",
+    "product": "hos",
+    "title": "Semantic corridor itinerary",
+    "intent": "Explore pickup driving rest and delivery as distinct spatial states.",
+    "family": "route",
+    "focus": "semantic_corridor_itinerary",
+    "state": "sequence",
+    "labels": [
+      "Pickup dwell",
+      "Driving leg",
+      "Rest stop",
+      "Delivery"
+    ],
+    "metrics": [
+      {
+        "label": "Driving time",
+        "value": 9.5,
+        "unit": "h"
+      },
+      {
+        "label": "Rest time",
+        "value": 0.5,
+        "unit": "h"
+      },
+      {
+        "label": "Total distance",
+        "value": 520,
+        "unit": "mi"
+      }
+    ],
+    "interaction": "Select Pickup dwell to focus the technical model; inspect Driving leg and Rest stop in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/ui/Realtime3DCorridor.tsx",
+    "modules": [
+      "M01",
+      "M03",
+      "M05",
+      "M06",
+      "M11"
+    ],
+    "prerequisite": "Map time through waypoint semantics and keep the vehicle stationary during rest.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-01",
+      "capture": "captures/HS-01.png",
+      "thumbnail": "thumbnails/HS-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-02",
+    "product": "hos",
+    "title": "Three-dimensional ELD logbook",
+    "intent": "Explore duty-status tracks in depth with exact start duration and total labels.",
+    "family": "evidence",
+    "focus": "three_dimensional_eld_logbook",
+    "state": "inspection",
+    "labels": [
+      "Driving track",
+      "On-duty track",
+      "Sleeper track",
+      "Time ruler"
+    ],
+    "metrics": [
+      {
+        "label": "Driving",
+        "value": 8,
+        "unit": "h"
+      },
+      {
+        "label": "On duty",
+        "value": 2,
+        "unit": "h"
+      },
+      {
+        "label": "Sleeper",
+        "value": 10,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Driving track to focus the technical model; inspect On-duty track and Sleeper track in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/ui/LogbookGrid.tsx",
+    "modules": [
+      "M04",
+      "M05",
+      "M11",
+      "M17",
+      "M19"
+    ],
+    "prerequisite": "Retain an exact companion log and do not imply certified ELD evidence.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-02",
+      "capture": "captures/HS-02.png",
+      "thumbnail": "thumbnails/HS-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-03",
+    "product": "hos",
+    "title": "Remaining-duty clock volumes",
+    "intent": "Explore remaining driving shift and break time as clearly scaled spatial measures.",
+    "family": "finance",
+    "focus": "remaining_duty_clock_volumes",
+    "state": "normal",
+    "labels": [
+      "Driving budget",
+      "Shift budget",
+      "Break budget",
+      "Used time"
+    ],
+    "metrics": [
+      {
+        "label": "Driving remaining",
+        "value": 4.5,
+        "unit": "h"
+      },
+      {
+        "label": "Shift remaining",
+        "value": 6,
+        "unit": "h"
+      },
+      {
+        "label": "Break remaining",
+        "value": 2,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Driving budget to focus the technical model; inspect Shift budget and Break budget in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/types.ts",
+    "modules": [
+      "M04",
+      "M05",
+      "M17",
+      "M19",
+      "M26"
+    ],
+    "prerequisite": "Values are synthetic clock states within the modeled rule scope.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-03",
+      "capture": "captures/HS-03.png",
+      "thumbnail": "thumbnails/HS-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-04",
+    "product": "hos",
+    "title": "Stop reachability envelope",
+    "intent": "Show the reachable corridor before the next modeled duty threshold.",
+    "family": "route",
+    "focus": "stop_reachability_envelope",
+    "state": "warning",
+    "labels": [
+      "Current location",
+      "Reach boundary",
+      "Candidate rest stop",
+      "Unavailable stop"
+    ],
+    "metrics": [
+      {
+        "label": "Drive budget",
+        "value": 2,
+        "unit": "h"
+      },
+      {
+        "label": "Scenario speed",
+        "value": 55,
+        "unit": "mph"
+      },
+      {
+        "label": "Reach distance",
+        "value": 110,
+        "unit": "mi"
+      }
+    ],
+    "interaction": "Select Current location to focus the technical model; inspect Reach boundary and Candidate rest stop in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/corridor.ts",
+    "modules": [
+      "M05",
+      "M06",
+      "M07",
+      "M11",
+      "M13"
+    ],
+    "prerequisite": "Actual safe parking routing traffic and duty history are additional prerequisites.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-04",
+      "capture": "captures/HS-04.png",
+      "thumbnail": "thumbnails/HS-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-05",
+    "product": "hos",
+    "title": "Solo and team comparison",
+    "intent": "Compare journey progress and driver-specific duty at matching times.",
+    "family": "route",
+    "focus": "solo_and_team_comparison",
+    "state": "comparison",
+    "labels": [
+      "Solo vehicle",
+      "Team vehicle",
+      "Driver A",
+      "Driver B"
+    ],
+    "metrics": [
+      {
+        "label": "Solo duration",
+        "value": 27,
+        "unit": "h"
+      },
+      {
+        "label": "Team duration",
+        "value": 17,
+        "unit": "h"
+      },
+      {
+        "label": "Distance",
+        "value": 925,
+        "unit": "mi"
+      }
+    ],
+    "interaction": "Select Solo vehicle to focus the technical model; inspect Team vehicle and Driver A in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/corridor.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M11",
+      "M15",
+      "M17"
+    ],
+    "prerequisite": "Driver-specific histories must remain independent and assumptions explicit.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-05",
+      "capture": "captures/HS-05.png",
+      "thumbnail": "thumbnails/HS-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-06",
+    "product": "hos",
+    "title": "Sleeper and driver handoff",
+    "intent": "Inspect driver position duty role and planned handoff at the equipment.",
+    "family": "vehicle",
+    "focus": "sleeper_and_driver_handoff",
+    "state": "sequence",
+    "labels": [
+      "Active driver",
+      "Sleeper berth",
+      "Handoff stop",
+      "Duty transition"
+    ],
+    "metrics": [
+      {
+        "label": "Driving stint",
+        "value": 5,
+        "unit": "h"
+      },
+      {
+        "label": "Resting stint",
+        "value": 5,
+        "unit": "h"
+      },
+      {
+        "label": "Handoffs",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Active driver to focus the technical model; inspect Sleeper berth and Handoff stop in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/corridor.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M11",
+      "M14",
+      "M18"
+    ],
+    "prerequisite": "The scene explains a scenario and does not prove an eligible sleeper arrangement.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-06",
+      "capture": "captures/HS-06.png",
+      "thumbnail": "thumbnails/HS-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-07",
+    "product": "hos",
+    "title": "Duty violation and remedy focus",
+    "intent": "Locate a modeled violation at its time and mile and compare the proposed remedy.",
+    "family": "route",
+    "focus": "duty_violation_and_remedy_focus",
+    "state": "warning",
+    "labels": [
+      "Violation marker",
+      "Threshold segment",
+      "Remedy stop",
+      "Revised leg"
+    ],
+    "metrics": [
+      {
+        "label": "Event mile",
+        "value": 440,
+        "unit": "mi"
+      },
+      {
+        "label": "Scenario delay",
+        "value": 30,
+        "unit": "min"
+      },
+      {
+        "label": "Affected legs",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Violation marker to focus the technical model; inspect Threshold segment and Remedy stop in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/types.ts",
+    "modules": [
+      "M05",
+      "M06",
+      "M07",
+      "M11",
+      "M18"
+    ],
+    "prerequisite": "Use qualified modeled-rule language and preserve precise audit output.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-07",
+      "capture": "captures/HS-07.png",
+      "thumbnail": "thumbnails/HS-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-08",
+    "product": "hos",
+    "title": "Detention schedule impact",
+    "intent": "Explore a dock delay and the changes it causes in the onward duty plan.",
+    "family": "facility",
+    "focus": "detention_schedule_impact",
+    "state": "comparison",
+    "labels": [
+      "Docked vehicle",
+      "Added dwell",
+      "Rest alternative",
+      "Revised departure"
+    ],
+    "metrics": [
+      {
+        "label": "Original dwell",
+        "value": 45,
+        "unit": "min"
+      },
+      {
+        "label": "Added delay",
+        "value": 90,
+        "unit": "min"
+      },
+      {
+        "label": "ETA change",
+        "value": 2,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Docked vehicle to focus the technical model; inspect Added dwell and Rest alternative in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/corridor.ts",
+    "modules": [
+      "M03",
+      "M05",
+      "M11",
+      "M15",
+      "M23"
+    ],
+    "prerequisite": "Requires a canonical actual delay and re-evaluation rather than an unlinked timer.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-08",
+      "capture": "captures/HS-08.png",
+      "thumbnail": "thumbnails/HS-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-09",
+    "product": "hos",
+    "title": "Multi-day recap experiment",
+    "intent": "Explore daily work accumulation returned hours and restart candidates in spatial columns.",
+    "family": "evidence",
+    "focus": "multi_day_recap_experiment",
+    "state": "sequence",
+    "labels": [
+      "Day column",
+      "Cycle budget",
+      "Returned hours",
+      "Restart candidate"
+    ],
+    "metrics": [
+      {
+        "label": "Day 1 duty",
+        "value": 10,
+        "unit": "h"
+      },
+      {
+        "label": "Day 2 duty",
+        "value": 9,
+        "unit": "h"
+      },
+      {
+        "label": "Scenario cycle total",
+        "value": 54,
+        "unit": "h"
+      }
+    ],
+    "interaction": "Select Day column to focus the technical model; inspect Cycle budget and Returned hours in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/ui/LogbookGrid.tsx",
+    "modules": [
+      "M05",
+      "M11",
+      "M17",
+      "M19",
+      "M26"
+    ],
+    "prerequisite": "Unsupported cycle exceptions must remain proposed and need actual history.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-09",
+      "capture": "captures/HS-09.png",
+      "thumbnail": "thumbnails/HS-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-10",
+    "product": "hos",
+    "title": "Departure speed sensitivity",
+    "intent": "Compare planned speed stop timing and arrival under several assumptions.",
+    "family": "route",
+    "focus": "departure_speed_sensitivity",
+    "state": "comparison",
+    "labels": [
+      "Speed assumption A",
+      "Speed assumption B",
+      "Rest pattern",
+      "Arrival marker"
+    ],
+    "metrics": [
+      {
+        "label": "Speed A",
+        "value": 50,
+        "unit": "mph"
+      },
+      {
+        "label": "Speed B",
+        "value": 60,
+        "unit": "mph"
+      },
+      {
+        "label": "Distance",
+        "value": 600,
+        "unit": "mi"
+      }
+    ],
+    "interaction": "Select Speed assumption A to focus the technical model; inspect Speed assumption B and Rest pattern in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/corridor.ts",
+    "modules": [
+      "M05",
+      "M06",
+      "M09",
+      "M15",
+      "M17"
+    ],
+    "prerequisite": "A speed assumption is not a forecast of legal achievable speed or traffic conditions.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-10",
+      "capture": "captures/HS-10.png",
+      "thumbnail": "thumbnails/HS-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-11",
+    "product": "hos",
+    "title": "Audit evidence and exception layers",
+    "intent": "Explore recorded duty intervals source gaps and unsupported exception assumptions.",
+    "family": "evidence",
+    "focus": "audit_evidence_and_exception_layers",
+    "state": "inspection",
+    "labels": [
+      "Manual interval",
+      "Imported interval",
+      "Missing history",
+      "Rule scope"
+    ],
+    "metrics": [
+      {
+        "label": "Intervals",
+        "value": 14,
+        "unit": "count"
+      },
+      {
+        "label": "Source gaps",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Reviewed intervals",
+        "value": 12,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Manual interval to focus the technical model; inspect Imported interval and Missing history in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/ui/EldAuditModal.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M18",
+      "M27",
+      "M30"
+    ],
+    "prerequisite": "Evidence source and supported rule scope must remain visible at every level.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-11",
+      "capture": "captures/HS-11.png",
+      "thumbnail": "thumbnails/HS-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "HS-12",
+    "product": "hos",
+    "title": "Rest-site parking study",
+    "intent": "Explore a hypothetical rest facility and the route to a suitable parking position.",
+    "family": "facility",
+    "focus": "rest_site_parking_study",
+    "state": "inspection",
+    "labels": [
+      "Entry lane",
+      "Parking bay",
+      "Rest facility",
+      "Exit path"
+    ],
+    "metrics": [
+      {
+        "label": "Parking bays",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Vehicle length",
+        "value": 70,
+        "unit": "ft"
+      },
+      {
+        "label": "Available bays",
+        "value": 4,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Entry lane to focus the technical model; inspect Parking bay and Rest facility in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-03-hos-planner/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M06",
+      "M08",
+      "M13"
+    ],
+    "prerequisite": "Site geometry live availability and booking are not supplied by the current HOS source.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=HS-12",
+      "capture": "captures/HS-12.png",
+      "thumbnail": "thumbnails/HS-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-01",
+    "product": "trust",
+    "title": "Carrier identity spatial dossier",
+    "intent": "Explore carrier identity address fleet and evidence relationships as a navigable model.",
+    "family": "network",
+    "focus": "carrier_identity_spatial_dossier",
+    "state": "inspection",
+    "labels": [
+      "Legal entity",
+      "DOT identity",
+      "Physical address",
+      "Evidence source"
+    ],
+    "metrics": [
+      {
+        "label": "Declared units",
+        "value": 24,
+        "unit": "count"
+      },
+      {
+        "label": "Declared drivers",
+        "value": 28,
+        "unit": "count"
+      },
+      {
+        "label": "Evidence records",
+        "value": 6,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Legal entity to focus the technical model; inspect DOT identity and Physical address in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/App.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M18",
+      "M21",
+      "M27"
+    ],
+    "prerequisite": "Current profiles are seeded declarations rather than independent verification.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-01",
+      "capture": "captures/TR-01.png",
+      "thumbnail": "thumbnails/TR-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-02",
+    "product": "trust",
+    "title": "Assigned fleet eligibility scene",
+    "intent": "Show which actual assigned vehicle driver and trailer depend on a carrier decision.",
+    "family": "vehicle",
+    "focus": "assigned_fleet_eligibility_scene",
+    "state": "warning",
+    "labels": [
+      "Assigned tractor",
+      "Assigned trailer",
+      "Assigned driver",
+      "Review state"
+    ],
+    "metrics": [
+      {
+        "label": "Assigned tractors",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Assigned trailers",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Open reviews",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Assigned tractor to focus the technical model; inspect Assigned trailer and Assigned driver in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/engine/types.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M05",
+      "M14",
+      "M23"
+    ],
+    "prerequisite": "Specific resource identities and evidence-backed assignment contracts are needed.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-02",
+      "capture": "captures/TR-02.png",
+      "thumbnail": "thumbnails/TR-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-03",
+    "product": "trust",
+    "title": "Insurance coverage volumes",
+    "intent": "Explore coverage required budget and remaining margin with exact policy labels.",
+    "family": "finance",
+    "focus": "insurance_coverage_volumes",
+    "state": "comparison",
+    "labels": [
+      "Declared coverage",
+      "Customer requirement",
+      "Coverage gap",
+      "Policy scope"
+    ],
+    "metrics": [
+      {
+        "label": "Declared coverage",
+        "value": 1000000,
+        "unit": "USD"
+      },
+      {
+        "label": "Scenario requirement",
+        "value": 1250000,
+        "unit": "USD"
+      },
+      {
+        "label": "Gap",
+        "value": 250000,
+        "unit": "USD"
+      }
+    ],
+    "interaction": "Select Declared coverage to focus the technical model; inspect Customer requirement and Coverage gap in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/CoiVerificationCard.tsx",
+    "modules": [
+      "M05",
+      "M15",
+      "M17",
+      "M19",
+      "M27"
+    ],
+    "prerequisite": "Scenario customer policy is not a universal legal minimum or insurer confirmation.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-03",
+      "capture": "captures/TR-03.png",
+      "thumbnail": "thumbnails/TR-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-04",
+    "product": "trust",
+    "title": "Policy expiry timeline",
+    "intent": "Explore effective observed expiry and renewal dates as spatial evidence layers.",
+    "family": "evidence",
+    "focus": "policy_expiry_timeline",
+    "state": "sequence",
+    "labels": [
+      "Effective date",
+      "Observation date",
+      "Expiry date",
+      "Renewal evidence"
+    ],
+    "metrics": [
+      {
+        "label": "Days remaining",
+        "value": 12,
+        "unit": "days"
+      },
+      {
+        "label": "Policies",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Pending renewals",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Effective date to focus the technical model; inspect Observation date and Expiry date in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/CoiVerificationCard.tsx",
+    "modules": [
+      "M05",
+      "M11",
+      "M18",
+      "M26",
+      "M27"
+    ],
+    "prerequisite": "Use exact dates and a defined clock; presence of a policy record does not prove validity.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-04",
+      "capture": "captures/TR-04.png",
+      "thumbnail": "thumbnails/TR-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-05",
+    "product": "trust",
+    "title": "BASIC percentile comparison",
+    "intent": "Explore clearly scaled percentile columns and declared intervention markers.",
+    "family": "finance",
+    "focus": "basic_percentile_comparison",
+    "state": "comparison",
+    "labels": [
+      "Unsafe-driving value",
+      "Maintenance value",
+      "Declared threshold",
+      "Source date"
+    ],
+    "metrics": [
+      {
+        "label": "Driving percentile",
+        "value": 42,
+        "unit": "percent"
+      },
+      {
+        "label": "Maintenance percentile",
+        "value": 68,
+        "unit": "percent"
+      },
+      {
+        "label": "Displayed threshold",
+        "value": 80,
+        "unit": "percent"
+      }
+    ],
+    "interaction": "Select Unsafe-driving value to focus the technical model; inspect Maintenance value and Declared threshold in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/BasicPercentilesGrid.tsx",
+    "modules": [
+      "M05",
+      "M15",
+      "M17",
+      "M19",
+      "M27"
+    ],
+    "prerequisite": "Percentile safety rating authority and customer policy must remain distinct facts.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-05",
+      "capture": "captures/TR-05.png",
+      "thumbnail": "thumbnails/TR-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-06",
+    "product": "trust",
+    "title": "Composite score explanation",
+    "intent": "Inspect the separate contributing factors behind a summary score in a spatial breakdown.",
+    "family": "finance",
+    "focus": "composite_score_explanation",
+    "state": "inspection",
+    "labels": [
+      "Base score",
+      "Policy deduction",
+      "Review deduction",
+      "Result score"
+    ],
+    "metrics": [
+      {
+        "label": "Base score",
+        "value": 100,
+        "unit": "points"
+      },
+      {
+        "label": "Deductions",
+        "value": 18,
+        "unit": "points"
+      },
+      {
+        "label": "Scenario score",
+        "value": 82,
+        "unit": "points"
+      }
+    ],
+    "interaction": "Select Base score to focus the technical model; inspect Policy deduction and Review deduction in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/CarrierScoreDial.tsx",
+    "modules": [
+      "M05",
+      "M17",
+      "M18",
+      "M19",
+      "M26"
+    ],
+    "prerequisite": "A derived policy score is not an official rating or proof of safety.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-06",
+      "capture": "captures/TR-06.png",
+      "thumbnail": "thumbnails/TR-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-07",
+    "product": "trust",
+    "title": "Fraud relationship evidence graph",
+    "intent": "Explore typed links among entities contacts addresses and reports with inspectable sources.",
+    "family": "network",
+    "focus": "fraud_relationship_evidence_graph",
+    "state": "warning",
+    "labels": [
+      "Carrier entity",
+      "Shared contact",
+      "Related address",
+      "Supporting report"
+    ],
+    "metrics": [
+      {
+        "label": "Entities",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Declared links",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Unverified links",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Carrier entity to focus the technical model; inspect Shared contact and Related address in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/FraudRiskRadar.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M18",
+      "M21",
+      "M27"
+    ],
+    "prerequisite": "Actual relationship evidence is absent from current risk enums and must not be fabricated as detection.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-07",
+      "capture": "captures/TR-07.png",
+      "thumbnail": "thumbnails/TR-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-08",
+    "product": "trust",
+    "title": "Authority and policy gate structure",
+    "intent": "Explore which explicit facts block permit or require review for a scenario assignment.",
+    "family": "evidence",
+    "focus": "authority_and_policy_gate_structure",
+    "state": "warning",
+    "labels": [
+      "Authority fact",
+      "Coverage fact",
+      "Policy decision",
+      "Unknown evidence"
+    ],
+    "metrics": [
+      {
+        "label": "Required checks",
+        "value": 7,
+        "unit": "count"
+      },
+      {
+        "label": "Recorded checks",
+        "value": 5,
+        "unit": "count"
+      },
+      {
+        "label": "Unknown checks",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Authority fact to focus the technical model; inspect Coverage fact and Policy decision in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/engine/scoring.ts",
+    "modules": [
+      "M05",
+      "M07",
+      "M18",
+      "M20",
+      "M27"
+    ],
+    "prerequisite": "A 3D gate communicates the configured policy and cannot imply independent authority.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-08",
+      "capture": "captures/TR-08.png",
+      "thumbnail": "thumbnails/TR-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-09",
+    "product": "trust",
+    "title": "Carrier comparison workspace",
+    "intent": "Compare candidates with separate risk coverage service and provenance layers.",
+    "family": "network",
+    "focus": "carrier_comparison_workspace",
+    "state": "comparison",
+    "labels": [
+      "Carrier A",
+      "Carrier B",
+      "Coverage layer",
+      "Evidence freshness"
+    ],
+    "metrics": [
+      {
+        "label": "Candidates",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Missing facts",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Expiring policies",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Carrier A to focus the technical model; inspect Carrier B and Coverage layer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/engine/types.ts",
+    "modules": [
+      "M02",
+      "M05",
+      "M15",
+      "M18",
+      "M21"
+    ],
+    "prerequisite": "Comparable scope dates and provenance must be available for a fair comparison.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-09",
+      "capture": "captures/TR-09.png",
+      "thumbnail": "thumbnails/TR-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-10",
+    "product": "trust",
+    "title": "Review decision and recovery",
+    "intent": "Explore a conditional decision its owner requested evidence and resolution sequence.",
+    "family": "evidence",
+    "focus": "review_decision_and_recovery",
+    "state": "sequence",
+    "labels": [
+      "Review request",
+      "Decision owner",
+      "Pending evidence",
+      "Resolution note"
+    ],
+    "metrics": [
+      {
+        "label": "Review items",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Resolved items",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Pending items",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Review request to focus the technical model; inspect Decision owner and Pending evidence in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/ui/App.tsx",
+    "modules": [
+      "M05",
+      "M11",
+      "M18",
+      "M20",
+      "M30"
+    ],
+    "prerequisite": "Human decision authority and explicit review records must precede operational approval.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-10",
+      "capture": "captures/TR-10.png",
+      "thumbnail": "thumbnails/TR-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-11",
+    "product": "trust",
+    "title": "Carrier event propagation",
+    "intent": "Show how a qualification change affects assigned loads doors and quotes.",
+    "family": "network",
+    "focus": "carrier_event_propagation",
+    "state": "sequence",
+    "labels": [
+      "Carrier update",
+      "Affected shipment",
+      "Dispatch gate",
+      "Owner notification"
+    ],
+    "metrics": [
+      {
+        "label": "Affected loads",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Affected facilities",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Rechecks",
+        "value": 4,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Carrier update to focus the technical model; inspect Affected shipment and Dispatch gate in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/engine/bridges.ts",
+    "modules": [
+      "M02",
+      "M05",
+      "M11",
+      "M21",
+      "M23"
+    ],
+    "prerequisite": "An outgoing URL is not transactional enforcement or a delivery receipt.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-11",
+      "capture": "captures/TR-11.png",
+      "thumbnail": "thumbnails/TR-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "TR-12",
+    "product": "trust",
+    "title": "Evidence provenance inspection",
+    "intent": "Explore source observation scope expiry and uncertainty around each trust fact.",
+    "family": "evidence",
+    "focus": "evidence_provenance_inspection",
+    "state": "inspection",
+    "labels": [
+      "Source document",
+      "Observed claim",
+      "Applicable scope",
+      "Unknown field"
+    ],
+    "metrics": [
+      {
+        "label": "Evidence items",
+        "value": 8,
+        "unit": "count"
+      },
+      {
+        "label": "Sourced items",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Unknown fields",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Source document to focus the technical model; inspect Observed claim and Applicable scope in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-08-carrier-trust/src/engine/types.ts",
+    "modules": [
+      "M05",
+      "M18",
+      "M22",
+      "M27",
+      "M30"
+    ],
+    "prerequisite": "Keep seeded manual imported and verified evidence distinct without visual promotion.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=TR-12",
+      "capture": "captures/TR-12.png",
+      "thumbnail": "thumbnails/TR-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-01",
+    "product": "command",
+    "title": "End-to-end shipment world",
+    "intent": "Explore origin cargo route yard and receiving as one connected shipment story.",
+    "family": "network",
+    "focus": "end_to_end_shipment_world",
+    "state": "normal",
+    "labels": [
+      "Origin facility",
+      "Loaded vehicle",
+      "Corridor",
+      "Destination facility"
+    ],
+    "metrics": [
+      {
+        "label": "Handling units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Facilities",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Planning stages",
+        "value": 7,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Origin facility to focus the technical model; inspect Loaded vehicle and Corridor in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/App.tsx",
+    "modules": [
+      "M01",
+      "M02",
+      "M03",
+      "M06",
+      "M12",
+      "M23"
+    ],
+    "prerequisite": "Compose canonical shipment snapshots rather than creating a third editable load store.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-01",
+      "capture": "captures/CC-01.png",
+      "thumbnail": "thumbnails/CC-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-02",
+    "product": "command",
+    "title": "Spatial lifecycle status",
+    "intent": "Explore pending current stale rejected and recorded stages around the shipment.",
+    "family": "network",
+    "focus": "spatial_lifecycle_status",
+    "state": "inspection",
+    "labels": [
+      "Current stage",
+      "Recorded stage",
+      "Stale stage",
+      "Missing result"
+    ],
+    "metrics": [
+      {
+        "label": "Recorded stages",
+        "value": 5,
+        "unit": "count"
+      },
+      {
+        "label": "Stale stages",
+        "value": 1,
+        "unit": "count"
+      },
+      {
+        "label": "Missing stages",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Current stage to focus the technical model; inspect Recorded stage and Stale stage in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/ShipmentWorkspace.tsx",
+    "modules": [
+      "M05",
+      "M11",
+      "M18",
+      "M21",
+      "M23"
+    ],
+    "prerequisite": "Use current input/result revisions and preserve evidence-based status semantics.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-02",
+      "capture": "captures/CC-02.png",
+      "thumbnail": "thumbnails/CC-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-03",
+    "product": "command",
+    "title": "Master manifest dimensional view",
+    "intent": "Inspect all handling units dimensions mass and packing identity from the master dossier.",
+    "family": "cargo",
+    "focus": "master_manifest_dimensional_view",
+    "state": "inspection",
+    "labels": [
+      "Unit barcode",
+      "Declared envelope",
+      "Mass label",
+      "Shipment identity"
+    ],
+    "metrics": [
+      {
+        "label": "Handling units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Payload",
+        "value": 12600,
+        "unit": "lb"
+      },
+      {
+        "label": "Declared volume",
+        "value": 920,
+        "unit": "ft3"
+      }
+    ],
+    "interaction": "Select Unit barcode to focus the technical model; inspect Declared envelope and Mass label in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/engine/types.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M12"
+    ],
+    "prerequisite": "Legacy aggregate presets do not supply actual unit placements; use shared scenario results.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-03",
+      "capture": "captures/CC-03.png",
+      "thumbnail": "thumbnails/CC-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-04",
+    "product": "command",
+    "title": "Dispatch prerequisite scene",
+    "intent": "Explore the specific resources and decisions still required before scenario dispatch.",
+    "family": "network",
+    "focus": "dispatch_prerequisite_scene",
+    "state": "warning",
+    "labels": [
+      "Equipment check",
+      "Load fit",
+      "Carrier decision",
+      "Dock reservation"
+    ],
+    "metrics": [
+      {
+        "label": "Required stages",
+        "value": 7,
+        "unit": "count"
+      },
+      {
+        "label": "Recorded stages",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Open blockers",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Equipment check to focus the technical model; inspect Load fit and Carrier decision in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/App.tsx",
+    "modules": [
+      "M05",
+      "M07",
+      "M18",
+      "M20",
+      "M23"
+    ],
+    "prerequisite": "Scene state must derive from canonical blockers rather than manual completion flags.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-04",
+      "capture": "captures/CC-04.png",
+      "thumbnail": "thumbnails/CC-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-05",
+    "product": "command",
+    "title": "Amendment before and after",
+    "intent": "Compare changed shipment inputs and visibly stale dependent results.",
+    "family": "cargo",
+    "focus": "amendment_before_and_after",
+    "state": "comparison",
+    "labels": [
+      "Earlier unit mass",
+      "Revised unit mass",
+      "Stale fit result",
+      "Requote marker"
+    ],
+    "metrics": [
+      {
+        "label": "Old payload",
+        "value": 12000,
+        "unit": "lb"
+      },
+      {
+        "label": "New payload",
+        "value": 13200,
+        "unit": "lb"
+      },
+      {
+        "label": "Stale results",
+        "value": 4,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Earlier unit mass to focus the technical model; inspect Revised unit mass and Stale fit result in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M02",
+      "M11",
+      "M12",
+      "M15",
+      "M23"
+    ],
+    "prerequisite": "Retain earlier records and label their input revision; exploration must not amend an executing shipment.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-05",
+      "capture": "captures/CC-05.png",
+      "thumbnail": "thumbnails/CC-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-06",
+    "product": "command",
+    "title": "Exception focus and recovery",
+    "intent": "Jump from an exception to its affected physical object and recorded recovery decision.",
+    "family": "network",
+    "focus": "exception_focus_and_recovery",
+    "state": "warning",
+    "labels": [
+      "Delay exception",
+      "Affected vehicle",
+      "Receiving door",
+      "Recovery note"
+    ],
+    "metrics": [
+      {
+        "label": "Open exceptions",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Affected units",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Recovery options",
+        "value": 3,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Delay exception to focus the technical model; inspect Affected vehicle and Receiving door in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/App.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M18",
+      "M20",
+      "M23"
+    ],
+    "prerequisite": "Recovery options are proposals until an authorized owner records a decision.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-06",
+      "capture": "captures/CC-06.png",
+      "thumbnail": "thumbnails/CC-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-07",
+    "product": "command",
+    "title": "EDI transaction evidence flow",
+    "intent": "Explore tender response status and invoice messages as inspectable spatial packets.",
+    "family": "evidence",
+    "focus": "edi_transaction_evidence_flow",
+    "state": "sequence",
+    "labels": [
+      "Tender packet",
+      "Response packet",
+      "Status packet",
+      "Invoice packet"
+    ],
+    "metrics": [
+      {
+        "label": "Transactions",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Linked identifiers",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Unmatched fields",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Tender packet to focus the technical model; inspect Response packet and Status packet in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/EdiHubModal.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M11",
+      "M18",
+      "M22"
+    ],
+    "prerequisite": "Generated EDI is not evidence of external transmission acceptance or settlement.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-07",
+      "capture": "captures/CC-07.png",
+      "thumbnail": "thumbnails/CC-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-08",
+    "product": "command",
+    "title": "Dispatch packet and BOL scene",
+    "intent": "Explore the physical load alongside its manifest signatures and supporting documents.",
+    "family": "evidence",
+    "focus": "dispatch_packet_and_bol_scene",
+    "state": "inspection",
+    "labels": [
+      "Load snapshot",
+      "BOL identity",
+      "Signature field",
+      "Source revision"
+    ],
+    "metrics": [
+      {
+        "label": "Documents",
+        "value": 5,
+        "unit": "count"
+      },
+      {
+        "label": "Handling units",
+        "value": 18,
+        "unit": "count"
+      },
+      {
+        "label": "Missing signatures",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Load snapshot to focus the technical model; inspect BOL identity and Signature field in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/DispatchManifestModal.tsx",
+    "modules": [
+      "M02",
+      "M03",
+      "M18",
+      "M22",
+      "M30"
+    ],
+    "prerequisite": "A review snapshot does not create legal signature or a physical loading receipt.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-08",
+      "capture": "captures/CC-08.png",
+      "thumbnail": "thumbnails/CC-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-09",
+    "product": "command",
+    "title": "Invoice reconciliation landscape",
+    "intent": "Explore quote receipt accessorial evidence and invoice totals in related spatial layers.",
+    "family": "finance",
+    "focus": "invoice_reconciliation_landscape",
+    "state": "inspection",
+    "labels": [
+      "Accepted quote",
+      "Receipt evidence",
+      "Accessorial detail",
+      "Invoice total"
+    ],
+    "metrics": [
+      {
+        "label": "Accepted quote",
+        "value": 2770,
+        "unit": "USD"
+      },
+      {
+        "label": "Invoice total",
+        "value": 2770,
+        "unit": "USD"
+      },
+      {
+        "label": "Difference",
+        "value": 0,
+        "unit": "USD"
+      }
+    ],
+    "interaction": "Select Accepted quote to focus the technical model; inspect Receipt evidence and Accessorial detail in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M05",
+      "M17",
+      "M18",
+      "M19",
+      "M23"
+    ],
+    "prerequisite": "Invoice readiness is not payment and must retain exact-cent reconciliation.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-09",
+      "capture": "captures/CC-09.png",
+      "thumbnail": "thumbnails/CC-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-10",
+    "product": "command",
+    "title": "Fleet and shipment portfolio",
+    "intent": "Explore several shipments vehicles facilities and exceptions with drill-down.",
+    "family": "network",
+    "focus": "fleet_and_shipment_portfolio",
+    "state": "normal",
+    "labels": [
+      "Shipment cluster",
+      "Vehicle cluster",
+      "Facility node",
+      "Exception node"
+    ],
+    "metrics": [
+      {
+        "label": "Shipments",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Vehicles",
+        "value": 8,
+        "unit": "count"
+      },
+      {
+        "label": "Open exceptions",
+        "value": 3,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Shipment cluster to focus the technical model; inspect Vehicle cluster and Facility node in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/App.tsx",
+    "modules": [
+      "M02",
+      "M03",
+      "M05",
+      "M21",
+      "M25"
+    ],
+    "prerequisite": "Canonical IDs and aggregation rules are needed to prevent double counting.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-10",
+      "capture": "captures/CC-10.png",
+      "thumbnail": "thumbnails/CC-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-11",
+    "product": "command",
+    "title": "Evidence revision replay",
+    "intent": "Replay the sequence of planning records motion receipt and invoice preparation.",
+    "family": "evidence",
+    "focus": "evidence_revision_replay",
+    "state": "sequence",
+    "labels": [
+      "Input revision",
+      "Planning receipt",
+      "Arrival event",
+      "Receiving confirmation"
+    ],
+    "metrics": [
+      {
+        "label": "Input revision",
+        "value": 3,
+        "unit": "index"
+      },
+      {
+        "label": "Record revision",
+        "value": 14,
+        "unit": "index"
+      },
+      {
+        "label": "History events",
+        "value": 13,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Input revision to focus the technical model; inspect Planning receipt and Arrival event in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M05",
+      "M11",
+      "M18",
+      "M23",
+      "M30"
+    ],
+    "prerequisite": "History is scenario/manual evidence unless the recorded event source establishes otherwise.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-11",
+      "capture": "captures/CC-11.png",
+      "thumbnail": "thumbnails/CC-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "CC-12",
+    "product": "command",
+    "title": "Role-specific spatial workspace",
+    "intent": "Explore different information emphasis for dispatcher dock lead safety reviewer and finance.",
+    "family": "network",
+    "focus": "role_specific_spatial_workspace",
+    "state": "comparison",
+    "labels": [
+      "Dispatcher view",
+      "Dock-lead view",
+      "Safety view",
+      "Finance view"
+    ],
+    "metrics": [
+      {
+        "label": "Roles",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Shared objects",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Role actions",
+        "value": 5,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Dispatcher view to focus the technical model; inspect Dock-lead view and Safety view in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/command-center-portal/src/ui/App.tsx",
+    "modules": [
+      "M02",
+      "M15",
+      "M20",
+      "M21",
+      "M24"
+    ],
+    "prerequisite": "Visual roles do not implement authorization; production permissions remain a separate contract.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=CC-12",
+      "capture": "captures/CC-12.png",
+      "thumbnail": "thumbnails/CC-12.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-01",
+    "product": "platform",
+    "title": "Canonical spatial identity",
+    "intent": "Explore how one handling-unit or resource ID resolves across every scene and detail panel.",
+    "family": "network",
+    "focus": "canonical_spatial_identity",
+    "state": "inspection",
+    "labels": [
+      "Handling-unit ID",
+      "Trailer ID",
+      "Slot ID",
+      "Shipment ID"
+    ],
+    "metrics": [
+      {
+        "label": "Linked objects",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Products",
+        "value": 8,
+        "unit": "count"
+      },
+      {
+        "label": "Unresolved IDs",
+        "value": 1,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Handling-unit ID to focus the technical model; inspect Trailer ID and Slot ID in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M02",
+      "M12",
+      "M21",
+      "M23",
+      "M30"
+    ],
+    "prerequisite": "One domain record owns identity while renderers maintain references only.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-01",
+      "capture": "captures/PF-01.png",
+      "thumbnail": "thumbnails/PF-01.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-02",
+    "product": "platform",
+    "title": "Projection and unit calibration",
+    "intent": "Explore orthographic isometric perspective and measured-axis views with a shared ruler.",
+    "family": "vehicle",
+    "focus": "projection_and_unit_calibration",
+    "state": "comparison",
+    "labels": [
+      "X length axis",
+      "Y height axis",
+      "Z depth axis",
+      "Unit selector"
+    ],
+    "metrics": [
+      {
+        "label": "Length",
+        "value": 53,
+        "unit": "ft"
+      },
+      {
+        "label": "Width",
+        "value": 8.5,
+        "unit": "ft"
+      },
+      {
+        "label": "Height",
+        "value": 13.5,
+        "unit": "ft"
+      }
+    ],
+    "interaction": "Select X length axis to focus the technical model; inspect Y height axis and Z depth axis in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/engine/vectorIsometric.ts",
+    "modules": [
+      "M01",
+      "M04",
+      "M15",
+      "M16",
+      "M26"
+    ],
+    "prerequisite": "Axes origin scale and dimensional units must be normalized before cross-product geometry reuse.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-02",
+      "capture": "captures/PF-02.png",
+      "thumbnail": "thumbnails/PF-02.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-03",
+    "product": "platform",
+    "title": "Multi-scale semantic zoom",
+    "intent": "Explore shipment facility vehicle container and individual-unit levels without losing identity.",
+    "family": "network",
+    "focus": "multi_scale_semantic_zoom",
+    "state": "sequence",
+    "labels": [
+      "Portfolio level",
+      "Facility level",
+      "Trailer level",
+      "Handling-unit level"
+    ],
+    "metrics": [
+      {
+        "label": "Zoom levels",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Visible entities",
+        "value": 24,
+        "unit": "count"
+      },
+      {
+        "label": "Selected unit",
+        "value": 7,
+        "unit": "index"
+      }
+    ],
+    "interaction": "Select Portfolio level to focus the technical model; inspect Facility level and Trailer level in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M01",
+      "M02",
+      "M03",
+      "M10",
+      "M21",
+      "M25"
+    ],
+    "prerequisite": "Each level needs a stable mapping and a clear return path to the prior context.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-03",
+      "capture": "captures/PF-03.png",
+      "thumbnail": "thumbnails/PF-03.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-04",
+    "product": "platform",
+    "title": "Selection focus and linked details",
+    "intent": "Explore keyboard pointer and search selection synchronized with exact companion data.",
+    "family": "cargo",
+    "focus": "selection_focus_and_linked_details",
+    "state": "selected",
+    "labels": [
+      "Selected object",
+      "Focus halo",
+      "Detail panel",
+      "Related objects"
+    ],
+    "metrics": [
+      {
+        "label": "Selected objects",
+        "value": 1,
+        "unit": "count"
+      },
+      {
+        "label": "Related objects",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Detail fields",
+        "value": 9,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Selected object to focus the technical model; inspect Focus halo and Detail panel in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/ui/PlanStep.tsx",
+    "modules": [
+      "M02",
+      "M05",
+      "M09",
+      "M24",
+      "M26"
+    ],
+    "prerequisite": "Provide recoverable focus and an accessible list for every spatial object.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-04",
+      "capture": "captures/PF-04.png",
+      "thumbnail": "thumbnails/PF-04.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-05",
+    "product": "platform",
+    "title": "Annotation density and occlusion",
+    "intent": "Explore prioritization leader lines cutaways and label collision handling.",
+    "family": "facility",
+    "focus": "annotation_density_and_occlusion",
+    "state": "inspection",
+    "labels": [
+      "Primary label",
+      "Occluded label",
+      "Leader line",
+      "Density control"
+    ],
+    "metrics": [
+      {
+        "label": "Scene objects",
+        "value": 40,
+        "unit": "count"
+      },
+      {
+        "label": "Visible labels",
+        "value": 12,
+        "unit": "count"
+      },
+      {
+        "label": "Hidden labels",
+        "value": 28,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Primary label to focus the technical model; inspect Occluded label and Leader line in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-06-warehouse-space-flow/src/ui/WarehouseIsometricCanvas.tsx",
+    "modules": [
+      "M05",
+      "M08",
+      "M21",
+      "M25",
+      "M26"
+    ],
+    "prerequisite": "Omitted labels must remain discoverable through selection and a companion object list.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-05",
+      "capture": "captures/PF-05.png",
+      "thumbnail": "thumbnails/PF-05.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-06",
+    "product": "platform",
+    "title": "State and provenance grammar",
+    "intent": "Explore consistent pending selected warning stale unknown and observed visual states.",
+    "family": "evidence",
+    "focus": "state_and_provenance_grammar",
+    "state": "comparison",
+    "labels": [
+      "Pending state",
+      "Warning state",
+      "Unknown state",
+      "Recorded state"
+    ],
+    "metrics": [
+      {
+        "label": "State tokens",
+        "value": 6,
+        "unit": "count"
+      },
+      {
+        "label": "Source classes",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Unknown values",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Pending state to focus the technical model; inspect Warning state and Unknown state in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M05",
+      "M07",
+      "M18",
+      "M26",
+      "M27"
+    ],
+    "prerequisite": "Color depth animation and shape must not promote evidence beyond its real source.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-06",
+      "capture": "captures/PF-06.png",
+      "thumbnail": "thumbnails/PF-06.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-07",
+    "product": "platform",
+    "title": "Thermal mass volume layer composition",
+    "intent": "Explore independent physical scalar layers on the same container and cargo geometry.",
+    "family": "cargo",
+    "focus": "thermal_mass_volume_layer_composition",
+    "state": "comparison",
+    "labels": [
+      "Volume layer",
+      "Mass layer",
+      "Temperature layer",
+      "Active legend"
+    ],
+    "metrics": [
+      {
+        "label": "Used volume",
+        "value": 64,
+        "unit": "percent"
+      },
+      {
+        "label": "Payload use",
+        "value": 82,
+        "unit": "percent"
+      },
+      {
+        "label": "Temperature",
+        "value": 35,
+        "unit": "F"
+      }
+    ],
+    "interaction": "Select Volume layer to focus the technical model; inspect Mass layer and Temperature layer in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/engine/types.ts",
+    "modules": [
+      "M03",
+      "M04",
+      "M05",
+      "M10",
+      "M14",
+      "M26"
+    ],
+    "prerequisite": "Each layer needs a defined unit range and source; do not blend unrelated values into one score.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-07",
+      "capture": "captures/PF-07.png",
+      "thumbnail": "thumbnails/PF-07.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-08",
+    "product": "platform",
+    "title": "Spatial command preview",
+    "intent": "Explore reversible ghost changes reviewable consequences and explicit commit boundaries.",
+    "family": "cargo",
+    "focus": "spatial_command_preview",
+    "state": "selected",
+    "labels": [
+      "Original state",
+      "Ghost state",
+      "Affected results",
+      "Commit boundary"
+    ],
+    "metrics": [
+      {
+        "label": "Moved objects",
+        "value": 2,
+        "unit": "count"
+      },
+      {
+        "label": "Affected results",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Uncommitted changes",
+        "value": 2,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Original state to focus the technical model; inspect Ghost state and Affected results in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/domain.mjs",
+    "modules": [
+      "M02",
+      "M07",
+      "M09",
+      "M20",
+      "M23"
+    ],
+    "prerequisite": "Preview is isolated and cannot mutate production or imply user approval.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-08",
+      "capture": "captures/PF-08.png",
+      "thumbnail": "thumbnails/PF-08.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-09",
+    "product": "platform",
+    "title": "Deterministic review snapshot",
+    "intent": "Explore a reproducible camera state labels metrics and source revision for a shareable image.",
+    "family": "evidence",
+    "focus": "deterministic_review_snapshot",
+    "state": "inspection",
+    "labels": [
+      "Camera preset",
+      "Case identifier",
+      "Synthetic marker",
+      "Source revision"
+    ],
+    "metrics": [
+      {
+        "label": "Image width",
+        "value": 1600,
+        "unit": "px"
+      },
+      {
+        "label": "Image height",
+        "value": 1000,
+        "unit": "px"
+      },
+      {
+        "label": "Case revision",
+        "value": 1,
+        "unit": "index"
+      }
+    ],
+    "interaction": "Select Camera preset to focus the technical model; inspect Case identifier and Synthetic marker in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-01-cargo-fit/src/engine/report.ts",
+    "modules": [
+      "M01",
+      "M05",
+      "M22",
+      "M27",
+      "M28",
+      "M30"
+    ],
+    "prerequisite": "Every case needs its own route PNG and manifest identity; file existence alone is not visual acceptance.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-09",
+      "capture": "captures/PF-09.png",
+      "thumbnail": "thumbnails/PF-09.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-10",
+    "product": "platform",
+    "title": "Responsive spatial workspace",
+    "intent": "Explore desktop tablet and narrow-screen scene detail and action composition.",
+    "family": "network",
+    "focus": "responsive_spatial_workspace",
+    "state": "comparison",
+    "labels": [
+      "Desktop scene",
+      "Tablet scene",
+      "Narrow view",
+      "Focused detail"
+    ],
+    "metrics": [
+      {
+        "label": "Desktop width",
+        "value": 1440,
+        "unit": "px"
+      },
+      {
+        "label": "Tablet width",
+        "value": 834,
+        "unit": "px"
+      },
+      {
+        "label": "Narrow width",
+        "value": 390,
+        "unit": "px"
+      }
+    ],
+    "interaction": "Select Desktop scene to focus the technical model; inspect Tablet scene and Narrow view in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/suite-dock/src/styles.css",
+    "modules": [
+      "M01",
+      "M15",
+      "M21",
+      "M24",
+      "M26"
+    ],
+    "prerequisite": "Review capture is not real-device touch keyboard or accessibility validation.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-10",
+      "capture": "captures/PF-10.png",
+      "thumbnail": "thumbnails/PF-10.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-11",
+    "product": "platform",
+    "title": "Reference-driven visual language",
+    "intent": "Explore technical material light camera and annotation direction from inspected references.",
+    "family": "vehicle",
+    "focus": "reference_driven_visual_language",
+    "state": "comparison",
+    "labels": [
+      "Reference direction",
+      "Technical model",
+      "Label system",
+      "Material palette"
+    ],
+    "metrics": [
+      {
+        "label": "Reference studies",
+        "value": 3,
+        "unit": "count"
+      },
+      {
+        "label": "Material tokens",
+        "value": 8,
+        "unit": "count"
+      },
+      {
+        "label": "Camera presets",
+        "value": 4,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Reference direction to focus the technical model; inspect Technical model and Label system in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "products/product-04-asset-studio/src/ui/Realtime3DCanvas.tsx",
+    "modules": [
+      "M01",
+      "M05",
+      "M16",
+      "M26",
+      "M28",
+      "M29"
+    ],
+    "prerequisite": "Inspect sael.net and relevant X references with provenance before claiming reference fidelity.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-11",
+      "capture": "captures/PF-11.png",
+      "thumbnail": "thumbnails/PF-11.png",
+      "humanDecision": "pending"
+    }
+  },
+  {
+    "id": "PF-12",
+    "product": "platform",
+    "title": "Cross-product model reuse study",
+    "intent": "Explore one technical model with product-specific overlays and shared physical identity.",
+    "family": "vehicle",
+    "focus": "cross_product_model_reuse_study",
+    "state": "comparison",
+    "labels": [
+      "Asset geometry",
+      "Pricing overlay",
+      "Telemetry overlay",
+      "Yard overlay"
+    ],
+    "metrics": [
+      {
+        "label": "Shared model",
+        "value": 1,
+        "unit": "count"
+      },
+      {
+        "label": "Product overlays",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "Duplicate models",
+        "value": 0,
+        "unit": "count"
+      }
+    ],
+    "interaction": "Select Asset geometry to focus the technical model; inspect Pricing overlay and Telemetry overlay in the linked exact-detail panel. Compare or scrub the scene where the case state calls for it.",
+    "source": "packages/shipment-flow/src/types.ts",
+    "modules": [
+      "M02",
+      "M03",
+      "M14",
+      "M15",
+      "M23",
+      "M25"
+    ],
+    "prerequisite": "Adoption requires ownership migration and compatibility review rather than parallel editable copies.",
+    "status": "visual_ready_for_review",
+    "visual": {
+      "route": "review.html?case=PF-12",
+      "capture": "captures/PF-12.png",
+      "thumbnail": "thumbnails/PF-12.png",
+      "humanDecision": "pending"
+    }
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "product": "command-center-portal",
+    "root": "/Users/pranay/Projects/trucking/products/command-center-portal",
+    "statusLines": 21,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-01-cargo-fit",
+    "root": "/Users/pranay/Projects/trucking/products/product-01-cargo-fit",
+    "statusLines": 7,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-02-freight-pricing",
+    "root": "/Users/pranay/Projects/trucking/products/product-02-freight-pricing",
+    "statusLines": 21,
+    "stagedPaths": [
+      ".gitignore",
+      "Docs/reviews/motto_review.md",
+      "index.html",
+      "src/engine/accessorialRateCard.ts",
+      "src/engine/brokerMargin.ts",
+      "src/styles.css",
+      "src/ui/App.tsx",
+      "src/ui/ColdChainTelematicsPanel.tsx",
+      "src/ui/RateConfirmationModal.tsx",
+      "src/ui/Realtime3DVehicle.tsx",
+      "src/ui/SuiteDock.tsx",
+      "src/ui/TacticalHud.tsx",
+      "src/ui/icons.tsx"
+    ],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-03-hos-planner",
+    "root": "/Users/pranay/Projects/trucking/products/product-03-hos-planner",
+    "statusLines": 18,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-04-asset-studio",
+    "root": "/Users/pranay/Projects/trucking/products/product-04-asset-studio",
+    "statusLines": 20,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-05-fleet-telematics",
+    "root": "/Users/pranay/Projects/trucking/products/product-05-fleet-telematics",
+    "statusLines": 18,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-06-warehouse-space-flow",
+    "root": "/Users/pranay/Projects/trucking/products/product-06-warehouse-space-flow",
+    "statusLines": 15,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  },
+  {
+    "product": "product-07-yard-dock",
+    "gitRepository": false
+  },
+  {
+    "product": "product-08-carrier-trust",
+    "root": "/Users/pranay/Projects/trucking/products/product-08-carrier-trust",
+    "statusLines": 14,
+    "stagedPaths": [],
+    "diffCheckExitCode": 0,
+    "diffCheck": ""
+  }
+]

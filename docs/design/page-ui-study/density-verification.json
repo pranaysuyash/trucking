@@ -1,0 +1,118 @@
+{
+  "checkedAt": "2026-10-22T16:17:37.363Z",
+  "scope": "Information-density visual study only",
+  "pages": [
+    {
+      "page": "command",
+      "record": "shipment",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "cargo",
+      "record": "unit:1",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "pricing",
+      "record": "quote",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "hos",
+      "record": "hos",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "assets",
+      "record": "equipment:0",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "telematics",
+      "record": "telematics",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "warehouse",
+      "record": "receiving:1",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "yard",
+      "record": "door:6",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    },
+    {
+      "page": "trust",
+      "record": "carrier",
+      "details": true,
+      "checks": true,
+      "history": true,
+      "sourceJSONLossless": true,
+      "focusRestored": true,
+      "fontAndCanvasUnchanged": true
+    }
+  ],
+  "mobileDrawers": 9,
+  "checks": [
+    "all nine detail entry points",
+    "Details Checks History Source",
+    "lossless full-record JSON",
+    "unknown evidence remains unknown",
+    "original and amended history payloads",
+    "reloadable record/tab/event deep link",
+    "related record and browser Back",
+    "global record search",
+    "queue record identity",
+    "unknown record handling",
+    "fuel formula and rounding",
+    "focus restoration and Escape",
+    "unchanged font and canvas dimensions",
+    "mobile overflow containment",
+    "no non-GET requests"
+  ],
+  "pageErrors": [],
+  "operationalRequests": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1"
+}

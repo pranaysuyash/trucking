@@ -1,0 +1,36 @@
+{
+  "batchedParts": "61",
+  "quality": "studio",
+  "ready": "YD-07",
+  "entities": "6",
+  "anchors": "4",
+  "geometry": "30",
+  "fixtureMetrics": "[{\"label\":\"Elapsed dwell\",\"value\":135,\"unit\":\"min\"},{\"label\":\"Free time\",\"value\":120,\"unit\":\"min\"},{\"label\":\"Scenario charge\",\"value\":21.25,\"unit\":\"USD\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "35.10",
+  "drawCalls": "100",
+  "camera": "{\"position\":[5.112910045297788,21.87451128763135,52.37410044139222],\"target\":[-0.12625000009313192,1.5,-0.017500012516975305],\"zoom\":1}",
+  "painted": "YD-07",
+  "id": "YD-07",
+  "title": "Detention urgency on location",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-07.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:31.356Z"
+}

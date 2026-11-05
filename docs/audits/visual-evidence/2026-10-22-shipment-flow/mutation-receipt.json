@@ -1,0 +1,14 @@
+[
+  {
+    "mutation": "stale-revision-check",
+    "detected": true,
+    "exitCode": 1,
+    "fixturePath": "/var/folders/fc/xwynjqm94t39_jvz88fhcpfc0000gn/T/trucking-mutation-ts62qgv_"
+  },
+  {
+    "mutation": "dispatch-prerequisites",
+    "detected": true,
+    "exitCode": 1,
+    "fixturePath": "/var/folders/fc/xwynjqm94t39_jvz88fhcpfc0000gn/T/trucking-mutation-3bu_5hat"
+  }
+]

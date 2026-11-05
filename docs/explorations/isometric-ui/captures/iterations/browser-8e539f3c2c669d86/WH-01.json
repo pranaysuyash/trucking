@@ -1,0 +1,36 @@
+{
+  "batchedParts": "2275",
+  "quality": "studio",
+  "ready": "WH-01",
+  "entities": "63",
+  "anchors": "2",
+  "geometry": "372",
+  "fixtureMetrics": "[{\"label\":\"Fixture rack bays\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Floor area\",\"value\":432,\"unit\":\"m²\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "89.30",
+  "drawCalls": "1126",
+  "camera": "{\"position\":[38.49833089390015,42.89333092213785,42.2933309098444],\"target\":[-1.8700000282377,2.5250000000000004,1.924999987706542],\"zoom\":1}",
+  "painted": "WH-01",
+  "id": "WH-01",
+  "title": "Facility spatial overview",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:43:58.837Z"
+}

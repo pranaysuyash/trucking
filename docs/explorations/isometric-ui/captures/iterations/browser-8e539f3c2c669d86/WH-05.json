@@ -1,0 +1,36 @@
+{
+  "batchedParts": "212",
+  "quality": "studio",
+  "ready": "WH-05",
+  "entities": "4",
+  "anchors": "3",
+  "geometry": "32",
+  "fixtureMetrics": "[{\"label\":\"Container interior fixture\",\"value\":38.25275636,\"unit\":\"m³\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "67.90",
+  "drawCalls": "111",
+  "camera": "{\"position\":[22.22091079280363,23.608660793027152,22.210660792595018],\"target\":[-0.01024999850988384,1.3775000017136338,-0.020499998718500168],\"zoom\":1}",
+  "painted": "WH-05",
+  "id": "WH-05",
+  "title": "Nested moveable containers",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:08.489Z"
+}

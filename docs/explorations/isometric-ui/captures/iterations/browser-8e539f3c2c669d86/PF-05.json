@@ -1,0 +1,36 @@
+{
+  "batchedParts": "1808",
+  "quality": "studio",
+  "ready": "PF-05",
+  "entities": "51",
+  "anchors": "5",
+  "geometry": "300",
+  "fixtureMetrics": "[{\"label\":\"Fixture rack bays\",\"value\":9,\"unit\":\"count\"},{\"label\":\"Floor area\",\"value\":432,\"unit\":\"m²\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "61.00",
+  "drawCalls": "910",
+  "camera": "{\"position\":[35.61398521173224,40.88398519526647,40.058985227676494],\"target\":[-2.5200000282377,2.749999955296517,1.924999987706542],\"zoom\":1}",
+  "painted": "PF-05",
+  "id": "PF-05",
+  "title": "Annotation density and occlusion",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:20.614Z"
+}

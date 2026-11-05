@@ -1,0 +1,36 @@
+{
+  "batchedParts": "80",
+  "quality": "studio",
+  "ready": "CC-09",
+  "entities": "5",
+  "anchors": "4",
+  "geometry": "20",
+  "fixtureMetrics": "[{\"label\":\"Accepted quote\",\"value\":2770,\"unit\":\"USD\"},{\"label\":\"Invoice total\",\"value\":2770,\"unit\":\"USD\"},{\"label\":\"Difference\",\"value\":0,\"unit\":\"USD\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "17.70",
+  "drawCalls": "78",
+  "camera": "{\"position\":[5.196704822901963,22.985407654207638,51.96704822901962],\"target\":[0,2.7760000095888975,0],\"zoom\":1}",
+  "painted": "CC-09",
+  "id": "CC-09",
+  "title": "Invoice reconciliation landscape",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:14.557Z"
+}

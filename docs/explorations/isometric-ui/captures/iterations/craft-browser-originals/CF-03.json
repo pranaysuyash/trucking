@@ -1,0 +1,37 @@
+{
+  "batchedParts": "12",
+  "quality": "studio",
+  "ready": "CF-03",
+  "entities": "1",
+  "anchors": "3",
+  "geometry": "10",
+  "fixtureMetrics": "[{\"label\":\"Bounding volume\",\"value\":8.448,\"unit\":\"m³\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "45.00",
+  "drawCalls": "46",
+  "camera": "{\"position\":[18.475208614068023,19.537708607362504,18.475208614068027],\"target\":[0,1.0624999932944774,0],\"zoom\":1}",
+  "painted": "CF-03",
+  "id": "CF-03",
+  "title": "Irregular cargo envelope",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:04:12.389Z"
+}

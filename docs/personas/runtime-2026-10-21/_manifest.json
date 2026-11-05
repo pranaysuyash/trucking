@@ -1,0 +1,57 @@
+{
+  "session": "2026-10-21T11:45:00Z",
+  "project": "TRUCKING — Modular Freight Logistics Platform",
+  "council_type": "360-degree Comprehensive Simulation Council",
+  "canonical_repo": "/Users/pranay/Downloads/Understanding_Personas_24sep",
+  "seats": [
+    {
+      "seat": "Operational Lead",
+      "id": "PER-950374",
+      "title": "Fleet Operations Manager",
+      "source": "desktop_canonical",
+      "mandate": "Real-world commercial fleet efficiency, turnaround time, driver satisfaction, equipment utilization across all 4 products."
+    },
+    {
+      "seat": "Systems Architecture",
+      "id": "PER-0395",
+      "title": "Logistics & Supply Chain Systems Architect",
+      "source": "desktop_canonical",
+      "mandate": "End-to-end data pipelines, equipment spec integrity, Bridge Law axle rules, tare weights, fuel burn physics, Open Logistics Asset Schema."
+    },
+    {
+      "seat": "Corridor & Scheduling",
+      "id": "PER-0995",
+      "title": "Transport Planner",
+      "source": "desktop_canonical",
+      "mandate": "Interstate lane routing, multi-stop drop sequencing, dispatch rates, spot market margin calculations, solo vs team hours of service schedules."
+    },
+    {
+      "seat": "Statutory Compliance",
+      "id": "PER-0384",
+      "title": "Legal & Compliance Workflow Architect",
+      "source": "desktop_canonical",
+      "mandate": "FMCSA Part 395 regulatory compliance, Federal Bridge Formula B axle weight limits, 49 CFR § 393.102 cargo securement, audit logs."
+    },
+    {
+      "seat": "Accessibility & Spatial UX",
+      "id": "PER-0080",
+      "title": "Accessibility for Spatial & Scientific Interfaces Specialist",
+      "source": "desktop_canonical",
+      "mandate": "Web accessibility (WCAG 2.1 AA/AAA), keyboard accessibility of complex 3D canvases, color contrast of status badges, screen-reader text alternatives."
+    },
+    {
+      "seat": "Buyer & Independent Operator",
+      "id": "PER-RT-0101",
+      "title": "Independent Owner-Operator & Freight Buyer",
+      "source": "runtime_saved",
+      "mandate": "Evaluate first-impression clarity, zero-onboarding cognitive overhead, quick rate confirmations, mobile readability from a truck cab, and commercial WTP."
+    },
+    {
+      "seat": "Adversarial Stress Tester",
+      "id": "PER-RT-0102",
+      "title": "Logistics Adversarial & Boundary Stress Tester",
+      "source": "runtime_saved",
+      "mandate": "Test extreme inputs, edge cases, zero-division, oversized cargo exceedances, impossible routes, rapid viewport resize, and UI crash resilience."
+    }
+  ]
+}

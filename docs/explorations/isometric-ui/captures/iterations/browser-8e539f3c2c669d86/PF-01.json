@@ -1,0 +1,36 @@
+{
+  "batchedParts": "153",
+  "quality": "studio",
+  "ready": "PF-01",
+  "entities": "8",
+  "anchors": "5",
+  "geometry": "31",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":3,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "40.00",
+  "drawCalls": "111",
+  "camera": "{\"position\":[51.90378911755675,52.903789117001686,51.75378914139861],\"target\":[0,0.9999999994449318,-0.1499999761581421],\"zoom\":1}",
+  "painted": "PF-01",
+  "id": "PF-01",
+  "title": "Canonical spatial identity",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:17.343Z"
+}

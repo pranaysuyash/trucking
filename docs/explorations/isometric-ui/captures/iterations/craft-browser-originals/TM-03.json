@@ -1,0 +1,36 @@
+{
+  "batchedParts": "485",
+  "quality": "studio",
+  "ready": "TM-03",
+  "entities": "9",
+  "anchors": "4",
+  "geometry": "65",
+  "fixtureMetrics": "[{\"label\":\"Zone 1\",\"value\":35.2,\"unit\":\"°F\"},{\"label\":\"Zone 1 setpoint\",\"value\":34,\"unit\":\"°F\"},{\"label\":\"Zone 2\",\"value\":2,\"unit\":\"°F\"},{\"label\":\"Return air\",\"value\":\"unknown\",\"unit\":\"\"},{\"label\":\"Compressor\",\"value\":\"unknown\",\"unit\":\"\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "67.60",
+  "drawCalls": "212",
+  "camera": "{\"position\":[48.420931145530645,50.670931152981225,48.560931144636584],\"target\":[-0.13999999910592997,2.11000000834465,0],\"zoom\":1}",
+  "painted": "TM-03",
+  "id": "TM-03",
+  "title": "Reefer zone cutaway",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/TM-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T19:59:30.697Z"
+}

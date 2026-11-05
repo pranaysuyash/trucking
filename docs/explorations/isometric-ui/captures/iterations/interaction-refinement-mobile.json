@@ -1,0 +1,76 @@
+{
+  "mobileBefore": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Drag L / W / H handles. Arrow keys adjust 0.01 m; Shift adjusts 0.10 m. Escape cancels.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "mobileAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Height: 1.5244 m. One drag saved as one undo step.",
+    "values": {
+      "fixture-height": 1.5244,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "mobileLayout": {
+    "handles": [
+      {
+        "label": "Length handle, 1.2192 metres. Drag or use arrow keys.",
+        "rect": {
+          "bottom": 607.8203125,
+          "height": 44,
+          "left": 240.8671875,
+          "right": 284.8671875,
+          "top": 563.8203125,
+          "width": 44,
+          "x": 240.8671875,
+          "y": 563.8203125
+        }
+      },
+      {
+        "label": "Width handle, 1.016 metres. Drag or use arrow keys.",
+        "rect": {
+          "bottom": 605.0078125,
+          "height": 44,
+          "left": 120.359375,
+          "right": 164.359375,
+          "top": 561.0078125,
+          "width": 44,
+          "x": 120.359375,
+          "y": 561.0078125
+        }
+      },
+      {
+        "label": "Height handle, 1.5244 metres. Drag or use arrow keys.",
+        "rect": {
+          "bottom": 476.0234375,
+          "height": 44,
+          "left": 172.65625,
+          "right": 216.65625,
+          "top": 432.0234375,
+          "width": 44,
+          "x": 172.65625,
+          "y": 432.0234375
+        }
+      }
+    ],
+    "pageWidth": 390,
+    "width": 390
+  },
+  "touchBoundary": "The in-app CDP bridge does not support Input.dispatchTouchEvent. Pointer drag observed at narrow CSS viewport; touch gesture and physical device remain unverified."
+}

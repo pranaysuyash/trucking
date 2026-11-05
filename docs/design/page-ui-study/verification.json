@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-10-22T16:29:08.102Z",
+  "scope": "Isolated UI visual study only",
+  "pages": [
+    {
+      "page": "command",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "cargo",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "pricing",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "hos",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "assets",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "telematics",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "warehouse",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "yard",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    },
+    {
+      "page": "trust",
+      "desktopRendered": true,
+      "mobilePageOverflow": false,
+      "standaloneModeWorks": true
+    }
+  ],
+  "interactions": [
+    "product navigation",
+    "shipment/standalone mode",
+    "queue filter",
+    "shipment search",
+    "handling-unit selection",
+    "top/side projection",
+    "scenario arrival preview",
+    "review dialog and Escape close"
+  ],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "operationalWrites": false
+}

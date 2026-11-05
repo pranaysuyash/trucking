@@ -1,0 +1,36 @@
+{
+  "batchedParts": "514",
+  "quality": "studio",
+  "ready": "WH-07",
+  "entities": "13",
+  "anchors": "3",
+  "geometry": "87",
+  "fixtureMetrics": "[{\"label\":\"Travel distance\",\"value\":180,\"unit\":\"ft\"},{\"label\":\"Turns\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Lift height\",\"value\":10,\"unit\":\"ft\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "64.20",
+  "drawCalls": "275",
+  "camera": "{\"position\":[30.98378796190787,32.65230846006551,30.933899620975588],\"target\":[0.05494560336398768,1.723466101521626,0.005057262431702014],\"zoom\":1}",
+  "painted": "WH-07",
+  "id": "WH-07",
+  "title": "Forklift travel preview",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-07.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:10.388Z"
+}

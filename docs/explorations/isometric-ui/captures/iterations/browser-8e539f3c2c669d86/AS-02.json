@@ -1,0 +1,36 @@
+{
+  "anchors": "4",
+  "batchedParts": "625",
+  "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "279",
+  "entities": "13",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "geometry": "87",
+  "id": "AS-02",
+  "pageWidth": 1440,
+  "painted": "AS-02",
+  "quality": "studio",
+  "ready": "AS-02",
+  "renderMs": "94.30",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Vehicle interior cutaway",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-02.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:18.844Z"
+}

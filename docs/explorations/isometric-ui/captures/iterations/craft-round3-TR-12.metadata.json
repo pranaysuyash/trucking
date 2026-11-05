@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Script ran on page and returned:\n```json\n{\"batchedParts\":\"96\",\"quality\":\"studio\",\"ready\":\"TR-12\",\"entities\":\"4\",\"anchors\":\"4\",\"geometry\":\"21\",\"fixtureMetrics\":\"[{\\\"label\\\":\\\"Evidence items\\\",\\\"value\\\":8,\\\"unit\\\":\\\"count\\\"},{\\\"label\\\":\\\"Sourced items\\\",\\\"value\\\":6,\\\"unit\\\":\\\"count\\\"},{\\\"label\\\":\\\"Unknown fields\\\",\\\"value\\\":2,\\\"unit\\\":\\\"count\\\"}]\",\"valuesOrigin\":\"example scenario inputs\",\"revision\":\"fef592cb4f30534a\",\"renderMs\":\"36.50\",\"drawCalls\":\"81\",\"camera\":\"{\\\"position\\\":[32.15840999386215,32.84490999307612,32.50840999386216],\\\"target\\\":[0,0.6864999992139638,0.3500000000000001],\\\"zoom\\\":1}\",\"painted\":\"TR-12\",\"id\":\"TR-12\",\"title\":\"TR-12 · Evidence provenance inspection / Trucking studies\",\"review\":\"AWAITING YOUR REVIEW\",\"viewport\":{\"width\":1440,\"height\":1024},\"clip\":{\"left\":251,\"top\":197,\"width\":1156,\"height\":532},\"error\":null}\n```\nPage navigated to http://127.0.0.1:5195/review.html?case=TR-12."
+    }
+  ]
+}

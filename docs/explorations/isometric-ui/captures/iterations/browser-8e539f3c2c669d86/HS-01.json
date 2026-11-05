@@ -1,0 +1,36 @@
+{
+  "batchedParts": "55",
+  "quality": "studio",
+  "ready": "HS-01",
+  "entities": "1",
+  "anchors": "4",
+  "geometry": "17",
+  "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "27.20",
+  "drawCalls": "69",
+  "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+  "painted": "HS-01",
+  "id": "HS-01",
+  "title": "Semantic corridor itinerary",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:17.342Z"
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "54",
+  "quality": "studio",
+  "ready": "CC-12",
+  "entities": "7",
+  "anchors": "6",
+  "geometry": "32",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.10",
+  "drawCalls": "108",
+  "camera": "{\"position\":[38.74020298003327,39.87020297690403,38.59020300387513],\"target\":[0,1.1299999968707561,-0.1499999761581421],\"zoom\":1}",
+  "painted": "CC-12",
+  "id": "CC-12",
+  "title": "Role-specific spatial workspace",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:16.640Z"
+}

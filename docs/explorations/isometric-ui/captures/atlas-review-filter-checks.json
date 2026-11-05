@@ -1,0 +1,22 @@
+{
+  "observedAt": "2026-10-22T18:43:16.906Z",
+  "revision": "f0e21e664830ec47",
+  "approvedFilterProof": {
+    "filter": "approved",
+    "message": "No studies match this search and review status.",
+    "status": "120 awaiting review · 0 approved · 0 revision requested · 0 deferred · 0 changed since review",
+    "tiles": 0
+  },
+  "searchFilterProof": {
+    "filter": "pending",
+    "tiles": [
+      "WH-04"
+    ]
+  },
+  "restoredAtlasProof": {
+    "approved": "0",
+    "concepts": 6,
+    "status": "120 awaiting review · 0 approved · 0 revision requested · 0 deferred · 0 changed since review",
+    "tiles": 120
+  }
+}

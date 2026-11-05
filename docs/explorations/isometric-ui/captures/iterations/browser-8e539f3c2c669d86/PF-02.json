@@ -1,0 +1,36 @@
+{
+  "batchedParts": "16",
+  "quality": "studio",
+  "ready": "PF-02",
+  "entities": "0",
+  "anchors": "3",
+  "geometry": "11",
+  "fixtureMetrics": "[{\"label\":\"Calibration volume\",\"value\":1,\"unit\":\"m³\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "20.80",
+  "drawCalls": "49",
+  "camera": "{\"position\":[23.67136103677466,24.706361034539484,23.671361036774666],\"target\":[0,1.0349999977648257,0],\"zoom\":1}",
+  "painted": "PF-02",
+  "id": "PF-02",
+  "title": "Projection and unit calibration",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:18.093Z"
+}

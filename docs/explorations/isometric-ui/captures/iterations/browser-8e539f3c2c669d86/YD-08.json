@@ -1,0 +1,36 @@
+{
+  "batchedParts": "629",
+  "quality": "studio",
+  "ready": "YD-08",
+  "entities": "9",
+  "anchors": "2",
+  "geometry": "45",
+  "fixtureMetrics": "[{\"label\":\"Setpoint\",\"value\":34,\"unit\":\"F\"},{\"label\":\"Current temperature\",\"value\":35.2,\"unit\":\"F\"},{\"label\":\"Dwell\",\"value\":46,\"unit\":\"min\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "63.90",
+  "drawCalls": "148",
+  "camera": "{\"position\":[38.582950167819455,39.827700174621825,37.71600016769876],\"target\":[0.9642500010058281,2.2090000078082084,0.09730000088512857],\"zoom\":1}",
+  "painted": "YD-08",
+  "id": "YD-08",
+  "title": "Reefer parking and condition",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:32.236Z"
+}

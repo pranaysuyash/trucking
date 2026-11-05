@@ -1,0 +1,37 @@
+{
+  "batchedParts": "146",
+  "quality": "studio",
+  "ready": "CF-06",
+  "entities": "4",
+  "anchors": "3",
+  "geometry": "49",
+  "fixtureMetrics": "[{\"label\":\"Selected unit\",\"value\":7,\"unit\":\"index\"},{\"label\":\"Move distance\",\"value\":24,\"unit\":\"in\"},{\"label\":\"Candidate overlap\",\"value\":0,\"unit\":\"in3\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "389.10",
+  "drawCalls": "185",
+  "camera": "{\"position\":[18.99123410044308,19.991234099739007,19.666234109383783],\"target\":[-0.35,0.6499999992959201,0.3250000089406967],\"zoom\":1}",
+  "painted": "CF-06",
+  "id": "CF-06",
+  "title": "Manual repack preview",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-06.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:04:36.413Z"
+}

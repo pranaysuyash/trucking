@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-10-22T19:05:51.728Z",
+  "checks": [],
+  "observations": [],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "result": "FAIL",
+  "failure": "Error: ENOENT: no such file or directory, open '/Users/pranay/Projects/trucking/docs/audits/visual-evidence/2026-10-22-suite-completion/full-flow/run-2026-10-22T19-01-00.156Z-2587/browser-flow-receipt.json'\n    at Object.readFileSync (node:fs:439:20)\n    at /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:31:30",
+  "completedAt": "2026-10-22T19:05:54.697Z"
+}

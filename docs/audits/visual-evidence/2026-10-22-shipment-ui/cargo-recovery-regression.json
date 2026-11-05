@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-22T17:49:01.512008+00:00",
+  "result": "PASS",
+  "evidenceTier": 4,
+  "sensitivity": "S2",
+  "before": "cargo-recovery-before-2026-10-22T17-41-27-186Z/receipt.json",
+  "fixed": "cargo-recovery-fixed-2026-10-22T17-42-38-387Z/receipt.json",
+  "oracle": "Explicitly loading a newer manual arrangement must remove the prior local overlay even when scenario hash is unchanged.",
+  "beforeActualX": 10,
+  "expectedX": 20,
+  "fixedActualX": 20,
+  "liveSourceMutation": false
+}

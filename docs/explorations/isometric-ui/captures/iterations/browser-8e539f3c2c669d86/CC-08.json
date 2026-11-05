@@ -1,0 +1,36 @@
+{
+  "batchedParts": "128",
+  "quality": "studio",
+  "ready": "CC-08",
+  "entities": "6",
+  "anchors": "3",
+  "geometry": "31",
+  "fixtureMetrics": "[{\"label\":\"Documents\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Handling units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Missing signatures\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "48.70",
+  "drawCalls": "109",
+  "camera": "{\"position\":[29.73119668307481,30.26532274550512,29.62327468574415],\"target\":[0.11587392583875156,0.6499999882690607,0.007951928508088457],\"zoom\":1}",
+  "painted": "CC-08",
+  "id": "CC-08",
+  "title": "Dispatch packet and BOL scene",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:13.864Z"
+}

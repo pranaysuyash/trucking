@@ -1,0 +1,36 @@
+{
+  "batchedParts": "844",
+  "quality": "studio",
+  "ready": "PR-07",
+  "entities": "22",
+  "anchors": "4",
+  "geometry": "127",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":16,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "57.50",
+  "drawCalls": "400",
+  "camera": "{\"position\":[48.420931145530645,50.553431125662435,49.58343114448757],\"target\":[-0.13999999910592997,1.9924999810258552,1.0224999998509885],\"zoom\":1}",
+  "painted": "PR-07",
+  "id": "PR-07",
+  "title": "Payload fuel sensitivity",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-07.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:45.349Z"
+}

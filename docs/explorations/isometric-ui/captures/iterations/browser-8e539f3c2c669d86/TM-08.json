@@ -1,0 +1,36 @@
+{
+  "batchedParts": "680",
+  "quality": "studio",
+  "ready": "TM-08",
+  "entities": "13",
+  "anchors": "2",
+  "geometry": "87",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "50.10",
+  "drawCalls": "280",
+  "camera": "{\"position\":[48.420931145530645,50.55743114547849,48.560931144636584],\"target\":[-0.13999999910592997,1.996500000841916,0],\"zoom\":1}",
+  "painted": "TM-08",
+  "id": "TM-08",
+  "title": "Driver safety event replay",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:36.857Z"
+}

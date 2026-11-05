@@ -1,0 +1,37 @@
+{
+  "batchedParts": "1172",
+  "quality": "studio",
+  "ready": "AS-11",
+  "entities": "21",
+  "anchors": "3",
+  "geometry": "136",
+  "fixtureMetrics": "[{\"label\":\"Vehicles\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Total units\",\"value\":48,\"unit\":\"count\"},{\"label\":\"Unassigned units\",\"value\":2,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "66.50",
+  "drawCalls": "429",
+  "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+  "painted": "AS-11",
+  "id": "AS-11",
+  "title": "Fleet split alternatives",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/AS-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:28:22.146Z"
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "command": "node scripts/sync-suite.mjs --check",
+    "exitCode": 0,
+    "seconds": 0.24
+  },
+  {
+    "command": "node scripts/typecheck-all.mjs",
+    "exitCode": 0,
+    "seconds": 91.33
+  },
+  {
+    "command": "node products/product-01-cargo-fit/node_modules/typescript/bin/tsc --noEmit -p packages/suite-dock/tsconfig.json",
+    "exitCode": 0,
+    "seconds": 5.72
+  },
+  {
+    "command": "node scripts/test-all.mjs",
+    "exitCode": 0,
+    "seconds": 62.63
+  },
+  {
+    "command": "node scripts/build-all.mjs",
+    "exitCode": 0,
+    "seconds": 619.94
+  }
+]

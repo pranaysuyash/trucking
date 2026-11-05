@@ -1,0 +1,36 @@
+{
+  "batchedParts": "139",
+  "quality": "studio",
+  "ready": "HS-09",
+  "entities": "14",
+  "anchors": "8",
+  "geometry": "50",
+  "fixtureMetrics": "[{\"label\":\"Day 1 duty\",\"value\":10,\"unit\":\"h\"},{\"label\":\"Day 2 duty\",\"value\":9,\"unit\":\"h\"},{\"label\":\"Scenario cycle total\",\"value\":54,\"unit\":\"h\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "19.50",
+  "drawCalls": "168",
+  "camera": "{\"position\":[36.661742093541235,38.13924209264717,36.32424210546217],\"target\":[0,1.4774999991059303,-0.337499988079071],\"zoom\":1}",
+  "painted": "HS-09",
+  "id": "HS-09",
+  "title": "Multi-day recap experiment",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:28.654Z"
+}

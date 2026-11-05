@@ -1,0 +1,36 @@
+{
+  "batchedParts": "17",
+  "quality": "studio",
+  "ready": "HS-06",
+  "entities": "0",
+  "anchors": "2",
+  "geometry": "11",
+  "fixtureMetrics": "[{\"label\":\"Driving stint\",\"value\":5,\"unit\":\"h\"},{\"label\":\"Resting stint\",\"value\":5,\"unit\":\"h\"},{\"label\":\"Handoffs\",\"value\":2,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "47.30",
+  "drawCalls": "52",
+  "camera": "{\"position\":[18.475208614068023,19.950208613322967,18.435208614068028],\"target\":[0,1.4749999992549416,-0.04000000000000003],\"zoom\":1}",
+  "painted": "HS-06",
+  "id": "HS-06",
+  "title": "Sleeper and driver handoff",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-06.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:26.415Z"
+}

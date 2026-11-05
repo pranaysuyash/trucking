@@ -1,0 +1,38 @@
+[
+  {
+    "check": "unpairedSleeperBlocked",
+    "beforePass": false,
+    "afterPass": true,
+    "sensitivity": "S2"
+  },
+  {
+    "check": "mixedStatusBreakAccepted",
+    "beforePass": false,
+    "afterPass": true,
+    "sensitivity": "S2"
+  },
+  {
+    "check": "quarantineUnavailable",
+    "beforePass": false,
+    "afterPass": true,
+    "sensitivity": "S2"
+  },
+  {
+    "check": "stalePutawayPreserved",
+    "beforePass": false,
+    "afterPass": true,
+    "sensitivity": "S2"
+  },
+  {
+    "check": "fullYardBlocked",
+    "beforePass": false,
+    "afterPass": true,
+    "sensitivity": "S2"
+  },
+  {
+    "check": "mpgHandoffApplied",
+    "beforePass": false,
+    "afterPass": true,
+    "sensitivity": "S2"
+  }
+]

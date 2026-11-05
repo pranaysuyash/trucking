@@ -1,0 +1,15 @@
+{
+  "revision": "f0e21e664830ec47",
+  "observedAt": "2026-10-22T18:41:58.543Z",
+  "before": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "length": "1.2192"
+  },
+  "after": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "length": "1.9424",
+    "metrics": "FIXTURE / Length1.94mFIXTURE / Width1.02mFIXTURE / Height1.3mFIXTURE / Fixture mass1,200lbFIXTURE / Envelope volume2.57m³",
+    "status": "Length: 1.9424 m. One drag saved as one undo step."
+  },
+  "cameraPreserved": true
+}

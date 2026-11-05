@@ -1,0 +1,36 @@
+{
+  "batchedParts": "123",
+  "quality": "studio",
+  "ready": "YD-10",
+  "entities": "7",
+  "anchors": "3",
+  "geometry": "44",
+  "fixtureMetrics": "[{\"label\":\"Appointments\",\"value\":8,\"unit\":\"count\"},{\"label\":\"Parallel doors\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Window length\",\"value\":30,\"unit\":\"min\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "23.40",
+  "drawCalls": "148",
+  "camera": "{\"position\":[38.18594700241934,40.135947003611435,39.52344700539958],\"target\":[0,1.950000001192093,1.3375000029802324],\"zoom\":1}",
+  "painted": "YD-10",
+  "id": "YD-10",
+  "title": "Appointment capacity over time",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:34.307Z"
+}

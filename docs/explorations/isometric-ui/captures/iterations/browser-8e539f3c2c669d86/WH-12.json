@@ -1,0 +1,36 @@
+{
+  "batchedParts": "69",
+  "quality": "studio",
+  "ready": "WH-12",
+  "entities": "2",
+  "anchors": "3",
+  "geometry": "14",
+  "fixtureMetrics": "[{\"label\":\"Expected units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Scanned units\",\"value\":17,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "27.40",
+  "drawCalls": "58",
+  "camera": "{\"position\":[27.941040623358326,28.221040623358327,27.572607670451966],\"target\":[0,0.28,-0.36843295290636346],\"zoom\":1}",
+  "painted": "WH-12",
+  "id": "WH-12",
+  "title": "Receipt discrepancy and evidence",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:16.473Z"
+}

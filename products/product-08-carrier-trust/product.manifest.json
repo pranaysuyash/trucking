@@ -1,0 +1,48 @@
+{
+  "$schema": "https://trucking.platform.io/schemas/subproduct-manifest-v1.json",
+  "id": "product-08-carrier-trust",
+  "name": "Carrier Trust & Anti-Fraud Shield",
+  "shortName": "Carrier Trust",
+  "code": "P08",
+  "version": "1.0.0",
+  "port": 5180,
+  "icon": "\ud83d\udee1\ufe0f",
+  "description": "FMCSA SMS BASIC percentiles, Certificate of Insurance (COI) verification, and automated Carrier Onboarding & Do Not Dispatch (DND) fraud lockout engine.",
+  "category": "Safety & Compliance",
+  "entitlementKey": "carrier_trust",
+  "routes": {
+    "dev": "http://localhost:5180",
+    "cloud": "https://carriertrust.pages.dev"
+  },
+  "pricingTier": {
+    "tierName": "Safety & Compliance Pro",
+    "monthlyPriceUsd": 149,
+    "description": "FMCSA SMS live percentile monitoring, COI expiration alarms, chameleon carrier fraud radar, and automated DND lockout gating."
+  },
+  "bridges": {
+    "consumes": [
+      {
+        "from": "command-center-portal",
+        "protocol": "OSAFE-v1",
+        "action": "audit_carrier_assignment"
+      }
+    ],
+    "produces": [
+      {
+        "to": "product-02-freight-pricing",
+        "protocol": "OSAFE-v1",
+        "action": "verify_rate_con_carrier"
+      },
+      {
+        "to": "product-03-hos-planner",
+        "protocol": "OSAFE-v1",
+        "action": "validate_driver_carrier_standing"
+      },
+      {
+        "to": "command-center-portal",
+        "protocol": "OSAFE-v1",
+        "action": "gate_dispatch_clearance"
+      }
+    ]
+  }
+}

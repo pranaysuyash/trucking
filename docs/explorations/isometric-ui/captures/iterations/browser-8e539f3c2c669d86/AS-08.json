@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "57",
+  "camera": "{\"position\":[50.241364161695635,50.92694411550259,50.00444412503935],\"target\":[-0.06307996334370358,0.6224999904632569,-0.2999999999999998],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "72",
+  "entities": "1",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Route mode\",\"value\":\"schematic\",\"unit\":\"\"},{\"label\":\"Stops\",\"value\":4,\"unit\":\"count\"}]",
+  "geometry": "18",
+  "id": "AS-08",
+  "pageWidth": 1440,
+  "painted": "AS-08",
+  "quality": "studio",
+  "ready": "AS-08",
+  "renderMs": "29.90",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Trip fuel time and range",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-08.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:35.506Z"
+}

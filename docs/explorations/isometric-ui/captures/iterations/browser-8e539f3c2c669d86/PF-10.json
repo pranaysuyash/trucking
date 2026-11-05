@@ -1,0 +1,36 @@
+{
+  "batchedParts": "0",
+  "quality": "studio",
+  "ready": "PF-10",
+  "entities": "3",
+  "anchors": "3",
+  "geometry": "8",
+  "fixtureMetrics": "[{\"label\":\"Desktop CSS width\",\"value\":1440,\"unit\":\"px\"},{\"label\":\"Tablet CSS width\",\"value\":834,\"unit\":\"px\"},{\"label\":\"Phone CSS width\",\"value\":390,\"unit\":\"px\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "514.50",
+  "drawCalls": "39",
+  "camera": "{\"position\":[-1.9982264161109926,9.766377013246464,66.16927013313527],\"target\":[-1.9982264161109926,3.15,0.00550000067055225],\"zoom\":1}",
+  "painted": "PF-10",
+  "id": "PF-10",
+  "title": "Responsive spatial workspace",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:31.432Z"
+}

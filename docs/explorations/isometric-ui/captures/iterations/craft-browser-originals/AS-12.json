@@ -1,0 +1,37 @@
+{
+  "batchedParts": "647",
+  "quality": "studio",
+  "ready": "AS-12",
+  "entities": "13",
+  "anchors": "5",
+  "geometry": "86",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "59.80",
+  "drawCalls": "277",
+  "camera": "{\"position\":[49.15750790803715,52.370007913252564,48.647507908186164],\"target\":[0.025000000000000355,3.2375000052154066,-0.48499999985098835],\"zoom\":1}",
+  "painted": "AS-12",
+  "id": "AS-12",
+  "title": "Sensor topology study",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/AS-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:28:22.796Z"
+}

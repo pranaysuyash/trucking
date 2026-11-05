@@ -1,0 +1,55 @@
+{
+  "caseId": "AS-05",
+  "inputs": [
+    {
+      "id": "fixture-length",
+      "value": "14"
+    },
+    {
+      "id": "fixture-width",
+      "value": "2.3"
+    },
+    {
+      "id": "fixture-height",
+      "value": "2.5"
+    },
+    {
+      "id": "fixture-mass",
+      "value": "17000"
+    },
+    {
+      "id": "fixture-wheelbase",
+      "value": "5.8"
+    }
+  ],
+  "labels": "01 / BODY WIDTH 2.300 mOverall ground-to-top 3.700 m\nDeclared fixture mass 17,000 lbWHEELBASE 5.800 m / 19.03 ftDECK LENGTH 14.000 mBODY HEIGHT 2.500 m",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "db5b828dd82f6f74",
+  "values": [
+    {
+      "label": "Deck length",
+      "unit": "m",
+      "value": 14
+    },
+    {
+      "label": "Body width",
+      "unit": "m",
+      "value": 2.3
+    },
+    {
+      "label": "Body height",
+      "unit": "m",
+      "value": 2.5
+    },
+    {
+      "label": "Tractor wheelbase",
+      "unit": "m",
+      "value": 5.8
+    },
+    {
+      "label": "Declared fixture mass",
+      "unit": "lb",
+      "value": 17000
+    }
+  ]
+}

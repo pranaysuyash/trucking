@@ -1,0 +1,36 @@
+{
+  "anchors": "4",
+  "batchedParts": "240",
+  "camera": "{\"position\":[46.75129015808844,50.541290168221224,48.651290169264314],\"target\":[-1.7750000111758701,2.014999998956919,0.125],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "73",
+  "entities": "2",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Deck length\",\"value\":16,\"unit\":\"m\"},{\"label\":\"Body width\",\"value\":2.45,\"unit\":\"m\"},{\"label\":\"Body height\",\"value\":2.7,\"unit\":\"m\"},{\"label\":\"Tractor wheelbase\",\"value\":6.1,\"unit\":\"m\"},{\"label\":\"Declared fixture mass\",\"value\":18000,\"unit\":\"lb\"}]",
+  "geometry": "18",
+  "id": "AS-05",
+  "pageWidth": 1440,
+  "painted": "AS-05",
+  "quality": "studio",
+  "ready": "AS-05",
+  "renderMs": "94.00",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Dimension tuner",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-05.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:26.500Z"
+}

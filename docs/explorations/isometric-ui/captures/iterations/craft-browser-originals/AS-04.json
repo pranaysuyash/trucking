@@ -1,0 +1,37 @@
+{
+  "batchedParts": "144",
+  "quality": "studio",
+  "ready": "AS-04",
+  "entities": "2",
+  "anchors": "4",
+  "geometry": "15",
+  "fixtureMetrics": "[{\"label\":\"Body length\",\"value\":28,\"unit\":\"ft\"},{\"label\":\"Door width\",\"value\":92,\"unit\":\"in\"},{\"label\":\"Tare\",\"value\":7200,\"unit\":\"lb\"},{\"label\":\"Geometric cavity\",\"value\":56.45505600000001,\"unit\":\"m³\"},{\"label\":\"Payload rating\",\"value\":\"undeclared\",\"unit\":\"\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "75.60",
+  "drawCalls": "62",
+  "camera": "{\"position\":[26.853994027189543,28.446494028903174,26.82023441555315],\"target\":[0.040000000000000036,1.6325000017136337,0.006240388363599746],\"zoom\":1}",
+  "painted": "AS-04",
+  "id": "AS-04",
+  "title": "Custom asset forge",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/AS-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:28:05.968Z"
+}

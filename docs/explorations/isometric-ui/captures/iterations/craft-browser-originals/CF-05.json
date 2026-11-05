@@ -1,0 +1,37 @@
+{
+  "batchedParts": "30",
+  "quality": "studio",
+  "ready": "CF-05",
+  "entities": "2",
+  "anchors": "3",
+  "geometry": "13",
+  "fixtureMetrics": "[{\"label\":\"Door width\",\"value\":96,\"unit\":\"in\"},{\"label\":\"Cargo width\",\"value\":92,\"unit\":\"in\"},{\"label\":\"Side gap\",\"value\":2,\"unit\":\"in\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "86.10",
+  "drawCalls": "55",
+  "camera": "{\"position\":[24.840977694548098,26.140978291339607,23.829978331073555],\"target\":[0.6499993920326235,1.949999988824129,-0.3609999714419245],\"zoom\":1}",
+  "painted": "CF-05",
+  "id": "CF-05",
+  "title": "Door passage and maneuver",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/CF-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:04:22.582Z"
+}

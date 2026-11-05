@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "1172",
+  "camera": "{\"position\":[41.78362450841778,43.54047451281661,41.89842450768465],\"target\":[-0.11479999926686267,1.6420500051319602,0],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "429",
+  "entities": "21",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Vehicles\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Total units\",\"value\":48,\"unit\":\"count\"},{\"label\":\"Unassigned units\",\"value\":2,\"unit\":\"count\"}]",
+  "geometry": "136",
+  "id": "AS-11",
+  "pageWidth": 1440,
+  "painted": "AS-11",
+  "quality": "studio",
+  "ready": "AS-11",
+  "renderMs": "90.40",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Fleet split alternatives",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-11.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:52.629Z"
+}

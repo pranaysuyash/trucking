@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-22T16:54:04.470Z",
+  "observations": [
+    {
+      "product": "command",
+      "size": "desktop",
+      "errors": [],
+      "pageOverflow": false,
+      "workspaceHeight": 920
+    },
+    {
+      "product": "command",
+      "size": "mobile",
+      "errors": [],
+      "pageOverflow": true,
+      "workspaceHeight": 1832
+    },
+    {
+      "product": "cargo",
+      "size": "desktop",
+      "errors": [],
+      "pageOverflow": false,
+      "workspaceHeight": 823
+    },
+    {
+      "product": "cargo",
+      "size": "mobile",
+      "errors": [],
+      "pageOverflow": true,
+      "workspaceHeight": 1735
+    },
+    {
+      "product": "pricing",
+      "size": "desktop",
+      "errors": [],
+      "pageOverflow": false,
+      "workspaceHeight": 999
+    },
+    {
+      "product": "pricing",
+      "size": "mobile",
+      "errors": [],
+      "pageOverflow": true,
+      "workspaceHeight": 2070
+    }
+  ]
+}

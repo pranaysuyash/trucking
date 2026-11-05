@@ -1,0 +1,36 @@
+{
+  "batchedParts": "74",
+  "quality": "studio",
+  "ready": "PR-11",
+  "entities": "3",
+  "anchors": "3",
+  "geometry": "18",
+  "fixtureMetrics": "[{\"label\":\"Linehaul\",\"value\":1800,\"unit\":\"USD\"},{\"label\":\"Accessorial\",\"value\":150,\"unit\":\"USD\"},{\"label\":\"Document total\",\"value\":1950,\"unit\":\"USD\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "24.00",
+  "drawCalls": "72",
+  "camera": "{\"position\":[30.85544236766297,31.257942366545382,30.33829150802352],\"target\":[0,0.40249999888241295,-0.517150859639453],\"zoom\":1}",
+  "painted": "PR-11",
+  "id": "PR-11",
+  "title": "Rate confirmation evidence stack",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:48.422Z"
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "627",
+  "quality": "studio",
+  "ready": "TM-04",
+  "entities": "13",
+  "anchors": "3",
+  "geometry": "89",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "53.80",
+  "drawCalls": "289",
+  "camera": "{\"position\":[49.45499996849543,51.36585900505702,49.74671814125637],\"target\":[0.09164096969689961,2.002500006258488,0.3833591424578367],\"zoom\":1}",
+  "painted": "TM-04",
+  "id": "TM-04",
+  "title": "Door-open thermal sequence",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:31.992Z"
+}

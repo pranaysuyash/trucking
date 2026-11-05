@@ -1,0 +1,36 @@
+{
+  "batchedParts": "222",
+  "quality": "studio",
+  "ready": "YD-05",
+  "entities": "3",
+  "anchors": "2",
+  "geometry": "28",
+  "fixtureMetrics": "[{\"label\":\"Move length\",\"value\":280,\"unit\":\"ft\"},{\"label\":\"Assigned hostler\",\"value\":3,\"unit\":\"index\"},{\"label\":\"Queue priority\",\"value\":1,\"unit\":\"index\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "68.60",
+  "drawCalls": "99",
+  "camera": "{\"position\":[41.694609180816634,42.171428260317086,42.39681182911804],\"target\":[0.4980470104083272,0.974866089908779,1.200249658709727],\"zoom\":1}",
+  "painted": "YD-05",
+  "id": "YD-05",
+  "title": "Hostler move preview",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:28.297Z"
+}

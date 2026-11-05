@@ -1,0 +1,36 @@
+{
+  "batchedParts": "39",
+  "quality": "studio",
+  "ready": "PR-05",
+  "entities": "4",
+  "anchors": "9",
+  "geometry": "14",
+  "fixtureMetrics": "[{\"label\":\"Benchmark\",\"value\":3.8,\"unit\":\"USD/gal\"},{\"label\":\"Operator price\",\"value\":4.1,\"unit\":\"USD/gal\"},{\"label\":\"Trip fuel\",\"value\":150,\"unit\":\"gal\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "17.70",
+  "drawCalls": "60",
+  "camera": "{\"position\":[5.110624567963308,22.34687326025266,52.9787456849975],\"target\":[-0.09999999999999964,2.0833332737286887,0.8725000053644181],\"zoom\":1}",
+  "painted": "PR-05",
+  "id": "PR-05",
+  "title": "Fuel index sensitivity",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:43.765Z"
+}

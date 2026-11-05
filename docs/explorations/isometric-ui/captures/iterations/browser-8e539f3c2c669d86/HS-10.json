@@ -1,0 +1,36 @@
+{
+  "batchedParts": "75",
+  "quality": "studio",
+  "ready": "HS-10",
+  "entities": "6",
+  "anchors": "12",
+  "geometry": "29",
+  "fixtureMetrics": "[{\"label\":\"50 mph elapsed time\",\"value\":22,\"unit\":\"h\"},{\"label\":\"60 mph elapsed time\",\"value\":10,\"unit\":\"h\"},{\"label\":\"65 mph elapsed time\",\"value\":9.23076923076923,\"unit\":\"h\"},{\"label\":\"Lane distance\",\"value\":600,\"unit\":\"mi\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "24.40",
+  "drawCalls": "105",
+  "camera": "{\"position\":[31.7934617704962,33.44371176165237,32.69621177059306],\"target\":[-0.9027500000968578,0.7474999910593033,0],\"zoom\":1}",
+  "painted": "HS-10",
+  "id": "HS-10",
+  "title": "Departure speed sensitivity",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/HS-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:29.360Z"
+}

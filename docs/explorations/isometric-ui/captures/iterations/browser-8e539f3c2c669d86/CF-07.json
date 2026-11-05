@@ -1,0 +1,36 @@
+{
+  "anchors": "4",
+  "batchedParts": "724",
+  "camera": "{\"position\":[40.147721938589186,42.05272194227723,40.06222194236664],\"target\":[0.08249999720603185,1.9875000008940702,-0.0029999990165234802],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "307",
+  "entities": "13",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Stops\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Remaining units\",\"value\":11,\"unit\":\"count\"},{\"label\":\"Rehandled units\",\"value\":2,\"unit\":\"count\"}]",
+  "geometry": "96",
+  "id": "CF-07",
+  "pageWidth": 1440,
+  "painted": "CF-07",
+  "quality": "studio",
+  "ready": "CF-07",
+  "renderMs": "113.70",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Stop sequence accessibility",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-07.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:32:18.210Z"
+}

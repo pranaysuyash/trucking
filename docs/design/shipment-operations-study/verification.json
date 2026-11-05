@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-22T18:30:28.289Z",
+  "status": "PASS",
+  "checks": [
+    "equipment",
+    "dispatch",
+    "execution",
+    "canvas",
+    "exact record dialog + Escape",
+    "390px four tasks without page overflow",
+    "reduced motion"
+  ],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "boundary": "Visual study only. Does not establish operational correctness or human design approval."
+}

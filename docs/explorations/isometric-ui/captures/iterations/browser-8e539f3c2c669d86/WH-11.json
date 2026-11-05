@@ -1,0 +1,36 @@
+{
+  "batchedParts": "473",
+  "quality": "studio",
+  "ready": "WH-11",
+  "entities": "14",
+  "anchors": "3",
+  "geometry": "90",
+  "fixtureMetrics": "[{\"label\":\"Inbound units\",\"value\":24,\"unit\":\"count\"},{\"label\":\"Transferred units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Staged units\",\"value\":6,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "68.80",
+  "drawCalls": "288",
+  "camera": "{\"position\":[46.895617671386155,48.00811768449918,46.05811768330709],\"target\":[0.8374999880790712,1.950000001192093,0],\"zoom\":1}",
+  "painted": "WH-11",
+  "id": "WH-11",
+  "title": "Cross-dock staging experiment",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:15.415Z"
+}

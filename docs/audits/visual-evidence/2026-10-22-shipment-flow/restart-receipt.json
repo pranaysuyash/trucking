@@ -1,0 +1,12 @@
+{
+  "shipmentId": "164d2dfd-ce9b-4273-b663-885a67672688",
+  "retainedAfterServiceRestart": true,
+  "status": "invoice_ready",
+  "inputRevision": 2,
+  "recordRevision": 23,
+  "totalCents": 28787,
+  "eventCount": 23,
+  "originalManifestAndAmendmentPreserved": true,
+  "checkedAt": "2026-10-22T14:30:47.960520+00:00",
+  "verification": "Read completed browser scenario after restarting the final service implementation; no scenario rewrite."
+}

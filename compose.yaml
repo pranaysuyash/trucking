@@ -1,0 +1,111 @@
+# Trucking Sovereign Micro-Frontend Suite — Multi-Container Topology
+# Maps all canonical ports (5170, 5171, 5173-5180) to independent containers.
+
+services:
+  # Port 5170: Command Center Portal
+  command-center-portal:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/command-center-portal
+    ports:
+      - "5170:80"
+    restart: unless-stopped
+
+  # Port 5171: Loopback Shipment Flow Service
+  shipment-flow-service:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.shipment-service
+    ports:
+      - "5171:5171"
+    restart: unless-stopped
+
+  # Port 5173: Product 01 Cargo Fit & Load Planning
+  product-01-cargo-fit:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-01-cargo-fit
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+  # Port 5174: Product 02 Freight Pricing & Tactical Dispatch
+  product-02-freight-pricing:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-02-freight-pricing
+    ports:
+      - "5174:80"
+    restart: unless-stopped
+
+  # Port 5175: Product 03 HOS Compliance & Corridor Legality Planner
+  product-03-hos-planner:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-03-hos-planner
+    ports:
+      - "5175:80"
+    restart: unless-stopped
+
+  # Port 5176: Product 04 Fleet & Cargo Asset Studio
+  product-04-asset-studio:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-04-asset-studio
+    ports:
+      - "5176:80"
+    restart: unless-stopped
+
+  # Port 5177: Product 05 Telematics & Real-Time Fleet Tracking HUD
+  product-05-fleet-telematics:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-05-fleet-telematics
+    ports:
+      - "5177:80"
+    restart: unless-stopped
+
+  # Port 5178: Product 06 Warehouse Space & Flow Planner
+  product-06-warehouse-space-flow:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-06-warehouse-space-flow
+    ports:
+      - "5178:80"
+    restart: unless-stopped
+
+  # Port 5179: Product 07 Yard & Dock Management
+  product-07-yard-dock:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-07-yard-dock
+    ports:
+      - "5179:80"
+    restart: unless-stopped
+
+  # Port 5180: Product 08 Carrier Trust & Anti-Fraud Shield
+  product-08-carrier-trust:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.subproduct
+      args:
+        PRODUCT_DIR: products/product-08-carrier-trust
+    ports:
+      - "5180:80"
+    restart: unless-stopped

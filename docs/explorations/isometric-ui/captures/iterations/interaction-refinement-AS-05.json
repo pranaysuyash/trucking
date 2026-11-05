@@ -1,0 +1,118 @@
+{
+  "observedAt": "2026-10-22T17:48:58.260Z",
+  "assetBefore": {
+    "camera": "{\"position\":[46.45702117502317,40.9166169548601,52.991622240871045],\"target\":[-2.170000012218952,2.015000005066395,0.13616442865133285],\"zoom\":1}",
+    "caseId": "AS-05",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Drag L / W / H / WB handles. Arrow keys adjust 0.01 m; Shift adjusts 0.10 m. Escape cancels.",
+    "values": {
+      "fixture-height": 2.7,
+      "fixture-length": 16,
+      "fixture-mass": 18000,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 2.45
+    }
+  },
+  "assetAfter": {
+    "camera": "{\"position\":[46.45702117502317,40.9166169548601,52.991622240871045],\"target\":[-2.170000012218952,2.015000005066395,0.13616442865133285],\"zoom\":1}",
+    "caseId": "AS-05",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Wheelbase: 7.3686 m. One drag saved as one undo step.",
+    "values": {
+      "fixture-height": 2.7,
+      "fixture-length": 16,
+      "fixture-mass": 18000,
+      "fixture-wheelbase": 7.3686,
+      "fixture-width": 2.45
+    }
+  },
+  "assetUndo": {
+    "camera": "{\"position\":[46.45702117502317,40.9166169548601,52.991622240871045],\"target\":[-2.170000012218952,2.015000005066395,0.13616442865133285],\"zoom\":1}",
+    "caseId": "AS-05",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Previous fixture restored.",
+    "values": {
+      "fixture-height": 2.7,
+      "fixture-length": 16,
+      "fixture-mass": 18000,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 2.45
+    }
+  },
+  "invalid": {
+    "invalid": "true",
+    "rendered": [
+      {
+        "label": "Deck length",
+        "unit": "m",
+        "value": 16
+      },
+      {
+        "label": "Body width",
+        "unit": "m",
+        "value": 2.45
+      },
+      {
+        "label": "Body height",
+        "unit": "m",
+        "value": 2.7
+      },
+      {
+        "label": "Tractor wheelbase",
+        "unit": "m",
+        "value": 6.1
+      },
+      {
+        "label": "Declared fixture mass",
+        "unit": "lb",
+        "value": 18000
+      }
+    ],
+    "status": "Enter a valid length between 0.2 and 30; the drawn fixture has not changed."
+  },
+  "restoredInput": {
+    "camera": "{\"position\":[46.45702117502317,40.9166169548601,52.991622240871045],\"target\":[-2.170000012218952,2.015000005066395,0.13616442865133285],\"zoom\":1}",
+    "caseId": "AS-05",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Invalid input discarded; the last valid fixture value is restored.",
+    "values": {
+      "fixture-height": 2.7,
+      "fixture-length": 16,
+      "fixture-mass": 18000,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 2.45
+    }
+  },
+  "topBefore": {
+    "camera": "{\"position\":[2.44559618207208,83.43384486410149,4.75176062294236],\"target\":[-2.170000012218952,2.015000005066395,0.13616442865133285],\"zoom\":1}",
+    "caseId": "AS-05",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "Invalid input discarded; the last valid fixture value is restored.",
+    "values": {
+      "fixture-height": 2.7,
+      "fixture-length": 16,
+      "fixture-mass": 18000,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 2.45
+    }
+  },
+  "topAfter": {
+    "camera": "{\"position\":[2.44559618207208,83.43384486410149,4.75176062294236],\"target\":[-2.170000012218952,2.015000005066395,0.13616442865133285],\"zoom\":1}",
+    "caseId": "AS-05",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "d33ad51515e6a529",
+    "status": "This axis faces the camera. Choose Isometric or use its numeric input.",
+    "values": {
+      "fixture-height": 2.7,
+      "fixture-length": 16,
+      "fixture-mass": 18000,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 2.45
+    }
+  }
+}

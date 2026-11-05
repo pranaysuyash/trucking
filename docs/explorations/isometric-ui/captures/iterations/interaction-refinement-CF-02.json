@@ -1,0 +1,116 @@
+{
+  "observedAt": "2026-10-22T17:46:28.251Z",
+  "scope": "Actual CUA pointer and keyboard interactions in isolated synthetic fixture",
+  "dragInitial": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Drag L / W / H handles. Arrow keys adjust 0.01 m; Shift adjusts 0.10 m. Escape cancels.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "dragAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Length: 1.8438 m. One drag saved as one undo step.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.8438,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "undoAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Previous fixture restored.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "redoAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Fixture edit reapplied.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.8438,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "cancelAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Drag cancelled; starting fixture restored.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.8438,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "keyboardAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Height: 1.4100 m. Temporary fixture only.",
+    "values": {
+      "fixture-height": 1.41,
+      "fixture-length": 1.8438,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "resetAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Default fixture restored. Undo can recover your edit.",
+    "values": {
+      "fixture-height": 1.3,
+      "fixture-length": 1.2192,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  },
+  "resetUndoAfter": {
+    "camera": "{\"position\":[19.08324285330727,15.92309428452694,20.739335438218614],\"target\":[0.03249999504089357,0.6824999979138374,0.032006244450807575],\"zoom\":1}",
+    "caseId": "CF-02",
+    "review": "AWAITING YOUR REVIEW",
+    "revision": "57b54d7d0f334304",
+    "status": "Previous fixture restored.",
+    "values": {
+      "fixture-height": 1.41,
+      "fixture-length": 1.8438,
+      "fixture-mass": 1200,
+      "fixture-wheelbase": 6.1,
+      "fixture-width": 1.016
+    }
+  }
+}

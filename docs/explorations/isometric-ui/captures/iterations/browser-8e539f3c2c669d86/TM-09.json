@@ -1,0 +1,36 @@
+{
+  "batchedParts": "622",
+  "quality": "studio",
+  "ready": "TM-09",
+  "entities": "16",
+  "anchors": "2",
+  "geometry": "267",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "69.80",
+  "drawCalls": "885",
+  "camera": "{\"position\":[48.420931145530645,50.638431150895066,48.77343114508362],\"target\":[-0.13999999910592997,2.0775000062584876,0.21250000044703476],\"zoom\":1}",
+  "painted": "TM-09",
+  "id": "TM-09",
+  "title": "Planned versus reported vehicle",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:37.848Z"
+}

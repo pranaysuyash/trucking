@@ -1,0 +1,36 @@
+{
+  "batchedParts": "524",
+  "quality": "studio",
+  "ready": "WH-03",
+  "entities": "16",
+  "anchors": "4",
+  "geometry": "99",
+  "fixtureMetrics": "[{\"label\":\"Chilled units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Frozen units\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Mismatched units\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "64.60",
+  "drawCalls": "313",
+  "camera": "{\"position\":[44.10956089644988,45.83456089644989,44.109560896449885],\"target\":[0,1.725,0],\"zoom\":1}",
+  "painted": "WH-03",
+  "id": "WH-03",
+  "title": "Environmental zone allocation",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:06.124Z"
+}

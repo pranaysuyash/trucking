@@ -1,0 +1,36 @@
+{
+  "batchedParts": "252",
+  "quality": "studio",
+  "ready": "PF-11",
+  "entities": "3",
+  "anchors": "2",
+  "geometry": "27",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "56.50",
+  "drawCalls": "100",
+  "camera": "{\"position\":[48.420931145530645,50.56343115089506,49.69593115044804],\"target\":[-0.13999999910592997,2.002500006258488,1.1350000058114529],\"zoom\":1}",
+  "painted": "PF-11",
+  "id": "PF-11",
+  "title": "Reference-driven visual language",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-11.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:32.339Z"
+}

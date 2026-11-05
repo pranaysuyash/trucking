@@ -1,0 +1,36 @@
+{
+  "batchedParts": "42",
+  "quality": "studio",
+  "ready": "TM-07",
+  "entities": "1",
+  "anchors": "2",
+  "geometry": "15",
+  "fixtureMetrics": "[{\"label\":\"Engine load\",\"value\":64,\"unit\":\"percent\"},{\"label\":\"Fuel level\",\"value\":72,\"unit\":\"percent\"},{\"label\":\"DEF level\",\"value\":81,\"unit\":\"percent\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "21.30",
+  "drawCalls": "63",
+  "camera": "{\"position\":[28.867513459481287,30.692513456501057,28.867513459481295],\"target\":[0,1.8249999970197677,0],\"zoom\":1}",
+  "painted": "TM-07",
+  "id": "TM-07",
+  "title": "Engine and fuel circuit",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-07.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:35.984Z"
+}

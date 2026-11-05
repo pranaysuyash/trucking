@@ -1,0 +1,36 @@
+{
+  "batchedParts": "166",
+  "quality": "studio",
+  "ready": "WH-08",
+  "entities": "3",
+  "anchors": "2",
+  "geometry": "28",
+  "fixtureMetrics": "[{\"label\":\"Held units\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Reserved cells\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Released units\",\"value\":0,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "61.50",
+  "drawCalls": "100",
+  "camera": "{\"position\":[22.54552800153106,23.401777995533344,22.545528001531064],\"target\":[0,0.8562499940022826,0],\"zoom\":1}",
+  "painted": "WH-08",
+  "id": "WH-08",
+  "title": "Inventory hold and quarantine",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/WH-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:11.170Z"
+}

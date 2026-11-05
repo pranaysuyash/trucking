@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-22T17:21:02.388Z",
+  "result": "PASS",
+  "evidenceTier": 2,
+  "sensitivity": "S3",
+  "sourceMutationsPerformed": false,
+  "checks": [
+    "late poll cannot roll back newer command",
+    "response for another selection ignored",
+    "newer response accepted",
+    "rollback mutation detected in isolated module",
+    "quote without current fit rejected",
+    "missing-fit guard mutation detected in isolated module"
+  ]
+}

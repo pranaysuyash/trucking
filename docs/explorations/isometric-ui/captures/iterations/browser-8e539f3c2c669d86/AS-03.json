@@ -1,0 +1,36 @@
+{
+  "anchors": "4",
+  "batchedParts": "76",
+  "camera": "{\"position\":[24.69745699749164,25.040002954027653,24.427502959984388],\"target\":[0.30745403173305474,0.6499999882690608,0.03749999422580008],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "69",
+  "entities": "4",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"External volume\",\"value\":64,\"unit\":\"ft3\"},{\"label\":\"Tare mass\",\"value\":120,\"unit\":\"lb\"},{\"label\":\"Payload\",\"value\":900,\"unit\":\"lb\"}]",
+  "geometry": "17",
+  "id": "AS-03",
+  "pageWidth": 1440,
+  "painted": "AS-03",
+  "quality": "studio",
+  "ready": "AS-03",
+  "renderMs": "85.70",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Packaging asset twin",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-03.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:20.893Z"
+}

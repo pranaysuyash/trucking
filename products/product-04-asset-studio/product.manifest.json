@@ -1,0 +1,48 @@
+{
+  "$schema": "https://trucking.platform.io/schemas/subproduct-manifest-v1.json",
+  "id": "product-04-asset-studio",
+  "name": "Fleet & Cargo Asset Studio",
+  "shortName": "Asset Studio",
+  "code": "P04",
+  "version": "1.0.0",
+  "port": 5176,
+  "icon": "\ud83d\ude9b",
+  "description": "Commercial vehicle & cargo packaging digital twin catalog, 3D WebGL, 2.5D Isometric, 2D CAD blueprints, and temporal dynamics",
+  "category": "assets",
+  "entitlementKey": "asset_studio",
+  "routes": {
+    "dev": "http://localhost:5176",
+    "cloud": "https://fleetstudio.pages.dev"
+  },
+  "bridges": {
+    "consumes": [
+      {
+        "from": "product-05-fleet-telematics",
+        "protocol": "TELEMATICS-v1",
+        "action": "link_twin_telemetry"
+      }
+    ],
+    "produces": [
+      {
+        "to": "product-01-cargo-fit",
+        "protocol": "OLAS-v1",
+        "action": "bridge_equipment_dims"
+      },
+      {
+        "to": "product-02-freight-pricing",
+        "protocol": "OLAS-v1",
+        "action": "bridge_carrier_specs"
+      },
+      {
+        "to": "product-03-hos-planner",
+        "protocol": "OLAS-v1",
+        "action": "bridge_range_speed"
+      }
+    ]
+  },
+  "pricingTier": {
+    "tierName": "Digital Twin Studio",
+    "monthlyPriceUsd": 249,
+    "description": "Commercial vehicle & cargo packaging digital twin catalog, 3D WebGL, 2.5D Isometric, 2D CAD blueprints, and temporal dynamics"
+  }
+}

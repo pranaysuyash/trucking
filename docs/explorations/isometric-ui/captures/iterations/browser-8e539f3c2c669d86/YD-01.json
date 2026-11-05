@@ -1,0 +1,36 @@
+{
+  "batchedParts": "129",
+  "quality": "studio",
+  "ready": "YD-01",
+  "entities": "9",
+  "anchors": "2",
+  "geometry": "62",
+  "fixtureMetrics": "[{\"label\":\"Dock doors\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Yard spots\",\"value\":12,\"unit\":\"count\"},{\"label\":\"Parked trailers\",\"value\":9,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "31.20",
+  "drawCalls": "190",
+  "camera": "{\"position\":[51.3841739578767,53.33417395906879,50.03897856908276],\"target\":[0,1.9500000011920928,-1.345195388793945],\"zoom\":1}",
+  "painted": "YD-01",
+  "id": "YD-01",
+  "title": "Yard and dock overview",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:17.287Z"
+}

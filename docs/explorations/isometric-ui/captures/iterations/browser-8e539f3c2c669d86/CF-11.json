@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "60",
+  "camera": "{\"position\":[25.57661692510042,26.06536692536119,25.73261691323165],\"target\":[0,0.48875000026077037,0.15599998813122506],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "114",
+  "entities": "8",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Groups\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Separation\",\"value\":12,\"unit\":\"ft\"},{\"label\":\"Unclassified units\",\"value\":1,\"unit\":\"count\"}]",
+  "geometry": "32",
+  "id": "CF-11",
+  "pageWidth": 1440,
+  "painted": "CF-11",
+  "quality": "studio",
+  "ready": "CF-11",
+  "renderMs": "35.00",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Hazardous cargo separation",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-11.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:32:30.031Z"
+}

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "title": "Isolated scene construction and semantic checks",
+  "status": "recorded_pass",
+  "recordedOnLocalDate": "2026-10-22",
+  "localTimezone": "Asia/Kolkata",
+  "scope": {
+    "ownedReport": "docs/explorations/isometric-ui/captures/scene-construction-checks.json",
+    "sceneSource": "docs/explorations/isometric-ui/gallery/scenes.mjs",
+    "casesSource": "docs/explorations/isometric-ui/cases.json",
+    "evidenceTier": 2,
+    "testSensitivity": "S1",
+    "evidenceDescription": "Agent-run focused construction and semantic assertions; successful execution recorded by exec_command/write_stdin. This report transcribes the prior result; no construction rerun was performed to create it.",
+    "excludes": [
+      "Browser rendering",
+      "Screenshot or label-legibility approval",
+      "Interaction behavior",
+      "Human creative approval",
+      "Operational rules or physical feasibility",
+      "Product integration",
+      "External or production evidence",
+      "S2 defect reproduction or S3 mutation sensitivity"
+    ]
+  },
+  "provenance": {
+    "originalRunExactTimestampRetained": false,
+    "originalSourceHashRetained": false,
+    "originalToolSessionId": 6973,
+    "originalCompletionChunkId": null,
+    "note": "The original command and complete JSON result were retained in the agent's tool history. Session identifier 6973 and successful exit code 0 were returned. The source was declared frozen for capture after this result. No timestamp or source hash is fabricated.",
+    "originalModuleWarning": "[THREE_CJS_DEPRECATED] require(\"three\") is deprecated; replace with ESM import.",
+    "warningEffect": "The construction harness accepted the resolved module namespace or its default export. The warning did not set a failing exit code.",
+    "workingDirectory": "/Users/pranay/Projects/trucking",
+    "dependencyResolutionRoot": "/Users/pranay/Projects/trucking/products/product-04-asset-studio",
+    "resolvedDependencyVersionSeparatelyRecorded": false
+  },
+  "commands": {
+    "syntaxCheck": {
+      "argv": [
+        "node",
+        "--check",
+        "docs/explorations/isometric-ui/gallery/scenes.mjs"
+      ],
+      "outcome": "passed",
+      "exitCode": 0
+    },
+    "constructionAndSemanticCheck": {
+      "argv": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import fs from \"node:fs\";import{createRequire}from\"node:module\";import{pathToFileURL}from\"node:url\";const require=createRequire(import.meta.url);const loaded=await import(pathToFileURL(require.resolve(\"three\",{paths:[\"/Users/pranay/Projects/trucking/products/product-04-asset-studio\"]})));const THREE=loaded.Group?loaded:loaded.default;const{buildStudy}=await import(\"./docs/explorations/isometric-ui/gallery/scenes.mjs\");const cases=JSON.parse(fs.readFileSync(\"docs/explorations/isometric-ui/cases.json\",\"utf8\"));const fixed=[\"TR-03\",\"TR-06\",\"PR-12\",\"CF-09\",\"AS-04\",\"AS-05\",\"TM-10\",\"CC-02\",\"HS-10\",\"CC-05\",\"YD-11\",\"CC-09\"];const reports=[],errors=[];let builds=0;const assert=(condition,message)=>{if(!condition)errors.push(message);};for(const opts of[{phase:1,explode:0},{phase:.35,explode:.5}])for(const c of cases){try{const s=buildStudy(THREE,c,opts);builds++;assert([...s.cameraBounds.min.toArray(),...s.cameraBounds.max.toArray()].every(Number.isFinite),c.id+\" nonfinite bounds\");assert(s.anchors.every(a=>a.position.every(Number.isFinite)),c.id+\" nonfinite anchor\");if(fixed.includes(c.id)&&opts.phase===1){const m=Object.fromEntries(s.summary.fixtureMetrics.map(x=>[x.label,x.value]));reports.push({id:c.id,metrics:m,anchors:s.anchors.length});if(c.id===\"TR-03\")assert(m[\"Coverage gap\"]===250000&&m[\"Scenario requirement\"]===1250000,\"TR03 coverage arithmetic\");if(c.id===\"TR-06\")assert(m[\"Base score\"]-m[\"Combined deductions\"]===m[\"Scenario score\"]&&m[\"Scenario score\"]===82,\"TR06 score arithmetic\");if(c.id===\"PR-12\")assert(m[\"Candidate A all-in\"]===2650&&m[\"Candidate B all-in\"]===2820&&m[\"Cost difference\"]===170&&m[\"Service duration difference\"]===4,\"PR12 cost/time values\");if(c.id===\"AS-05\")assert(!Object.keys(m).some(k=>/handling/i.test(k)),\"AS05 must not report absent cargo\");if(c.id===\"TM-10\"){const counts={};s.root.traverse(o=>{if(o.isGroup&&o.userData.state)counts[o.userData.state]=(counts[o.userData.state]||0)+1;});assert(counts.fresh===6&&counts.stale===1&&counts.missing===1&&counts.reconnecting===1,\"TM10 sensor state counts\");}if(c.id===\"CC-02\"){const states=[];s.root.traverse(o=>{if(o.name.startsWith(\"stage-\")&&o.userData.status)states.push(o.userData);});assert(states.filter(x=>x.recorded).length===5&&states.filter(x=>x.status===\"stale\").length===1&&states.filter(x=>x.status===\"rejected\").length===1&&states.filter(x=>x.status===\"missing\").length===1,\"CC02 revision states\");}if(c.id===\"HS-10\")assert(m[\"50 mph elapsed time\"]===22&&m[\"60 mph elapsed time\"]===10&&Math.abs(m[\"65 mph elapsed time\"]-600/65)<1e-9,\"HS10 travel/rest arithmetic\");if(c.id===\"CC-05\")assert(m[\"Earlier payload\"]===12000&&m[\"Revised payload\"]===13200&&m[\"Stale downstream results\"]===4,\"CC05 amendment\");if(c.id===\"YD-11\")assert(m[\"Available doors\"]===0&&m[\"Empty yard spots\"]===0&&m[\"Held arrivals\"]===2,\"YD11 capacity and holds\");if(c.id===\"CC-09\")assert(m[\"Accepted quote\"]===2770&&m[\"Invoice total\"]===2770&&m.Difference===0,\"CC09 exact cents\");}s.root.traverse(o=>{if(o.geometry)o.geometry.dispose();});}catch(e){errors.push(c.id+\": \"+e.message);}}const tuner=buildStudy(THREE,cases.find(c=>c.id===\"AS-05\"),{fixture:{lengthM:14,widthM:2.3,heightM:2.5,massLb:17000,wheelbaseM:5.8}});const tm=Object.fromEntries(tuner.summary.fixtureMetrics.map(x=>[x.label,x.value]));assert(tm[\"Deck length\"]===14&&tm[\"Body width\"]===2.3&&tm[\"Body height\"]===2.5&&tm[\"Tractor wheelbase\"]===5.8&&tm[\"Declared fixture mass\"]===17000,\"AS05 edited parameter values\");console.log(JSON.stringify({builds,fixed:reports,editedAS05:tm,errors},null,2));if(errors.length)process.exitCode=1;"
+      ],
+      "script": "import fs from \"node:fs\";import{createRequire}from\"node:module\";import{pathToFileURL}from\"node:url\";const require=createRequire(import.meta.url);const loaded=await import(pathToFileURL(require.resolve(\"three\",{paths:[\"/Users/pranay/Projects/trucking/products/product-04-asset-studio\"]})));const THREE=loaded.Group?loaded:loaded.default;const{buildStudy}=await import(\"./docs/explorations/isometric-ui/gallery/scenes.mjs\");const cases=JSON.parse(fs.readFileSync(\"docs/explorations/isometric-ui/cases.json\",\"utf8\"));const fixed=[\"TR-03\",\"TR-06\",\"PR-12\",\"CF-09\",\"AS-04\",\"AS-05\",\"TM-10\",\"CC-02\",\"HS-10\",\"CC-05\",\"YD-11\",\"CC-09\"];const reports=[],errors=[];let builds=0;const assert=(condition,message)=>{if(!condition)errors.push(message);};for(const opts of[{phase:1,explode:0},{phase:.35,explode:.5}])for(const c of cases){try{const s=buildStudy(THREE,c,opts);builds++;assert([...s.cameraBounds.min.toArray(),...s.cameraBounds.max.toArray()].every(Number.isFinite),c.id+\" nonfinite bounds\");assert(s.anchors.every(a=>a.position.every(Number.isFinite)),c.id+\" nonfinite anchor\");if(fixed.includes(c.id)&&opts.phase===1){const m=Object.fromEntries(s.summary.fixtureMetrics.map(x=>[x.label,x.value]));reports.push({id:c.id,metrics:m,anchors:s.anchors.length});if(c.id===\"TR-03\")assert(m[\"Coverage gap\"]===250000&&m[\"Scenario requirement\"]===1250000,\"TR03 coverage arithmetic\");if(c.id===\"TR-06\")assert(m[\"Base score\"]-m[\"Combined deductions\"]===m[\"Scenario score\"]&&m[\"Scenario score\"]===82,\"TR06 score arithmetic\");if(c.id===\"PR-12\")assert(m[\"Candidate A all-in\"]===2650&&m[\"Candidate B all-in\"]===2820&&m[\"Cost difference\"]===170&&m[\"Service duration difference\"]===4,\"PR12 cost/time values\");if(c.id===\"AS-05\")assert(!Object.keys(m).some(k=>/handling/i.test(k)),\"AS05 must not report absent cargo\");if(c.id===\"TM-10\"){const counts={};s.root.traverse(o=>{if(o.isGroup&&o.userData.state)counts[o.userData.state]=(counts[o.userData.state]||0)+1;});assert(counts.fresh===6&&counts.stale===1&&counts.missing===1&&counts.reconnecting===1,\"TM10 sensor state counts\");}if(c.id===\"CC-02\"){const states=[];s.root.traverse(o=>{if(o.name.startsWith(\"stage-\")&&o.userData.status)states.push(o.userData);});assert(states.filter(x=>x.recorded).length===5&&states.filter(x=>x.status===\"stale\").length===1&&states.filter(x=>x.status===\"rejected\").length===1&&states.filter(x=>x.status===\"missing\").length===1,\"CC02 revision states\");}if(c.id===\"HS-10\")assert(m[\"50 mph elapsed time\"]===22&&m[\"60 mph elapsed time\"]===10&&Math.abs(m[\"65 mph elapsed time\"]-600/65)<1e-9,\"HS10 travel/rest arithmetic\");if(c.id===\"CC-05\")assert(m[\"Earlier payload\"]===12000&&m[\"Revised payload\"]===13200&&m[\"Stale downstream results\"]===4,\"CC05 amendment\");if(c.id===\"YD-11\")assert(m[\"Available doors\"]===0&&m[\"Empty yard spots\"]===0&&m[\"Held arrivals\"]===2,\"YD11 capacity and holds\");if(c.id===\"CC-09\")assert(m[\"Accepted quote\"]===2770&&m[\"Invoice total\"]===2770&&m.Difference===0,\"CC09 exact cents\");}s.root.traverse(o=>{if(o.geometry)o.geometry.dispose();});}catch(e){errors.push(c.id+\": \"+e.message);}}const tuner=buildStudy(THREE,cases.find(c=>c.id===\"AS-05\"),{fixture:{lengthM:14,widthM:2.3,heightM:2.5,massLb:17000,wheelbaseM:5.8}});const tm=Object.fromEntries(tuner.summary.fixtureMetrics.map(x=>[x.label,x.value]));assert(tm[\"Deck length\"]===14&&tm[\"Body width\"]===2.3&&tm[\"Body height\"]===2.5&&tm[\"Tractor wheelbase\"]===5.8&&tm[\"Declared fixture mass\"]===17000,\"AS05 edited parameter values\");console.log(JSON.stringify({builds,fixed:reports,editedAS05:tm,errors},null,2));if(errors.length)process.exitCode=1;",
+      "outcome": "passed",
+      "exitCode": 0
+    }
+  },
+  "construction": {
+    "caseCount": 120,
+    "optionStates": [
+      {
+        "phase": 1,
+        "explode": 0
+      },
+      {
+        "phase": 0.35,
+        "explode": 0.5
+      }
+    ],
+    "mode": "dimensions (buildStudy default)",
+    "buildCount": 240,
+    "failureCount": 0,
+    "additionalEditedAS05Build": true,
+    "note": "The original builds counter counts the 240-case matrix. The edited AS-05 construction was additional and was not added to that counter."
+  },
+  "assertions": [
+    {
+      "id": "all-camera-bounds-finite",
+      "cases": 120,
+      "optionStates": 2,
+      "condition": "All six cameraBounds min/max components are finite for every construction.",
+      "result": "passed"
+    },
+    {
+      "id": "all-anchor-positions-finite",
+      "cases": 120,
+      "optionStates": 2,
+      "condition": "Every returned anchor position component is finite for every construction.",
+      "result": "passed"
+    },
+    {
+      "id": "TR03-coverage-arithmetic",
+      "condition": "m[\"Coverage gap\"] === 250000 && m[\"Scenario requirement\"] === 1250000",
+      "result": "passed"
+    },
+    {
+      "id": "TR06-score-arithmetic",
+      "condition": "m[\"Base score\"] - m[\"Combined deductions\"] === m[\"Scenario score\"] && m[\"Scenario score\"] === 82",
+      "result": "passed"
+    },
+    {
+      "id": "PR12-cost-time-values",
+      "condition": "Candidate A all-in === 2650; Candidate B all-in === 2820; Cost difference === 170; Service duration difference === 4",
+      "result": "passed"
+    },
+    {
+      "id": "AS05-no-absent-cargo-metric",
+      "condition": "No fixture metric key contains /handling/i.",
+      "result": "passed"
+    },
+    {
+      "id": "TM10-semantic-sensor-states",
+      "condition": "Scene groups with userData.state: fresh === 6; stale === 1; missing === 1; reconnecting === 1.",
+      "result": "passed"
+    },
+    {
+      "id": "CC02-semantic-revision-states",
+      "condition": "Stage groups: userData.recorded count === 5; stale === 1; rejected === 1; missing === 1.",
+      "result": "passed"
+    },
+    {
+      "id": "HS10-travel-rest-arithmetic",
+      "condition": "50 mph elapsed time === 22; 60 mph elapsed time === 10; abs(65 mph elapsed time - 600/65) < 1e-9",
+      "result": "passed"
+    },
+    {
+      "id": "CC05-amendment-values",
+      "condition": "Earlier payload === 12000; Revised payload === 13200; Stale downstream results === 4.",
+      "result": "passed"
+    },
+    {
+      "id": "YD11-capacity-and-holds",
+      "condition": "Available doors === 0; Empty yard spots === 0; Held arrivals === 2.",
+      "result": "passed"
+    },
+    {
+      "id": "CC09-exact-cent-values",
+      "condition": "Accepted quote === 2770; Invoice total === 2770; Difference === 0.",
+      "result": "passed"
+    },
+    {
+      "id": "AS05-edited-parameter-values",
+      "condition": "Deck length === 14; Body width === 2.3; Body height === 2.5; Tractor wheelbase === 5.8; Declared fixture mass === 17000.",
+      "result": "passed"
+    }
+  ],
+  "originalJsonResult": {
+    "builds": 240,
+    "fixed": [
+      {
+        "id": "CF-09",
+        "metrics": {
+          "Setting A distance": 36,
+          "Setting B distance": 38,
+          "Rear group load change": -900,
+          "Kingpin reaction change": 900
+        },
+        "anchors": 5
+      },
+      {
+        "id": "AS-04",
+        "metrics": {
+          "Body length": 28,
+          "Door width": 92,
+          "Tare": 7200,
+          "Geometric cavity": 56.45505600000001,
+          "Payload rating": "undeclared"
+        },
+        "anchors": 4
+      },
+      {
+        "id": "AS-05",
+        "metrics": {
+          "Deck length": 16,
+          "Body width": 2.45,
+          "Body height": 2.7,
+          "Tractor wheelbase": 6.1,
+          "Declared fixture mass": 18000
+        },
+        "anchors": 4
+      },
+      {
+        "id": "YD-11",
+        "metrics": {
+          "Available doors": 0,
+          "Empty yard spots": 0,
+          "Held arrivals": 2,
+          "Alternative holding capacity": "undeclared"
+        },
+        "anchors": 4
+      },
+      {
+        "id": "TM-10",
+        "metrics": {
+          "Fresh sensors": 6,
+          "Stale sensors": 1,
+          "Missing sensors": 1,
+          "Transport": "reconnecting"
+        },
+        "anchors": 4
+      },
+      {
+        "id": "PR-12",
+        "metrics": {
+          "Candidate A all-in": 2650,
+          "Candidate B all-in": 2820,
+          "Cost difference": 170,
+          "Service duration difference": 4
+        },
+        "anchors": 4
+      },
+      {
+        "id": "HS-10",
+        "metrics": {
+          "50 mph elapsed time": 22,
+          "60 mph elapsed time": 10,
+          "65 mph elapsed time": 9.23076923076923,
+          "Lane distance": 600
+        },
+        "anchors": 12
+      },
+      {
+        "id": "TR-03",
+        "metrics": {
+          "Declared auto liability": 1000000,
+          "Scenario requirement": 1250000,
+          "Coverage gap": 250000
+        },
+        "anchors": 4
+      },
+      {
+        "id": "TR-06",
+        "metrics": {
+          "Base score": 100,
+          "Combined deductions": 18,
+          "Scenario score": 82
+        },
+        "anchors": 4
+      },
+      {
+        "id": "CC-02",
+        "metrics": {
+          "Recorded stages at current revision": 5,
+          "Stale stages": 1,
+          "Rejected stages": 1,
+          "Missing stages": 1
+        },
+        "anchors": 5
+      },
+      {
+        "id": "CC-05",
+        "metrics": {
+          "Earlier payload": 12000,
+          "Revised payload": 13200,
+          "Mass amendment": 1200,
+          "Stale downstream results": 4
+        },
+        "anchors": 7
+      },
+      {
+        "id": "CC-09",
+        "metrics": {
+          "Accepted quote": 2770,
+          "Invoice total": 2770,
+          "Difference": 0
+        },
+        "anchors": 4
+      }
+    ],
+    "editedAS05": {
+      "Deck length": 14,
+      "Body width": 2.3,
+      "Body height": 2.5,
+      "Tractor wheelbase": 5.8,
+      "Declared fixture mass": 17000
+    },
+    "errors": []
+  },
+  "editedAS05Input": {
+    "lengthM": 14,
+    "widthM": 2.3,
+    "heightM": 2.5,
+    "massLb": 17000,
+    "wheelbaseM": 5.8
+  },
+  "limitations": [
+    "CF-09 and AS-04 numeric fixture values were printed for inspection; the original script did not contain separate equality assertions for those two cases.",
+    "Semantic IDs, ownership flags, exact geometry extents, and screenshot appearance were not exhaustively asserted by this command.",
+    "Fixture metrics alone do not prove visual comprehension or physical correctness.",
+    "A source hash and original exact run time were not captured.",
+    "All human approval decisions remain pending and are owned by the separate review records."
+  ]
+}

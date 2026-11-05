@@ -1,0 +1,36 @@
+{
+  "batchedParts": "127",
+  "quality": "studio",
+  "ready": "PF-07",
+  "entities": "3",
+  "anchors": "3",
+  "geometry": "27",
+  "fixtureMetrics": "[{\"label\":\"Used volume\",\"value\":64,\"unit\":\"percent\"},{\"label\":\"Payload use\",\"value\":82,\"unit\":\"percent\"},{\"label\":\"Temperature\",\"value\":35,\"unit\":\"F\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "50.80",
+  "drawCalls": "95",
+  "camera": "{\"position\":[22.624534416017234,23.41203440339223,22.76203440409631],\"target\":[-0.13749998807907104,0.6499999992959201,0],\"zoom\":1}",
+  "painted": "PF-07",
+  "id": "PF-07",
+  "title": "Thermal mass volume layer composition",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-07.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:22.071Z"
+}

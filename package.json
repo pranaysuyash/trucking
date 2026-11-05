@@ -1,0 +1,31 @@
+{
+  "name": "trucking-platform-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Modular Freight Logistics Platform \u2014 Sovereign Subproducts & Digital Twins",
+  "workspaces": [
+    "products/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:p01": "cd products/product-01-cargo-fit && npm run dev",
+    "dev:p02": "cd products/product-02-freight-pricing && npm run dev",
+    "dev:p03": "cd products/product-03-hos-planner && npm run dev",
+    "dev:p04": "cd products/product-04-asset-studio && npm run dev",
+    "dev:p05": "cd products/product-05-fleet-telematics && npm run dev",
+    "dev:p06": "cd products/product-06-warehouse-space-flow && npm run dev",
+    "dev:p07": "cd products/product-07-yard-dock && npm run dev",
+    "dev:p08": "cd products/product-08-carrier-trust && npm run dev",
+    "create:product": "node scripts/create-product.mjs",
+    "dev:all": "node scripts/dev-all.mjs",
+    "test:all": "node scripts/test-all.mjs",
+    "build:all": "node scripts/build-all.mjs",
+    "typecheck:all": "node scripts/typecheck-all.mjs",
+    "dev:flow": "node packages/shipment-flow/server.mjs",
+    "sync:suite": "node scripts/sync-suite.mjs",
+    "check:suite": "node scripts/sync-suite.mjs --check",
+    "test:flow": "node --test packages/shipment-flow/tests/*.test.mjs",
+    "dev:p09": "cd products/product-09-storage-leasing && npm run dev",
+    "dev:storage": "cd packages/storage-server && npm run dev"
+  }
+}

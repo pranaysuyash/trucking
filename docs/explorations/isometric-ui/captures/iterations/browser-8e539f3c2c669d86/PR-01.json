@@ -1,0 +1,36 @@
+{
+  "batchedParts": "40",
+  "quality": "studio",
+  "ready": "PR-01",
+  "entities": "4",
+  "anchors": "4",
+  "geometry": "14",
+  "fixtureMetrics": "[{\"label\":\"Linehaul\",\"value\":2200,\"unit\":\"USD\"},{\"label\":\"Fuel surcharge\",\"value\":420,\"unit\":\"USD\"},{\"label\":\"Accessorials\",\"value\":150,\"unit\":\"USD\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "22.10",
+  "drawCalls": "60",
+  "camera": "{\"position\":[4.431118844528014,19.23212883779918,42.73118844468409],\"target\":[0,1.9999999979680232,-1.5800000005960464],\"zoom\":1}",
+  "painted": "PR-01",
+  "id": "PR-01",
+  "title": "Equipment-linked quote",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:40.882Z"
+}

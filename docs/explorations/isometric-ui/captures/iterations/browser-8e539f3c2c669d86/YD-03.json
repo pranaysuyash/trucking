@@ -1,0 +1,36 @@
+{
+  "batchedParts": "623",
+  "quality": "studio",
+  "ready": "YD-03",
+  "entities": "9",
+  "anchors": "2",
+  "geometry": "42",
+  "fixtureMetrics": "[{\"label\":\"Trailer length\",\"value\":53,\"unit\":\"ft\"},{\"label\":\"Payload\",\"value\":22000,\"unit\":\"lb\"},{\"label\":\"Dwell time\",\"value\":85,\"unit\":\"min\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "68.90",
+  "drawCalls": "139",
+  "camera": "{\"position\":[37.90156446786733,38.86978947433443,36.75808946741135],\"target\":[1.2407750013411047,2.2090000078082084,0.09730000088512858],\"zoom\":1}",
+  "painted": "YD-03",
+  "id": "YD-03",
+  "title": "Drop-lot trailer locator",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-03.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:24.828Z"
+}

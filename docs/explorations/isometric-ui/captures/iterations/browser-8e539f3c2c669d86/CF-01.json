@@ -1,0 +1,36 @@
+{
+  "anchors": "5",
+  "batchedParts": "784",
+  "camera": "{\"position\":[40.147721938589186,42.05272194227723,40.06222194236664],\"target\":[0.08249999720603185,1.9875000008940702,-0.0029999990165234802],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "341",
+  "entities": "19",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Handling units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Occupied cube\",\"value\":26.064,\"unit\":\"m³\"},{\"label\":\"Usable cavity\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Cube utilization\",\"value\":24.625850340136054,\"unit\":\"%\"}]",
+  "geometry": "108",
+  "id": "CF-01",
+  "pageWidth": 1440,
+  "painted": "CF-01",
+  "quality": "studio",
+  "ready": "CF-01",
+  "renderMs": "134.20",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Mixed manifest fit",
+  "top": 0,
+  "valuesOrigin": "authored scene fixture",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-01.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:31:12.854Z"
+}

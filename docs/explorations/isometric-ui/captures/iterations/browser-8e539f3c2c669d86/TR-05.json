@@ -1,0 +1,36 @@
+{
+  "batchedParts": "28",
+  "quality": "studio",
+  "ready": "TR-05",
+  "entities": "4",
+  "anchors": "5",
+  "geometry": "17",
+  "fixtureMetrics": "[{\"label\":\"Driving percentile\",\"value\":42,\"unit\":\"percent\"},{\"label\":\"Maintenance percentile\",\"value\":68,\"unit\":\"percent\"},{\"label\":\"Displayed threshold\",\"value\":80,\"unit\":\"percent\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "25.30",
+  "drawCalls": "61",
+  "camera": "{\"position\":[5.210624567963308,22.063539938840258,52.10624567963308],\"target\":[0,1.799999952316284,0],\"zoom\":1}",
+  "painted": "TR-05",
+  "id": "TR-05",
+  "title": "BASIC percentile comparison",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TR-05.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:46:35.433Z"
+}

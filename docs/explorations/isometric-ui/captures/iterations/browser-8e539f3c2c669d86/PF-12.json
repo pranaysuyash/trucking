@@ -1,0 +1,36 @@
+{
+  "batchedParts": "363",
+  "quality": "studio",
+  "ready": "PF-12",
+  "entities": "6",
+  "anchors": "3",
+  "geometry": "42",
+  "fixtureMetrics": "[{\"label\":\"Cavity volume\",\"value\":105.84,\"unit\":\"m³\"},{\"label\":\"Shown handling units\",\"value\":10,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "50.70",
+  "drawCalls": "145",
+  "camera": "{\"position\":[48.420931145530645,50.56343115089506,48.560931144636584],\"target\":[-0.13999999910592995,2.002500006258488,0],\"zoom\":1}",
+  "painted": "PF-12",
+  "id": "PF-12",
+  "title": "Cross-product model reuse study",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:33.414Z"
+}

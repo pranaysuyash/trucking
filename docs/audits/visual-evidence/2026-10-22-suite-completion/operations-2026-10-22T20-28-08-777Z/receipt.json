@@ -1,0 +1,1090 @@
+{
+  "startedAt": "2026-10-22T20:28:08.781Z",
+  "checks": [
+    "historical manifest replay stays separate from current spatial geometry, mass and unit search",
+    "timeline filters retained events and opens the exact canonical event inspector",
+    "invoice and receipt inspect independently, and actual evidence download reconciles to accepted terms",
+    "native equipment changes publish the selected exact snapshot and retained input revisions",
+    "manifest Source retains creation and narrow equipment amendment provenance",
+    "live API rejects overlapping reviewed geometry atomically",
+    "native carrier choice preserves a blocked policy outcome and explicit approved recovery",
+    "pending-save edits and newer polled revisions survive delayed older acknowledgement, with explicit recovery",
+    "modeled duty report has contained keyboard focus, Escape recovery and actual print output",
+    "actual overview, accepted spatial arrangement and retained timeline fit desktop and390px with structured equivalents"
+  ],
+  "observations": [
+    {
+      "label": "canvas-overview-desktop",
+      "viewport": 1440,
+      "document": 1440,
+      "outside": [
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1473
+        },
+        {
+          "tag": "DIV",
+          "class": "step-info-col",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-code-row",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-name",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-tagline",
+          "right": 1490
+        },
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1681
+        },
+        {
+          "tag": "DIV",
+          "class": "step-icon-bubble",
+          "right": 1516
+        },
+        {
+          "tag": "svg",
+          "class": {},
+          "right": 1516
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1500
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1503
+        }
+      ]
+    },
+    {
+      "label": "canvas-spatial-desktop",
+      "viewport": 1440,
+      "document": 1440,
+      "outside": [
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1473
+        },
+        {
+          "tag": "DIV",
+          "class": "step-info-col",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-code-row",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-name",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-tagline",
+          "right": 1490
+        },
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1681
+        },
+        {
+          "tag": "DIV",
+          "class": "step-icon-bubble",
+          "right": 1516
+        },
+        {
+          "tag": "svg",
+          "class": {},
+          "right": 1516
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1500
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1503
+        }
+      ]
+    },
+    {
+      "label": "canvas-timeline-desktop",
+      "viewport": 1440,
+      "document": 1440,
+      "outside": [
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1473
+        },
+        {
+          "tag": "DIV",
+          "class": "step-info-col",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-code-row",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-name",
+          "right": 1490
+        },
+        {
+          "tag": "DIV",
+          "class": "step-tagline",
+          "right": 1490
+        },
+        {
+          "tag": "BUTTON",
+          "class": "step-card-btn  ",
+          "right": 1681
+        },
+        {
+          "tag": "DIV",
+          "class": "step-icon-bubble",
+          "right": 1516
+        },
+        {
+          "tag": "svg",
+          "class": {},
+          "right": 1516
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1500
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1503
+        }
+      ]
+    },
+    {
+      "label": "canvas-overview-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DIV",
+          "class": "shipment-table-wrap",
+          "right": 359
+        }
+      ]
+    },
+    {
+      "label": "canvas-spatial-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 434
+        }
+      ]
+    },
+    {
+      "label": "canvas-timeline-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 434
+        }
+      ]
+    },
+    {
+      "label": "connected-5170-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 434
+        }
+      ]
+    },
+    {
+      "label": "inspector-5170-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 434
+        }
+      ]
+    },
+    {
+      "label": "connected-5173-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DT",
+          "class": "",
+          "right": 476
+        }
+      ]
+    },
+    {
+      "label": "inspector-5173-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DT",
+          "class": "",
+          "right": 476
+        }
+      ]
+    },
+    {
+      "label": "connected-5174-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        }
+      ]
+    },
+    {
+      "label": "inspector-5174-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        }
+      ]
+    },
+    {
+      "label": "connected-5175-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "DIV",
+          "class": "card",
+          "right": 960
+        }
+      ]
+    },
+    {
+      "label": "inspector-5175-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 435
+        },
+        {
+          "tag": "DIV",
+          "class": "card",
+          "right": 960
+        }
+      ]
+    },
+    {
+      "label": "connected-5176-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DT",
+          "class": "",
+          "right": 431
+        }
+      ]
+    },
+    {
+      "label": "inspector-5176-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DT",
+          "class": "",
+          "right": 431
+        }
+      ]
+    },
+    {
+      "label": "connected-5177-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        }
+      ]
+    },
+    {
+      "label": "inspector-5177-mobile",
+      "viewport": 390,
+      "document": 390,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        }
+      ]
+    },
+    {
+      "label": "connected-5178-mobile",
+      "viewport": 390,
+      "document": 794,
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "THEAD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TH",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TBODY",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TR",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "TD",
+          "class": "",
+          "right": 419
+        },
+        {
+          "tag": "DIV",
+          "class": "view-mode-toggle",
+          "right": 423
+        }
+      ]
+    }
+  ],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "completedShipmentId": "73dd92c0-0232-4156-a853-a72fbf5bb853",
+  "draftShipmentId": "79aef9f3-9484-43e2-a040-2e472f4e0057",
+  "submittedDutySpeed": 60,
+  "result": "FAIL",
+  "failure": "AssertionError [ERR_ASSERTION]: connected-5178-mobile: {\"viewport\":390,\"document\":794,\"outside\":[{\"tag\":\"TABLE\",\"class\":\"\",\"right\":419},{\"tag\":\"THEAD\",\"class\":\"\",\"right\":419},{\"tag\":\"TR\",\"class\":\"\",\"right\":419},{\"tag\":\"TH\",\"class\":\"\",\"right\":419},{\"tag\":\"TBODY\",\"class\":\"\",\"right\":419},{\"tag\":\"TR\",\"class\":\"\",\"right\":419},{\"tag\":\"TD\",\"class\":\"\",\"right\":419},{\"tag\":\"TR\",\"class\":\"\",\"right\":419},{\"tag\":\"TD\",\"class\":\"\",\"right\":419},{\"tag\":\"DIV\",\"class\":\"view-mode-toggle\",\"right\":423}]}\n    at width (/Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:24:64)\n    at async /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:141:5",
+  "completedAt": "2026-10-22T20:29:46.404Z"
+}

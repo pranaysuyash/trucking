@@ -1,0 +1,36 @@
+{
+  "batchedParts": "49",
+  "quality": "studio",
+  "ready": "PR-02",
+  "entities": "6",
+  "anchors": "18",
+  "geometry": "13",
+  "fixtureMetrics": "[{\"label\":\"Cost subtotal\",\"value\":875,\"unit\":\"USD\"},{\"label\":\"Margin\",\"value\":165,\"unit\":\"USD\"},{\"label\":\"Components total\",\"value\":1040,\"unit\":\"USD\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "18.80",
+  "drawCalls": "57",
+  "camera": "{\"position\":[8.994777662739441,30.696135411540947,73.01377666354463],\"target\":[1.6599999964237204,2.1720000425353647,-0.33399999961256976],\"zoom\":1}",
+  "painted": "PR-02",
+  "id": "PR-02",
+  "title": "Three-dimensional cost waterfall",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PR-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:41.604Z"
+}

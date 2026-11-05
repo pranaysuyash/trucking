@@ -1,0 +1,36 @@
+{
+  "batchedParts": "132",
+  "quality": "studio",
+  "ready": "TM-12",
+  "entities": "9",
+  "anchors": "2",
+  "geometry": "63",
+  "fixtureMetrics": "[{\"label\":\"Arrival vehicles\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Appointment window\",\"value\":30,\"unit\":\"min\"},{\"label\":\"Gate wait\",\"value\":9,\"unit\":\"min\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "26.10",
+  "drawCalls": "193",
+  "camera": "{\"position\":[51.3841739578767,53.33417395906879,50.03897856908276],\"target\":[0,1.9500000011920928,-1.345195388793945],\"zoom\":1}",
+  "painted": "TM-12",
+  "id": "TM-12",
+  "title": "Telemetry-to-yard arrival",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/TM-12.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:45:40.157Z"
+}

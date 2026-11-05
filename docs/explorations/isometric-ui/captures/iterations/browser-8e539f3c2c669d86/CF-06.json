@@ -1,0 +1,36 @@
+{
+  "anchors": "3",
+  "batchedParts": "146",
+  "camera": "{\"position\":[18.99123410044308,19.991234099739007,19.666234109383783],\"target\":[-0.35,0.6499999992959201,0.3250000089406967],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "185",
+  "entities": "4",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Selected unit\",\"value\":7,\"unit\":\"index\"},{\"label\":\"Move distance\",\"value\":24,\"unit\":\"in\"},{\"label\":\"Candidate overlap\",\"value\":0,\"unit\":\"in3\"}]",
+  "geometry": "49",
+  "id": "CF-06",
+  "pageWidth": 1440,
+  "painted": "CF-06",
+  "quality": "studio",
+  "ready": "CF-06",
+  "renderMs": "128.20",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Manual repack preview",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CF-06.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:31:52.589Z"
+}

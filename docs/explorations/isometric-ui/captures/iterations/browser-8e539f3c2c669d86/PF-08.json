@@ -1,0 +1,36 @@
+{
+  "batchedParts": "146",
+  "quality": "studio",
+  "ready": "PF-08",
+  "entities": "4",
+  "anchors": "3",
+  "geometry": "49",
+  "fixtureMetrics": "[{\"label\":\"Moved objects\",\"value\":2,\"unit\":\"count\"},{\"label\":\"Affected results\",\"value\":3,\"unit\":\"count\"},{\"label\":\"Uncommitted changes\",\"value\":2,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "50.20",
+  "drawCalls": "185",
+  "camera": "{\"position\":[18.99123410044308,19.991234099739007,19.666234109383783],\"target\":[-0.35,0.6499999992959201,0.3250000089406967],\"zoom\":1}",
+  "painted": "PF-08",
+  "id": "PF-08",
+  "title": "Spatial command preview",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-08.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:23.357Z"
+}

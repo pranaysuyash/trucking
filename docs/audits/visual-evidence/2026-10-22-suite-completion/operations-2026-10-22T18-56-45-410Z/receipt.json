@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-10-22T18:56:45.411Z",
+  "checks": [
+    "historical manifest replay stays separate from current spatial geometry, mass and unit search",
+    "timeline filters retained events and opens the exact canonical event inspector",
+    "invoice and receipt inspect independently, and actual evidence download reconciles to accepted terms",
+    "native equipment changes publish the selected exact snapshot and retained input revisions"
+  ],
+  "observations": [],
+  "pageErrors": [],
+  "evidenceTier": 4,
+  "sensitivity": "S1",
+  "scope": "Native suite decisions, recovery, mobile and canonical spatial/temporal views",
+  "completedShipmentId": "73dd92c0-0232-4156-a853-a72fbf5bb853",
+  "draftShipmentId": "26ce7eac-234d-4a89-a3c1-9485e6316229",
+  "result": "FAIL",
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.shipment-inspector-tabs').getByRole('button', { name: 'Source', exact: true })\u001b[22m\n\n    at /Users/pranay/Projects/trucking/tools/verify-suite-operations.cjs:77:103",
+  "completedAt": "2026-10-22T18:57:27.502Z"
+}

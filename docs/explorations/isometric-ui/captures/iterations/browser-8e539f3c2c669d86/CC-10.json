@@ -1,0 +1,36 @@
+{
+  "batchedParts": "100",
+  "quality": "studio",
+  "ready": "CC-10",
+  "entities": "12",
+  "anchors": "7",
+  "geometry": "47",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":5,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "19.80",
+  "drawCalls": "159",
+  "camera": "{\"position\":[38.04738265700573,38.634882650300206,38.04738265700573],\"target\":[0,0.5874999932944776,0],\"zoom\":1}",
+  "painted": "CC-10",
+  "id": "CC-10",
+  "title": "Fleet and shipment portfolio",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-10.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:15.262Z"
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "112",
+  "quality": "studio",
+  "ready": "YD-02",
+  "entities": "7",
+  "anchors": "2",
+  "geometry": "42",
+  "fixtureMetrics": "[{\"label\":\"Available doors\",\"value\":6,\"unit\":\"count\"},{\"label\":\"Occupied doors\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Reserved doors\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "24.80",
+  "drawCalls": "142",
+  "camera": "{\"position\":[38.18594700241934,40.135947003611435,37.12469700251248],\"target\":[0,1.9500000011920928,-1.0612499999068676],\"zoom\":1}",
+  "painted": "YD-02",
+  "id": "YD-02",
+  "title": "Door compatibility and occupancy",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/YD-02.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:44:22.863Z"
+}

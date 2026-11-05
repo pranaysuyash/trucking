@@ -1,0 +1,37 @@
+{
+  "batchedParts": "60",
+  "quality": "studio",
+  "ready": "WH-06",
+  "entities": "2",
+  "anchors": "3",
+  "geometry": "18",
+  "fixtureMetrics": "[{\"label\":\"Expected units\",\"value\":18,\"unit\":\"count\"},{\"label\":\"Matched scans\",\"value\":17,\"unit\":\"count\"},{\"label\":\"Open discrepancies\",\"value\":1,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "85.60",
+  "drawCalls": "68",
+  "camera": "{\"position\":[22.22770771986472,23.577707731413128,22.172707732828737],\"target\":[0.37499998845159993,1.725,0.32000000141561025],\"zoom\":1}",
+  "painted": "WH-06",
+  "id": "WH-06",
+  "title": "Receiving scan verification",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/WH-06.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:28:51.471Z"
+}

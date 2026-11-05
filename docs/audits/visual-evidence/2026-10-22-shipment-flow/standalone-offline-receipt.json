@@ -1,0 +1,51 @@
+{
+  "optionalServiceOffline": true,
+  "products": [
+    {
+      "port": 5170,
+      "title": "TRUCKING — Global Freight Command Center Portal",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5173,
+      "title": "Cargo Fit — load planning you can check",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5174,
+      "title": "Freight Pricing & Dynamic Fuel Surcharge Engine — Product 02",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5175,
+      "title": "Driver Hours-of-Service (HOS) & Corridor Legality Planner — Product 03",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5176,
+      "title": "Fleet & Cargo Asset Studio — Product 04",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5177,
+      "title": "Product 05 — Fleet Telematics & Real-Time Tracking HUD",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5178,
+      "title": "P06 — Warehouse Space & Flow Planner",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5179,
+      "title": "P07 — Yard & Dock Management",
+      "hasStandaloneHeading": true
+    },
+    {
+      "port": 5180,
+      "title": "Product 08 — Carrier Trust & Compliance HUD",
+      "hasStandaloneHeading": true
+    }
+  ],
+  "pageErrors": []
+}

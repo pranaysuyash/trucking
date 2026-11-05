@@ -1,0 +1,36 @@
+{
+  "anchors": "6",
+  "batchedParts": "35",
+  "camera": "{\"position\":[4.709513745754905,20.56477566601481,47.09513745754905],\"target\":[0,2.249999988079071,0],\"zoom\":1}",
+  "clip": {
+    "height": 532,
+    "left": 251,
+    "top": 197,
+    "width": 1156
+  },
+  "drawCalls": "48",
+  "entities": "3",
+  "error": null,
+  "fixtureMetrics": "[{\"label\":\"Baseline fuel\",\"value\":100,\"unit\":\"gal\"},{\"label\":\"Alternative fuel\",\"value\":92,\"unit\":\"gal\"},{\"label\":\"Difference\",\"value\":8,\"unit\":\"percent\"}]",
+  "geometry": "10",
+  "id": "AS-09",
+  "pageWidth": 1440,
+  "painted": "AS-09",
+  "quality": "studio",
+  "ready": "AS-09",
+  "renderMs": "26.30",
+  "review": "AWAITING YOUR REVIEW",
+  "revision": "8e539f3c2c669d86",
+  "title": "Carbon and energy study",
+  "top": 0,
+  "valuesOrigin": "example scenario inputs",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/AS-09.jpg",
+    "format": "jpeg"
+  },
+  "capturedAt": "2026-10-29T17:33:43.902Z"
+}

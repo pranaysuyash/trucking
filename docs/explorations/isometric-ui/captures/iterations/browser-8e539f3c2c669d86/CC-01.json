@@ -1,0 +1,36 @@
+{
+  "batchedParts": "99",
+  "quality": "studio",
+  "ready": "CC-01",
+  "entities": "8",
+  "anchors": "6",
+  "geometry": "32",
+  "fixtureMetrics": "[{\"label\":\"Semantic nodes\",\"value\":5,\"unit\":\"count\"},{\"label\":\"Relationship edges\",\"value\":4,\"unit\":\"count\"}]",
+  "valuesOrigin": "authored scene fixture",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "57.00",
+  "drawCalls": "114",
+  "camera": "{\"position\":[51.90378911755675,52.741289110851234,51.75378914139861],\"target\":[0,0.8374999932944774,-0.1499999761581421],\"zoom\":1}",
+  "painted": "CC-01",
+  "id": "CC-01",
+  "title": "End-to-end shipment world",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/CC-01.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:08.276Z"
+}

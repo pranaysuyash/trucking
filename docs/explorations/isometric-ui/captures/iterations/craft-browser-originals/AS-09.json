@@ -1,0 +1,37 @@
+{
+  "batchedParts": "35",
+  "quality": "studio",
+  "ready": "AS-09",
+  "entities": "3",
+  "anchors": "6",
+  "geometry": "10",
+  "fixtureMetrics": "[{\"label\":\"Baseline fuel\",\"value\":100,\"unit\":\"gal\"},{\"label\":\"Alternative fuel\",\"value\":92,\"unit\":\"gal\"},{\"label\":\"Difference\",\"value\":8,\"unit\":\"percent\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "92ebb5edaabe240d",
+  "renderMs": "16.90",
+  "drawCalls": "48",
+  "camera": "{\"position\":[4.709513745754905,20.56477566601481,47.09513745754905],\"target\":[0,2.249999988079071,0],\"zoom\":1}",
+  "painted": "AS-09",
+  "id": "AS-09",
+  "title": "Carbon and energy study",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "annotationOverflows": [],
+  "browserOriginal": {
+    "path": "captures/iterations/craft-browser-originals/AS-09.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-22T20:28:20.153Z"
+}

@@ -1,0 +1,36 @@
+{
+  "batchedParts": "196",
+  "quality": "studio",
+  "ready": "PF-04",
+  "entities": "5",
+  "anchors": "2",
+  "geometry": "36",
+  "fixtureMetrics": "[{\"label\":\"Selected objects\",\"value\":1,\"unit\":\"count\"},{\"label\":\"Related objects\",\"value\":4,\"unit\":\"count\"},{\"label\":\"Detail fields\",\"value\":9,\"unit\":\"count\"}]",
+  "valuesOrigin": "example scenario inputs",
+  "revision": "8e539f3c2c669d86",
+  "renderMs": "50.10",
+  "drawCalls": "124",
+  "camera": "{\"position\":[23.3249509578515,24.63288285686493,23.73135356631271],\"target\":[0,1.3079318990134334,0.4064026084612069],\"zoom\":1}",
+  "painted": "PF-04",
+  "id": "PF-04",
+  "title": "Selection focus and linked details",
+  "review": "AWAITING YOUR REVIEW",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "top": 0,
+  "clip": {
+    "left": 251,
+    "top": 197,
+    "width": 1156,
+    "height": 532
+  },
+  "error": null,
+  "pageWidth": 1440,
+  "browserOriginal": {
+    "path": "captures/iterations/browser-8e539f3c2c669d86/PF-04.png",
+    "format": "png"
+  },
+  "capturedAt": "2026-10-29T18:47:19.639Z"
+}
