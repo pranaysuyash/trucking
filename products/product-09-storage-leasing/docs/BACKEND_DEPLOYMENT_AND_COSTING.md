@@ -74,6 +74,15 @@ Assumptions: small payloads (KBs–low MBs/facility), save-on-mutation/load-on-s
 - **If multi-user access, tenant portal, role-based access, or “real SaaS” is likely soon:** prefer a backend with **first-class auth + row-level security** (often **Supabase/Postgres + RLS**) even if baseline cost is higher (~$25/mo vs ~$5/mo). The avoided auth/authorization mistakes and faster safe iteration usually dominate infra savings for financial-adjacent data.
 - **Long-term/1st-principles “best”:** the approach that makes **authorization explicit, data auditable/exportable, migrations safe, and vendor lock-in bounded**. For P09 specifically: **a SQL-backed store (D1 or Postgres) + explicit authz model + backup/export** beats a blob-only/KV design. Cloudflare is excellent on cost/ops; Postgres/Supabase is often better on **auth, portability, and relational maturity**.
 
+### Evolvability — can we update/improve the architecture later?
+**Yes, if we design for it now.** The current implementation already has useful seams, but the migration must be deliberate:
+- **Versioned state:** `schemaVersion: 1` and the normalized `STATE_KEYS` in `storage-server`/`storageClient` are explicit migration hooks. Future changes should bump/migrate schema (as noted for electricity tariff config) rather than ad-hoc field drift.
+- **Client seam:** `storageClient.ts` centralizes load/save/reset and `SERVER_URL` — swapping loopback for an env-configured hosted API, adding auth headers, retries/idempotency, or per-facility endpoints is localized if we keep the contract stable.
+- **Blob → normalized:** starting with a **JSON state row per facility** in D1/Postgres is an acceptable stepping stone; it can later be migrated to normalized tables (tenants/leases/ledger/receipts/maintenance/readings) when reporting/audit/query needs justify it. Plan the migration/export path up front.
+- **Local → cloud:** existing `store.json` / `p09-state-v2` data can be imported via a one-time migration script once the target schema + auth model are defined. Preserve export/backup (JSON/CSV) so data is never trapped.
+- **Portability:** prefer **standard SQL semantics** and keep Cloudflare-specific bindings at the edge (Worker adapter) so moving D1 → Postgres (or vice versa, with care) is feasible. Auth/RLS choices affect portability more than the DB engine at this scale.
+- **What makes later improvement hard (avoid):** no auth model, no schema version/migrations, blob-only design with no export, business logic embedded only in UI, or leaking provider-specific assumptions through the domain layer. The backend plan should explicitly include **migration, rollback, export, and compatibility** steps.
+
 ### Decision required before backend implementation
 1. **Access model:** single user/shared secret, or multi-user with roles? Tenant self-service portal?
 2. **Auth now?** (strongly recommended before exposing real data publicly)
@@ -86,4 +95,4 @@ Assumptions: small payloads (KBs–low MBs/facility), save-on-mutation/load-on-s
 - Vite `Failed to reload /src/ui/App.tsx ... 500` — observed as **transient HMR failures during edits**; resolved state verified by typecheck/build/tests and dev-server transform response.
 
 ## 7. Next step (when authorized)
-Produce and execute a backend plan tailored to the confirmed access/auth/data-model decisions: API design, schema, `storageClient` migration (env-based URL), CORS/auth, migration of `p09-state-v2`/`store.json`, backups/export, P09 Pages deploy config, and verification (including failure/retry/idempotency where applicable).
+Produce and execute a backend plan tailored to the confirmed access/auth/data-model decisions: API design, schema, `storageClient` migration (env-based URL), CORS/auth, migration of `p09-state-v2`/`store.json`, backups/export, P09 Pages deploy config, and verification (including failure/retry/idempotency where applicable). **Treat evolvability as a requirement:** versioned schema, export/import, and an explicit path from blob→normalized and local→cloud.
