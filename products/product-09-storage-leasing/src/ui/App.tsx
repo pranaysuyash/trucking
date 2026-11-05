@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tabs, Button, Group, Stack, Text, Title, TextInput, NumberInput, Select } from '@mantine/core';
+import { Tabs, Button, Group, Stack, Text, Title, TextInput, NumberInput, Select, Badge, Table, ScrollArea } from '@mantine/core';
 import { SuiteDock } from './SuiteDock';
 import { useFacilityStore } from './hooks/useFacilityStore';
 import { selectMetrics, selectRentSummary, selectMaintSummary, selectCharges } from './selectors';
@@ -117,6 +117,7 @@ export function App() {
     maintenanceTasks,
     meterReadings,
     receipts,
+    events,
     loading,
     flashMsg,
     tab,
@@ -774,6 +775,7 @@ export function App() {
             <Tabs.Tab value="maintenance">Maintenance</Tabs.Tab>
             <Tabs.Tab value="meters">Meters</Tabs.Tab>
             <Tabs.Tab value="analytics">Analytics</Tabs.Tab>
+            <Tabs.Tab value="audit">Audit log</Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="overview" pt="md">
@@ -1836,7 +1838,65 @@ export function App() {
                 </Stack>
               </SectionCard>
             </Stack>
-          </Tabs.Panel>        </Tabs>
+          </Tabs.Panel>
+
+          <Tabs.Panel value="audit" pt="md">
+            <Stack gap="md">
+              <SectionCard
+                title="Audit log (foundation)"
+                subtitle="Append-only operational events persisted in the schema-v1 state (additive). Read-only view; use for CA/audit traceability. Export, tamper-evidence, and retention policy are deferred decisions."
+              >
+                {events.length === 0 ? (
+                  <EmptyState
+                    title="No audit events yet"
+                    hint="Events appear as you register facilities/spaces, create leases, generate ledger entries, and record payments/receipts."
+                  />
+                ) : (
+                  <ScrollArea h={520}>
+                    <Table striped highlightOnHover withTableBorder withColumnBorders>
+                      <Table.Thead>
+                        <Table.Tr>
+                          <Table.Th>Time</Table.Th>
+                          <Table.Th>Event</Table.Th>
+                          <Table.Th>Entity refs</Table.Th>
+                          <Table.Th>Actor</Table.Th>
+                          <Table.Th>Verification</Table.Th>
+                          <Table.Th>Payload</Table.Th>
+                        </Table.Tr>
+                      </Table.Thead>
+                      <Table.Tbody>
+                        {[...events].reverse().map((ev) => {
+                          const refs = [
+                            ev.spaceId ? `space:${ev.spaceId}` : null,
+                            ev.tenantId ? `tenant:${ev.tenantId}` : null,
+                            ev.leaseId ? `lease:${ev.leaseId}` : null,
+                          ].filter(Boolean).join(' · ');
+                          let payload = '';
+                          try {
+                            payload = JSON.stringify(ev.payload ?? {});
+                          } catch {
+                            payload = String(ev.payload ?? '');
+                          }
+                          if (payload.length > 180) payload = `${payload.slice(0, 177)}…`;
+                          return (
+                            <Table.Tr key={ev.eventId}>
+                              <Table.Td><Text size="xs">{new Date(ev.eventTime).toLocaleString()}</Text></Table.Td>
+                              <Table.Td><Badge variant="light">{ev.eventType}</Badge></Table.Td>
+                              <Table.Td><Text size="xs" c="dimmed">{refs || '—'}</Text></Table.Td>
+                              <Table.Td><Text size="xs">{ev.actor ?? '—'}</Text></Table.Td>
+                              <Table.Td><Text size="xs">{ev.verificationStatus ?? '—'}</Text></Table.Td>
+                              <Table.Td><Text size="xs" ff="monospace" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{payload || '{}'}</Text></Table.Td>
+                            </Table.Tr>
+                          );
+                        })}
+                      </Table.Tbody>
+                    </Table>
+                  </ScrollArea>
+                )}
+              </SectionCard>
+            </Stack>
+          </Tabs.Panel>
+        </Tabs>
       </div>
     </div>
   );
