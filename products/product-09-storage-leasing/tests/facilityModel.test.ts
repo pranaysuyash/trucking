@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { allocateActualBill } from '../src/engine/facilityModel';
 import {
   createFacility,
   addSpace,
@@ -93,5 +94,17 @@ describe('P09 Facility & Space Model', () => {
     const formerCold = f.spaces.find(s => s.id === 'SP-A');
     expect(formerCold?.environmentalClass).toBe('ambient');
     expect(formerCold?.notes).toContain('decommissioned');
+  });
+});
+
+describe('allocateActualBill', () => {
+  it('allocates proportionally by kWh', () => {
+    const r = allocateActualBill({ totalBill: 1000, subReadings: [{ spaceId: 'A', kwh: 300 }, { spaceId: 'B', kwh: 700 }] });
+    expect(r[0].allocated).toBe(300);
+    expect(r[1].allocated).toBe(700);
+  });
+  it('handles zero consumption', () => {
+    const r = allocateActualBill({ totalBill: 1000, subReadings: [{ spaceId: 'A', kwh: 0 }] });
+    expect(r[0].allocated).toBe(0);
   });
 });

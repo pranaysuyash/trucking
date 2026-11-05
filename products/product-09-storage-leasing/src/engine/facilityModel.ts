@@ -293,3 +293,20 @@ export function computeElectricityCharges(input: {
     return { spaceId: r.spaceId, kwh: r.kwh, energyCharge, dgCharge, total: Math.round((energyCharge + dgCharge) * 100) / 100 };
   });
 }
+
+export function allocateActualBill(input: {
+  totalBill: number;
+  subReadings: { spaceId: string; kwh: number }[];
+  commonAreaKwh?: number;
+  rounding?: 'floor' | 'round';
+}): { spaceId: string; kwh: number; sharePct: number; allocated: number }[] {
+  const totalSubKwh = input.subReadings.reduce((s, r) => s + r.kwh, 0);
+  const common = input.commonAreaKwh ?? 0;
+  const denominator = totalSubKwh + common;
+  if (denominator <= 0) return input.subReadings.map(r => ({ spaceId: r.spaceId, kwh: r.kwh, sharePct: 0, allocated: 0 }));
+  return input.subReadings.map(r => {
+    const sharePct = Math.round((r.kwh / denominator) * 10000) / 100;
+    const allocated = Math.round((input.totalBill * (r.kwh / denominator)) * 100) / 100;
+    return { spaceId: r.spaceId, kwh: r.kwh, sharePct, allocated };
+  });
+}
