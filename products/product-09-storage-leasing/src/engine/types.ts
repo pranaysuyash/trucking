@@ -22,7 +22,13 @@ export type SpaceType =
   | 'plot'
   | 'unit'
   | 'cold_chamber'
-  | 'open_yard';
+  | 'open_yard'
+  | 'container'
+  | 'silo'
+  | 'tank'
+  | 'rack'
+  | 'locker'
+  | 'parking_bay';
 
 export type EnvironmentalClass = 'ambient' | 'chilled' | 'frozen' | 'hazmat';
 

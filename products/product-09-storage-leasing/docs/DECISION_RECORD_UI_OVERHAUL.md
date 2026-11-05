@@ -44,3 +44,7 @@ Teal primary `#14B8A6` / ink `#01211D` / text `#2DD4BF`; brass reserved for mone
 - `SuiteDock.tsx` retains its own sky-blue palette (`#38bdf8`); convergence with `packages/suite-dock` is a separate, cross-product decision.
 - Electricity tariff (`₹8`/`₹12`) remains hardcoded in `selectors.ELECTRICITY_CONFIG` (changing it implies a `schemaVersion` bump + migration).
 - P09 now has its own real `node_modules` (isolated from the shared P01 symlink store) to avoid polluting other products.
+## 2026-11-05 follow-up: sync from storage-leasing repo
+- Synced `src/engine/gstInvoice.ts` and `src/engine/offlineOutbox.ts` plus their tests from `pranaysuyash/storage-leasing` into the monorepo (finance/billing-adjacent modules; tests cover GST invoice and offline outbox behavior).
+- Synced `src/engine/types.ts` and `src/ui/App.tsx` space-type/billing additions to stay consistent with `storage-leasing`.
+- Validation: `npm run typecheck` pass; `npm test` pass (10 files, 82 tests). Evidence tier 3 for the validated paths.

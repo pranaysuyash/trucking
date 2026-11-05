@@ -53,6 +53,12 @@ const SPACE_TYPE_OPTIONS = [
   { value: 'unit', label: 'Unit' },
   { value: 'cold_chamber', label: 'Cold Chamber' },
   { value: 'open_yard', label: 'Open Yard' },
+  { value: 'container', label: 'Container' },
+  { value: 'silo', label: 'Silo' },
+  { value: 'tank', label: 'Tank' },
+  { value: 'rack', label: 'Rack' },
+  { value: 'locker', label: 'Locker' },
+  { value: 'parking_bay', label: 'Parking Bay' },
 ];
 
 const ENV_OPTIONS = [
