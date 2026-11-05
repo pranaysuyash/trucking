@@ -54,3 +54,6 @@ playwright/.cache/
 .wrangler/
 .agent/
 .local/
+
+# Browser automation profiles / evidence captures
+**/.chrome-profile/

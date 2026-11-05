@@ -9,7 +9,8 @@ export type Tab =
   | 'leases'
   | 'ledger'
   | 'maintenance'
-  | 'meters';
+  | 'meters'
+  | 'analytics';
 
 export type MeterReading = MeterSubReading;
 

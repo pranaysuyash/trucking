@@ -28,7 +28,9 @@ export type SpaceType =
   | 'tank'
   | 'rack'
   | 'locker'
-  | 'parking_bay';
+  | 'parking_bay'
+  | 'godown'
+  | 'shed';
 
 export type EnvironmentalClass = 'ambient' | 'chilled' | 'frozen' | 'hazmat';
 
@@ -39,9 +41,6 @@ export type BillingUnit =
   | 'container_day'
   | 'unit_month'
   | 'bag_month'
-  | 'container_day'
-  | 'pallet_day'
-  | 'tonne_month'
   | 'revenue_share'
   | 'fixed';
 
@@ -84,6 +83,7 @@ export interface Facility {
   ownershipType?: 'owned' | 'leased_in' | 'managed' | 'sub_leased' | 'government' | 'cooperative' | 'franchise';
   landlordName?: string; // if leased_in
   landlordContact?: string;
+  gstin?: string;
   spaces: RentableSpace[];
   createdAt: string;
 }
@@ -101,6 +101,12 @@ export interface RentableSpace {
   maxLoadKg?: number;
   status: SpaceStatus;
   spacePurpose?: 'for_lease' | 'for_own_use' | 'shared_storage' | 'cold_storage' | 'agricultural' | 'container_yard' | 'self_storage' | 'bonded';
+  /** Optional grouping for multiple godowns/buildings/blocks at the same facility location. */
+  buildingName?: string;
+  /** ISO timestamp of last status change (additive; absent on legacy records). */
+  statusChangedAt?: string;
+  /** ISO timestamp when current vacancy began (set when status becomes vacant; cleared otherwise). Absent on legacy records. */
+  vacantSince?: string;
   meterId?: string;
   notes?: string;
 }
@@ -265,8 +271,11 @@ export interface FacilityMetrics {
   blockedAreaSqFt: number;
   underRepairAreaSqFt: number;
   occupancyPercent: number;
-  monthlyRentDue: number;
-  monthlyRentOverdue: number;
+  /** Sum of all modeled space areaSqFt values (independent of facility usable/total). */
+  modeledSpaceAreaSqFt: number;
+  /** Optional: not computed by computeFacilityMetrics; rent due/overdue come from rent summary selectors. */
+  monthlyRentDue?: number;
+  monthlyRentOverdue?: number;
   activeLeases: number;
   vacantSpaces: number;
 }

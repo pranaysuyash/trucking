@@ -70,17 +70,53 @@ describe('P09 Facility & Space Model', () => {
     expect(() => setSpaceStatus(f, 'NOPE', 'vacant')).toThrow();
   });
 
-  it('computes facility metrics correctly', () => {
+  it('stores optional GSTIN on facility', () => {
+    const f = createFacility({
+      id: 'FG', code: 'WHG', name: 'GST Warehouse', address: 'Addr', city: 'Bengaluru', state: 'Karnataka',
+      totalAreaSqFt: 10000, usableAreaSqFt: 8000, floors: 1, gstin: '29ABCDE1234F1Z5',
+    });
+    expect(f.gstin).toBe('29ABCDE1234F1Z5');
+  });
+
+  it('computes facility metrics correctly and preserves occupancy/modeled-area semantics', () => {
     const f = createFacility({ id: 'F8', code: 'WH8', name: 'W', address: 'A', city: 'C', state: 'S', totalAreaSqFt: 10000, usableAreaSqFt: 9000, floors: 1 });
-    addSpace(f, { id: 'S1', code: 'R1', name: 'Room1', type: 'room', floor: 1, dimensions: { lengthFt: 30, widthFt: 20 }, environmentalClass: 'ambient', status: 'leased' });
-    addSpace(f, { id: 'S2', code: 'R2', name: 'Room2', type: 'room', floor: 1, dimensions: { lengthFt: 30, widthFt: 20 }, environmentalClass: 'ambient', status: 'vacant' });
-    addSpace(f, { id: 'S3', code: 'R3', name: 'Room3', type: 'room', floor: 1, dimensions: { lengthFt: 20, widthFt: 20 }, environmentalClass: 'ambient', status: 'under_repair' });
+    addSpace(f, { id: 'S1', code: 'R1', name: 'Room1', type: 'room', floor: 1, dimensions: { lengthFt: 30, widthFt: 20 }, environmentalClass: 'ambient', status: 'leased' }); // 600
+    addSpace(f, { id: 'S2', code: 'R2', name: 'Room2', type: 'room', floor: 1, dimensions: { lengthFt: 30, widthFt: 20 }, environmentalClass: 'ambient', status: 'vacant' }); // 600
+    addSpace(f, { id: 'S3', code: 'R3', name: 'Room3', type: 'room', floor: 1, dimensions: { lengthFt: 20, widthFt: 20 }, environmentalClass: 'ambient', status: 'under_repair' }); // 400
     const m = computeFacilityMetrics(f, [{ spaceId: 'S1', status: 'active' }]);
     expect(m.leasedAreaSqFt).toBe(600);
     expect(m.vacantAreaSqFt).toBe(600);
     expect(m.underRepairAreaSqFt).toBe(400);
     expect(m.activeLeases).toBe(1);
     expect(m.vacantSpaces).toBe(1);
+    // Regression: modeled area is the sum of all space areas (1600), independent of property-level usable (9000).
+    expect(m.modeledSpaceAreaSqFt).toBe(1600);
+    expect(m.usableAreaSqFt).toBe(9000);
+    // Regression: occupancy % uses facility usable area (preserved behavior), rounded.
+    expect(m.occupancyPercent).toBe(Math.round((600 / 9000) * 100));
+  });
+
+  it('supports godown/shed space types and preserves buildingName grouping metadata', () => {
+    const f = createFacility({ id: 'F9', code: 'WH9', name: 'Yard', address: 'A', city: 'Pune', state: 'Maharashtra', totalAreaSqFt: 50000, usableAreaSqFt: 40000, floors: 1 });
+    const g1 = addSpace(f, { id: 'G1', code: 'GD-1', name: 'Godown 1', type: 'godown', floor: 1, dimensions: { lengthFt: 100, widthFt: 50 }, environmentalClass: 'ambient', status: 'vacant', buildingName: 'North Compound' });
+    const g2 = addSpace(f, { id: 'G2', code: 'GD-2', name: 'Shed 2', type: 'shed', floor: 1, dimensions: { lengthFt: 80, widthFt: 40 }, environmentalClass: 'ambient', status: 'vacant', buildingName: 'North Compound' });
+    expect(g1.type).toBe('godown');
+    expect(g1.buildingName).toBe('North Compound');
+    expect(g2.type).toBe('shed');
+    expect(g2.buildingName).toBe('North Compound');
+    expect(f.spaces.filter((s) => s.buildingName === 'North Compound')).toHaveLength(2);
+    const m = computeFacilityMetrics(f, []);
+    expect(m.modeledSpaceAreaSqFt).toBe(5000 + 3200);
+  });
+
+  it('modeledSpaceAreaSqFt can equal usable when explicitly aligned (transparency case)', () => {
+    const f = createFacility({ id: 'F10', code: 'WH10', name: 'Aligned', address: 'A', city: 'C', state: 'S', totalAreaSqFt: 2000, usableAreaSqFt: 1500, floors: 1 });
+    addSpace(f, { id: 'S1', code: 'R1', name: 'Room1', type: 'room', floor: 1, dimensions: { lengthFt: 30, widthFt: 25 }, environmentalClass: 'ambient', status: 'leased' }); // 750
+    addSpace(f, { id: 'S2', code: 'R2', name: 'Room2', type: 'room', floor: 1, dimensions: { lengthFt: 30, widthFt: 25 }, environmentalClass: 'ambient', status: 'vacant' }); // 750
+    const m = computeFacilityMetrics(f, [{ spaceId: 'S1', status: 'active' }]);
+    expect(m.modeledSpaceAreaSqFt).toBe(1500);
+    expect(m.usableAreaSqFt).toBe(1500);
+    expect(m.occupancyPercent).toBe(50);
   });
 
   it('creates Indian warehouse example with decommissioned cold storage', () => {

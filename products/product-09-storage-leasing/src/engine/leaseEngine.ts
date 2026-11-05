@@ -78,13 +78,18 @@ export function activateLease(lease: Lease, space: RentableSpace): void {
   if (lease.status !== 'draft') throw new Error('Only draft leases can be activated.');
   lease.status = 'active';
   space.status = 'leased';
+  space.statusChangedAt = new Date().toISOString();
+  delete space.vacantSince;
 }
 
 export function terminateLease(lease: Lease, space: RentableSpace, terminationDate: string): void {
   if (lease.status !== 'active') throw new Error('Only active leases can be terminated.');
   lease.status = 'terminated';
   lease.endDate = terminationDate;
+  const at = new Date().toISOString();
   space.status = 'vacant';
+  space.statusChangedAt = at;
+  space.vacantSince = space.vacantSince ?? at;
 }
 
 export function calculateRentForPeriod(

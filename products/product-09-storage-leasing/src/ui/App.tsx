@@ -3,6 +3,7 @@ import { Tabs, Button, Group, Stack, Text, Title, TextInput, NumberInput, Select
 import { SuiteDock } from './SuiteDock';
 import { useFacilityStore } from './hooks/useFacilityStore';
 import { selectMetrics, selectRentSummary, selectMaintSummary, selectCharges } from './selectors';
+import { computeAdminAnalytics } from '../engine/analytics';
 import { EmptyState } from './components/EmptyState';
 import { StatCard } from './components/StatCard';
 import { SectionCard } from './components/SectionCard';
@@ -49,6 +50,8 @@ const OWNERSHIP_OPTIONS = [
 const SPACE_TYPE_OPTIONS = [
   { value: 'room', label: 'Room' },
   { value: 'chamber', label: 'Chamber' },
+  { value: 'godown', label: 'Godown' },
+  { value: 'shed', label: 'Shed' },
   { value: 'bay', label: 'Bay' },
   { value: 'plot', label: 'Plot' },
   { value: 'unit', label: 'Unit' },
@@ -151,6 +154,7 @@ export function App() {
   const [newSpace, setNewSpace] = useState({
     code: '',
     name: '',
+    buildingName: '',
     type: 'room' as RentableSpace['type'],
     floor: 1,
     lengthFt: 0,
@@ -193,6 +197,24 @@ export function App() {
 
   const metrics = selectMetrics(facility, leases);
   const rentSummary = selectRentSummary(ledgerEntries);
+  const analytics = computeAdminAnalytics({
+    facility,
+    tenants,
+    leases,
+    ledgerEntries,
+    metrics: metrics
+      ? {
+          usableAreaSqFt: metrics.usableAreaSqFt,
+          modeledSpaceAreaSqFt: metrics.modeledSpaceAreaSqFt,
+          leasedAreaSqFt: metrics.leasedAreaSqFt,
+          vacantAreaSqFt: metrics.vacantAreaSqFt,
+          blockedAreaSqFt: metrics.blockedAreaSqFt,
+          underRepairAreaSqFt: metrics.underRepairAreaSqFt,
+          occupancyPercent: metrics.occupancyPercent,
+        }
+      : null,
+    asOfDate: new Date().toISOString().slice(0, 10),
+  });
   const maintSummary = selectMaintSummary(maintenanceTasks);
   const charges = selectCharges(meterReadings);
 
@@ -237,9 +259,10 @@ export function App() {
         dimensions: { lengthFt: newSpace.lengthFt, widthFt: newSpace.widthFt },
         environmentalClass: newSpace.env,
         status: 'vacant',
+        buildingName: newSpace.buildingName.trim() || undefined,
       });
       setFacility({ ...facility, spaces: [...facility.spaces] });
-      setNewSpace({ code: '', name: '', type: 'room', floor: 1, lengthFt: 0, widthFt: 0, env: 'ambient' });
+      setNewSpace({ code: '', name: '', buildingName: '', type: 'room', floor: 1, lengthFt: 0, widthFt: 0, env: 'ambient' });
       flash('Space added.');
     } catch (e) {
       flash((e as Error).message);
@@ -478,7 +501,7 @@ export function App() {
               {flashMsg}
             </div>
           )}
-          <SectionCard title="Register Facility" subtitle="No demo data is seeded. All figures come from your inputs. Records persist to your local storage service and stay available across reloads.">
+          <SectionCard title="Register Facility" subtitle="Property-level registration. Enter whole-site totals (usable sq ft is used for occupancy). Add individual rentable spaces (rooms/godowns/sheds/units) on the Spaces tab — you can model multiple godowns or buildings at the same location by adding separate spaces and setting a building/godown name on each.">
             <Stack gap="sm">
               <Group gap="sm" wrap="wrap">
                 <TextInput
@@ -540,25 +563,31 @@ export function App() {
                   />
                 </Group>
               )}
-              <Group gap="sm" wrap="wrap">
+              <Text size="xs" c="dimmed">
+                Property totals are independent of individual spaces. After registration, compare them with the sum of modeled spaces in Overview; if they differ, adjust totals or add/update spaces so occupancy is meaningful.
+              </Text>
+              <Group gap="sm" wrap="wrap" align="flex-end">
                 <NumberInput
-                  aria-label="Total square feet"
+                  aria-label="Total square feet (property)"
+                  label="Total sq ft (property)"
                   placeholder="Total sq ft"
                   value={reg.totalArea}
                   onChange={(v) => setReg({ ...reg, totalArea: Number(v) || 0 })}
                   min={0}
-                  w={120}
+                  w={160}
                 />
                 <NumberInput
-                  aria-label="Usable square feet"
+                  aria-label="Usable square feet (property)"
+                  label="Usable sq ft (property)"
                   placeholder="Usable sq ft"
                   value={reg.usableArea}
                   onChange={(v) => setReg({ ...reg, usableArea: Number(v) || 0 })}
                   min={0}
-                  w={120}
+                  w={160}
                 />
                 <NumberInput
                   aria-label="Number of floors"
+                  label="Floors"
                   placeholder="Floors"
                   value={reg.floors}
                   onChange={(v) => setReg({ ...reg, floors: Number(v) || 1 })}
@@ -616,12 +645,14 @@ export function App() {
             <Tabs.Tab value="ledger">Ledger</Tabs.Tab>
             <Tabs.Tab value="maintenance">Maintenance</Tabs.Tab>
             <Tabs.Tab value="meters">Meters</Tabs.Tab>
+            <Tabs.Tab value="analytics">Analytics</Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="overview" pt="md">
             <Stack gap="md">
               <div className="kpi-row">
-                <StatCard label="Leasable sq ft" value={sqft(metrics?.usableAreaSqFt ?? 0)} />
+                <StatCard label="Facility usable (property)" value={sqft(metrics?.usableAreaSqFt ?? 0)} />
+                <StatCard label="Sum of modeled spaces" value={sqft(metrics?.modeledSpaceAreaSqFt ?? 0)} />
                 <StatCard label="Occupied sq ft" value={sqft(metrics?.leasedAreaSqFt ?? 0)} />
                 <StatCard label="Occupancy" value={pct(metrics?.occupancyPercent ?? 0)} />
                 <StatCard label="Monthly rent due" value={<Money value={rentSummary.totalDue} />} tone="money" />
@@ -630,8 +661,29 @@ export function App() {
                   value={<Money value={rentSummary.totalOverdue} />}
                   tone="danger"
                 />
-                <StatCard label="Open maintenance" value={maintSummary.openCount + maintSummary.inProgressCount} />
               </div>
+              {metrics && facility.usableAreaSqFt > 0 && metrics.usableAreaSqFt !== metrics.modeledSpaceAreaSqFt && (
+                <Group gap="xs" align="center" wrap="wrap">
+                  <Text size="xs" c="dimmed">
+                    Property usable {sqft(facility.usableAreaSqFt)} differs from modeled spaces {sqft(metrics.modeledSpaceAreaSqFt)} (occupancy uses property usable).
+                  </Text>
+                  {metrics.modeledSpaceAreaSqFt > 0 && (
+                    <Button
+                      size="compact-xs"
+                      variant="subtle"
+                      color="gray"
+                      onClick={() => {
+                        const newUsable = metrics.modeledSpaceAreaSqFt;
+                        const newTotal = Math.max(facility.totalAreaSqFt, newUsable);
+                        setFacility({ ...facility, usableAreaSqFt: newUsable, totalAreaSqFt: newTotal });
+                        flash('Facility usable updated to sum of modeled spaces.');
+                      }}
+                    >
+                      Align usable to modeled
+                    </Button>
+                  )}
+                </Group>
+              )}
 
               {receipts.length > 0 && (
                 <SectionCard title="Receipts Issued">
@@ -662,7 +714,7 @@ export function App() {
 
           <Tabs.Panel value="spaces" pt="md">
             <Stack gap="md">
-              <SectionCard title="Add Space" subtitle="Define a rentable space in the facility.">
+              <SectionCard title="Add Space" subtitle="Define a rentable space in the facility. To model separate godowns/buildings at the same location, add spaces with type Godown/Shed and set a Building/Godown name for grouping.">
                 <Stack gap="sm">
                   <Group gap="sm" wrap="wrap">
                     <TextInput
@@ -676,6 +728,12 @@ export function App() {
                       placeholder="Name"
                       value={newSpace.name}
                       onChange={(e) => setNewSpace({ ...newSpace, name: e.currentTarget.value })}
+                    />
+                    <TextInput
+                      aria-label="Building or godown name (optional)"
+                      placeholder="Building/Godown (optional)"
+                      value={newSpace.buildingName}
+                      onChange={(e) => setNewSpace({ ...newSpace, buildingName: e.currentTarget.value })}
                     />
                     <Select
                       aria-label="Space type"
@@ -722,6 +780,7 @@ export function App() {
                       <tr>
                         <th scope="col">Code</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Building/Godown</th>
                         <th scope="col">Type</th>
                         <th scope="col" style={{ textAlign: 'right' }}>Area</th>
                         <th scope="col">Status</th>
@@ -734,6 +793,7 @@ export function App() {
                         <tr key={s.id}>
                           <td className="mono">{s.code}</td>
                           <td>{s.name}</td>
+                          <td>{s.buildingName || '—'}</td>
                           <td>{s.type}</td>
                           <td style={{ textAlign: 'right' }} className="num">{s.areaSqFt}</td>
                           <td>
@@ -1476,6 +1536,100 @@ export function App() {
                       </tbody>
                     </table>
                   </div>
+                )}
+              </SectionCard>
+            </Stack>
+          </Tabs.Panel>
+
+          <Tabs.Panel value="analytics" pt="md">
+            <Stack gap="md">
+              <SectionCard title="Admin / Analysis" subtitle="Computed from current facility, leases, and ledger data. Vacancy duration is tracked for status changes going forward; legacy vacant spaces may show unknown until a status update is recorded.">
+                <Group gap="sm" wrap="wrap">
+                  <StatCard label="Modeled spaces" value={analytics.utilization.totalSpaces} />
+                  <StatCard label="Leased spaces" value={analytics.utilization.leasedSpaces} />
+                  <StatCard label="Vacant spaces" value={analytics.utilization.vacantSpaces} />
+                  <StatCard label="Leased area" value={sqft(analytics.utilization.leasedAreaSqFt)} />
+                  <StatCard label="Vacant area" value={sqft(analytics.utilization.vacantAreaSqFt)} />
+                  <StatCard label="Blocked/repair area" value={sqft(analytics.utilization.blockedAreaSqFt + analytics.utilization.underRepairAreaSqFt)} />
+                </Group>
+              </SectionCard>
+
+              <SectionCard title="Currently vacant spaces" subtitle="How much is unused now, and how long (when tracked).">
+                {analytics.vacantNow.length === 0 ? (
+                  <EmptyState title="No vacant spaces" hint="All modeled spaces are leased, blocked, reserved, or under repair." />
+                ) : (
+                  <div style={{ overflowX: 'auto' }}>
+                    <table className="data-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Code</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Building/Godown</th>
+                          <th scope="col">Type</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Area</th>
+                          <th scope="col">Vacant since</th>
+                          <th scope="col" style={{ textAlign: 'right' }}>Days vacant</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {analytics.vacantNow.map((s) => (
+                          <tr key={s.spaceId}>
+                            <td className="mono">{s.code}</td>
+                            <td>{s.name}</td>
+                            <td>{s.buildingName || '—'}</td>
+                            <td>{s.type}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{s.areaSqFt}</td>
+                            <td>{s.vacantSince ? dateShort(s.vacantSince) : '— (legacy)'}</td>
+                            <td style={{ textAlign: 'right' }} className="num">{s.daysVacant == null ? '—' : s.daysVacant}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </SectionCard>
+
+              <SectionCard title="Renters delaying payments" subtitle="Regularly delays = >=2 late-paid entries, or >=50% late/overdue problem entries with >=2 ledger entries (transparent heuristic). Days late are computed from due date vs paid date; current overdue also increases risk.">
+                {analytics.tenantPaymentBehavior.length === 0 ? (
+                  <EmptyState title="No payment behavior data" hint="Add tenants, leases, and ledger entries to analyze payment delays." />
+                ) : (
+                  <>
+                    <Text size="sm" c="dimmed" mb="xs">
+                      Tracked tenants: {analytics.totals.tenantsTracked} · Regular delayers: {analytics.regularDelayers.length} · Overdue entries (as of {dateShort(analytics.asOfDate)}): {analytics.totals.overdueEntryCount} totaling <Money value={analytics.totals.overdueAmount} />
+                    </Text>
+                    <div style={{ overflowX: 'auto' }}>
+                      <table className="data-table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Renter</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Entries</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Paid late</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Overdue now</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Avg days late</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Max days late</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Late-paid amount</th>
+                            <th scope="col" style={{ textAlign: 'right' }}>Outstanding</th>
+                            <th scope="col">Flag</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {analytics.tenantPaymentBehavior.map((t) => (
+                            <tr key={t.tenantId}>
+                              <td>{t.tenantName}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{t.ledgerEntries}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{t.latePaidEntries}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{t.overdueEntries}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{t.avgDaysLateWhenPaid == null ? '—' : t.avgDaysLateWhenPaid}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{t.maxDaysLate || '—'}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{inr(t.totalLatePaidAmount)}</td>
+                              <td style={{ textAlign: 'right' }} className="num">{inr(t.totalOutstanding)}</td>
+                              <td>{t.regularlyDelays ? <StatusBadge tone="danger">Regularly delays</StatusBadge> : t.overdueEntries > 0 || t.latePaidEntries > 0 ? <StatusBadge tone="warn">Some delay</StatusBadge> : <StatusBadge tone="success">On track</StatusBadge>}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
                 )}
               </SectionCard>
             </Stack>

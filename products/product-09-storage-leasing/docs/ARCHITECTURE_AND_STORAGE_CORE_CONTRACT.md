@@ -13,8 +13,9 @@ Three distinct relationships, all referring to the same physical facility:
 A landlord does not automatically need access to tenant SKUs. Permissions and data ownership differ.
 
 ### 3. Domain Models
-- `Facility`: building with total/usable area, floors, electricity meter, refrigeration plant status.
-- `RentableSpace`: a rentable unit (room, chamber, bay, plot, unit, cold_chamber, open_yard) with area, environmental class, status.
+- `Facility`: property/site registration with property-level total/usable area, floors, electricity meter, refrigeration plant status. “Usable area” is a property-level capacity input (may exclude common/circulation areas) and is currently the occupancy denominator (preserved behavior); it may differ from the sum of modeled `RentableSpace` areas — the UI surfaces this transparently.
+- `RentableSpace`: a rentable/modeled unit (room, chamber, bay, plot, unit, cold_chamber, open_yard, container, silo, tank, rack, locker, parking_bay, godown, shed) with area, environmental class, status, and optional `buildingName` for grouping multiple godowns/buildings/blocks at the same facility location.
+  - **Current scope:** single-facility workspace; multiple godowns at the same location are modeled as spaces (optionally grouped). **Open decision:** separate managed facility/building entities (`facilities[]`, selection, persistence evolution) — see `docs/DECISION_RECORD_FACILITY_AREA_AND_GODOWNS.md`.
 - `Tenant`: customer with GSTIN, contact details.
 - `Lease`: agreement linking space + tenant + period + billing unit + rate + escalation + deposit.
 - `RentLedgerEntry`: monthly rent invoice/payment with base rent, electricity, maintenance, other charges, payment status.
