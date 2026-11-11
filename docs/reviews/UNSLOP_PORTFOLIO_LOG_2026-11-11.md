@@ -41,3 +41,28 @@ Note on the 5 remaining low `unslop-code` hits in `packages/suite-dock`: four ar
 5. `npm --workspace=@trucking/storage-core run typecheck`: PASS.
 6. `npm run check:suite`: PASS (10 products verified).
 7. Browser capture: not applicable for Component 1 directly because shared packages do not mount a standalone Vite server; live rendered dock/UI captures are executed per product starting with Component 2 (`command-center-portal`).
+
+
+## Component 2: Unified Command Center Portal (`products/command-center-portal`, Port 5170)
+
+Scope: Root portal UI, lifecycle ribbon, telemetry ticker, exception control tower, persona cockpit switcher, platform bus, portal stylesheet, README, and HTML shell (`products/command-center-portal`). Detailed audit record: `products/command-center-portal/docs/reviews/UNSLOP_AUDIT_2026-11-11.md`.
+
+### Scanner Comparison (Before / After)
+
+| Target | Scanner | Before | After | Key Changes |
+| :--- | :--- | :--- | :--- | :--- |
+| `products/command-center-portal` | `devibe_scan.py` | 16 (2 high, 5 med) | 0 (clean) | Replaced violet `#818cf8` / `#8b5cf6` with teal `#2dd4bf` / `#14b8a6`, removed neon glow shadows and raw UI emojis |
+| `src/` and `tests/` | `unslop_code_scan.py` | 8 bug-class + 4 emoji + verbose IDs | 0 bug-class (0 high, 0 med) | Replaced 9 bare `catch {}` blocks with `console.warn`, replaced emoji literals with SVG icons, fixed stale `All 6` copy |
+| `README.md` and `index.html` | `unslop_text_scan.py` | 25 (`README.md`) | 0 (`index.html`), 1 (`README.md`, term `utilization`) | Removed em dashes, bold lead-ins, and `---` rules; aligned 8-stage documentation |
+
+### Implementation Summary
+
+1. Bug-class and formatting fixes: logged explicit `console.warn` messages across 9 `catch` blocks in `src/engine/platformBus.ts`, `src/ui/App.tsx`, and `src/ui/SuiteDock.tsx`; updated `All 6` product strings to `CANONICAL_PRODUCTS.length`; standardized two-decimal USD formatting (`$2,881.50`) in `src/ui/App.tsx` and `src/ui/PersonaCockpitSwitcher.tsx`.
+2. UI and responsive repair verified in Chrome (`1440x900` desktop and `390x844` mobile): replaced emoji icons in `TelemetryTicker.tsx`, `PlatformEventStreamModal.tsx`, and `ExceptionControlTower.tsx` with SVG icons (`IconZap`, `IconX`, `IconRadio`, `IconShieldAlert`); changed desktop `.lifecycle-ribbon` to a 4x2 CSS grid with `min-width: 0; flex: 1` on `.step-info-col` so Stage 07 and Stage 08 no longer clip and `ROLE FOCUS` / `VIEWED` badges do not collide; added `white-space: nowrap` to `.stage-badge` and port tags; stripped neon `box-shadow` glows and `transition: all` in `src/styles.css` while preserving `.bol-*` paper BOL print weights; stacked mobile footer actions into a 2x2 grid.
+
+### Verification
+
+1. `npm --prefix products/command-center-portal run typecheck`: PASS.
+2. `npm --prefix products/command-center-portal test`: PASS (6 test files, 34 tests).
+3. `npm --prefix products/command-center-portal run build`: PASS (`dist/assets/index-DdXa1Kbu.js` 389.60 kB).
+4. Live Chrome captures (`1440x900` desktop and `390x844` mobile) inspected before and after edits.
