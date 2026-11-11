@@ -66,3 +66,28 @@ Scope: Root portal UI, lifecycle ribbon, telemetry ticker, exception control tow
 2. `npm --prefix products/command-center-portal test`: PASS (6 test files, 34 tests).
 3. `npm --prefix products/command-center-portal run build`: PASS (`dist/assets/index-DdXa1Kbu.js` 389.60 kB).
 4. Live Chrome captures (`1440x900` desktop and `390x844` mobile) inspected before and after edits.
+
+
+## Component 3: Cargo Fit & Load Planning (`products/product-01-cargo-fit`, Port 5173)
+
+Scope: Core load-planning app shell, six modal dialogs, compliance engine strings, stylesheet, HTML manifest, and README (`products/product-01-cargo-fit`). Detailed audit record: `products/product-01-cargo-fit/docs/reviews/UNSLOP_AUDIT_2026-11-11.md`.
+
+### Scanner Comparison (Before / After)
+
+| Target | Scanner | Before | After | Key Changes |
+| :--- | :--- | :--- | :--- | :--- |
+| `products/product-01-cargo-fit` | `devibe_scan.py` | 24 (2 high, 9 med) | 0 (clean) | Replaced `#818cf8` / `#8b5cf6` with teal `#2dd4bf` / `#0d9488`, relaxed pill radii to `6px`, removed neon glows and emojis |
+| `src/` and `tests/` | `unslop_code_scan.py` | 123 (4 bug-class, 27 med) | 0 bug-class (0 high, 0 med) | Replaced 4 bare `catch {}` blocks with `console.warn`, replaced modal/step emojis with SVG icons, updated `All 6` copy |
+| `README.md` and `index.html` | `unslop_text_scan.py` | 67 (`README.md`), 3 (`index.html`) | 0 (`README.md`), 0 (`index.html`) | Rewrote README without bold lead-ins or `---` rules; removed em dashes across title and UI strings |
+
+### Implementation Summary
+
+1. Bug-class and browser hygiene fixes: added `console.warn` error logging in `src/ui/SuiteDock.tsx` and `src/ui/VersionsStep.tsx`; updated `All 6` text to `CANONICAL_PRODUCTS.length`; dropped broken `/icon-192.png` and `/icon-512.png` entries from `public/manifest.json` and deprecated `apple-mobile-web-app-capable` in `index.html`.
+2. Layout and visual repairs verified in Chrome (`1440x900` desktop landing, `#/app/cargo`, `#/app/plan`, and `390x844` mobile): moved `<SuiteDock>` outside `.shell` in `src/ui/App.tsx` so it renders full width above the 2-column grid; set `color-scheme: light` and explicit `color: var(--ink)` on `.topbar .name` in `src/styles.css` so scenario names remain legible; expanded `.badge .glyph` sizing so `INFEASIBLE` no longer overlaps adjacent status text; replaced UI emojis across `PlanStep.tsx`, `nmfcClassification.ts`, and all 6 modal dialogs with crisp monochrome SVG icons.
+
+### Verification
+
+1. `npm --prefix products/product-01-cargo-fit run typecheck`: PASS.
+2. `npm --prefix products/product-01-cargo-fit test`: PASS (`22` test files, `134` tests).
+3. `npm --prefix products/product-01-cargo-fit run build`: PASS (`dist/assets/index-LpC03HyL.js` `643.11 kB`).
+4. Live Chrome captures (`1440x900` landing, `#/app/cargo`, `#/app/plan`, and `390x844` mobile) inspected before and after edits with zero console warnings or errors.
