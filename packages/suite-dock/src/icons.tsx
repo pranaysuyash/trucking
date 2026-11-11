@@ -838,6 +838,42 @@ export const IconShieldAlert: React.FC<IconProps> = ({ size = 20, ...props }) =>
   </svg>
 );
 
+export const IconSearch: React.FC<IconProps> = ({ size = 20, ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
+
+export const IconBriefcase: React.FC<IconProps> = ({ size = 20, ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
+);
+
 /** Helper to render product icon from product id */
 export const ProductIcon: React.FC<{ productId: string; size?: number | string; className?: string }> = ({
   productId,
@@ -857,6 +893,14 @@ export const ProductIcon: React.FC<{ productId: string; size?: number | string; 
       return <IconTruck size={size} className={className} />;
     case 'product-05-fleet-telematics':
       return <IconRadio size={size} className={className} />;
+    case 'product-06-warehouse-space-flow':
+      return <IconLayers size={size} className={className} />;
+    case 'product-07-yard-dock':
+      return <IconDoor size={size} className={className} />;
+    case 'product-08-carrier-trust':
+      return <IconShieldAlert size={size} className={className} />;
+    case 'product-09-storage-leasing':
+      return <IconBuilding size={size} className={className} />;
     default:
       return <IconTruck size={size} className={className} />;
   }

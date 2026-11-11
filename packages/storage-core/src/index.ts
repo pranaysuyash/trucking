@@ -1,13 +1,13 @@
 /**
- * @trucking/storage-core — Shared Storage Core types and helpers.
+ * @trucking/storage-core, shared storage core types and helpers.
  *
  * Foundation package extracting the common domain model shared by:
  *   - product-06-warehouse-space-flow (goods/capacity/movements)
  *   - product-09-storage-leasing (space/rent/maintenance)
  *   - future specialized storage modules (cold, grain, yard, container, self-storage)
  *
- * NOTE: Consumers currently maintain their own copies. Migration to this package
- * is a follow-up refactor (I4) requiring careful import updates and regression tests.
+ * Consumers currently maintain local type copies; consolidating imports onto
+ * this package is tracked as follow-up work (I4) with regression coverage.
  * This package is the canonical target for new shared types.
  */
 

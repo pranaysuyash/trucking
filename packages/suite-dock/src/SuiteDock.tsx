@@ -11,6 +11,7 @@ import {
   IconTruck,
   IconFileText,
   IconShieldAlert,
+  IconSearch,
 } from './icons';
 import { CANONICAL_PRODUCTS, resolveProductUrl } from './registry';
 import { CommandPalette } from './CommandPalette';
@@ -31,24 +32,31 @@ export interface TenantProfile {
   userName: string;
 }
 
+const DEFAULT_TENANT_PROFILE: TenantProfile = {
+  tenantId: 'tenant_apex_freight',
+  tenantName: 'Apex Logistics & Freight',
+  mode: 'suite',
+  licensedProducts: [
+    'product-01-cargo-fit',
+    'product-02-freight-pricing',
+    'product-04-asset-studio',
+  ],
+  userRole: 'fleet_manager',
+  userName: 'Alex Chen',
+};
+
 export function getTenantProfile(): TenantProfile {
-  if (typeof window !== 'undefined') {
+  if (typeof localStorage !== 'undefined') {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) return JSON.parse(stored);
-    } catch {}
+    } catch (error) {
+      console.warn('Unable to parse tenant profile from localStorage; using default.', error);
+    }
   }
   return {
-    tenantId: 'tenant_apex_freight',
-    tenantName: 'Apex Logistics & Freight',
-    mode: 'suite',
-    licensedProducts: [
-      'product-01-cargo-fit',
-      'product-02-freight-pricing',
-      'product-04-asset-studio',
-    ],
-    userRole: 'fleet_manager',
-    userName: 'Alex Chen',
+    ...DEFAULT_TENANT_PROFILE,
+    licensedProducts: [...DEFAULT_TENANT_PROFILE.licensedProducts],
   };
 }
 
@@ -64,7 +72,7 @@ export interface SuiteDockProps {
 export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
   const [profile, setProfile] = useState<TenantProfile>(getTenantProfile);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isPlanModalOpen, setIsPlanModalOpen] = useState(false);
+  const [planModalOpen, setPlanModalOpen] = useState(false);
   const [upsellProduct, setUpsellProduct] = useState<SubproductManifest | null>(null);
   const [trialToast, setTrialToast] = useState<string | null>(null);
   const [isCmdOpen, setIsCmdOpen] = useState(false);
@@ -197,7 +205,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
           userRole: 'enterprise_admin',
           licensedProducts: CANONICAL_PRODUCTS.map((p) => p.id),
         }));
-        setTrialToast(`Switched to Full Enterprise Command Suite (All 6 Tools)`);
+        setTrialToast(`Switched to Full Enterprise Command Suite (${CANONICAL_PRODUCTS.length} Tools)`);
         break;
     }
     setTimeout(() => setTrialToast(null), 3500);
@@ -270,7 +278,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(15, 23, 42, 0.8)', padding: '2px 8px', borderRadius: '4px', border: '1px solid #1e293b' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center' }}><ProductIcon productId={currentProduct.id} size={15} /></span>
             <strong style={{ color: '#fff' }}>{currentProduct.shortName}</strong>
-            <span style={{ fontSize: '9px', fontWeight: 800, background: '#38bdf8', color: '#000', padding: '1px 4px', borderRadius: '3px' }}>
+            <span style={{ fontSize: '9px', fontWeight: 700, background: '#38bdf8', color: '#000', padding: '1px 4px', borderRadius: '3px' }}>
               {currentProduct.code}
             </span>
           </div>
@@ -294,7 +302,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
             }}
             title="Universal Search & Command Palette (Cmd + K)"
           >
-            <span>🔍</span>
+            <IconSearch size={13} />
             <span style={{ color: '#cbd5e1' }}>Search</span>
             <kbd style={{ background: '#1e293b', color: '#38bdf8', border: '1px solid #334155', borderRadius: '3px', padding: '1px 4px', fontSize: '9px', fontFamily: 'monospace' }}>⌘K</kbd>
           </button>
@@ -303,7 +311,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           {/* Tenant Profile / Plan Badge */}
           <button
-            onClick={() => setIsPlanModalOpen(true)}
+            onClick={() => setPlanModalOpen(true)}
             aria-label={`Tenant profile: ${profile.tenantName}, ${profile.licensedProducts.length} licensed modules`}
             style={{
               background: 'transparent',
@@ -386,12 +394,12 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
               width: '90%',
               maxWidth: '920px',
               padding: '24px',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.9), 0 0 25px rgba(56, 189, 248, 0.2)',
+              boxShadow: '0 24px 48px rgba(0, 0, 0, 0.78)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '18px', borderBottom: '1px solid #1e293b', paddingBottom: '12px' }}>
               <div>
-                <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 800 }}>TRUCKING PLATFORM SUITE</h4>
+                <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 700 }}>TRUCKING PLATFORM SUITE</h4>
                 <p style={{ color: '#94a3b8', fontSize: '12px', marginTop: '4px' }}>
                   {profile.mode === 'suite'
                     ? `Unified access active for ${profile.tenantName}. Navigate licensed tools below.`
@@ -434,7 +442,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      transition: 'all 0.2s',
+                      transition: 'background-color 0.15s ease, border-color 0.15s ease',
                     }}
                   >
                     <div>
@@ -450,7 +458,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
 
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '6px' }}>
                       {isCurrent ? (
-                        <span style={{ fontSize: '10px', fontWeight: 800, background: '#38bdf8', color: '#000', padding: '2px 6px', borderRadius: '4px' }}>
+                        <span style={{ fontSize: '10px', fontWeight: 700, background: '#38bdf8', color: '#000', padding: '2px 6px', borderRadius: '4px' }}>
                           ACTIVE NOW
                         </span>
                       ) : isLicensed ? (
@@ -476,9 +484,9 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
       )}
 
       {/* Client Account & Subscription Plan Modal */}
-      {isPlanModalOpen && (
+      {planModalOpen && (
         <div
-          onClick={() => setIsPlanModalOpen(false)}
+          onClick={() => setPlanModalOpen(false)}
           role="dialog"
           aria-modal="true"
           aria-label="Manage Subscription & Client Tier"
@@ -502,20 +510,20 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
               width: '90%',
               maxWidth: '560px',
               padding: '24px',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.9), 0 0 30px rgba(56, 189, 248, 0.2)',
+              boxShadow: '0 24px 48px rgba(0, 0, 0, 0.8)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
               <div>
-                <span style={{ fontSize: '10px', fontWeight: 900, color: '#38bdf8', letterSpacing: '0.1em' }}>
+                <span style={{ fontSize: '10px', fontWeight: 700, color: '#38bdf8', letterSpacing: '0.1em' }}>
                   MULTI-TENANT CLIENT ENTITLEMENT SIMULATOR
                 </span>
-                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: 800, marginTop: '2px' }}>
+                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: 700, marginTop: '2px' }}>
                   Manage Subscription & Client Tier
                 </h3>
               </div>
               <button
-                onClick={() => setIsPlanModalOpen(false)}
+                onClick={() => setPlanModalOpen(false)}
                 aria-label="Close client tier dialog"
                 style={{ background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '18px', cursor: 'pointer', minHeight: '36px', minWidth: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
@@ -580,7 +588,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
                     fontSize: '12px',
                   }}
                 >
-                  <strong style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#818cf8' }}><IconShieldAlert size={14} /> Safety & Telematics</strong>
+                  <strong style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#2dd4bf' }}><IconShieldAlert size={14} /> Safety & Telematics</strong>
                   <span style={{ fontSize: '10px', color: '#94a3b8' }}>P03 HOS Planner + P05 Telematics</span>
                 </button>
 
@@ -598,7 +606,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
                   }}
                 >
                   <strong style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#38bdf8' }}><IconGlobe size={14} /> Enterprise Fleet Suite</strong>
-                  <span style={{ fontSize: '10px', color: '#94a3b8' }}>All 6 platform products unlocked</span>
+                  <span style={{ fontSize: '10px', color: '#94a3b8' }}>All {CANONICAL_PRODUCTS.length} platform products unlocked</span>
                 </button>
               </div>
             </div>
@@ -632,11 +640,11 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
               <button
-                onClick={() => setIsPlanModalOpen(false)}
+                onClick={() => setPlanModalOpen(false)}
                 style={{
                   background: '#38bdf8',
                   color: '#000',
-                  fontWeight: 800,
+                  fontWeight: 700,
                   border: 'none',
                   padding: '8px 18px',
                   borderRadius: '6px',
@@ -677,11 +685,11 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
               width: '90%',
               maxWidth: '480px',
               padding: '24px',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.9), 0 0 30px rgba(245, 158, 11, 0.2)',
+              boxShadow: '0 24px 48px rgba(0, 0, 0, 0.85)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '10px', fontWeight: 900, color: '#f59e0b', letterSpacing: '0.1em' }}>
+              <span style={{ fontSize: '10px', fontWeight: 700, color: '#f59e0b', letterSpacing: '0.1em' }}>
                 PRODUCT UPSELL GATEWAY
               </span>
               <button
@@ -695,7 +703,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '10px 0 14px' }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', color: '#38bdf8' }}><ProductIcon productId={upsellProduct.id} size={32} /></span>
               <div>
-                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: 800 }}>{upsellProduct.name}</h3>
+                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>{upsellProduct.name}</h3>
                 <span style={{ color: '#94a3b8', fontSize: '11px' }}>{upsellProduct.category.toUpperCase()} MODULE</span>
               </div>
             </div>
@@ -710,7 +718,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
                 <span style={{ color: '#94a3b8', fontSize: '11px' }}>{upsellProduct.pricingTier?.description || 'Full platform module access'}</span>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <span style={{ fontSize: '20px', fontWeight: 900, color: '#38bdf8', fontFamily: 'monospace' }}>
+                <span style={{ fontSize: '20px', fontWeight: 700, color: '#38bdf8', fontFamily: 'monospace' }}>
                   ${upsellProduct.pricingTier?.monthlyPriceUsd || 149}
                 </span>
                 <span style={{ color: '#94a3b8', fontSize: '10px', display: 'block' }}>/ mo</span>
@@ -730,7 +738,7 @@ export const SuiteDock: React.FC<SuiteDockProps> = ({ currentProductId }) => {
                   background: 'linear-gradient(135deg, #f59e0b, #d97706)',
                   border: 'none',
                   color: '#000',
-                  fontWeight: 800,
+                  fontWeight: 700,
                   padding: '8px 16px',
                   borderRadius: '6px',
                   cursor: 'pointer',

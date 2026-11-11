@@ -1,6 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CANONICAL_PRODUCTS, resolveProductUrl } from './registry';
 import type { ProductId } from './types';
+import {
+  ProductIcon,
+  IconSearch,
+  IconPackage,
+  IconShieldAlert,
+  IconDollar,
+  IconClock,
+  IconRadio,
+  IconLayers,
+  IconCommand,
+  IconTruck,
+  IconBriefcase,
+  IconBuilding,
+  IconCheck,
+  IconAlertTriangle,
+  IconSnowflake,
+} from './icons';
 
 export interface CommandItem {
   id: string;
@@ -8,9 +25,46 @@ export interface CommandItem {
   title: string;
   subtitle: string;
   icon: string;
+  productId?: ProductId;
   badge?: string;
   onSelect: () => void;
 }
+
+const CommandItemIcon: React.FC<{ icon: string; productId?: ProductId }> = ({ icon, productId }) => {
+  if (productId) {
+    return <ProductIcon productId={productId} size={16} />;
+  }
+  switch (icon) {
+    case 'package':
+      return <IconPackage size={16} />;
+    case 'shield':
+      return <IconShieldAlert size={16} />;
+    case 'dollar':
+      return <IconDollar size={16} />;
+    case 'clock':
+      return <IconClock size={16} />;
+    case 'radio':
+      return <IconRadio size={16} />;
+    case 'warehouse':
+      return <IconLayers size={16} />;
+    case 'command':
+      return <IconCommand size={16} />;
+    case 'truck':
+      return <IconTruck size={16} />;
+    case 'briefcase':
+      return <IconBriefcase size={16} />;
+    case 'building':
+      return <IconBuilding size={16} />;
+    case 'check':
+      return <IconCheck size={16} />;
+    case 'alert':
+      return <IconAlertTriangle size={16} />;
+    case 'snowflake':
+      return <IconSnowflake size={16} />;
+    default:
+      return <IconTruck size={16} />;
+  }
+};
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -34,7 +88,8 @@ export function buildCommandCatalog({
       category: 'Products' as const,
       title: prod.name,
       subtitle: [prod.shortName, `Port ${prod.port}`, prod.pricingTier?.tierName].filter(Boolean).join(' · '),
-      icon: prod.icon || '🚛',
+      icon: prod.icon || 'truck',
+      productId: prod.id,
       badge: `Port ${prod.port}`,
       onSelect: () => {
         if (onSelectProduct) {
@@ -51,7 +106,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Pack 3D Cargo Load & Check Axle Distribution',
       subtitle: 'Plan cargo geometry and review estimated axle distribution.',
-      icon: '📦',
+      icon: 'package',
       badge: 'P01 Cargo Fit',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-01-cargo-fit');
@@ -63,7 +118,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Audit Carrier Safety & Chameleon Fraud Risk',
       subtitle: 'Review carrier identity, coverage information, and risk signals.',
-      icon: '🛡️',
+      icon: 'shield',
       badge: 'P08 Carrier Trust',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-08-carrier-trust');
@@ -75,7 +130,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Calculate Freight Rate & Prepare Estimate',
       subtitle: 'Carrier cost waterfall, EIA diesel index pegging, and operating ratio speedometer',
-      icon: '💵',
+      icon: 'dollar',
       badge: 'P02 Pricing',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-02-freight-pricing');
@@ -87,7 +142,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Plan Driver Hours & Route',
       subtitle: 'Review duty intervals and planned corridor rest stops.',
-      icon: '⏱️',
+      icon: 'clock',
       badge: 'P03 HOS',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-03-hos-planner');
@@ -99,7 +154,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Inspect Fleet & Reefer Telemetry',
       subtitle: 'Review available temperature, sensor and diagnostic information.',
-      icon: '📡',
+      icon: 'radio',
       badge: 'P05 Telematics',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-05-fleet-telematics');
@@ -111,7 +166,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Allocate Inbound Warehouse Putaway & Staging',
       subtitle: 'Multi-constraint rack beam limits, HazMat zoning, and EPCIS scan audit',
-      icon: '🏭',
+      icon: 'warehouse',
       badge: 'P06 Warehouse',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-06-warehouse-space-flow');
@@ -123,7 +178,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Open Top-Level Unified Freight Command Center',
       subtitle: 'End-to-end 5-stage lifecycle stepper bringing all tools under one pane of glass',
-      icon: '🎛️',
+      icon: 'command',
       badge: 'P00 Portal',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'command-center-portal');
@@ -137,7 +192,7 @@ export function buildCommandCatalog({
       category: 'Personas',
       title: 'Switch Profile: Solo Owner-Operator',
       subtitle: 'Pre-licenses Cargo Fit + HOS Planner. Clean single-truck workflow.',
-      icon: '🚛',
+      icon: 'truck',
       badge: 'Persona Preset',
       onSelect: () => onSelectPersona?.('owner_operator'),
     },
@@ -146,7 +201,7 @@ export function buildCommandCatalog({
       category: 'Personas',
       title: 'Switch Profile: Freight Broker & Tactical Dispatcher',
       subtitle: 'Pre-licenses Pricing HUD + Carrier Safety. High-volume load margin focus.',
-      icon: '💼',
+      icon: 'briefcase',
       badge: 'Persona Preset',
       onSelect: () => onSelectPersona?.('dispatcher'),
     },
@@ -155,7 +210,7 @@ export function buildCommandCatalog({
       category: 'Personas',
       title: 'Switch Profile: Safety & Telematics Officer',
       subtitle: 'Pre-licenses Telematics HUD + HOS Compliance + Safety Auditor.',
-      icon: '🛡️',
+      icon: 'shield',
       badge: 'Persona Preset',
       onSelect: () => onSelectPersona?.('safety_officer'),
     },
@@ -164,7 +219,7 @@ export function buildCommandCatalog({
       category: 'Personas',
       title: 'Switch Profile: Enterprise Fleet Admin',
       subtitle: 'Select the enterprise fleet profile.',
-      icon: '🏢',
+      icon: 'building',
       badge: 'Persona Preset',
       onSelect: () => onSelectPersona?.('enterprise_admin'),
     },
@@ -175,7 +230,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Review carrier records',
       subtitle: 'Open Carrier Trust and select a carrier to review available information.',
-      icon: '✅',
+      icon: 'check',
       badge: 'P08 Carrier Trust',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-08-carrier-trust');
@@ -187,7 +242,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Review carrier risk',
       subtitle: 'Open Carrier Trust and select a carrier to review risk signals.',
-      icon: '⛔',
+      icon: 'alert',
       badge: 'P08 Carrier Trust',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-08-carrier-trust');
@@ -199,7 +254,7 @@ export function buildCommandCatalog({
       category: 'Actions',
       title: 'Review vehicle equipment',
       subtitle: 'Open Asset Studio and select the equipment to review.',
-      icon: '❄️',
+      icon: 'snowflake',
       badge: 'P04 Asset Studio',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-04-asset-studio');
@@ -281,7 +336,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     <div className="cmd-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label="Universal Command Palette">
       <div className="cmd-modal" onClick={(e) => e.stopPropagation()}>
         <div className="cmd-header">
-          <span className="cmd-search-icon">🔍</span>
+          <span className="cmd-search-icon" aria-hidden="true"><IconSearch size={15} /></span>
           <input
             ref={inputRef}
             type="text"
@@ -315,7 +370,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                     onClose();
                   }}
                 >
-                  <span className="cmd-item-icon">{item.icon}</span>
+                  <span className="cmd-item-icon" aria-hidden="true">
+                    <CommandItemIcon icon={item.icon} productId={item.productId} />
+                  </span>
                   <div className="cmd-item-content">
                     <div className="cmd-item-row">
                       <span className="cmd-item-title">{item.title}</span>

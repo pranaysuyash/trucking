@@ -2,6 +2,25 @@ import type { UserSession, ProductId, UserRole } from './types';
 
 const STORAGE_KEY = 'trucking_tenant_profile';
 
+const DEFAULT_LICENSED_PRODUCTS: ProductId[] = [
+  'product-01-cargo-fit',
+  'product-02-freight-pricing',
+  'product-04-asset-studio',
+];
+
+function createDefaultSession(): UserSession {
+  return {
+    userId: 'usr_dev_101',
+    email: 'alex@apexfreight.io',
+    displayName: 'Alex Chen',
+    tenantId: 'tenant_apex_freight',
+    tenantName: 'Apex Logistics & Freight',
+    role: 'fleet_manager',
+    licensedProducts: [...DEFAULT_LICENSED_PRODUCTS],
+    mode: 'suite',
+  };
+}
+
 export class TruckingAuthClient {
   private currentSession: UserSession;
 
@@ -10,43 +29,28 @@ export class TruckingAuthClient {
   }
 
   private loadFromStorage(): UserSession {
-    if (typeof window !== 'undefined' || typeof localStorage !== 'undefined') {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
-          const p = JSON.parse(raw);
-          return {
-            userId: p.userId || 'usr_dev_101',
-            email: p.email || 'alex@apexfreight.io',
-            displayName: p.userName || 'Alex Chen',
-            tenantId: p.tenantId || 'tenant_apex_freight',
-            tenantName: p.tenantName || 'Apex Logistics & Freight',
-            role: (p.userRole as UserRole) || 'fleet_manager',
-            licensedProducts: p.licensedProducts || [
-              'product-01-cargo-fit',
-              'product-02-freight-pricing',
-              'product-04-asset-studio',
-            ],
-            mode: p.mode || 'suite',
-          };
-        }
-      } catch {}
+    const fallback = createDefaultSession();
+    if (typeof localStorage === 'undefined') {
+      return fallback;
     }
-
-    return {
-      userId: 'usr_dev_101',
-      email: 'alex@apexfreight.io',
-      displayName: 'Alex Chen',
-      tenantId: 'tenant_apex_freight',
-      tenantName: 'Apex Logistics & Freight',
-      role: 'fleet_manager',
-      licensedProducts: [
-        'product-01-cargo-fit',
-        'product-02-freight-pricing',
-        'product-04-asset-studio',
-      ],
-      mode: 'suite',
-    };
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return fallback;
+      const p = JSON.parse(raw);
+      return {
+        userId: p.userId || fallback.userId,
+        email: p.email || fallback.email,
+        displayName: p.userName || fallback.displayName,
+        tenantId: p.tenantId || fallback.tenantId,
+        tenantName: p.tenantName || fallback.tenantName,
+        role: (p.userRole as UserRole) || fallback.role,
+        licensedProducts: p.licensedProducts || fallback.licensedProducts,
+        mode: p.mode || fallback.mode,
+      };
+    } catch (error) {
+      console.warn('Unable to restore auth session from localStorage; using default profile.', error);
+      return fallback;
+    }
   }
 
   public getSession(): UserSession {
@@ -74,21 +78,23 @@ export class TruckingAuthClient {
   }
 
   private persist(): void {
-    if (typeof window !== 'undefined' || typeof localStorage !== 'undefined') {
-      const data = {
-        tenantId: this.currentSession.tenantId,
-        tenantName: this.currentSession.tenantName,
-        mode: this.currentSession.mode,
-        licensedProducts: this.currentSession.licensedProducts,
-        userRole: this.currentSession.role,
-        userName: this.currentSession.displayName,
-      };
+    const data = {
+      tenantId: this.currentSession.tenantId,
+      tenantName: this.currentSession.tenantName,
+      mode: this.currentSession.mode,
+      licensedProducts: this.currentSession.licensedProducts,
+      userRole: this.currentSession.role,
+      userName: this.currentSession.displayName,
+    };
+    if (typeof localStorage !== 'undefined') {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      } catch {}
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(new CustomEvent('trucking_profile_changed', { detail: data }));
+      } catch (error) {
+        console.warn('Unable to persist auth session to localStorage.', error);
       }
+    }
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('trucking_profile_changed', { detail: data }));
     }
   }
 }

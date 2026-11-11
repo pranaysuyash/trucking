@@ -8,6 +8,7 @@ export type ProductId =
   | 'product-06-warehouse-space-flow'
   | 'product-07-yard-dock'
   | 'product-08-carrier-trust'
+  | 'product-09-storage-leasing'
   | string;
 
 export type UserRole =

@@ -155,7 +155,9 @@ class PlatformEventBus {
           try {
             const parsed = JSON.parse(e.newValue) as PlatformEvent;
             this.notifyListeners(parsed);
-          } catch {}
+          } catch (error) {
+            console.warn('Ignored malformed cross-tab platform event payload.', error);
+          }
         }
       });
     }
@@ -170,7 +172,9 @@ class PlatformEventBus {
     if (typeof localStorage !== 'undefined') {
       try {
         localStorage.setItem(this.RING_BUFFER_KEY, JSON.stringify(this.memoryRingBuffer));
-      } catch {}
+      } catch (error) {
+        console.warn('Unable to persist event ring buffer to localStorage.', error);
+      }
     }
 
     // 2. Notify local in-memory listeners
@@ -186,10 +190,12 @@ class PlatformEventBus {
     }
 
     // 4. Storage event fallback
-    if (typeof window !== 'undefined') {
+    if (typeof localStorage !== 'undefined') {
       try {
         localStorage.setItem(this.STORAGE_EVENT_KEY, JSON.stringify(event));
-      } catch {}
+      } catch (error) {
+        console.warn('Unable to write fallback storage event trigger.', error);
+      }
     }
   }
 
@@ -203,7 +209,8 @@ class PlatformEventBus {
         if (!raw) return [];
         const buffer = JSON.parse(raw);
         return Array.isArray(buffer) ? buffer.slice(0, limit) : [];
-      } catch {
+      } catch (error) {
+        console.warn('Unable to parse recent platform events from localStorage.', error);
         return [];
       }
     }
@@ -216,7 +223,9 @@ class PlatformEventBus {
       try {
         localStorage.removeItem(this.RING_BUFFER_KEY);
         localStorage.removeItem(this.STORAGE_EVENT_KEY);
-      } catch {}
+      } catch (error) {
+        console.warn('Unable to clear stored platform events from localStorage.', error);
+      }
     }
   }
 
