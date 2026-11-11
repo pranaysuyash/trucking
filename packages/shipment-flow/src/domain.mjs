@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { reviewedGeometryIssue } from './reviewedGeometry.mjs';
+import { carrierFreshness } from './carrierFreshness.mjs';
 
 export const STAGES = ['asset', 'fit', 'warehouse', 'yard', 'carrier', 'quote', 'hos'];
 export const STAGE_PRODUCTS = {
@@ -49,16 +50,28 @@ export function dispatchBlockers(shipment, now = new Date().toISOString()) {
   const blockers = [];
   for (const stage of STAGES) {
     const result = shipment.results[stage];
-    if (!result || result.inputRevision !== shipment.inputRevision || !result.ok) blockers.push(`${stage}: missing, stale or rejected`);
+    if (!result || result.inputRevision !== shipment.inputRevision) blockers.push(`${stage}: missing or stale`);
+    else if (stage === 'hos' && result.details?.assessment === 'indeterminate') blockers.push('hos: duty assessment indeterminate');
+    else if (!result.ok) blockers.push(`${stage}: rejected`);
+    else if (stage === 'hos') blockers.push('hos: recorded duty status unverified; cycle-history validation is not supported');
   }
-  const expiry = shipment.results.carrier?.details.expiresAt;
-  if (expiry && Date.parse(expiry) <= Date.parse(now)) blockers.push('carrier: policy evidence expired');
+  const carrier = shipment.results.carrier;
+  if (carrier?.ok && carrier.inputRevision === shipment.inputRevision) {
+    const freshness = carrierFreshness(carrier.details?.expiresAt, now);
+    if (freshness === 'missing') blockers.push('carrier: policy evidence expiry missing');
+    else if (freshness === 'invalid') blockers.push('carrier: policy evidence expiry or current time invalid');
+    else if (freshness === 'expired') blockers.push('carrier: policy evidence expired');
+  }
   if (shipment.exceptions.some(e => !e.resolved)) blockers.push('Unresolved shipment exception');
   return blockers;
 }
 
 function validateResult(shipment, stage, result, now) {
   requireThat(result && typeof result.ok === 'boolean' && text(result.summary, 1000) && result.details && typeof result.details === 'object', 'A structured engine result is required.');
+  if (stage === 'hos' && result.ok) throw new FlowError('Positive duty decisions are unavailable: validated cycle history is not supported.');
+  if (stage === 'hos' && result.details.assessment === 'indeterminate') {
+    requireThat(result.details.assessmentVersion === 1 && result.details.driverId === shipment.input.driverId && result.details.isLegal === false && result.details.priorRestHours === shipment.input.priorRestHours && Array.isArray(result.details.assessmentReasons) && result.details.assessmentReasons.some(reason => text(reason, 1000)), 'An indeterminate duty review must use the supported version and identify the current driver, declared rest and missing evidence.');
+  }
   if (!result.ok) return;
   const d = result.details;
   const ids = shipment.input.units.map(u => u.id);
@@ -83,13 +96,12 @@ function validateResult(shipment, stage, result, now) {
     if (d.warehouseRecordedAt !== undefined) requireThat(d.warehouseRecordedAt === shipment.results.warehouse.recordedAt, 'Dock allocation refers to a different receiving plan. Refresh and review.', 409);
     requireThat(text(d.doorId) && text(d.trailerId) && d.trailerId === shipment.input.trailerId && d.available === true, 'A compatible available door for the assigned trailer is required.');
   }
-  if (stage === 'carrier') requireThat(d.dotNumber === shipment.input.carrierDot && d.eligibility === 'APPROVED' && Number.isFinite(Date.parse(d.expiresAt)) && Date.parse(d.expiresAt) > Date.parse(now) && d.evidenceSource === 'seeded_scenario', 'A current approved scenario carrier decision is required.');
+  if (stage === 'carrier') requireThat(d.dotNumber === shipment.input.carrierDot && d.eligibility === 'APPROVED' && carrierFreshness(d.expiresAt, now) === 'current' && d.evidenceSource === 'seeded_scenario', 'A current approved scenario carrier decision is required.');
   if (stage === 'quote') {
     requireThat(shipment.results.fit?.ok && shipment.results.fit.inputRevision === shipment.inputRevision, 'Publish a current loading plan before accepting a quote.');
     if (d.fitRecordedAt !== undefined) requireThat(d.fitRecordedAt === shipment.results.fit.recordedAt, 'Quote refers to a different loading plan. Refresh and review the current plan.', 409);
     requireThat(Array.isArray(d.lines) && d.lines.length > 0 && d.lines.every(l => text(l.label) && Number.isSafeInteger(l.cents) && l.cents >= 0) && d.currency === 'USD' && Number.isSafeInteger(d.totalCents) && d.totalCents > 0 && d.lines.reduce((s, l) => s + l.cents, 0) === d.totalCents && d.accepted === true, 'Accepted quote line items must reconcile exactly in USD cents.');
   }
-  if (stage === 'hos') requireThat(d.driverId === shipment.input.driverId && d.isLegal === true && d.priorRestHours === shipment.input.priorRestHours && d.ruleScope === 'full_rest_only', 'A current duty plan for the assigned, fully rested scenario driver is required.');
 }
 
 export function applyCommand(current, command, now = new Date().toISOString()) {

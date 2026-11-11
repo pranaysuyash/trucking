@@ -13,7 +13,7 @@ import { platformBus } from '../engine/platformBus';
 import { DockAllocationTask } from './DockAllocationTask';
 import { YardMapCanvas } from './YardMapCanvas';
 import { GuardShackKioskModal } from './GuardShackKioskModal';
-import { DigitalGatePass } from '../engine/guardShackKiosk';
+import { DigitalGatePass, scenarioGateInEvent } from '../engine/guardShackKiosk';
 
 export function App() {
   const [doors, setDoors] = useState<DockDoor[]>(INITIAL_DOCK_DOORS);
@@ -36,6 +36,8 @@ export function App() {
   // Gate Check-in Modal state
   const [showCheckInModal, setShowCheckInModal] = useState(false);
   const [checkInNotice, setCheckInNotice] = useState<string | null>(null);
+  const [scenarioPasses, setScenarioPasses] = useState<DigitalGatePass[]>([]);
+  const selectedPass = scenarioPasses.find(pass => pass.trailerNumber === selectedDoor?.assignedTrailerId);
 
   // Active detention clocks (simulated for current trailers)
   const [detentionClocks, setDetentionClocks] = useState<DetentionClock[]>([
@@ -66,6 +68,7 @@ export function App() {
     allocatedDoorId?: string,
     allocatedSpotId?: string
   ) => {
+    setScenarioPasses(prev => [gatePass, ...prev.filter(pass => pass.trailerNumber !== gatePass.trailerNumber)]);
     if (allocatedDoorId) {
       setDoors((prev) =>
         prev.map((d) =>
@@ -88,15 +91,8 @@ export function App() {
       calculateDetentionClock(gatePass.trailerNumber, gatePass.carrierName, gatePass.issuedAt),
       ...prev,
     ]);
-    platformBus.publish('TRAILER_GATED_IN', {
-      checkInId: gatePass.gatePassId,
-      trailerNumber: gatePass.trailerNumber,
-      carrierDot: '3819401',
-      doorNumber: allocatedDoorId ? parseInt(allocatedDoorId.replace(/\D/g, ''), 10) || undefined : undefined,
-      spotNumber: allocatedSpotId,
-      timestamp: gatePass.issuedAt,
-    });
-    setCheckInNotice(`Digital Gate Pass ${gatePass.gatePassId} issued! Assigned to ${gatePass.assignedLocationName}.`);
+    platformBus.publish('TRAILER_GATED_IN', scenarioGateInEvent(gatePass));
+    setCheckInNotice(`Scenario pass ${gatePass.gatePassId} created. Assigned to ${gatePass.assignedLocationName}.`);
   };
 
   const handleCompleteJockeyTask = (orderId: string) => {
@@ -361,17 +357,9 @@ export function App() {
                   <a
                     href={buildWarehouseInboundBridgeUrl(
                       {
-                        checkInId: 'CHK-AUTO',
-                        confirmationNumber: 'CNF-LIVE',
-                        driverName: 'Assigned Driver',
-                        driverPhone: 'N/A',
-                        tractorPlate: 'LIVE',
                         trailerNumber: selectedDoor.assignedTrailerId,
-                        carrierDot: '3194012',
-                        sealNumber: 'SEAL-OK',
-                        sealVerified: true,
-                        checkInTimestamp: new Date().toISOString(),
-                        assignedDestination: { type: 'DOCK_DOOR', targetId: selectedDoor.doorId },
+                        carrierDot: selectedPass?.carrierDot,
+                        checkInId: selectedPass?.gatePassId,
                       },
                       selectedDoor.doorNumber
                     )}
@@ -382,12 +370,12 @@ export function App() {
                     📦 Bridge to P06 Inbound Putaway ↗
                   </a>
                   <a
-                    href={buildCarrierVettingBridgeUrl('3194012', 'Polar Express Logistics LLC')}
+                    href={selectedPass ? buildCarrierVettingBridgeUrl(selectedPass.carrierDot, selectedPass.carrierName) : 'http://localhost:5180/'}
                     className="btn-bridge"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛡️ Audit Carrier in P08 ↗
+                    🛡️ {selectedPass ? 'Open scenario carrier in P08' : 'Open P08 (carrier unknown)'} ↗
                   </a>
                 </div>
               )}

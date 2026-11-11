@@ -153,17 +153,17 @@ export function App() {
       {session?.selectedId && <section className="shipment-native-panel" aria-label="Shipment equipment task">
         <div className="shipment-native-heading"><div><span className="shipment-native-kicker">EQUIPMENT DECISION</span><h2>{selectedVehicle.name}</h2></div><span>{draft.dirty ? 'Local selection changed' : 'Reviewed shared selection'}</span></div>
         <p>{selectedVehicle.interior.lengthFt} × {selectedVehicle.interior.widthFt} × {selectedVehicle.interior.heightFt} ft interior · {selectedVehicle.weight.maxPayloadLbs.toLocaleString()} lb declared payload · {selectedVehicle.fuelEnergy.loadedMpg} loaded energy efficiency</p>
-        <p>Publishing equipment requires a new loading, receiving, dock and pricing review. Earlier decisions remain in shipment history. Package and axle simulators below remain local studies.</p>
+        <p>Publishing equipment requires a new loading, receiving, dock and pricing review. Earlier decisions remain in shipment history. Package and axle calculations below remain local until published.</p>
         <div className="shipment-task-buttons">
           <button className="shipment-primary" disabled={!draft.canPublish || !reviewed?.result} onClick={async () => { if (!reviewed?.result || !draft.basis) return; const next = await session.submit('asset.publish', { equipmentId: selectedVehicle.id, result: reviewed.result }, draft.basis.revision); if (next) { draft.acknowledge(next, { equipmentId: selectedVehicleId, vehicle: selectedVehicle }); setPublicationMessage('Reviewed equipment snapshot published. Continue to Cargo Fit to review the affected loading plan.'); } }}>Publish reviewed equipment</button>
           <button onClick={() => session.inspect('stage:asset')}>Saved equipment details</button>
           <button disabled={session.busy || !session.online} onClick={draft.loadCurrent}>Load current shared inputs</button>
           <a href={session.productUrl('product-01-cargo-fit')}>Continue to Cargo Fit</a>
         </div>
-        <p role="status">{session.shipment?.status !== 'draft' ? 'Planning is locked after dispatch. Saved equipment remains inspectable; native studies do not change the shipment.' : draft.incoming ? 'The shipment changed. Your local selection is retained. Load current shared inputs before publishing.' : draft.error || reviewed?.error || publicationMessage || (session.online ? 'Review this declared vehicle before publishing its exact snapshot.' : 'Offline local study. Reconnect and load shared inputs before publishing.')}</p>
+        <p role="status">{session.shipment?.status !== 'draft' ? 'Planning is locked after dispatch. Saved equipment remains inspectable; local calculations do not change the shipment.' : draft.incoming ? 'The shipment changed. Your local selection is retained. Load current shared inputs before publishing.' : draft.error || reviewed?.error || publicationMessage || (session.online ? 'Review this declared vehicle before publishing its exact snapshot.' : 'Offline workspace. Reconnect and load shared inputs before publishing.')}</p>
         <details className="shipment-draft-fields"><summary>Reviewed vehicle specification, source and scope</summary><StructuredValue value={reviewed?.result?.details ?? selectedVehicle} /></details>
       </section>}
-      {!session?.selectedId && <p className="native-local-note">{draft.detached ? 'Detached local equipment study. Your selection is retained; edits do not update a shipment.' : 'Independent asset studio. Catalog, custom assets and simulations work without a shared shipment.'}</p>}
+      {!session?.selectedId && <p className="native-local-note">{draft.detached ? 'Local equipment workspace. Your selection is retained; edits do not update a shipment.' : 'Independent asset studio. Catalog, custom assets and calculations work without a shared shipment.'}</p>}
       {/* Top Project Bridge Header */}
       <ProjectBridgeBar
         vehicle={selectedVehicle}

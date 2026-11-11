@@ -1,4 +1,5 @@
 import type { Facility, Lease, RentLedgerEntry, Tenant, RentableSpace } from './types';
+import { paymentStatusAsOf } from './leaseEngine';
 
 /**
  * Admin analytics — first-principles projection layer (P09).
@@ -41,7 +42,7 @@ export const ANALYTICS_METRIC_DEFINITIONS: MetricDefinition[] = [
     id: 'occupancy',
     label: 'Occupancy %',
     definition:
-      'Leased modeled area / facility usable area (property-level), as percentage. Preserved denominator; modeled space sum is shown separately because usable may exclude common/circulation areas.',
+      'Leased modeled area / facility usable area (property-level), as percentage when usable area is configured. If usable area is not configured, occupancy is unavailable (never reported as 0%). Modeled space sum is shown separately because usable may exclude common/circulation areas.',
   },
   {
     id: 'vacancy_duration',
@@ -52,13 +53,13 @@ export const ANALYTICS_METRIC_DEFINITIONS: MetricDefinition[] = [
   {
     id: 'paid_late',
     label: 'Paid late',
-    definition: 'Ledger entry has paidDate and paidDate > dueDate (day granularity).',
+    definition: 'Fully paid ledger entry has paidDate after dueDate (day granularity).',
   },
   {
     id: 'overdue_now',
     label: 'Overdue now',
     definition:
-      'Entry marked overdue, or has outstanding amount and dueDate is before asOfDate (unpaid/partially unpaid).',
+      'Entry has an outstanding amount and a valid due date before asOfDate (unpaid/partially unpaid).',
   },
   {
     id: 'regularly_delays',
@@ -69,7 +70,7 @@ export const ANALYTICS_METRIC_DEFINITIONS: MetricDefinition[] = [
 ];
 
 export interface AgingBucket {
-  label: 'current' | '1-30' | '31-60' | '61-90' | '90+';
+  label: 'current' | '1-30' | '31-60' | '61-90' | '90+' | 'unknown';
   entryCount: number;
   amount: number;
 }
@@ -134,7 +135,8 @@ export interface AdminAnalytics {
     vacantAreaSqFt: number;
     blockedAreaSqFt: number;
     underRepairAreaSqFt: number;
-    occupancyPercent: number;
+    /** null when facility usable area is not configured; never a false 0%. */
+    occupancyPercent: number | null;
     totalSpaces: number;
     leasedSpaces: number;
     vacantSpaces: number;
@@ -169,11 +171,7 @@ function leaseTenantIds(leases: Lease[]): Map<string, string> {
 }
 
 function isOverdueNow(e: RentLedgerEntry, asOfDate: string): boolean {
-  const outstanding = Math.max(0, e.totalDue - e.amountPaid);
-  if (outstanding <= 0) return false;
-  if (e.paymentStatus === 'overdue') return true;
-  const d = daysBetween(e.dueDate, asOfDate);
-  return d !== null && d > 0;
+  return paymentStatusAsOf(e, asOfDate) === 'overdue';
 }
 
 export function computeReceivablesAging(ledgerEntries: RentLedgerEntry[], asOfDate: string): ReceivablesAging {
@@ -183,6 +181,7 @@ export function computeReceivablesAging(ledgerEntries: RentLedgerEntry[], asOfDa
     { label: '31-60', entryCount: 0, amount: 0 },
     { label: '61-90', entryCount: 0, amount: 0 },
     { label: '90+', entryCount: 0, amount: 0 },
+    { label: 'unknown', entryCount: 0, amount: 0 },
   ];
   const byLabel = new Map(buckets.map((b) => [b.label, b]));
   let totalOutstanding = 0;
@@ -194,8 +193,8 @@ export function computeReceivablesAging(ledgerEntries: RentLedgerEntry[], asOfDa
     const d = daysBetween(e.dueDate, asOfDate);
     const overdue = isOverdueNow(e, asOfDate);
     if (overdue) totalOverdue += outstanding;
-    let label: AgingBucket['label'] = 'current';
-    if (d !== null && d > 0) {
+    let label: AgingBucket['label'] = paymentStatusAsOf(e, asOfDate) === 'unknown' ? 'unknown' : 'current';
+    if (label !== 'unknown' && d !== null && d > 0) {
       if (d <= 30) label = '1-30';
       else if (d <= 60) label = '31-60';
       else if (d <= 90) label = '61-90';
@@ -250,7 +249,7 @@ export function computeTenantPaymentBehavior(input: {
       const outstanding = Math.max(0, e.totalDue - e.amountPaid);
       totalOutstanding += outstanding;
 
-      if (e.paidDate) {
+      if (e.paidDate && e.paymentStatus === 'paid' && outstanding <= 0) {
         paidEntries++;
         const d = daysBetween(e.dueDate, e.paidDate);
         if (d !== null && d > 0) {
@@ -374,7 +373,7 @@ export function computeAdminAnalytics(input: {
     vacantAreaSqFt: number;
     blockedAreaSqFt: number;
     underRepairAreaSqFt: number;
-    occupancyPercent: number;
+    occupancyPercent: number | null;
   } | null;
   asOfDate?: string;
   policy?: { paymentDelay?: PaymentDelayPolicy };
@@ -404,7 +403,7 @@ export function computeAdminAnalytics(input: {
       vacantAreaSqFt: m?.vacantAreaSqFt ?? 0,
       blockedAreaSqFt: m?.blockedAreaSqFt ?? 0,
       underRepairAreaSqFt: m?.underRepairAreaSqFt ?? 0,
-      occupancyPercent: m?.occupancyPercent ?? 0,
+      occupancyPercent: m?.occupancyPercent ?? null,
       totalSpaces: input.facility?.spaces.length ?? 0,
       leasedSpaces: input.facility?.spaces.filter((s) => s.status === 'leased').length ?? 0,
       vacantSpaces: input.facility?.spaces.filter((s) => s.status === 'vacant').length ?? 0,

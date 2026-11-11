@@ -7,15 +7,15 @@ import { GateCheckInRecord } from './types';
 /**
  * Builds inbound warehouse putaway trigger URL for Product 06 (Warehouse Flow · Port 5178).
  */
-export function buildWarehouseInboundBridgeUrl(record: GateCheckInRecord, doorNumber: number): string {
+export function buildWarehouseInboundBridgeUrl(record: Pick<GateCheckInRecord, 'trailerNumber'> & Partial<Pick<GateCheckInRecord, 'carrierDot' | 'sealVerified' | 'checkInId'>>, doorNumber: number): string {
   const params = new URLSearchParams({
     source: 'product-07-yard-dock',
     trailerNumber: record.trailerNumber,
     doorNumber: String(doorNumber),
-    carrierDot: record.carrierDot,
-    sealVerified: String(record.sealVerified),
-    checkInId: record.checkInId,
   });
+  if (record.carrierDot) params.set('carrierDot', record.carrierDot);
+  if (record.sealVerified !== undefined) params.set('sealVerified', String(record.sealVerified));
+  if (record.checkInId) params.set('checkInId', record.checkInId);
   return `http://localhost:5178/?${params.toString()}`;
 }
 

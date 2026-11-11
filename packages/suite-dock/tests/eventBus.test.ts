@@ -3,23 +3,28 @@ import { platformEventBus } from '../src/eventBus';
 import { CANONICAL_PRODUCTS, resolveProductUrl } from '../src/registry';
 
 describe('SuiteDock Event Bus & Canonical Registry', () => {
-  it('registers all 9 canonical platform subproducts with distinct ports', () => {
-    expect(CANONICAL_PRODUCTS.length).toBe(9);
+  it('registers each product under its canonical identity, port and development route', () => {
+    const expected: Record<string, number> = {
+      'command-center-portal': 5170,
+      'product-01-cargo-fit': 5173,
+      'product-02-freight-pricing': 5174,
+      'product-03-hos-planner': 5175,
+      'product-04-asset-studio': 5176,
+      'product-05-fleet-telematics': 5177,
+      'product-06-warehouse-space-flow': 5178,
+      'product-07-yard-dock': 5179,
+      'product-08-carrier-trust': 5180,
+      'product-09-storage-leasing': 5181,
+    };
+    expect(CANONICAL_PRODUCTS.length).toBe(Object.keys(expected).length);
 
     const ports = CANONICAL_PRODUCTS.map((p) => p.port);
     const uniquePorts = new Set(ports);
-    expect(uniquePorts.size).toBe(9);
-
-    // Verify all ports are properly mapped
-    expect(ports).toContain(5170); // Command Center Portal
-    expect(ports).toContain(5173); // Cargo Fit
-    expect(ports).toContain(5174); // Freight Pricing
-    expect(ports).toContain(5175); // HOS Planner
-    expect(ports).toContain(5176); // Asset Studio
-    expect(ports).toContain(5177); // Fleet Telematics
-    expect(ports).toContain(5178); // Carrier Safety
-    expect(ports).toContain(5179); // Warehouse Space Flow
-    expect(ports).toContain(5180); // Dynamic Yard & Dock
+    expect(uniquePorts.size).toBe(Object.keys(expected).length);
+    expect(Object.fromEntries(CANONICAL_PRODUCTS.map(p => [p.id, p.port]))).toEqual(expected);
+    for (const product of CANONICAL_PRODUCTS) {
+      expect(new URL(product.routes.dev).port).toBe(String(expected[product.id]));
+    }
   });
 
   it('correctly resolves development vs cloud routes', () => {
@@ -36,7 +41,7 @@ describe('SuiteDock Event Bus & Canonical Registry', () => {
 
     platformEventBus.publish({
       type: 'CARRIER_VETTED',
-      sourceProductId: 'product-06-carrier-safety',
+      sourceProductId: 'product-08-carrier-trust',
       timestamp: '2026-10-22T12:00:00Z',
       payload: {
         dotNumber: '2849102',

@@ -1,13 +1,13 @@
 /**
  * Digital Guard Shack & Automated Kiosk Check-In / Gate Pass Engine
  *
- * Implements driver self-service check-in kiosk with appointment verification,
- * OCR license plate & seal logging, automated dock door / yard spot allocation,
- * and issuance of cryptographically verified Digital Gate Passes with detention timers.
+ * Local check-in scenario with sample appointments, manual input, simulated
+ * dock/yard allocation and a non-authorizing sample gate pass.
  */
 
 import { DoorCommodityType, DockDoor, YardSpot } from './types';
 import { INITIAL_DOCK_DOORS, INITIAL_YARD_SPOTS, assignOptimalDockDoor } from './yardEngine';
+import type { PlatformEventPayloads } from './platformBus';
 
 export interface ScheduledAppointment {
   confirmationNumber: string;
@@ -40,6 +40,7 @@ export interface DigitalGatePass {
   pinCode: string;
   issuedAt: string;
   carrierName: string;
+  carrierDot: string;
   driverName: string;
   tractorPlate: string;
   trailerNumber: string;
@@ -49,7 +50,17 @@ export interface DigitalGatePass {
   freeTimeMinutes: number;
   detentionRatePerHour: number;
   yardDirections: string;
+  /** Historical field name: this is a non-cryptographic scenario checksum. */
   securityHash: string;
+}
+
+export function scenarioGateInEvent(pass: DigitalGatePass): PlatformEventPayloads['TRAILER_GATED_IN'] {
+  const doorNumber = pass.assignedLocationType === 'DOCK_DOOR'
+    ? parseInt(pass.assignedLocationCode.replace(/\D/g, ''), 10) || undefined
+    : undefined;
+  return { checkInId: pass.gatePassId, trailerNumber: pass.trailerNumber, carrierDot: pass.carrierDot,
+    doorNumber, spotNumber: pass.assignedLocationType === 'YARD_SPOT' ? pass.assignedLocationCode : undefined,
+    timestamp: pass.issuedAt, evidenceStatus: 'simulated' };
 }
 
 export const PRESEEDED_SCHEDULED_APPOINTMENTS: ScheduledAppointment[] = [
@@ -87,7 +98,7 @@ export const PRESEEDED_SCHEDULED_APPOINTMENTS: ScheduledAppointment[] = [
 ];
 
 /**
- * Validates check-in request and generates a certified Digital Gate Pass with door/slot assignment.
+ * Validates scenario inputs and generates a sample pass with door/slot assignment.
  */
 export function processKioskCheckIn(
   request: KioskCheckInRequest,
@@ -146,13 +157,14 @@ export function processKioskCheckIn(
     rawHash = ((rawHash << 5) - rawHash) + hashSeed.charCodeAt(i);
     rawHash |= 0;
   }
-  const securityHash = `SHA256:${Math.abs(rawHash).toString(16).padStart(8, '0').toUpperCase()}`;
+  const securityHash = `SCENARIO-CHECKSUM:${Math.abs(rawHash).toString(16).padStart(8, '0').toUpperCase()}`;
 
   const gatePass: DigitalGatePass = {
     gatePassId,
     pinCode,
     issuedAt,
     carrierName: request.carrierName,
+    carrierDot: request.carrierDot,
     driverName: request.driverName,
     tractorPlate: request.tractorPlate.toUpperCase(),
     trailerNumber: request.trailerNumber.toUpperCase(),

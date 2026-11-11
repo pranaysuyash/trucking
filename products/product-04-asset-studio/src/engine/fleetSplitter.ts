@@ -1,8 +1,7 @@
 /**
  * Multi-Vehicle Fleet Splitter & Demand Partitioning Heuristic.
  * Decomposes oversized commercial freight manifests exceeding single-vehicle
- * legal payload (45,000 lbs) or volume (26 GMA pallets) into optimal
- * equipment combinations from the 20-vehicle Asset Studio catalog.
+ * catalog weight and volume estimates into candidate vehicle combinations.
  */
 
 import { STANDARD_VEHICLES, STANDARD_PACKAGES } from './catalog';
@@ -67,7 +66,7 @@ export const DEFAULT_SPLITTER_VEHICLE_IDS = [
 ];
 
 /**
- * Partitions an oversized manifest into an optimal combination of commercial vehicles.
+ * Provides a heuristic estimate, not a verified packing or legal determination.
  */
 export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitResult {
   const allowedIds = input.allowedVehicleIds && input.allowedVehicleIds.length > 0
@@ -95,10 +94,15 @@ export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitRes
   let totalDemandWeightLbs = 0;
   let totalDemandVolumeCuFt = 0;
   let totalDemandItems = 0;
+  const unknownItems: FleetSplitResult['unassignedItems'] = [];
 
   for (const item of input.items) {
+    if (!Number.isSafeInteger(item.quantity) || item.quantity < 0 || item.quantity > 10000) throw new Error('Quantity must be a whole number between 0 and 10,000.');
+    if (item.customWeightLbs !== undefined && (!Number.isFinite(item.customWeightLbs) || item.customWeightLbs <= 0)) throw new Error('Custom unit weight must be a finite positive number.');
+    totalDemandItems += item.quantity;
+    if (totalDemandItems > 10000) throw new Error('Total demand cannot exceed 10,000 units in this local heuristic.');
     const pkg = STANDARD_PACKAGES.find((p) => p.id === item.packageId);
-    if (!pkg) continue;
+    if (!pkg) { if (item.quantity) unknownItems.push({ packageId: item.packageId, quantity: item.quantity, reason: 'Unknown package specification; weight and volume not included in known totals' }); continue; }
 
     const unitWeight = item.customWeightLbs ?? pkg.weight.grossWeightLbs;
     const unitVol = pkg.volumetricCuFt > 0
@@ -116,7 +120,6 @@ export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitRes
       });
       totalDemandWeightLbs += unitWeight;
       totalDemandVolumeCuFt += unitVol;
-      totalDemandItems += 1;
     }
   }
 
@@ -152,6 +155,9 @@ export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitRes
   }
 
   function canFit(bin: ActiveBin, unit: CargoUnit): boolean {
+    // Check each unit's independent aperture and interior envelope before aggregate estimates.
+    const fit = computeSpatialFit(bin.vehicle, unit.spec, 1);
+    if (!fit.doorClearance.fits || !fit.heightClearance.fits || fit.maxFloorUnits < 1) return false;
     const nextWeight = bin.currentWeightLbs + unit.weightLbs;
     // 98% threshold for safety margin
     if (nextWeight > bin.maxPayloadLbs * 0.98) return false;
@@ -201,7 +207,9 @@ export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitRes
         });
 
       // If a single vehicle fits all remaining cargo, right-size to it; otherwise take largest
-      const chosenVehicle = singleFitVehicle || candidateVehicles[0];
+      const chosenVehicle = (singleFitVehicle && canFit(createBin(singleFitVehicle), unit) ? singleFitVehicle : undefined) ?? candidateVehicles.find(v => canFit(createBin(v), unit));
+
+      if (!chosenVehicle) { unassignedUnits.push(unit); continue; }
 
       const newBin = createBin(chosenVehicle);
       if (canFit(newBin, unit)) {
@@ -273,11 +281,11 @@ export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitRes
   for (const u of unassignedUnits) {
     unassignedMap.set(u.packageId, (unassignedMap.get(u.packageId) || 0) + 1);
   }
-  const unassignedItems = Array.from(unassignedMap.entries()).map(([packageId, quantity]) => ({
+  const unassignedItems = [...unknownItems, ...Array.from(unassignedMap.entries()).map(([packageId, quantity]) => ({
     packageId,
     quantity,
     reason: 'Exceeds single vehicle maximum dimensional or payload envelope',
-  }));
+  }))];
 
   const partitionSummary = partitions.map((p) => `1× ${p.vehicle.name} (${p.totalWeightLbs.toLocaleString()} lbs, ${p.totalPalletEquivalent} pallets)`).join(' + ');
 
@@ -288,6 +296,6 @@ export function splitCargoDemandAcrossFleet(input: SplitterInput): FleetSplitRes
     partitions,
     unassignedItems,
     totalVehicles: partitions.length,
-    summary: `Partitioned ${totalDemandItems} items (${Math.round(totalDemandWeightLbs).toLocaleString()} lbs) across ${partitions.length} vehicle(s): ${partitionSummary}`,
+    summary: `Heuristic: ${totalDemandItems} requested items, ${unassignedItems.reduce((n, item) => n + item.quantity, 0)} unassigned; known-spec demand ${Math.round(totalDemandWeightLbs).toLocaleString()} lbs. ${partitions.length} candidate vehicle(s): ${partitionSummary}. Mixed packing, securement, axle loads and legal compliance are not verified.`,
   };
 }

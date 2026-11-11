@@ -120,7 +120,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
         >
           <div>
             <h3 id="kiosk-modal-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc' }}>
-              🛂 Driver Self-Service Check-In Kiosk &amp; Gate Pass
+              🛂 Scenario Check-In Kiosk &amp; Sample Pass
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>
               Automated dock door &amp; drop lot allocation with bolt seal verification.
@@ -157,10 +157,10 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
             >
               <span style={{ fontSize: '2.5rem' }}>🎫</span>
               <h3 style={{ margin: '8px 0 4px', color: '#4ade80' }}>
-                DIGITAL GATE PASS ISSUED
+                SAMPLE GATE PASS CREATED
               </h3>
               <div style={{ fontSize: '0.9rem', color: '#94a3b8', marginBottom: 16 }}>
-                PASS ID: <strong>{issuedGatePass.gatePassId}</strong> · SECURITY PIN:{' '}
+                PASS ID: <strong>{issuedGatePass.gatePassId}</strong> · SAMPLE PIN (does not control entry):{' '}
                 <strong style={{ color: '#38bdf8' }}>{issuedGatePass.pinCode}</strong>
               </div>
 
@@ -194,7 +194,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                 </div>
 
                 <div style={{ marginTop: 12, padding: '6px', background: '#1e293b', borderRadius: 4, fontSize: '0.65rem', color: '#64748b', fontFamily: 'monospace' }}>
-                  {issuedGatePass.securityHash}
+                  Scenario checksum, not a security check: {issuedGatePass.securityHash}
                 </div>
               </div>
 
@@ -212,7 +212,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                   cursor: 'pointer',
                 }}
               >
-                Open Gate &amp; Print Pass 🖨️
+                Close sample pass
               </button>
             </div>
           ) : (
@@ -220,7 +220,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
             <form onSubmit={handleCheckInSubmit}>
               {/* Scheduled Appointment Selection */}
               <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#94a3b8', marginBottom: 6 }}>
-                Select Scheduled Carrier Appointment:
+                Select a sample carrier appointment (no external verification):
               </label>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 16 }}>
                 {PRESEEDED_SCHEDULED_APPOINTMENTS.map((apt) => {
@@ -353,7 +353,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                         checked={isSealIntact}
                         onChange={(e) => setIsSealIntact(e.target.checked)}
                       />
-                      Seal Intact &amp; Verified
+                      Declare seal intact (not verified)
                     </label>
                   )}
                 </div>
@@ -404,7 +404,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                     cursor: 'pointer',
                   }}
                 >
-                  Authorize Gate Entry ➔
+                  Simulate gate check-in ➔
                 </button>
               </div>
             </form>

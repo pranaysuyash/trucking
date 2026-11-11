@@ -28,7 +28,7 @@ export interface DriverQualificationFile {
 }
 
 export interface DqfViolation {
-  code: 'CDL_EXPIRED' | 'MEDICAL_EXPIRED' | 'CLEARINGHOUSE_PROHIBITED' | 'MVR_OVERDUE' | 'CLEARINGHOUSE_OVERDUE' | 'PRIOR_EMPLOYMENT_UNVERIFIED';
+  code: 'CDL_EXPIRED' | 'MEDICAL_EXPIRED' | 'CLEARINGHOUSE_PROHIBITED' | 'MVR_OVERDUE' | 'CLEARINGHOUSE_OVERDUE' | 'PRIOR_EMPLOYMENT_UNVERIFIED' | 'DATA_INCOMPLETE';
   severity: 'CRITICAL_OOS' | 'WARNING';
   message: string;
 }
@@ -106,11 +106,19 @@ export const SAMPLE_DRIVER_ROSTER: DriverQualificationFile[] = [
  */
 export function auditDriverQualificationFile(
   driver: DriverQualificationFile,
-  asOfDateStr: string = '2026-10-30'
+  asOfDateStr: string = new Date().toISOString().slice(0, 10)
 ): DqfAuditResult {
   const asOf = new Date(asOfDateStr);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(asOfDateStr) || !Number.isFinite(asOf.getTime()) || asOf.toISOString().slice(0, 10) !== asOfDateStr) throw new Error('A valid scenario review date is required.');
   const violations: DqfViolation[] = [];
   let score = 100;
+  const validDate = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
+  const fields = [driver.cdlExpirationDate, driver.medicalCardExpirationDate, driver.lastAnnualMvrDate, driver.lastClearinghouseDate];
+  if (fields.some(date => !validDate(date)) || (validDate(driver.lastAnnualMvrDate) && driver.lastAnnualMvrDate > asOfDateStr) || (validDate(driver.lastClearinghouseDate) && driver.lastClearinghouseDate > asOfDateStr) || driver.clearinghouseStatus === 'QUERY_PENDING') {
+    violations.push({ code: 'DATA_INCOMPLETE', severity: 'CRITICAL_OOS', message: 'Scenario evidence is missing, invalid, future-dated or pending; qualification cannot be inferred.' });
+    score -= 50;
+  }
+
 
   // 1. CDL Expiration Check
   const cdlExp = new Date(driver.cdlExpirationDate);
@@ -200,11 +208,11 @@ export function auditDriverQualificationFile(
   const dispatchLockoutActive = violations.some((v) => v.severity === 'CRITICAL_OOS');
   const isQualifiedForDispatch = !dispatchLockoutActive && finalScore >= 70;
 
-  let auditSummary = 'Driver qualification file meets all statutory FMCSA Part 391 requirements.';
+  let auditSummary = 'Scenario checks found no modeled issues. Driver identity, records and dispatch authorization are not verified.';
   if (dispatchLockoutActive) {
-    auditSummary = 'DISPATCH BLOCKED: Critical statutory safety violations detected. Driver cannot be dispatched legally.';
+    auditSummary = 'Scenario blocked: a modeled critical issue requires review. This is not an operational dispatch lock.';
   } else if (violations.length > 0) {
-    auditSummary = 'CONDITIONAL APPROVAL: Administrative DQF renewals required within 30 days.';
+    auditSummary = 'Scenario review needed: modeled warnings remain. This is not an approval.';
   }
 
   return {

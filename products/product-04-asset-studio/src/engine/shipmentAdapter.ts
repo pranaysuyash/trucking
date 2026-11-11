@@ -32,7 +32,8 @@ export function isVehicleSnapshot(value: unknown): value is VehicleSpec {
 
 export function equipmentForShipment(shipment: Shipment): EquipmentDraft {
   const saved = shipment.results.asset;
-  const nativeVehicle = saved?.details.nativeVehicle;
+  // Preserve the original legacy record for re-review while publishing unknown subtype to consumers.
+  const nativeVehicle = saved?.details.originalVehicle ?? saved?.details.nativeVehicle;
   // A stale observation still preserves the chosen specification; its publication
   // status remains owned by the shipment revision, never by this native import.
   const declaresSelected = nativeVehicle && typeof nativeVehicle === 'object' && 'id' in nativeVehicle && nativeVehicle.id === shipment.input.equipmentId;
@@ -45,6 +46,8 @@ export function equipmentForShipment(shipment: Shipment): EquipmentDraft {
 /** Full reviewed vehicle retained; package simulators remain independent. */
 export function resultForVehicle(shipment: Shipment, vehicle: VehicleSpec | null): StageResult {
   if (!isVehicleSnapshot(vehicle)) throw new Error('Select equipment with complete positive interior, door, payload and fuel declarations. Unknown or incomplete equipment cannot be published.');
+  const legacyCustomSubtype = vehicle.isCustom && vehicle.subtypeSource !== 'operator_declared';
+  const publishedVehicle = legacyCustomSubtype ? { ...structuredClone(vehicle), subtype: 'unknown' as const } : structuredClone(vehicle);
   return {
     ok: true, summary: `${vehicle.name}: declared interior, door and payload snapshot ready.`,
     details: {
@@ -52,9 +55,9 @@ export function resultForVehicle(shipment: Shipment, vehicle: VehicleSpec | null
       lengthIn: vehicle.interior.lengthFt * 12, widthIn: vehicle.interior.widthFt * 12, heightIn: vehicle.interior.heightFt * 12,
       doorWidthIn: vehicle.interior.doorWidthFt * 12, doorHeightIn: vehicle.interior.doorHeightFt * 12,
       payloadLbs: vehicle.weight.maxPayloadLbs, loadedMpg: vehicle.fuelEnergy.loadedMpg,
-      pricingEquipmentCategory: ({ dry_van_53: 'dry_van', reefer_53: 'reefer', flatbed_48: 'flatbed', step_deck_48: 'step_deck' } as Record<string, string>)[vehicle.subtype] ?? null,
+      pricingEquipmentCategory: ({ dry_van_53: 'dry_van', reefer_53: 'reefer', flatbed_48: 'flatbed', step_deck_48: 'step_deck' } as Record<string, string>)[publishedVehicle.subtype] ?? null,
       source: vehicle.isCustom ? 'Operator-authored scenario specification; physical equipment measurement remains separate' : 'Catalog scenario template; actual equipment measurement remains separate',
-      nativeVehicle: structuredClone(vehicle), reviewedShipmentId: shipment.id,
+      nativeVehicle: publishedVehicle, ...(legacyCustomSubtype ? { originalVehicle: structuredClone(vehicle) } : {}), reviewedShipmentId: shipment.id,
       reviewedBaseInputRevision: shipment.inputRevision, priorEquipmentId: shipment.input.equipmentId,
       scope: 'Declared equipment specification only. Native package, fuel and axle simulations are exploratory; Cargo Fit owns the identified mixed-unit loading plan.',
     },

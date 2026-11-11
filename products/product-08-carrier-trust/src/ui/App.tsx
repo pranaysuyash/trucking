@@ -14,6 +14,7 @@ import { FraudRiskRadar } from './FraudRiskRadar';
 import { ChameleonNetworkRadarCanvas } from './ChameleonNetworkRadarCanvas';
 import { StepUpVerificationModal, type StepUpAuditReceipt } from './StepUpVerificationModal';
 import { DriverQualificationModal } from './DriverQualificationModal';
+import { FreightGuardModal } from './FreightGuardModal';
 import { SuiteDock } from './SuiteDock';
 import { useShipmentSession } from '../suite/ShipmentSession';
 import { useShipmentDraft } from '../suite/useShipmentDraft';
@@ -33,6 +34,7 @@ export function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isStepUpOpen, setIsStepUpOpen] = useState(false);
   const [isDqfOpen, setIsDqfOpen] = useState(false);
+  const [isFreightGuardOpen, setIsFreightGuardOpen] = useState(false);
   const [verifiedDots, setVerifiedDots] = useState<Record<string, StepUpAuditReceipt>>({});
 
   const activeCarrier = useMemo(() => {
@@ -41,16 +43,7 @@ export function App() {
 
   useEffect(() => {
     if (!activeCarrier) return;
-    if (activeCarrier.blockers.length > 0) {
-      platformBus.publish('SAFETY_ALERT', {
-        alertId: `dnd-${activeCarrier.dotNumber}`,
-        unitNumber: `DOT-${activeCarrier.dotNumber}`,
-        category: 'HARSH_BRAKE',
-        severity: 'critical',
-        message: `DND Lockout on ${activeCarrier.legalName}: ${activeCarrier.blockers.join('; ')}`,
-        timestamp: new Date().toISOString(),
-      });
-    }
+    platformBus.publish('CARRIER_SCENARIO_REVIEWED', { dotNumber: activeCarrier.dotNumber, eligibility: activeCarrier.dispatchEligibility, evidenceSource: 'seeded_scenario', timestamp: new Date().toISOString() });
   }, [activeCarrier]);
   const reviewed = useMemo(() => {
     if (!session?.shipment) return null;
@@ -197,6 +190,14 @@ export function App() {
               >
                 Driver DQF &amp; Clearinghouse 🧑‍✈️
               </button>
+              <button
+                type="button"
+                onClick={() => setIsFreightGuardOpen(true)}
+                className="btn-cross p03"
+                style={{ cursor: 'pointer', textAlign: 'center', border: '1px solid rgba(239, 68, 68, 0.4)', background: '#1e293b', color: '#fca5a5' }}
+              >
+                FreightGuard Incidents 🛡️
+              </button>
             </div>
           </div>
         </div>
@@ -204,7 +205,7 @@ export function App() {
         {/* Audit Blockers or Warnings Banner */}
         {activeCarrier.blockers.length > 0 && (
           <div className="audit-banner blockers">
-            <strong> DO NOT DISPATCH (DND) LOCKOUT ACTIVE:</strong>
+            <strong> SCENARIO BLOCKERS:</strong>
             <ul>
               {activeCarrier.blockers.map((b, i) => (
                 <li key={i}>{b}</li>
@@ -215,7 +216,7 @@ export function App() {
 
         {activeCarrier.warnings.length > 0 && activeCarrier.blockers.length === 0 && (
           <div className="audit-banner warnings">
-            <strong>️ CONDITIONAL DISPATCH WARNINGS (Requires Safety Director Sign-Off):</strong>
+            <strong> SCENARIO REVIEW WARNINGS:</strong>
             <ul>
               {activeCarrier.warnings.map((w, i) => (
                 <li key={i}>{w}</li>
@@ -256,22 +257,30 @@ export function App() {
         <ChameleonNetworkRadarCanvas carrier={activeCarrier} />
 
         {/* Tier-3 Step-Up Verification Modal */}
-        <StepUpVerificationModal
+        {isStepUpOpen && <StepUpVerificationModal
           carrier={activeCarrier}
           isOpen={isStepUpOpen}
           onClose={() => setIsStepUpOpen(false)}
           onVerified={(receipt) => {
             setVerifiedDots((prev) => ({ ...prev, [receipt.dotNumber]: receipt }));
           }}
-        />
+        />}
 
-        {/* 49 CFR Part 391 Driver Qualification File Modal */}
-        <DriverQualificationModal
+        {/* Driver qualification scenario */}
+        {isDqfOpen && <DriverQualificationModal
           carrierDot={activeCarrier.dotNumber}
           carrierName={activeCarrier.legalName}
           isOpen={isDqfOpen}
           onClose={() => setIsDqfOpen(false)}
-        />
+        />}
+
+        {/* FreightGuard Incident Exchange */}
+        {isFreightGuardOpen && <FreightGuardModal
+          isOpen={isFreightGuardOpen}
+          onClose={() => setIsFreightGuardOpen(false)}
+          carrierDot={activeCarrier.dotNumber}
+          carrierName={activeCarrier.legalName}
+        />}
         </> : <section className="audit-banner blockers" role="status"><h2>Carrier identity unresolved</h2><p>DOT {selectedDot} is absent from the explicit scenario roster. No other carrier profile is substituted. Choose a listed profile to review its declared policy evidence.</p></section>}
       </main>
     </div>

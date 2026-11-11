@@ -23,7 +23,7 @@ export const CarrierScoreDial: React.FC<CarrierScoreDialProps> = ({
   return (
     <div className="safety-card dial-card">
       <div className="card-header">
-        <h3>️ Composite Carrier Safety Rating</h3>
+        <h3>️ Scenario Carrier Safety Score</h3>
         <span className={`eligibility-badge ${eligibility}`}>
           {eligibility.replace(/_/g, ' ')}
         </span>
@@ -55,15 +55,15 @@ export const CarrierScoreDial: React.FC<CarrierScoreDialProps> = ({
 
         <div className="dial-meta-column">
           <div className="meta-row">
-            <span className="meta-lbl">FMCSA SAFER RATING:</span>
+            <span className="meta-lbl">SAMPLE SAFETY RATING:</span>
             <strong className={`rating-tag ${safetyRating.toLowerCase()}`}>
               {safetyRating}
             </strong>
           </div>
           <div className="meta-row">
-            <span className="meta-lbl">DISPATCH STATUS:</span>
+            <span className="meta-lbl">SCENARIO OUTCOME:</span>
             <strong style={{ color: dialColor }}>
-              {eligibility === 'APPROVED' ? ' Eligible For Dispatch' : eligibility === 'CONDITIONAL_REVIEW' ? '️ Secondary Review Required' : ' DO NOT DISPATCH (LOCKED)'}
+              {eligibility === 'APPROVED' ? 'Scenario policy passes' : eligibility === 'CONDITIONAL_REVIEW' ? 'Scenario review required' : 'Scenario blocked'}
             </strong>
           </div>
           <div className="meta-row">

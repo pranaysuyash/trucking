@@ -90,32 +90,32 @@ export const FraudRiskRadar: React.FC<FraudRiskRadarProps> = ({
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
           <div>
             <span style={{ color: '#94a3b8', fontSize: '11px' }}>Phone Line Type:</span>
-            <div style={{ fontWeight: 600, color: contact?.phoneLineType === 'VOIP_VIRTUAL' ? '#ef4444' : '#10b981' }}>
-              {contact ? `${contact.phoneLineType} (${contact.telecomCarrier})` : 'Landline / Verified Wireline'}
+            <div style={{ fontWeight: 600, color: !contact ? '#94a3b8' : contact.phoneLineType === 'VOIP_VIRTUAL' ? '#ef4444' : '#10b981' }}>
+              {contact ? `${contact.phoneLineType} (${contact.telecomCarrier})` : 'Not supplied'}
             </div>
           </div>
           <div>
             <span style={{ color: '#94a3b8', fontSize: '11px' }}>Domain Verification:</span>
-            <div style={{ fontWeight: 600, color: (contact?.domainAgeDays ?? 1000) < 90 ? '#ef4444' : '#10b981' }}>
-              {contact ? `${contact.emailDomain} (${contact.domainAgeDays}d age)` : 'Corporate Domain Match (>1yr)'}
+            <div style={{ fontWeight: 600, color: !contact ? '#94a3b8' : contact.domainAgeDays < 90 ? '#ef4444' : '#10b981' }}>
+              {contact ? `${contact.emailDomain} (${contact.domainAgeDays}d age)` : 'Not supplied'}
             </div>
           </div>
           <div>
             <span style={{ color: '#94a3b8', fontSize: '11px' }}>Dispatcher IP Geo:</span>
-            <div style={{ fontWeight: 600, color: contact?.ipGeolocationMismatch ? '#ef4444' : '#10b981' }}>
-              {contact ? `${contact.ipCity}, ${contact.ipOriginCountry} ${contact.isVpnOrProxy ? '(VPN Exit)' : ''}` : 'US Domestic (Clean ISP)'}
+            <div style={{ fontWeight: 600, color: !contact ? '#94a3b8' : contact.ipGeolocationMismatch ? '#ef4444' : '#10b981' }}>
+              {contact ? `${contact.ipCity}, ${contact.ipOriginCountry} ${contact.isVpnOrProxy ? '(VPN Exit)' : ''}` : 'Not supplied'}
             </div>
           </div>
           <div>
             <span style={{ color: '#94a3b8', fontSize: '11px' }}>SAFER BMC-91X Filing:</span>
-            <div style={{ fontWeight: 600, color: bmc91Filing?.filingStatus === 'ACTIVE' || !bmc91Filing ? '#10b981' : '#ef4444' }}>
-              {bmc91Filing ? `${bmc91Filing.filingStatus} ($${(bmc91Filing.coverageLimitUsd / 1000).toFixed(0)}k)` : 'ACTIVE ($1,000,000)'}
+            <div style={{ fontWeight: 600, color: !bmc91Filing ? '#94a3b8' : bmc91Filing.filingStatus === 'ACTIVE' ? '#10b981' : '#ef4444' }}>
+              {bmc91Filing ? `${bmc91Filing.filingStatus} ($${(bmc91Filing.coverageLimitUsd / 1000).toFixed(0)}k)` : 'Not supplied'}
             </div>
           </div>
         </div>
       </div>
 
-      {stepUpVerified ? (
+      {stepUpVerified && (
         <div
           style={{
             marginTop: '14px',
@@ -131,17 +131,18 @@ export const FraudRiskRadar: React.FC<FraudRiskRadarProps> = ({
           }}
         >
           <div>
-            <strong>✅ STEP-UP VERIFICATION AUTHORIZED:</strong> Dual-custody out-of-band SAFER telephone & underwriter COI validation recorded. Carrier cleared for load tender.
+            <strong>SELF-ATTESTED SCENARIO RECORDED:</strong> The entered assertions are not independently verified or authenticated; no blockers are cleared and no load tender is authorized.
           </div>
         </div>
-      ) : isHighRisk && (
+      )}
+      {isHighRisk && (
         <div className="fraud-alert-banner" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <div>
-            ⚠️ <strong>AUTOMATED FRAUD LOCKOUT ACTIVE:</strong> Carrier exhibits severe fraud, VOIP cyber-risk, or double-brokering indicators. Dispatch system has engaged the Do-Not-Dispatch (DND) hard lockout.
+            ⚠️ <strong>SCENARIO RISK FLAG:</strong> Carrier exhibits severe fraud, VOIP cyber-risk, or double-brokering indicators. This modeled result does not operate an actual dispatch lock.
           </div>
           {authority !== 'AUTHORIZED_FOR_HIRE' ? (
             <div style={{ fontSize: '11px', color: '#fca5a5', fontStyle: 'italic' }}>
-              ⛔ Statutory Precondition: Authority is {authority.replace(/_/g, ' ')}. 49 U.S.C. § 13906 prohibits overrides.
+              Scenario authority is {authority.replace(/_/g, ' ')}; this scenario does not permit an override.
             </div>
           ) : onInitiateStepUp ? (
             <div>
@@ -160,7 +161,7 @@ export const FraudRiskRadar: React.FC<FraudRiskRadarProps> = ({
                   minHeight: '36px',
                 }}
               >
-                Initiate Tier-3 Step-Up Verification & Dual-Sign Off ↗
+                Record scenario assertions ↗
               </button>
             </div>
           ) : null}

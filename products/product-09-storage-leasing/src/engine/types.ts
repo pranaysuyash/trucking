@@ -150,7 +150,10 @@ export interface Lease {
   endDate?: string; // ISO date; omitted for month_to_month/indefinite
   billingCycleDay?: number; // day of month rent is due (1-28)
   billingUnit: BillingUnit;
-  rate: number; // per billing unit
+  /** Rate per billing unit (e.g., ₹/sqft/month, ₹/unit/month, ₹ fixed/month). */
+  rate: number;
+  /** Quantity the rate applies to (additive). sqft_month => leased sqft; fixed => 1; unit-based => units. */
+  billingQuantity?: number;
   escalationPercentPerYear: number;
   depositAmount: number;
   status: LeaseStatus;
@@ -158,6 +161,17 @@ export interface Lease {
   intendedUse?: string;
   commodityCategory?: CommodityCategory;
   createdAt: string;
+}
+
+export interface PaymentTransaction {
+  transactionId: string;
+  paidDate: string;
+  amountReceived: number;
+  amountApplied: number;
+  overpayment: number;
+  receiptNumber?: string;
+  recordedAt: string;
+  source: 'user-entered';
 }
 
 export interface RentLedgerEntry {
@@ -180,10 +194,18 @@ export interface RentLedgerEntry {
   otherCharges: number;
   totalDue: number;
   amountPaid: number;
+  /** Amount received above totalDue, if any (additive; honest overpayment handling). */
+  overpaidAmount?: number;
   paymentStatus: PaymentStatus;
   dueDate: string;
   paidDate?: string;
   receiptNumber?: string;
+  /** Last transaction receipt details (additive). Full payment transaction ledger is a separate decision. */
+  lastReceiptAmount?: number;
+  /** Unexplained amount already applied before detailed payment history began. */
+  paymentHistoryOpeningApplied?: number;
+  paymentHistoryOpeningOverpaid?: number;
+  paymentTransactions?: PaymentTransaction[];
   notes?: string;
 }
 
@@ -235,6 +257,8 @@ export interface MaintenanceTask {
   resolvedAt?: string;
   contractor?: string;
   photos?: string[];
+  /** Space status before maintenance started (additive). Restored on resolve/cancel to avoid freeing leased spaces. */
+  spaceStatusBeforeRepair?: SpaceStatus;
 }
 
 export interface TenantPortalAccess {
@@ -266,7 +290,7 @@ export interface StorageEvent {
   leaseId?: string;
   actor: string;
   payload: Record<string, unknown>;
-  verificationStatus: 'simulated' | 'observed' | 'published';
+  verificationStatus: 'reported' | 'simulated' | 'observed' | 'published';
 }
 
 export interface FacilityMetrics {
@@ -276,7 +300,8 @@ export interface FacilityMetrics {
   vacantAreaSqFt: number;
   blockedAreaSqFt: number;
   underRepairAreaSqFt: number;
-  occupancyPercent: number;
+  /** null when facility usable area is not configured (> 0); never present a false 0% occupancy. */
+  occupancyPercent: number | null;
   /** Sum of all modeled space areaSqFt values (independent of facility usable/total). */
   modeledSpaceAreaSqFt: number;
   /** Optional: not computed by computeFacilityMetrics; rent due/overdue come from rent summary selectors. */

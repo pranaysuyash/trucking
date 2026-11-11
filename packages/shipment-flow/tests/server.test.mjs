@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { PassThrough } from 'node:stream';
@@ -52,6 +52,33 @@ function createClient(server) {
     });
   };
 }
+
+test('HTTP saves an indeterminate duty review but rejects forged positive duty decisions', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'trucking-flow-hos-review-'));
+  const file = join(dir, 'store.json');
+  try {
+    const request = createClient(await createFlowServer({ file }));
+    const post = (path, body) => request(path, { method: 'POST', headers: { Origin: 'http://127.0.0.1:5175', 'Content-Type': 'application/json' }, body });
+    const created = await (await post('/shipments', { reference: 'Duty HTTP fixture', operationId: 'hos-create' })).json();
+    const review = { ok: false, summary: 'Cycle history unavailable', details: { assessmentVersion: 1, assessment: 'indeterminate', assessmentReasons: ['Prior duty history unavailable'], driverId: created.input.driverId, priorRestHours: created.input.priorRestHours, isLegal: false } };
+    const command = { type: 'evaluate', productId: 'product-03-hos-planner', operationId: 'hos-review', expectedRevision: created.revision, payload: { stage: 'hos', result: review } };
+    const accepted = await post(`/shipments/${created.id}/commands`, command);
+    assert.equal(accepted.status, 200);
+    const saved = await accepted.json();
+    assert.deepEqual(saved.results.hos.details, review.details);
+    const storedBefore = await readFile(file, 'utf8');
+    const forged = { ...command, operationId: 'hos-forged', expectedRevision: saved.revision, payload: { stage: 'hos', result: { ...review, ok: true, details: { ...review.details, assessment: 'verified', cycleVerified: true, isLegal: true } } } };
+    assert.equal((await post(`/shipments/${created.id}/commands`, forged)).status, 422);
+    assert.equal(await readFile(file, 'utf8'), storedBefore);
+    const dispatch = { type: 'dispatch', productId: 'command-center-portal', operationId: 'hos-dispatch', expectedRevision: saved.revision };
+    const denied = await post(`/shipments/${created.id}/commands`, dispatch);
+    assert.equal(denied.status, 422);
+    assert.match((await denied.json()).error, /hos: duty assessment indeterminate/);
+    assert.equal(await readFile(file, 'utf8'), storedBefore);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
 
 test('API persists across restart, rejects foreign origins and deduplicates creation', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'trucking-flow-api-')); const file = join(dir, 'store.json');

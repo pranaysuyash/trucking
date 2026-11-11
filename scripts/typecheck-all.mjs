@@ -32,12 +32,15 @@ console.log(`\n🚛 Running TypeScript typecheck across ${targets.length} sovere
 let failed = false;
 for (const target of targets) {
   console.log(`\n▶ Typechecking ${target.name}...`);
-  const res = spawnSync('./node_modules/.bin/tsc', ['--noEmit'], {
+  // Each workspace owns its compiler command. npm resolves both local and
+  // workspace-hoisted binaries without assuming a package-local node_modules.
+  const res = spawnSync('npm', ['run', 'typecheck'], {
     cwd: target.cwd,
     stdio: 'inherit',
     shell: false,
   });
   if (res.status !== 0) {
+    if (res.error) console.error(`Unable to launch typecheck in ${target.name}: ${res.error.message}`);
     console.error(`❌ Typecheck failure in ${target.name}`);
     failed = true;
   } else {

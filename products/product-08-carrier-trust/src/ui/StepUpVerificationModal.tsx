@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { CarrierProfile } from '../engine/types';
 import { platformBus } from '../engine/platformBus';
+import { useModalDialog } from './useModalDialog';
 
 export interface StepUpAuditReceipt {
   dotNumber: string;
@@ -14,7 +15,9 @@ export interface StepUpAuditReceipt {
   underwriterCoiVerified: boolean;
   driverHandshakeVerified: boolean;
   justificationNotes: string;
-  auditHash: string;
+  recordId: string;
+  provenance: 'self_attested_scenario';
+  authenticatedApproval: false;
 }
 
 interface StepUpVerificationModalProps {
@@ -39,13 +42,13 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
   const [safetyDirectorId, setSafetyDirectorId] = useState('');
   const [justificationNotes, setJustificationNotes] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const dialog = useModalDialog(isOpen);
 
   if (!isOpen) return null;
 
   // Tier 1 Statutory Precondition: Under 49 U.S.C. § 13906, revoked authority or lapsed BMC-91X cannot be overridden.
   const isStatutoryRevoked =
-    carrier.operatingAuthority === 'REVOKED' ||
-    carrier.operatingAuthority === 'SUSPENDED' ||
+    carrier.operatingAuthority !== 'AUTHORIZED_FOR_HIRE' ||
     carrier.safetyRating === 'UNSATISFACTORY';
 
   const canSubmit =
@@ -62,7 +65,7 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSubmit) {
-      setErrorMsg('All verification checkpoints, dual sign-off roles, and detailed audit notes are mandatory.');
+      setErrorMsg('Complete the scenario checkboxes, names, IDs and notes. These entries do not authenticate anyone.');
       return;
     }
 
@@ -78,38 +81,38 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
       underwriterCoiVerified,
       driverHandshakeVerified,
       justificationNotes: justificationNotes.trim(),
-      auditHash: `AUDIT-STEPUP-${carrier.dotNumber}-${Date.now().toString(36).toUpperCase()}`,
+      recordId: crypto.randomUUID(),
+      provenance: 'self_attested_scenario',
+      authenticatedApproval: false,
     };
 
-    // Store in localStorage ring audit log
+    // Preserve all legacy entries; do not report success if persistence failed.
     try {
       const stored = localStorage.getItem('trucking-carrier-step-up-audits-v1');
-      const list: StepUpAuditReceipt[] = stored ? JSON.parse(stored) : [];
-      list.push(receipt);
-      localStorage.setItem('trucking-carrier-step-up-audits-v1', JSON.stringify(list.slice(-50)));
-    } catch {}
-
-    // Broadcast across platform mesh
-    platformBus.publish('CARRIER_VETTED', {
-      dotNumber: carrier.dotNumber,
-      legalName: carrier.legalName,
-      safetyScore: carrier.compositeSafetyScore,
-      isApproved: true,
-      timestamp: receipt.timestamp,
-    });
+      const list: unknown = stored ? JSON.parse(stored) : [];
+      if (!Array.isArray(list)) throw new Error('Stored records are not a list.');
+      localStorage.setItem('trucking-carrier-step-up-audits-v1', JSON.stringify([...list, receipt]));
+    } catch {
+      setErrorMsg('Could not save the scenario record. Existing records were left unchanged.');
+      return;
+    }
+    platformBus.publish('CARRIER_SCENARIO_ATTESTED', { dotNumber: carrier.dotNumber, evidenceSource: 'self_attested_scenario', timestamp: receipt.timestamp });
 
     onVerified(receipt);
     onClose();
   };
 
   return (
-    <div
-      role="dialog"
+    <dialog
+      ref={dialog}
+      onCancel={(e) => { e.preventDefault(); onClose(); }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
       aria-modal="true"
       aria-labelledby="stepup-title"
       style={{
         position: 'fixed',
         inset: 0,
+        width: '100%', height: '100%', maxWidth: 'none', maxHeight: 'none', margin: 0, border: 0, boxSizing: 'border-box',
         backgroundColor: 'rgba(15, 23, 42, 0.75)',
         backdropFilter: 'blur(4px)',
         display: 'flex',
@@ -140,7 +143,7 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
               Tier-3 Governance Protocol
             </div>
             <h2 id="stepup-title" style={{ margin: '4px 0 0 0', fontSize: '20px', fontWeight: 800, color: '#0f172a' }}>
-              Carrier Step-Up Verification & Dual-Custody Sign-Off
+              Carrier Scenario Attestation
             </h2>
             <div style={{ fontSize: '13px', color: '#475569', marginTop: '2px' }}>
               {carrier.legalName} · USDOT #{carrier.dotNumber} · MC #{carrier.mcNumber}
@@ -177,9 +180,9 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
               lineHeight: 1.5,
             }}
           >
-            <strong>⛔ STATUTORY DISPATCH PROHIBITION (49 U.S.C. § 13906 / 49 CFR Part 387):</strong>
+            <strong>⛔ SCENARIO PRECONDITION:</strong>
             <p style={{ margin: '6px 0 0 0' }}>
-              Federal operating authority for this motor carrier is currently <strong>{carrier.operatingAuthority}</strong> or Safety Rating is <strong>{carrier.safetyRating}</strong>. Under federal motor carrier safety regulations, dispatching un-authorized carriers is illegal. <strong>No operational override or dual-custody exception is permitted by law.</strong>
+              The sample operating authority is <strong>{carrier.operatingAuthority}</strong> or Safety Rating is <strong>{carrier.safetyRating}</strong>. <strong>This tool cannot authorize dispatch or override a scenario blocker.</strong>
             </p>
           </div>
         ) : (
@@ -196,12 +199,12 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
                 lineHeight: 1.45,
               }}
             >
-              ℹ️ <strong>High-Assurance Fraud Governance:</strong> To prevent cyber-impersonation, newly registered domain spoofing, and unauthorized double-brokering, this carrier requires independent corroboration across three distinct verification channels before load tender.
+              ℹ️ <strong>Self-attested scenario record:</strong> These entries are unverified operator assertions. They do not authenticate either person, verify evidence, clear blockers or authorize a load tender.
             </div>
 
             <fieldset style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', marginBottom: '16px' }}>
               <legend style={{ fontWeight: 700, fontSize: '13px', color: '#1e293b', padding: '0 6px' }}>
-                1. Independent Verification Proofs
+                1. Declared scenario checks
               </legend>
 
               <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px', cursor: 'pointer' }}>
@@ -212,7 +215,7 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
                   style={{ marginTop: '3px', width: '16px', height: '16px' }}
                 />
                 <div style={{ fontSize: '12px', color: '#334155' }}>
-                  <strong>Out-of-Band SAFER Voice Verification:</strong> Directly called the official phone number registered on the federal FMCSA SAFER docket ({carrier.physicalAddress}), verifying authorized dispatcher identity and confirming load booking authorization.
+                  <strong>Out-of-Band SAFER Voice Verification:</strong> Directly called the official phone number registered on the federal FMCSA SAFER docket (number independently obtained by operator), verifying authorized dispatcher identity and confirming load booking authorization.
                 </div>
               </label>
 
@@ -243,15 +246,15 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
 
             <fieldset style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '14px', marginBottom: '16px' }}>
               <legend style={{ fontWeight: 700, fontSize: '13px', color: '#1e293b', padding: '0 6px' }}>
-                2. Dual-Custody Approval Signatures
+                2. Entered scenario names and IDs (not signatures)
               </legend>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
+                  <label htmlFor="scenario-dispatcher-name" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
                     ASSIGNED DISPATCHER NAME *
                   </label>
-                  <input
+                  <input id="scenario-dispatcher-name"
                     type="text"
                     required
                     value={dispatcherName}
@@ -261,10 +264,10 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
+                  <label htmlFor="scenario-dispatcher-id" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
                     DISPATCHER EMPLOYEE ID *
                   </label>
-                  <input
+                  <input id="scenario-dispatcher-id"
                     type="text"
                     required
                     value={dispatcherId}
@@ -277,10 +280,10 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
+                  <label htmlFor="scenario-director-name" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
                     SAFETY DIRECTOR / RISK OFFICER NAME *
                   </label>
-                  <input
+                  <input id="scenario-director-name"
                     type="text"
                     required
                     value={safetyDirectorName}
@@ -290,10 +293,10 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
-                    SAFETY OFFICER ID / PIN *
+                  <label htmlFor="scenario-director-id" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
+                    SAFETY OFFICER SCENARIO ID (NO PIN) *
                   </label>
-                  <input
+                  <input id="scenario-director-id"
                     type="text"
                     required
                     value={safetyDirectorId}
@@ -305,10 +308,10 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
+                <label htmlFor="scenario-notes" style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#64748b', marginBottom: '4px' }}>
                   STEP-UP AUDIT JUSTIFICATION & EVIDENCE NOTES (MIN 15 CHARACTERS) *
                 </label>
-                <textarea
+                <textarea id="scenario-notes"
                   rows={2}
                   required
                   value={justificationNotes}
@@ -341,7 +344,7 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
                   minHeight: '44px',
                 }}
               >
-                Cancel / Retain Lockout
+                Cancel
               </button>
               <button
                 type="submit"
@@ -359,12 +362,12 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
                   boxShadow: canSubmit ? '0 4px 6px -1px rgba(37, 99, 235, 0.3)' : 'none',
                 }}
               >
-                Sign & Authorize Load Tender
+                Save self-attested scenario
               </button>
             </div>
           </form>
         )}
       </div>
-    </div>
+    </dialog>
   );
 };

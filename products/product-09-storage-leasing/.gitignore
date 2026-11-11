@@ -58,3 +58,14 @@ playwright/.cache/
 .local/
 docs/evidence/.chrome-profile/
 **/.chrome-profile/
+**/.playwright-mcp/
+unslop-story/
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+# Compiled outputs alongside TS sources (do not commit)
+src/**/*.js
+tests/**/*.js
+src/**/*.js.map
+tests/**/*.js.map

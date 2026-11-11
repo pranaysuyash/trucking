@@ -70,6 +70,16 @@ test('spatial view refuses overlapping boxes and unsupported declared dimensions
   assert.equal(spatialModel(wrongSize).available, false);
   assert.match(spatialModel(wrongSize).reason, /dimensions/);
 });
+test('HOS views distinguish indeterminate review and unverified legacy success from rejection', () => {
+  const s = fixture();
+  s.results.hos = { ...result({ assessment: 'indeterminate' }), ok: false };
+  assert.equal(stageState(s, 'hos', at), 'indeterminate');
+  s.results.hos = result({ isLegal: true });
+  assert.equal(stageState(s, 'hos', at), 'unverified');
+  s.inputRevision++;
+  assert.equal(stageState(s, 'hos', at), 'stale');
+});
+
 test('carrier freshness handles exact expiry and malformed dates conservatively', () => {
   const s=fixture(); s.results.carrier=result({expiresAt:at}); assert.equal(stageState(s,'carrier',at),'expired');
   s.results.carrier.details.expiresAt='2026-10-22T15:00:00Z'; assert.equal(stageState(s,'carrier',at),'current');
@@ -92,7 +102,7 @@ test('location statements distinguish planning, scenario departure and manually 
 });
 test('S3: current-revision and missing-history invariants detect deliberate isolated mutations', async () => {
   const source=readFileSync(new URL('../src/shipmentViewModel.ts',import.meta.url),'utf8');
-  const load=async text=>import('data:text/javascript;base64,'+Buffer.from(stripTypeScriptTypes(text.replace("'./reviewedGeometry.mjs'", JSON.stringify(new URL('../src/reviewedGeometry.mjs',import.meta.url).href)),{mode:'strip'})).toString('base64'));
+  const load=async text=>import('data:text/javascript;base64,'+Buffer.from(stripTypeScriptTypes(text.replace("'./reviewedGeometry.mjs'", JSON.stringify(new URL('../src/reviewedGeometry.mjs',import.meta.url).href)).replace("'./carrierFreshness.mjs'", JSON.stringify(new URL('../src/carrierFreshness.mjs',import.meta.url).href)),{mode:'strip'})).toString('base64'));
   const staleMutation=await load(source.replace('if (result.inputRevision !== shipment.inputRevision)', 'if (false)'));
   const s=fixture();s.results.fit=result({});s.inputRevision=2;assert.throws(()=>assert.equal(staleMutation.stageState(s,'fit',at),'stale'),assert.AssertionError);
   const historyMutation=await load(source.replace('input = null; revision = event.inputRevision; sources = []; reason =', 'input = structuredClone(shipment.input); revision = event.inputRevision; sources = []; reason ='));

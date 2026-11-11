@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useModalDialog } from './useModalDialog';
 import {
   SAMPLE_DRIVER_ROSTER,
   auditDriverQualificationFile,
@@ -21,6 +22,8 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
   onClose,
   onAssignDriver,
 }) => {
+  const [asOfDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const dialog = useModalDialog(isOpen);
   const [selectedDriverId, setSelectedDriverId] = useState<string>(SAMPLE_DRIVER_ROSTER[0].driverId);
 
   const selectedDriver = useMemo(() => {
@@ -28,17 +31,19 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
   }, [selectedDriverId]);
 
   const audit: DqfAuditResult = useMemo(() => {
-    return auditDriverQualificationFile(selectedDriver, '2026-10-30');
-  }, [selectedDriver]);
+    return auditDriverQualificationFile(selectedDriver, asOfDate);
+  }, [selectedDriver, asOfDate]);
 
   if (!isOpen) return null;
 
   return (
-    <div
+    <dialog
+      ref={dialog}
+      onCancel={(e) => { e.preventDefault(); onClose(); }}
       className="modal-backdrop"
-      role="dialog"
       aria-modal="true"
       aria-labelledby="dqf-modal-title"
+      style={{ width: '100%', height: '100%', maxWidth: 'none', maxHeight: 'none', margin: 0, border: 0, boxSizing: 'border-box' }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -71,7 +76,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
               🧑‍✈️ Driver Qualification File (DQF) &amp; Clearinghouse Compliance
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>
-              FMCSA 49 CFR Part 391 &amp; Part 382 driver statutory vetting for {carrierName} (DOT #{carrierDot}).
+              Sample roster evaluated as of {asOfDate}. Selected carrier: {carrierName} (DOT #{carrierDot}). Sample drivers are not associated with that carrier unless the DOT matches. No registry checks or assignment are performed.
             </p>
           </div>
           <button
@@ -94,16 +99,18 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
         <div style={{ padding: '20px', maxHeight: '74vh', overflowY: 'auto' }}>
           {/* Driver Selector */}
           <div style={{ marginBottom: 16 }}>
-            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#94a3b8', marginBottom: 6 }}>
-              Select Driver to Audit Qualification File:
-            </label>
+            <div style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: '#94a3b8', marginBottom: 6 }}>
+              Select sample driver for scenario review:
+            </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
               {SAMPLE_DRIVER_ROSTER.map((drv) => {
                 const isSelected = drv.driverId === selectedDriverId;
-                const drvAudit = auditDriverQualificationFile(drv, '2026-10-30');
+                const drvAudit = auditDriverQualificationFile(drv, asOfDate);
 
                 return (
-                  <div
+                  <button
+                    type="button"
+                    aria-pressed={isSelected}
                     key={drv.driverId}
                     onClick={() => setSelectedDriverId(drv.driverId)}
                     style={{
@@ -111,7 +118,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                       border: `1px solid ${isSelected ? '#0284c7' : '#334155'}`,
                       borderRadius: 6,
                       padding: '10px',
-                      cursor: 'pointer',
+                      cursor: 'pointer', textAlign: 'left',
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
@@ -128,13 +135,13 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                           color: '#ffffff',
                         }}
                       >
-                        {drvAudit.dispatchLockoutActive ? 'LOCKED' : 'QUALIFIED'}
+                        {drvAudit.dispatchLockoutActive ? 'SCENARIO BLOCK' : 'SCENARIO REVIEW'}
                       </span>
                     </div>
                     <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
                       CDL: {drv.cdlState}-{drv.cdlNumber.slice(-4)} · {drv.cdlClass}
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>
@@ -190,7 +197,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                     color: v.severity === 'CRITICAL_OOS' ? '#fca5a5' : '#fcd34d',
                   }}
                 >
-                  <strong>{v.severity === 'CRITICAL_OOS' ? '🚫 CRITICAL STATUTORY LOCKOUT' : '⚠️ COMPLIANCE WARNING'}:</strong>{' '}
+                  <strong>{v.severity === 'CRITICAL_OOS' ? '🚫 SCENARIO CRITICAL ISSUE' : '⚠️ SCENARIO WARNING'}:</strong>{' '}
                   {v.message}
                 </div>
               ))}
@@ -200,7 +207,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
           {/* Detailed Verification Checklist */}
           <div style={{ background: '#1e293b', borderRadius: 8, padding: 16, border: '1px solid #334155', marginBottom: 16 }}>
             <h4 style={{ margin: '0 0 10px', fontSize: '0.85rem', color: '#38bdf8' }}>
-              Mandatory DQF Document Inspection Ledger (49 CFR § 391.51):
+              Sample document fields (not independently verified):
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, fontSize: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -213,7 +220,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                 <span>{audit.daysUntilMedCardExpires >= 0 ? '✅' : '🚫'}</span>
                 <div>
                   <strong>DOT Physical (MCSA-5876):</strong>{' '}
-                  {audit.daysUntilMedCardExpires >= 0 ? 'Current on Registry' : 'Expired / Disqualified'}
+                  {audit.daysUntilMedCardExpires >= 0 ? 'Not expired in sample' : 'Expired / Disqualified'}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -227,14 +234,14 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                 <span>{selectedDriver.clearinghouseStatus === 'CLEARED' ? '✅' : '🚫'}</span>
                 <div>
                   <strong>Drug &amp; Alcohol Clearinghouse:</strong>{' '}
-                  {selectedDriver.clearinghouseStatus === 'CLEARED' ? 'Annual Query Cleared' : 'PROHIBITED'}
+                  {selectedDriver.clearinghouseStatus === 'CLEARED' ? 'Sample says cleared' : 'PROHIBITED'}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span>{selectedDriver.priorEmployerHistoryVerified ? '✅' : '⚠️'}</span>
                 <div>
                   <strong>3-Year Safety History:</strong>{' '}
-                  {selectedDriver.priorEmployerHistoryVerified ? 'Verified & On File' : 'Pending Investigation'}
+                  {selectedDriver.priorEmployerHistoryVerified ? 'Sample says verified' : 'Pending Investigation'}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -277,9 +284,9 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
             >
               Close
             </button>
-            <button
+            {onAssignDriver && selectedDriver.carrierDot === carrierDot && <button
               type="button"
-              disabled={audit.dispatchLockoutActive}
+              disabled={!audit.isQualifiedForDispatch}
               onClick={() => {
                 if (onAssignDriver) onAssignDriver(selectedDriver);
                 onClose();
@@ -295,11 +302,11 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                 cursor: audit.dispatchLockoutActive ? 'not-allowed' : 'pointer',
               }}
             >
-              {audit.dispatchLockoutActive ? 'Dispatch Prohibited 🚫' : 'Authorize Driver Load Assignment ✓'}
-            </button>
+              {audit.isQualifiedForDispatch ? 'Select sample driver' : 'Scenario selection unavailable'}
+            </button>}
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 };

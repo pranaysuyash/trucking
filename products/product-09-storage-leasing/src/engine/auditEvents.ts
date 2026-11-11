@@ -20,8 +20,8 @@ export function createStorageEvent(input: {
     spaceId: input.spaceId,
     tenantId: input.tenantId,
     leaseId: input.leaseId,
-    actor: input.actor ?? 'operator',
+    actor: input.actor ?? 'Not supplied',
     payload: input.payload ?? {},
-    verificationStatus: input.verificationStatus ?? 'observed',
+    verificationStatus: input.verificationStatus ?? 'reported',
   };
 }

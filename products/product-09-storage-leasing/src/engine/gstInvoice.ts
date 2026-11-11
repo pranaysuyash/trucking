@@ -20,7 +20,7 @@ export interface GstInvoice {
   invoiceDate: string;
   supplierGstin: string;
   recipientGstin?: string;
-  placeOfSupply: string; // state name
+  placeOfSupply: string; // state name used in this estimate (verify; immovable property may differ)
   intraState: boolean;
   lines: GstInvoiceLine[];
   totalTaxable: number;
@@ -28,6 +28,9 @@ export interface GstInvoice {
   totalSgst: number;
   totalIgst: number;
   grandTotal: number;
+  /** Always true for this module: draft estimate only, not an issued tax invoice. */
+  isDraftEstimate?: boolean;
+  warnings?: string[];
 }
 
 export function calculateLateFee(input: {
@@ -55,15 +58,33 @@ export function generateGstInvoice(input: {
   recipientGstin?: string;
   supplierState: string;
   recipientState: string;
+  /** Optional property/immovable-property state for better place-of-supply context (estimate only). */
+  propertyState?: string;
   description: string;
   hsn?: string;
   taxableValue: number;
   gstRate?: number;
   lateFee?: number;
 }): GstInvoice {
-  const intraState = input.supplierState === input.recipientState;
+  const warnings: string[] = [
+    'DRAFT ESTIMATE ONLY — not an issued tax invoice. Verify GSTIN, registration, place of supply (immovable property), SAC/rate, TDS, exemptions/reverse charge, and e-invoicing requirements with a qualified CA/tax professional before issuing any document.',
+  ];
+  const propertyState = input.propertyState?.trim();
+  // Backward-compatible default behavior when propertyState is not provided. If propertyState is provided,
+  // use it as the place-of-supply basis for this estimate (conservative for immovable-property renting) and warn.
+  let placeOfSupply = input.recipientState;
+  let intraState = input.supplierState === input.recipientState;
+  if (propertyState) {
+    placeOfSupply = propertyState;
+    intraState = input.supplierState === propertyState;
+    if (propertyState !== input.recipientState || propertyState !== input.supplierState) {
+      warnings.push(`Property state (${propertyState}) used for this estimate's place-of-supply basis; supplier/recipient states differ. Confirm actual tax determination before issuing.`);
+    }
+  } else {
+    warnings.push('Property state not provided; estimate uses recipient/supplier states and may be incorrect for immovable property place of supply.');
+  }
   const rate = input.gstRate ?? 18;
-  const hsn = input.hsn ?? '997212'; // renting of immovable property (SAC)
+  const hsn = input.hsn ?? '997212'; // renting of immovable property (SAC) — verify applicability
   const lines: GstInvoiceLine[] = [];
   const base = { description: input.description, hsn, gstRate: rate };
   const tax = Math.round(input.taxableValue * (rate / 100) * 100) / 100;
@@ -73,11 +94,12 @@ export function generateGstInvoice(input: {
   lines.push({ ...base, taxableValue: input.taxableValue, cgst, sgst, igst, total: Math.round((input.taxableValue + cgst + sgst + igst) * 100) / 100 });
 
   if (input.lateFee && input.lateFee > 0) {
+    warnings.push('Late fee tax treatment is estimate-only; confirm contractual basis and tax treatment before invoicing.');
     const lateTax = Math.round(input.lateFee * (rate / 100) * 100) / 100;
     const lateCgst = intraState ? Math.round(lateTax / 2 * 100) / 100 : 0;
     const lateSgst = intraState ? Math.round(lateTax / 2 * 100) / 100 : 0;
     const lateIgst = intraState ? 0 : lateTax;
-    lines.push({ description: 'Late fee', hsn, gstRate: rate, taxableValue: input.lateFee, cgst: lateCgst, sgst: lateSgst, igst: lateIgst, total: Math.round((input.lateFee + lateCgst + lateSgst + lateIgst) * 100) / 100 });
+    lines.push({ description: 'Late fee (estimate; confirm contract/tax treatment)', hsn, gstRate: rate, taxableValue: input.lateFee, cgst: lateCgst, sgst: lateSgst, igst: lateIgst, total: Math.round((input.lateFee + lateCgst + lateSgst + lateIgst) * 100) / 100 });
   }
 
   const totalTaxable = lines.reduce((s, l) => s + l.taxableValue, 0);
@@ -91,7 +113,7 @@ export function generateGstInvoice(input: {
     invoiceDate: input.invoiceDate,
     supplierGstin: input.supplierGstin,
     recipientGstin: input.recipientGstin,
-    placeOfSupply: input.recipientState,
+    placeOfSupply,
     intraState,
     lines,
     totalTaxable: Math.round(totalTaxable * 100) / 100,
@@ -99,5 +121,7 @@ export function generateGstInvoice(input: {
     totalSgst: Math.round(totalSgst * 100) / 100,
     totalIgst: Math.round(totalIgst * 100) / 100,
     grandTotal: Math.round(grandTotal * 100) / 100,
+    isDraftEstimate: true,
+    warnings,
   };
 }

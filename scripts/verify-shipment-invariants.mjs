@@ -17,7 +17,7 @@ const mutatedMergeSource=mergeSource.replace('previous.revision >= next.revision
 assert.notEqual(mutatedMergeSource,mergeSource);
 const {mergeShipmentSnapshot:mutatedMerge}=await load(mutatedMergeSource);
 assert.throws(()=>assert.equal(mutatedMerge(newer,older,'shipment-a'),newer));
-const domainSource=fs.readFileSync(new URL('packages/shipment-flow/src/domain.mjs',root),'utf8').replace("'./reviewedGeometry.mjs'", JSON.stringify(new URL('packages/shipment-flow/src/reviewedGeometry.mjs',root).href));
+const domainSource=fs.readFileSync(new URL('packages/shipment-flow/src/domain.mjs',root),'utf8').replace("'./reviewedGeometry.mjs'", JSON.stringify(new URL('packages/shipment-flow/src/reviewedGeometry.mjs',root).href)).replace("'./carrierFreshness.mjs'", JSON.stringify(new URL('packages/shipment-flow/src/carrierFreshness.mjs',root).href));
 function quoteWithoutFit(domain) {
   const s=domain.createShipment('Mutation fixture');
   return domain.applyCommand(s,{type:'evaluate',productId:'product-02-freight-pricing',expectedRevision:s.revision,operationId:randomUUID(),payload:{stage:'quote',result:{ok:true,summary:'Quote',details:{accepted:true,currency:'USD',totalCents:10000,lines:[{label:'Linehaul',cents:10000}]}}}});

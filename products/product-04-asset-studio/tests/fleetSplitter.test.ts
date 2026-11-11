@@ -5,6 +5,20 @@ import {
 } from '../src/engine/fleetSplitter';
 
 describe('P04 Asset Studio Fleet Splitter & Demand Partitioning Heuristic', () => {
+  it('conserves unknown package demand separately from allocated known units', () => {
+    const result = splitCargoDemandAcrossFleet({ items: [{ packageId: 'pallet-gma-48x40', quantity: 2 }, { packageId: 'unknown-package', quantity: 3 }], allowedVehicleIds: ['dry-van-53'] });
+    expect(result.totalDemandItems).toBe(5);
+    expect(result.unassignedItems).toContainEqual(expect.objectContaining({ packageId: 'unknown-package', quantity: 3 }));
+    expect(result.partitions.flatMap(p => p.allocatedItems).reduce((n, item) => n + item.quantity, 0) + result.unassignedItems.reduce((n, item) => n + item.quantity, 0)).toBe(5);
+  });
+  it.each([-1, 1.2, NaN, Infinity])('rejects invalid demand quantity %s', quantity => {
+    expect(() => splitCargoDemandAcrossFleet({ items: [{ packageId: 'pallet-gma-48x40', quantity }] })).toThrow();
+  });
+  it('does not allocate a package too large for a candidate vehicle despite low weight', () => {
+    const result = splitCargoDemandAcrossFleet({ items: [{ packageId: 'iso-40ft-hc', quantity: 1, customWeightLbs: 100 }], allowedVehicleIds: ['sprinter-van'] });
+    expect(result.partitions).toHaveLength(0);
+    expect(result.unassignedItems[0].quantity).toBe(1);
+  });
   it('allocates small freight demand into a single appropriately sized vehicle', () => {
     const input: SplitterInput = {
       items: [

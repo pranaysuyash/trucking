@@ -69,13 +69,13 @@ describe('P09 Lease Engine', () => {
     expect(lease.endDate).toBe('2026-06-30');
   });
 
-  it('calculates rent with escalation', () => {
-    const space = makeSpace();
+  it('calculates area-based rent with escalation', () => {
+    const space = makeSpace(); // 600 sqft
     const lease = createLease(makeLeaseInput({ escalationPercentPerYear: 10 }), space as any);
     const { baseRent, totalDue } = calculateRentForPeriod(lease, '2027-01-01', '2027-01-31', 100, 50, 25);
-    // 2.5 * 1.1 = 2.75 rate, 1 month => 2.75
-    expect(baseRent).toBe(2.75);
-    expect(totalDue).toBe(2.75 + 100 + 50 + 25);
+    // 2.5/sqft/month * 600 sqft * 1.1 escalation = 1650, + charges 175
+    expect(baseRent).toBe(1650);
+    expect(totalDue).toBe(1825);
   });
 
   it('generates ledger entry with pending status', () => {
@@ -201,6 +201,7 @@ describe('P09 Tenant & Monthly Ledger Generation', () => {
     expect(entries.length).toBe(1);
     expect(entries[0].periodStart).toBe('2026-03-01');
     expect(entries[0].periodEnd).toBe('2026-03-31');
+    expect(entries[0].baseRent).toBe(1500); // 2.5 * 600 sqft
     expect(entries[0].electricityCharge).toBe(500);
     expect(entries[0].dueDate).toBe('2026-03-10');
   });
@@ -215,8 +216,8 @@ describe('P09 Tenant & Monthly Ledger Generation', () => {
 });
 
 describe('P09 Receipts, Renewal Preview, Overdue/Pending Filters', () => {
-  it('generates receipt number', () => {
-    expect(generateReceiptNumber('L1', '2026-03-15')).toBe('RCP-L1-20260315');
+  it('generates unique receipt number with date prefix', () => {
+    expect(generateReceiptNumber('L1', '2026-03-15')).toMatch(/^RCP-L1-20260315-/);
   });
 
   it('issues receipt and marks paid when fully paid', () => {
@@ -290,5 +291,51 @@ describe('P09 Rent Payable (leased-in facility)', () => {
   it('rejects negative payable payment', () => {
     const entry = generateRentPayableEntry({ id: 'RP5', facilityId: 'F1', landlordName: 'X', periodStart: '2026-11-01', periodEnd: '2026-11-30', dueDate: '2026-11-10', baseRent: 10000 });
     expect(() => recordPayablePayment(entry, -100, '2026-11-08')).toThrow();
+  });
+});
+
+describe('P09 P0 audit fixes', () => {
+  it('calculates sqft_month rent using leased area quantity', () => {
+    const space = makeSpace(); // 600 sqft
+    const lease = createLease(makeLeaseInput({ billingUnit: 'sqft_month', rate: 20, escalationPercentPerYear: 0 }), space as any);
+    const { baseRent } = calculateRentForPeriod(lease, '2026-01-01', '2026-01-31');
+    expect(baseRent).toBe(12000); // 20 * 600
+  });
+
+  it('prorates monthly rent by billed days when proration metadata is provided', () => {
+    const space = makeSpace(); // 600 sqft
+    const lease = createLease(makeLeaseInput({ billingUnit: 'sqft_month', rate: 20, escalationPercentPerYear: 0 }), space as any);
+    // 10 billed days out of 31
+    const { baseRent } = calculateRentForPeriod(lease, '2026-01-22', '2026-01-31', 0, 0, 0, { billedDayCount: 10, fullPeriodDayCount: 31 });
+    expect(baseRent).toBe(Math.round((20 * 600 * 10 / 31) * 100) / 100);
+  });
+
+  it('generates monthly ledgers idempotently (skips existing period)', () => {
+    const space = makeSpace();
+    const lease = createLease(makeLeaseInput({ id: 'L-DUP', billingUnit: 'sqft_month', rate: 2.5 }), space as any);
+    activateLease(lease, space as any);
+    const first = generateMonthlyRentLedgers({ leases: [lease], periodYear: 2026, periodMonth: 4, dueDayOfMonth: 10 });
+    expect(first).toHaveLength(1);
+    const second = generateMonthlyRentLedgers({ leases: [lease], periodYear: 2026, periodMonth: 4, dueDayOfMonth: 10, existingEntries: first });
+    expect(second).toHaveLength(0);
+  });
+
+  it('records overpayment honestly and issues receipt for transaction amount', () => {
+    const space = makeSpace();
+    const lease = createLease(makeLeaseInput(), space as any);
+    const entry = generateRentLedgerEntry({
+      id: 'E-OVER', lease, facilityId: 'F1', spaceId: 'S1', tenantId: 'T1',
+      periodStart: '2026-01-01', periodEnd: '2026-01-31', dueDate: '2026-01-10',
+    });
+    entry.totalDue = 100;
+    const result = recordPayment(entry, 120, '2026-01-08');
+    expect(result.applied).toBe(100);
+    expect(result.overpaid).toBe(20);
+    expect(entry.amountPaid).toBe(100);
+    expect(entry.overpaidAmount).toBe(20);
+    expect(entry.paymentStatus).toBe('paid');
+    const r = issueReceipt(entry, '2026-01-08', 120);
+    expect(r.amount).toBe(120);
+    expect(r.receiptNumber).toMatch(/^RCP-L1-20260108-/);
   });
 });

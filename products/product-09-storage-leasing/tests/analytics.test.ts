@@ -4,6 +4,14 @@ import { createTenant, createLease, activateLease, generateRentLedgerEntry, reco
 import { computeTenantPaymentBehavior, computeVacantNow, computeAdminAnalytics } from '../src/engine/analytics';
 
 describe('P09 Analytics (admin/analysis view)', () => {
+  it('does not count a legacy partial receipt date as a fully paid entry', () => {
+    const tenant = createTenant({ id: 'T1', name: 'Tenant', contactPerson: 'T', phone: '9', email: 't@x.com' });
+    const entry = { id: 'E1', leaseId: 'L1', facilityId: 'F1', spaceId: 'S1', tenantId: 'T1', periodStart: '2026-01-01', periodEnd: '2026-01-31', baseRent: 1000, electricityCharge: 0, maintenanceCharge: 0, otherCharges: 0, totalDue: 1000, amountPaid: 300, paymentStatus: 'partial' as const, dueDate: '2026-01-10', paidDate: '2026-01-20' };
+    const result = computeTenantPaymentBehavior({ tenants: [tenant], leases: [], ledgerEntries: [entry], asOfDate: '2026-01-25' });
+    expect(result[0].paidEntries).toBe(0);
+    expect(result[0].latePaidEntries).toBe(0);
+    expect(result[0].overdueEntries).toBe(1);
+  });
   it('computes vacant spaces with daysVacant when vacantSince is known', () => {
     const f = createFacility({ id: 'F1', code: 'WH', name: 'W', address: 'A', city: 'C', state: 'S', totalAreaSqFt: 5000, usableAreaSqFt: 4000, floors: 1 });
     const s = addSpace(f, { id: 'S1', code: 'R1', name: 'Room', type: 'room', floor: 1, dimensions: { lengthFt: 20, widthFt: 20 }, environmentalClass: 'ambient', status: 'vacant' });

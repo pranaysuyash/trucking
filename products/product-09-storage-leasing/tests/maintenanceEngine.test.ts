@@ -40,14 +40,25 @@ describe('P09 Maintenance Engine', () => {
     expect(() => startMaintenance(t, f)).toThrow();
   });
 
-  it('resolves maintenance and frees space', () => {
+  it('resolves maintenance and restores previous space status (vacant -> vacant)', () => {
     const f = makeFacility();
     const t = createMaintenanceTask({ id: 'M6', facilityId: 'F1', spaceId: 'S1', category: 'roof', title: 't', description: 'x', estimatedCost: 100, reportedBy: 'o' });
     startMaintenance(t, f);
+    expect(t.spaceStatusBeforeRepair).toBe('vacant');
     resolveMaintenance(t, f, 120);
     expect(t.status).toBe('resolved');
     expect(t.actualCost).toBe(120);
     expect(f.spaces[0].status).toBe('vacant');
+  });
+
+  it('restores leased status after repair (does not free commercially leased space)', () => {
+    const f = makeFacility();
+    f.spaces[0].status = 'leased';
+    const t = createMaintenanceTask({ id: 'M6L', facilityId: 'F1', spaceId: 'S1', category: 'roof', title: 't', description: 'x', estimatedCost: 100, reportedBy: 'o' });
+    startMaintenance(t, f);
+    expect(f.spaces[0].status).toBe('under_repair');
+    resolveMaintenance(t, f, 120);
+    expect(f.spaces[0].status).toBe('leased');
   });
 
   it('resolves open task directly', () => {

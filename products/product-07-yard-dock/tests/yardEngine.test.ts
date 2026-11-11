@@ -117,6 +117,12 @@ describe('Product 07 — Yard & Dock Management Engine', () => {
   });
 
   describe('Cross-Project Integration Bridges', () => {
+    it('omits unknown carrier and seal evidence from the warehouse link', () => {
+      const params = new URL(buildWarehouseInboundBridgeUrl({ trailerNumber: 'TLR-UNKNOWN' }, 6)).searchParams;
+      expect(params.has('carrierDot')).toBe(false);
+      expect(params.has('sealVerified')).toBe(false);
+      expect(params.has('checkInId')).toBe(false);
+    });
     it('constructs verified URL for Product 06 Warehouse Inbound Putaway bridge', () => {
       const record = {
         checkInId: 'CHK-99120',

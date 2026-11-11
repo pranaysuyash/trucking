@@ -57,6 +57,16 @@ playwright/.cache/
 
 # Browser automation profiles / evidence captures
 **/.chrome-profile/
+**/.playwright-mcp/
+docs/evidence/.chrome-profile/
+unslop-story/
+
+# Compiled outputs alongside TS sources (do not commit)
+products/*/src/**/*.js
+products/*/tests/**/*.js
+products/*/src/**/*.js.map
+products/*/tests/**/*.js.map
+
 # Python (workspace scripts)
 __pycache__/
 *.py[cod]

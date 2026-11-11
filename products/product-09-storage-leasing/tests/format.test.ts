@@ -5,7 +5,11 @@ describe('format', () => {
   it('inr formats with Indian grouping', () => {
     expect(inr(1234567)).toBe('₹12,34,567');
     expect(inr(0)).toBe('₹0');
-    expect(inr(NaN)).toBe('₹0');
+    expect(inr(1.01)).toBe('₹1.01');
+    expect(inr(0.5)).toBe('₹0.50');
+    expect(inr(-0.01)).toBe('-₹0.01');
+    expect(inr(NaN)).toBe('—');
+    expect(inr(Infinity)).toBe('—');
   });
   it('inr compact uses lakhs', () => {
     expect(inr(150000, { compact: true })).toBe('₹1.5L');

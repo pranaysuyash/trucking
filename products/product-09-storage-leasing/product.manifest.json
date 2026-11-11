@@ -10,6 +10,7 @@
   "description": "Storage & Leasing Core for commercial freight and logistics operations.",
   "category": "operations",
   "entitlementKey": "product_09_storage_leasing",
+  "shipmentClient": false,
   "routes": {
     "dev": "http://localhost:5181",
     "cloud": "https://product-09-storage-leasing.pages.dev"

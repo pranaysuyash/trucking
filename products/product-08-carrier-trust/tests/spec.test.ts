@@ -132,7 +132,8 @@ describe('Product 08 — Carrier Trust & Anti-Fraud Shield', () => {
       expect(url).toContain('http://localhost:5174/?source=product-08-carrier-trust');
       expect(url).toContain(`dotNumber=${carrier.dotNumber}`);
       expect(url).toContain('safetyTier=preferred');
-      expect(url).toContain('dispatchAllowed=true');
+      expect(url).toContain('dispatchAllowed=false');
+      expect(url).toContain('evidenceSource=seeded_scenario');
     });
 
     it('constructs verified URL for Product 03 HOS Planner safety audit', () => {

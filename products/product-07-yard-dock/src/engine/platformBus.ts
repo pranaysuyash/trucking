@@ -22,6 +22,7 @@ export interface PlatformEventPayloads {
     doorNumber?: number;
     spotNumber?: string;
     timestamp: string;
+    evidenceStatus?: 'simulated';
   };
   DOCK_DOOR_SPOTTED: {
     doorNumber: number;

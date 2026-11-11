@@ -19,41 +19,28 @@ interface CommandPaletteProps {
   onSelectProduct?: (productId: ProductId) => void;
 }
 
-export const CommandPalette: React.FC<CommandPaletteProps> = ({
-  isOpen,
-  onClose,
-  onSelectPersona,
-  onSelectProduct,
-}) => {
-  const [query, setQuery] = useState('');
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
-
-  // Focus input when opened
-  useEffect(() => {
-    if (isOpen) {
-      setQuery('');
-      setSelectedIndex(0);
-      setTimeout(() => inputRef.current?.focus(), 50);
-    }
-  }, [isOpen]);
-
+export function buildCommandCatalog({
+  onSelectPersona, onSelectProduct, openUrl = (url: string) => { window.open(url, '_blank'); },
+}: {
+  onSelectPersona?: (roleKey: string) => void;
+  onSelectProduct?: (productId: ProductId) => void;
+  openUrl?: (url: string) => void;
+} = {}): CommandItem[] {
   // Construct item catalog
-  const allItems: CommandItem[] = [
+  return [
     // 1. Products
     ...CANONICAL_PRODUCTS.map((prod) => ({
       id: `prod-${prod.id}`,
       category: 'Products' as const,
       title: prod.name,
-      subtitle: `${prod.shortName} · Port ${prod.port} · ${prod.pricingTier?.tierName || 'Pro'}`,
+      subtitle: [prod.shortName, `Port ${prod.port}`, prod.pricingTier?.tierName].filter(Boolean).join(' · '),
       icon: prod.icon || '🚛',
       badge: `Port ${prod.port}`,
       onSelect: () => {
         if (onSelectProduct) {
           onSelectProduct(prod.id);
         } else {
-          window.open(resolveProductUrl(prod), '_blank');
+          openUrl(resolveProductUrl(prod));
         }
       },
     })),
@@ -63,60 +50,60 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       id: 'act-cargo-solve',
       category: 'Actions',
       title: 'Pack 3D Cargo Load & Check Axle Distribution',
-      subtitle: 'Heuristic 3D volumetric bin packing and Federal Bridge Law axle compliance',
+      subtitle: 'Plan cargo geometry and review estimated axle distribution.',
       icon: '📦',
       badge: 'P01 Cargo Fit',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-01-cargo-fit');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
       id: 'act-carrier-audit',
       category: 'Actions',
       title: 'Audit Carrier Safety & Chameleon Fraud Risk',
-      subtitle: 'FMCSA SMS BASIC percentiles, COI certificate check, and DND lockout gate',
+      subtitle: 'Review carrier identity, coverage information, and risk signals.',
       icon: '🛡️',
-      badge: 'P06 Safety HUD',
+      badge: 'P08 Carrier Trust',
       onSelect: () => {
-        const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-06-carrier-safety');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-08-carrier-trust');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
       id: 'act-rate-con',
       category: 'Actions',
-      title: 'Calculate Freight Rate & Issue Broker Rate Con',
+      title: 'Calculate Freight Rate & Prepare Estimate',
       subtitle: 'Carrier cost waterfall, EIA diesel index pegging, and operating ratio speedometer',
       icon: '💵',
       badge: 'P02 Pricing',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-02-freight-pricing');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
       id: 'act-hos-sim',
       category: 'Actions',
-      title: 'Simulate 24-Hour HOS Logbook & Route Legality',
-      subtitle: 'FMCSA Part 395 11/14/70-hr compliance engine and corridor waypoint rest stops',
+      title: 'Plan Driver Hours & Route',
+      subtitle: 'Review duty intervals and planned corridor rest stops.',
       icon: '⏱️',
       badge: 'P03 HOS',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-03-hos-planner');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
       id: 'act-telematics-tele',
       category: 'Actions',
-      title: 'Inspect Live J1939 CAN-Bus & Reefer Telemetry',
-      subtitle: 'Real-time cold chain temperature excursions and active DTC diagnostics',
+      title: 'Inspect Fleet & Reefer Telemetry',
+      subtitle: 'Review available temperature, sensor and diagnostic information.',
       icon: '📡',
       badge: 'P05 Telematics',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-05-fleet-telematics');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
@@ -125,10 +112,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       title: 'Allocate Inbound Warehouse Putaway & Staging',
       subtitle: 'Multi-constraint rack beam limits, HazMat zoning, and EPCIS scan audit',
       icon: '🏭',
-      badge: 'P07 Warehouse',
+      badge: 'P06 Warehouse',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-06-warehouse-space-flow');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
@@ -140,7 +127,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       badge: 'P00 Portal',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'command-center-portal');
-        if (prod) window.open(resolveProductUrl(prod), '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
 
@@ -176,50 +163,74 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       id: 'per-enterprise',
       category: 'Personas',
       title: 'Switch Profile: Enterprise Fleet Admin',
-      subtitle: 'Full Enterprise Suite unlocked across all products with single sign-on.',
+      subtitle: 'Select the enterprise fleet profile.',
       icon: '🏢',
       badge: 'Persona Preset',
       onSelect: () => onSelectPersona?.('enterprise_admin'),
     },
 
-    // 4. Sample Freight Entities
+    // 4. Entity review shortcuts
     {
       id: 'ent-carrier-apex',
-      category: 'Entities',
-      title: 'Apex Freight Lines (DOT 2849102 / MC 982140)',
-      subtitle: 'Status: APPROVED · Satisfactory · $1,000,000 Auto Liability · Zero DND risk',
+      category: 'Actions',
+      title: 'Review carrier records',
+      subtitle: 'Open Carrier Trust and select a carrier to review available information.',
       icon: '✅',
-      badge: 'Carrier Entity',
+      badge: 'P08 Carrier Trust',
       onSelect: () => {
-        const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-06-carrier-safety');
-        if (prod) window.open(`${resolveProductUrl(prod)}?carrier=2849102`, '_blank');
+        const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-08-carrier-trust');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
       id: 'ent-carrier-veloce',
-      category: 'Entities',
-      title: 'Veloce Transport (DOT 3920193 / MC 119284)',
-      subtitle: 'Status: BLOCKED_DO_NOT_DISPATCH · Operating authority revoked · Chameleon risk',
+      category: 'Actions',
+      title: 'Review carrier risk',
+      subtitle: 'Open Carrier Trust and select a carrier to review risk signals.',
       icon: '⛔',
-      badge: 'Carrier Entity',
+      badge: 'P08 Carrier Trust',
       onSelect: () => {
-        const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-06-carrier-safety');
-        if (prod) window.open(`${resolveProductUrl(prod)}?carrier=3920193`, '_blank');
+        const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-08-carrier-trust');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
     {
       id: 'ent-trailer-everest',
-      category: 'Entities',
-      title: 'Trailer TR-5301 (53ft Everest High-Cube Reefer)',
-      subtitle: 'Payload: 45,000 lbs · Thermo King S-700 unit · Target setpoint: -10°F Frozen',
+      category: 'Actions',
+      title: 'Review vehicle equipment',
+      subtitle: 'Open Asset Studio and select the equipment to review.',
       icon: '❄️',
-      badge: 'Asset Twin',
+      badge: 'P04 Asset Studio',
       onSelect: () => {
         const prod = CANONICAL_PRODUCTS.find((p) => p.id === 'product-04-asset-studio');
-        if (prod) window.open(`${resolveProductUrl(prod)}?asset=reefer_53`, '_blank');
+        if (prod) openUrl(resolveProductUrl(prod));
       },
     },
   ];
+
+}
+
+export const CommandPalette: React.FC<CommandPaletteProps> = ({
+  isOpen,
+  onClose,
+  onSelectPersona,
+  onSelectProduct,
+}) => {
+  const [query, setQuery] = useState('');
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Focus input when opened
+  useEffect(() => {
+    if (isOpen) {
+      setQuery('');
+      setSelectedIndex(0);
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  }, [isOpen]);
+
+  const allItems = buildCommandCatalog({ onSelectPersona, onSelectProduct });
 
   // Filtering
   const filteredItems = allItems.filter((item) => {
@@ -275,7 +286,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             ref={inputRef}
             type="text"
             className="cmd-input"
-            placeholder="Type a product, action, DOT #, trailer, or persona... (e.g. 'Safety', 'Reefer', 'Owner')"
+            placeholder="Search products, actions, or profiles... (e.g. 'Carrier', 'Warehouse', 'Owner')"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);

@@ -24,6 +24,8 @@ export interface CreateLeaseInput {
   billingCycleDay?: number;
   billingUnit: BillingUnit;
   rate: number;
+  /** Quantity the rate applies to (sqft, units, pallets, etc.). Defaults by billing unit/space when omitted. */
+  billingQuantity?: number;
   escalationPercentPerYear?: number;
   depositAmount?: number;
   isRenewal?: boolean;
@@ -50,6 +52,8 @@ export function createLease(input: CreateLeaseInput, space: RentableSpace): Leas
       throw new Error(`Space ${space.code} is not available for leasing (status: ${space.status}).`);
     }
   }
+  const billingQuantity = input.billingQuantity ?? (input.billingUnit === 'sqft_month' ? space.areaSqFt : input.billingUnit === 'fixed' ? 1 : undefined);
+  if (input.billingUnit !== 'revenue_share' && (!Number.isFinite(billingQuantity) || billingQuantity! <= 0)) throw new Error('A positive billing quantity is required.');
   return {
     id: input.id,
     facilityId: input.facilityId,
@@ -65,6 +69,7 @@ export function createLease(input: CreateLeaseInput, space: RentableSpace): Leas
     billingCycleDay: input.billingCycleDay,
     billingUnit: input.billingUnit,
     rate: input.rate,
+    billingQuantity,
     escalationPercentPerYear: input.escalationPercentPerYear ?? 0,
     depositAmount: input.depositAmount ?? 0,
     status: 'draft',
@@ -109,11 +114,15 @@ export function createTerminationFinalLedgerEntry(input: {
   otherCharges?: number;
 }): RentLedgerEntry {
   const billStart = input.lease.billingStartDate ?? input.lease.startDate;
-  const rawStart = input.periodStart ?? billStart;
+  const monthStart = `${input.terminationDate.slice(0, 7)}-01`;
+  const rawStart = input.periodStart ?? monthStart;
   const periodStart = rawStart < billStart ? billStart : rawStart;
   const periodEnd = input.terminationDate;
   if (periodStart > periodEnd) throw new Error('Termination final ledger period is invalid (start after termination).');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(periodEnd) || periodStart.slice(0, 7) !== periodEnd.slice(0, 7)) throw new Error('Final ledger period must be within one calendar month.');
   const billedDayCount = inclusiveDayCount(periodStart, periodEnd);
+  const [year, month] = periodEnd.split('-').map(Number);
+  const fullPeriodDayCount = new Date(Date.UTC(year, month, 0)).getUTCDate();
   return generateRentLedgerEntry({
     id: input.id,
     lease: input.lease,
@@ -127,7 +136,8 @@ export function createTerminationFinalLedgerEntry(input: {
     maintenanceCharge: input.maintenanceCharge ?? 0,
     otherCharges: input.otherCharges ?? 0,
     billedDayCount,
-    prorationBasis: `Final termination proration: ${billedDayCount} day(s) billed ${periodStart}..${periodEnd} (termination ${input.terminationDate}). Explicit operator action; auto-generation/idempotency policy pending product decision.`,
+    fullPeriodDayCount,
+    prorationBasis: `Illustrative calendar-month proration: ${billedDayCount}/${fullPeriodDayCount} day(s) billed ${periodStart}..${periodEnd} (termination ${input.terminationDate}). Explicit operator action; contract policy and auto-generation/idempotency decisions remain pending.`,
   });
 }
 
@@ -137,7 +147,8 @@ export function calculateRentForPeriod(
   periodEnd: string,
   electricityCharge: number = 0,
   maintenanceCharge: number = 0,
-  otherCharges: number = 0
+  otherCharges: number = 0,
+  opts?: { billedDayCount?: number; fullPeriodDayCount?: number }
 ): { baseRent: number; totalDue: number } {
   // Determine escalation based on years since start
   const start = new Date(lease.startDate);
@@ -148,22 +159,36 @@ export function calculateRentForPeriod(
   }
   if (yearsElapsed < 0) yearsElapsed = 0;
   const escalatedRate = lease.rate * Math.pow(1 + lease.escalationPercentPerYear / 100, yearsElapsed);
+  if (lease.billingUnit === 'revenue_share') throw new Error('Revenue-share billing requires actual revenue and an agreed calculation policy; automatic billing is unavailable.');
+  const quantity = lease.billingUnit === 'fixed' ? 1 : lease.billingQuantity;
+  if (!Number.isFinite(quantity) || quantity! <= 0) throw new Error('Billing quantity is missing or invalid; review this lease before billing.');
+  const billedDays = opts?.billedDayCount ?? inclusiveDayCount(periodStart, periodEnd);
+  const fullDays = opts?.fullPeriodDayCount ?? billedDays;
+  const dayRatio = fullDays > 0 ? billedDays / fullDays : 1;
 
-  // For sqft_month and unit_month billing, charge rate * area/months. For simplicity,
-  // treat rate as monthly charge per billing unit for the period.
   let baseRent = 0;
-  if (lease.billingUnit === 'sqft_month') {
-    // rate is per sqft per month; period in months
-    const months = monthsBetween(periodStart, periodEnd);
-    baseRent = escalatedRate * months;
-  } else if (lease.billingUnit === 'fixed') {
-    const months = monthsBetween(periodStart, periodEnd);
-    baseRent = escalatedRate * months;
-  } else {
-    // pallet_day, tonne_month, container_day, unit_month — rate * quantity * duration
-    // For leasing core we treat rate as monthly per unit; quantity derived from space.
-    const months = monthsBetween(periodStart, periodEnd);
-    baseRent = escalatedRate * months;
+  switch (lease.billingUnit) {
+    case 'sqft_month':
+    case 'unit_month':
+    case 'tonne_month':
+    case 'bag_month': {
+      const monthlyBase = escalatedRate * quantity!;
+      baseRent = opts?.billedDayCount != null ? monthlyBase * dayRatio : monthlyBase * monthsBetween(periodStart, periodEnd);
+      break;
+    }
+    case 'fixed': {
+      const monthlyBase = escalatedRate;
+      baseRent = opts?.billedDayCount != null ? monthlyBase * dayRatio : monthlyBase * monthsBetween(periodStart, periodEnd);
+      break;
+    }
+    case 'pallet_day':
+    case 'container_day': {
+      // Rate per unit per day.
+      baseRent = escalatedRate * quantity! * Math.max(0, billedDays);
+      break;
+    }
+    default:
+      baseRent = escalatedRate * quantity! * monthsBetween(periodStart, periodEnd);
   }
 
   const totalDue = baseRent + electricityCharge + maintenanceCharge + otherCharges;
@@ -173,7 +198,7 @@ export function calculateRentForPeriod(
 function monthsBetween(start: string, end: string): number {
   const s = new Date(start);
   const e = new Date(end);
-  const months = (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth());
+  const months = (e.getUTCFullYear() - s.getUTCFullYear()) * 12 + (e.getUTCMonth() - s.getUTCMonth()) + 1;
   return Math.max(1, months || 1);
 }
 
@@ -200,15 +225,17 @@ export function generateRentLedgerEntry(input: {
   fullPeriodDayCount?: number;
   prorationBasis?: string;
 }): RentLedgerEntry {
+  const billedDayCount = input.billedDayCount ?? inclusiveDayCount(input.periodStart, input.periodEnd);
+  const fullPeriodDayCount = input.fullPeriodDayCount;
   const { baseRent, totalDue } = calculateRentForPeriod(
     input.lease,
     input.periodStart,
     input.periodEnd,
     input.electricityCharge ?? 0,
     input.maintenanceCharge ?? 0,
-    input.otherCharges ?? 0
+    input.otherCharges ?? 0,
+    input.billedDayCount != null || input.fullPeriodDayCount != null ? { billedDayCount, fullPeriodDayCount } : undefined
   );
-  const billedDayCount = input.billedDayCount ?? inclusiveDayCount(input.periodStart, input.periodEnd);
   return {
     id: input.id,
     leaseId: input.lease.id,
@@ -218,7 +245,7 @@ export function generateRentLedgerEntry(input: {
     periodStart: input.periodStart,
     periodEnd: input.periodEnd,
     billedDayCount,
-    ...(input.fullPeriodDayCount != null ? { fullPeriodDayCount: input.fullPeriodDayCount } : {}),
+    ...(fullPeriodDayCount != null ? { fullPeriodDayCount } : {}),
     ...(input.prorationBasis ? { prorationBasis: input.prorationBasis } : {}),
     baseRent,
     electricityCharge: input.electricityCharge ?? 0,
@@ -231,21 +258,67 @@ export function generateRentLedgerEntry(input: {
   };
 }
 
-export function recordPayment(entry: RentLedgerEntry, amount: number, paidDate: string, receiptNumber?: string): void {
-  if (amount < 0) throw new Error('Payment amount cannot be negative.');
-  entry.amountPaid = Math.round((entry.amountPaid + amount) * 100) / 100;
-  if (entry.amountPaid >= entry.totalDue) {
+function moneyInPaise(value: number): number {
+  const scaled = value * 100;
+  const rounded = Math.round(scaled);
+  if (!Number.isFinite(value) || !Number.isSafeInteger(rounded) || Math.abs(scaled - rounded) > 1e-7) throw new Error('Amount must be a safe value in whole paise.');
+  return rounded;
+}
+
+export function recordPayment(
+  entry: RentLedgerEntry,
+  amount: number,
+  paidDate: string,
+  receiptNumber?: string
+): { applied: number; overpaid: number } {
+  const receivedPaise = moneyInPaise(amount);
+  const duePaise = moneyInPaise(entry.totalDue);
+  const paidPaise = moneyInPaise(entry.amountPaid);
+  const priorOverpaidPaise = moneyInPaise(entry.overpaidAmount ?? 0);
+  if (receivedPaise <= 0) throw new Error('Payment amount must be positive.');
+  if (duePaise < 0 || paidPaise < 0 || paidPaise > duePaise || priorOverpaidPaise < 0) throw new Error('Ledger amounts need review before recording a payment.');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(paidDate) || !Number.isFinite(Date.parse(`${paidDate}T00:00:00Z`)) || new Date(`${paidDate}T00:00:00Z`).toISOString().slice(0, 10) !== paidDate) throw new Error('A valid payment date is required.');
+  const appliedPaise = Math.min(receivedPaise, duePaise - paidPaise);
+  const overpaidPaise = receivedPaise - appliedPaise;
+  if (!Number.isSafeInteger(priorOverpaidPaise + overpaidPaise)) throw new Error('Overpayment amount exceeds safe paise precision.');
+  const received = receivedPaise / 100;
+  const applied = appliedPaise / 100;
+  const overpaid = overpaidPaise / 100;
+  if (!entry.paymentTransactions) {
+    entry.paymentHistoryOpeningApplied = entry.amountPaid;
+    entry.paymentHistoryOpeningOverpaid = entry.overpaidAmount ?? 0;
+    entry.paymentTransactions = [];
+  }
+  const transactionId = globalThis.crypto?.randomUUID?.() ?? `pay-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  entry.paymentTransactions.push({ transactionId, paidDate, amountReceived: received, amountApplied: applied, overpayment: overpaid, receiptNumber, recordedAt: new Date().toISOString(), source: 'user-entered' });
+  entry.amountPaid = (paidPaise + appliedPaise) / 100;
+  entry.lastReceiptAmount = received;
+  if (overpaid > 0) entry.overpaidAmount = (priorOverpaidPaise + overpaidPaise) / 100;
+  if (entry.amountPaid >= entry.totalDue && entry.totalDue >= 0) {
     entry.paymentStatus = 'paid';
     entry.paidDate = paidDate;
-    entry.receiptNumber = receiptNumber;
+    if (receiptNumber) entry.receiptNumber = receiptNumber;
   } else if (entry.amountPaid > 0) {
     entry.paymentStatus = 'partial';
+    if (receiptNumber) entry.receiptNumber = receiptNumber; // legacy compatibility
   }
+  return { applied, overpaid };
 }
 
 export function detectOverdue(entry: RentLedgerEntry, asOfDate: string): boolean {
   if (entry.paymentStatus === 'paid') return false;
   return asOfDate > entry.dueDate;
+}
+
+/** A current projection only: does not reconstruct balances as they existed on an earlier day. */
+export function paymentStatusAsOf(entry: RentLedgerEntry, asOfDate: string): 'pending' | 'partial' | 'overdue' | 'paid' | 'unknown' {
+  const validDay = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(`${value}T00:00:00Z`)) && new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
+  if (!validDay(asOfDate) || !Number.isFinite(entry.totalDue) || !Number.isFinite(entry.amountPaid) || entry.totalDue <= 0 || entry.amountPaid < 0 || entry.amountPaid > entry.totalDue) return 'unknown';
+  if (entry.amountPaid === entry.totalDue) return 'paid';
+  const due = typeof entry.dueDate === 'string' ? entry.dueDate.slice(0, 10) : '';
+  if (!validDay(due)) return 'unknown';
+  if (due < asOfDate) return 'overdue';
+  return entry.amountPaid > 0 ? 'partial' : 'pending';
 }
 
 export function updateOverdueStatus(entry: RentLedgerEntry, asOfDate: string): void {
@@ -343,15 +416,20 @@ export function generateMonthlyRentLedgers(input: {
   maintenanceByLease?: Record<string, number>;
   otherByLease?: Record<string, number>;
   dueDayOfMonth?: number;
+  /** Existing ledger entries; duplicates for the same lease+calendar period are skipped (idempotent generation). */
+  existingEntries?: RentLedgerEntry[];
 }): RentLedgerEntry[] {
   const { leases, periodYear, periodMonth } = input;
   const month = String(periodMonth).padStart(2, '0');
   const periodStart = `${periodYear}-${month}-01`;
   const lastDay = new Date(periodYear, periodMonth, 0).getDate();
   const periodEnd = `${periodYear}-${month}-${String(lastDay).padStart(2, '0')}`;
+  const existingIds = new Set((input.existingEntries ?? []).map((e) => e.id));
   const entries: RentLedgerEntry[] = [];
   for (const lease of leases) {
     if (lease.status !== 'active') continue;
+    const id = `RL-${lease.id}-${periodYear}-${month}`;
+    if (existingIds.has(id)) continue;
     const billStart = lease.billingStartDate ?? lease.startDate;
     const leaseEnd = lease.endDate; // undefined => indefinite
     // only leases overlapping the period
@@ -370,7 +448,7 @@ export function generateMonthlyRentLedgers(input: {
       ? `Prorated: billed ${billedDayCount}/${fullPeriodDayCount} day(s) for ${effectiveStart}..${effectiveEnd} (full month ${periodStart}..${periodEnd}${billStart > periodStart ? `; billing starts ${billStart}` : ''}${leaseEnd && leaseEnd < periodEnd ? `; lease ends ${leaseEnd}` : ''}).`
       : undefined;
     entries.push(generateRentLedgerEntry({
-      id: `RL-${lease.id}-${periodYear}-${month}`,
+      id,
       lease,
       facilityId: lease.facilityId,
       spaceId: lease.spaceId,
@@ -400,23 +478,28 @@ export interface Receipt {
   issuedAt: string;
 }
 
-export function generateReceiptNumber(leaseId: string, paidDate: string): string {
+export function generateReceiptNumber(leaseId: string, paidDate: string, suffix?: string): string {
   const compact = paidDate.replace(/-/g, '');
-  return `RCP-${leaseId}-${compact}`;
+  const uniq = suffix ?? `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
+  return `RCP-${leaseId}-${compact}-${uniq}`;
 }
 
-export function issueReceipt(entry: RentLedgerEntry, paidDate: string): Receipt {
-  if (entry.amountPaid <= 0) throw new Error('Cannot issue receipt for zero payment.');
+export function issueReceipt(entry: RentLedgerEntry, paidDate: string, transactionAmount?: number): Receipt {
+  const amount = transactionAmount ?? entry.lastReceiptAmount ?? entry.amountPaid;
+  const amountPaise = moneyInPaise(amount);
+  if (amountPaise <= 0) throw new Error('Cannot issue receipt for an invalid or zero payment.');
+  const latest = entry.paymentTransactions?.at(-1);
+  if (latest && (latest.receiptNumber || latest.paidDate !== paidDate || latest.amountReceived !== amountPaise / 100)) throw new Error('Receipt must match the latest unreceipted payment transaction.');
   const receiptNumber = generateReceiptNumber(entry.leaseId, paidDate);
   entry.receiptNumber = receiptNumber;
-  entry.paidDate = paidDate;
-  if (entry.amountPaid >= entry.totalDue) entry.paymentStatus = 'paid';
-  else entry.paymentStatus = 'partial';
+  if (latest) latest.receiptNumber = receiptNumber;
+  if (entry.amountPaid >= entry.totalDue) { entry.paymentStatus = 'paid'; entry.paidDate = paidDate; }
+  else if (entry.amountPaid > 0) entry.paymentStatus = 'partial';
   return {
     receiptNumber,
     leaseId: entry.leaseId,
     tenantId: entry.tenantId,
-    amount: entry.amountPaid,
+    amount: amountPaise / 100,
     paidDate,
     periodStart: entry.periodStart,
     periodEnd: entry.periodEnd,

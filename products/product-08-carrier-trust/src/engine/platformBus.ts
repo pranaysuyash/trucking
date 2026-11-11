@@ -66,6 +66,17 @@ export interface PlatformEventPayloads {
     message: string;
     timestamp: string;
   };
+  CARRIER_SCENARIO_REVIEWED: {
+    dotNumber: string;
+    eligibility: 'APPROVED' | 'CONDITIONAL_REVIEW' | 'BLOCKED_DO_NOT_DISPATCH';
+    evidenceSource: 'seeded_scenario';
+    timestamp: string;
+  };
+  CARRIER_SCENARIO_ATTESTED: {
+    dotNumber: string;
+    evidenceSource: 'self_attested_scenario';
+    timestamp: string;
+  };
   CARRIER_VETTED: {
     dotNumber: string;
     legalName: string;

@@ -14,7 +14,8 @@ describe('audit events (additive, schema-v1 compatible)', () => {
     });
     expect(e.eventType).toBe('lease.activated');
     expect(e.facilityId).toBe('F1');
-    expect(e.verificationStatus).toBe('observed');
+    expect(e.verificationStatus).toBe('reported');
+    expect(e.actor).toBe('Not supplied');
     expect(e.eventId).toMatch(/^evt-/);
     expect(e.payload).toEqual({ status: 'active' });
   });

@@ -40,7 +40,10 @@ export function startMaintenance(task: MaintenanceTask, facility: Facility): voi
   task.status = 'in_progress';
   if (task.spaceId) {
     const space = findSpaceById(facility, task.spaceId);
-    if (space) space.status = 'under_repair';
+    if (space) {
+      task.spaceStatusBeforeRepair = space.status;
+      space.status = 'under_repair';
+    }
   }
 }
 
@@ -51,7 +54,9 @@ export function resolveMaintenance(task: MaintenanceTask, facility: Facility, ac
   task.resolvedAt = resolvedAt ?? new Date().toISOString();
   if (task.spaceId) {
     const space = findSpaceById(facility, task.spaceId);
-    if (space && space.status === 'under_repair') space.status = 'vacant';
+    if (space && space.status === 'under_repair') {
+      space.status = task.spaceStatusBeforeRepair ?? 'vacant';
+    }
   }
 }
 
@@ -60,7 +65,9 @@ export function cancelMaintenance(task: MaintenanceTask, facility: Facility): vo
   task.status = 'cancelled';
   if (task.spaceId) {
     const space = findSpaceById(facility, task.spaceId);
-    if (space && space.status === 'under_repair') space.status = 'vacant';
+    if (space && space.status === 'under_repair') {
+      space.status = task.spaceStatusBeforeRepair ?? 'vacant';
+    }
   }
 }
 

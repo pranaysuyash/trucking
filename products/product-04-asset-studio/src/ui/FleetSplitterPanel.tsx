@@ -38,7 +38,7 @@ export const FleetSplitterPanel: React.FC = () => {
         <div className="card-title-group">
           <h3>Multi-Vehicle Fleet Splitter & Allocation Heuristic</h3>
           <span className="subtitle">
-            Partitions manifests exceeding 45,000 lbs or 26 GMA pallets into optimal vehicle combinations
+            Estimates candidate vehicles using weight, volume and per-unit envelope checks; mixed packing and safety are not verified.
           </span>
         </div>
         <div className="splitter-header-badges">

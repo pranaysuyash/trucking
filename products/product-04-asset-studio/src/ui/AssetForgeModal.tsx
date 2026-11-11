@@ -3,6 +3,7 @@ import type {
   VehicleSpec,
   CargoPackageSpec,
   VehicleCategory,
+  VehicleSubtype,
   PackageCategory,
   PackageShape,
 } from '../engine/types';
@@ -26,6 +27,7 @@ export const AssetForgeModal: React.FC<AssetForgeModalProps> = ({
   const [vName, setVName] = useState('Custom 40ft Straight Box');
   const [vCode, setVCode] = useState('CB40');
   const [vCategory, setVCategory] = useState<VehicleCategory>('straight_truck_class_6_7');
+  const [vSubtype, setVSubtype] = useState<VehicleSubtype>('unknown');
   const [vExtL, setVExtL] = useState(48);
   const [vExtW, setVExtW] = useState(8.5);
   const [vExtH, setVExtH] = useState(13.0);
@@ -65,7 +67,8 @@ export const AssetForgeModal: React.FC<AssetForgeModalProps> = ({
       name: vName,
       code: vCode || 'CUST',
       category: vCategory,
-      subtype: 'dry_van_53',
+      subtype: vSubtype,
+      subtypeSource: 'operator_declared',
       description: 'User-authored custom cargo transport asset.',
       exterior: {
         lengthFt: Number(vExtL),
@@ -239,6 +242,20 @@ export const AssetForgeModal: React.FC<AssetForgeModalProps> = ({
                 <option value="light_commercial_van">Light Commercial Cargo Van / Cutaway</option>
                 <option value="specialized_bulk">Specialized Bulk (Tanker / Hopper / Auto)</option>
                 <option value="alternative_powertrain">Zero-Emission EV / Hydrogen Fuel Cell</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="vehicle-subtype">Equipment subtype (declared, not verified)</label>
+              <select id="vehicle-subtype" value={vSubtype} onChange={e => setVSubtype(e.target.value as VehicleSubtype)}>
+                <option value="unknown">Unknown / other</option>
+                <option value="dry_van_53">53 ft dry van</option>
+                <option value="reefer_53">53 ft refrigerated trailer</option>
+                <option value="flatbed_48">48 ft flatbed</option>
+                <option value="step_deck_48">48 ft step deck</option>
+                <option value="box_truck_26">26 ft box truck</option>
+                <option value="reefer_straight_24">24 ft refrigerated straight truck</option>
+                <option value="sprinter_van">Sprinter van</option>
               </select>
             </div>
 

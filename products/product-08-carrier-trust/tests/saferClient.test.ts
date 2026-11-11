@@ -2,13 +2,13 @@ import { describe, it, expect } from 'vitest';
 import { querySaferRegistry } from '../src/engine/saferClient';
 
 describe('FMCSA SAFER & L&I Public Registry Adapter', () => {
-  it('resolves compliant carrier from seeded roster when offline', async () => {
+  it('resolves a seeded carrier scenario without asserting dispatch approval', async () => {
     const result = await querySaferRegistry('389211'); // Apex Freight Lines
     expect(result.legalName).toContain('Apex Freight Lines');
     expect(result.operatingAuthority).toBe('AUTHORIZED_FOR_HIRE');
-    expect(result.isCompliantForDispatch).toBe(true);
+    expect(result.isCompliantForDispatch).toBe(false);
     expect(result.source).toBe('SCENARIO_ROSTER');
-    expect(result.authorityFilings.length).toBeGreaterThan(0);
+    expect(result.scenarioEligibility).toBe('APPROVED');
   });
 
   it('correctly blocks revoked carrier from seeded roster', async () => {
@@ -19,7 +19,7 @@ describe('FMCSA SAFER & L&I Public Registry Adapter', () => {
     expect(result.reasons.length).toBeGreaterThan(0);
   });
 
-  it('parses live FMCSA QCMobile API response structure cleanly', async () => {
+  it('preserves supported fields from an injected QCMobile-shaped response', async () => {
     const mockFetcher = async () => ({
       ok: true,
       json: async () => ({
@@ -41,17 +41,17 @@ describe('FMCSA SAFER & L&I Public Registry Adapter', () => {
 
     const result = await querySaferRegistry('1234567', mockFetcher);
     expect(result.legalName).toBe('Live Cloud Transport Corp');
-    expect(result.operatingAuthority).toBe('AUTHORIZED_FOR_HIRE');
+    expect(result.operatingAuthority).toBe('UNKNOWN');
     expect(result.safetyRating).toBe('SATISFACTORY');
     expect(result.powerUnits).toBe(25);
-    expect(result.source).toBe('FMCSA_SAFER_LIVE');
-    expect(result.isCompliantForDispatch).toBe(true);
+    expect(result.source).toBe('INJECTED_RESPONSE');
+    expect(result.isCompliantForDispatch).toBe(false);
   });
 
-  it('returns explicit unauthorized status for completely unknown DOT numbers', async () => {
+  it('returns unknown rather than unauthorized for missing observations', async () => {
     const result = await querySaferRegistry('999999999');
     expect(result.isCompliantForDispatch).toBe(false);
-    expect(result.operatingAuthority).toBe('NOT_AUTHORIZED');
-    expect(result.reasons[0]).toContain('not found');
+    expect(result.operatingAuthority).toBe('UNKNOWN');
+    expect(result.reasons[0]).toContain('not a registry search');
   });
 });

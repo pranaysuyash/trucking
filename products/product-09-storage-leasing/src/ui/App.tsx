@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Tabs, Button, Group, Stack, Text, Title, TextInput, NumberInput, Select, Badge, Table, ScrollArea } from '@mantine/core';
 import { SuiteDock } from './SuiteDock';
 import { useFacilityStore } from './hooks/useFacilityStore';
@@ -9,22 +9,19 @@ import { StatCard } from './components/StatCard';
 import { SectionCard } from './components/SectionCard';
 import { Money } from './components/Money';
 import { StatusBadge } from './components/StatusBadge';
-import { inr, sqft, pct, dateShort } from './format';
+import { inr, sqft, pct, dateShort, calendarDateLocal } from './format';
 import {
   createFacility,
   addSpace,
   allocateSpaceAndLease,
-  allocateActualBill,
 } from '../engine/facilityModel';
+import { addMeterConsumption, allocateBillForPeriod } from '../engine/meterConsumption';
 import {
   createTenant,
   createLease,
-  generateRentLedgerEntry,
   generateMonthlyRentLedgers,
-  recordPayment,
-  issueReceipt,
+  paymentStatusAsOf,
   previewRenewal,
-  getOverdueEntries,
 } from '../engine/leaseEngine';
 import { generateGstInvoice, calculateLateFee } from '../engine/gstInvoice';
 import {
@@ -116,6 +113,9 @@ export function App() {
     receipts,
     events,
     loading,
+    resetting,
+    storageError,
+    storageSaveStatus,
     flashMsg,
     tab,
     setTab,
@@ -126,7 +126,7 @@ export function App() {
     setLedgerEntries,
     setMaintenanceTasks,
     setMeterReadings,
-    setReceipts,
+    recordPaymentAndReceipt,
     reset,
   } = store;
 
@@ -173,6 +173,9 @@ export function App() {
     end: '',
     rate: 0,
     billing: 'sqft_month' as Lease['billingUnit'],
+    billingQuantity: null as number | null,
+    intendedUse: '',
+    commodityCategory: '' as CommodityCategory | '',
     deposit: 0,
     escalation: 0,
     billingCycleDay: 10,
@@ -187,12 +190,16 @@ export function App() {
     description: '',
     cost: 0,
   });
-  const [newMeter, setNewMeter] = useState({ spaceId: '', kwh: 0 });
-  const [actualBill, setActualBill] = useState(0);
+  const [newMeter, setNewMeter] = useState<{ spaceId: string; kwh: number | null; periodStart: string; periodEnd: string }>({ spaceId: '', kwh: null, periodStart: '', periodEnd: '' });
+  const [billPeriod, setBillPeriod] = useState({ start: '', end: '' });
+  const [actualBill, setActualBill] = useState<number | null>(null);
   const [billAllocation, setBillAllocation] = useState<{ spaceId: string; kwh: number; sharePct: number; allocated: number }[] | null>(null);
   const [paymentAmount, setPaymentAmount] = useState(0);
+  const paymentActionPending = useRef(false);
+  useEffect(() => { paymentActionPending.current = false; }, [ledgerEntries]);
+  const [paymentDate, setPaymentDate] = useState(() => calendarDateLocal());
   const [paymentEntryId, setPaymentEntryId] = useState('');
-  const [ledgerFilter, setLedgerFilter] = useState<'all' | 'pending' | 'overdue' | 'partial' | 'paid'>('all');
+  const [ledgerFilter, setLedgerFilter] = useState<'all' | 'pending' | 'overdue' | 'partial' | 'paid' | 'unknown'>('all');
   const [spaceSearch, setSpaceSearch] = useState('');
   const [spaceStatusFilter, setSpaceStatusFilter] = useState<string>('all');
   const [spaceBuildingFilter, setSpaceBuildingFilter] = useState<string>('all');
@@ -201,9 +208,26 @@ export function App() {
   const [monthlyYear, setMonthlyYear] = useState(new Date().getFullYear());
   const [monthlyMonth, setMonthlyMonth] = useState(new Date().getMonth() + 1);
 
-  const asOfDate = new Date().toISOString().slice(0, 10);
+  const asOfDate = calendarDateLocal();
+  const asOfMonth = asOfDate.slice(0, 7); // YYYY-MM
   const metrics = selectMetrics(facility, leases);
-  const rentSummary = selectRentSummary(ledgerEntries);
+  // All-recorded totals (legacy aggregate) — clearly labeled where shown; not "monthly rent due".
+  const rentSummaryAll = selectRentSummary(ledgerEntries);
+  // Period/as-of dashboard metrics (honest labels): billed for periods starting in as-of month; outstanding/overdue as-of date.
+  const billedInAsOfMonth = ledgerEntries
+    .filter((e) => e.periodStart.slice(0, 7) === asOfMonth)
+    .reduce((s, e) => s + e.totalDue, 0);
+  const overdueAsOf = ledgerEntries.reduce((s, e) => {
+    if (paymentStatusAsOf(e, asOfDate) !== 'overdue') return s;
+    const out = Math.max(0, e.totalDue - e.amountPaid);
+    if (out <= 0) return s;
+    return e.dueDate.slice(0, 10) < asOfDate.slice(0, 10) ? s + out : s;
+  }, 0);
+  const overdueCountAsOf = ledgerEntries.filter((e) => {
+    if (paymentStatusAsOf(e, asOfDate) !== 'overdue') return false;
+    const out = Math.max(0, e.totalDue - e.amountPaid);
+    return out > 0 && e.dueDate.slice(0, 10) < asOfDate.slice(0, 10);
+  }).length;
   const analytics = computeAdminAnalytics({
     facility,
     tenants,
@@ -310,7 +334,7 @@ export function App() {
       const space = facility.spaces.find((s) => s.id === newLease.spaceId);
       if (!space) throw new Error('Select a valid space.');
       // Soft compliance check: warn (do not block) if intended commodity needs a colder/hazmat class than the space provides.
-      const commodity = newTenant.commodityCategory;
+      const commodity = newLease.commodityCategory || undefined;
       const spaceEnv = space.environmentalClass;
       const needsCold = commodity === 'frozen' || commodity === 'perishable';
       const needsHazmat = commodity === 'hazmat';
@@ -331,33 +355,31 @@ export function App() {
           endDate: newLease.end || undefined,
           billingCycleDay: newLease.billingCycleDay,
           billingUnit: newLease.billing,
+          billingQuantity: newLease.billingQuantity ?? undefined,
           rate: newLease.rate,
           escalationPercentPerYear: newLease.escalation,
           depositAmount: newLease.deposit,
-          intendedUse: newTenant.intendedUse || undefined,
-          commodityCategory: newTenant.commodityCategory,
+          intendedUse: newLease.intendedUse.trim() || undefined,
+          commodityCategory: commodity,
         },
         space,
       );
-      allocateSpaceAndLease(facility, space.id, tenant.id, lease, newLease.start);
-      const entry = generateRentLedgerEntry({
-        id: `RL-${Date.now()}`,
-        lease,
-        facilityId: facility.id,
-        spaceId: space.id,
-        tenantId: tenant.id,
-        periodStart: newLease.start.slice(0, 7) + '-01',
-        periodEnd: newLease.start.slice(0, 7) + '-28',
-        dueDate: newLease.start.slice(0, 7) + '-10',
-        electricityCharge: 0,
+      const billStart = lease.billingStartDate ?? lease.startDate;
+      const billDate = new Date(billStart);
+      const initialEntries = generateMonthlyRentLedgers({
+        leases: [{ ...lease, status: 'active' }],
+        periodYear: billDate.getFullYear(),
+        periodMonth: billDate.getMonth() + 1,
+        dueDayOfMonth: lease.billingCycleDay ?? 10,
       });
+      allocateSpaceAndLease(facility, space.id, tenant.id, lease, newLease.start);
       if (!newLease.tenantId) setTenants((prev) => [...prev, tenant]);
       setLeases((prev) => [...prev, lease]);
-      setLedgerEntries((prev) => [...prev, entry]);
+      setLedgerEntries((prev) => [...prev, ...initialEntries]);
       setFacility({ ...facility, spaces: [...facility.spaces] });
       const wasExisting = !!newLease.tenantId;
       flash((wasExisting ? 'Additional space leased for existing tenant.' : 'Tenant onboarded and lease activated.') + usageWarning);
-      setNewLease({ spaceId: '', tenantId: '', start: '', end: '', rate: 0, billing: 'sqft_month', deposit: 0, escalation: 0, leaseType: 'fixed_term', agreementDate: '', depositDate: '', billingStart: '', billingCycleDay: 10 });
+      setNewLease({ spaceId: '', tenantId: '', start: '', end: '', rate: 0, billing: 'sqft_month', billingQuantity: null, intendedUse: '', commodityCategory: '', deposit: 0, escalation: 0, leaseType: 'fixed_term', agreementDate: '', depositDate: '', billingStart: '', billingCycleDay: 10 });
       setNewTenant({ name: '', gstin: '', contactPerson: '', phone: '', address: '', intendedUse: '', commodityCategory: 'ambient_goods' });
     } catch (e) {
       flash((e as Error).message);
@@ -371,32 +393,45 @@ export function App() {
         periodYear: monthlyYear,
         periodMonth: monthlyMonth,
         dueDayOfMonth: 10,
+        existingEntries: ledgerEntries,
       });
       if (newEntries.length === 0) {
-        flash('No active leases for that period.');
+        flash('No new ledger entries for that period (active leases may already be billed).');
         return;
       }
-      setLedgerEntries((prev) => [...prev, ...newEntries]);
-      flash(`Generated ${newEntries.length} ledger entries.`);
+      setLedgerEntries((prev) => {
+        const ids = new Set(prev.map((e) => e.id));
+        return [...prev, ...newEntries.filter((e) => !ids.has(e.id))];
+      });
+      flash(`Generated ${newEntries.length} ledger entr${newEntries.length === 1 ? 'y' : 'ies'}.`);
     } catch (e) {
       flash((e as Error).message);
     }
   };
 
   const handleRecordPayment = () => {
+    if (paymentActionPending.current) return;
+    paymentActionPending.current = true;
     try {
       const entry = paymentEntryId ? ledgerEntries.find((e) => e.id === paymentEntryId) : undefined;
       if (!entry) {
         flash('Select a ledger entry to pay.');
+        paymentActionPending.current = false;
         return;
       }
-      const amt = paymentAmount > 0 ? paymentAmount : entry.totalDue;
-      recordPayment(entry, amt, new Date().toISOString().slice(0, 10));
-      const r = issueReceipt(entry, new Date().toISOString().slice(0, 10));
-      setReceipts((prev) => [...prev, r.receiptNumber]);
-      setLedgerEntries((prev) => prev.map((e) => (e.id === entry.id ? { ...entry } : e)));
-      flash(`Payment recorded. Receipt ${r.receiptNumber}`);
+      const outstanding = Math.max(0, entry.totalDue - entry.amountPaid);
+      const amt = paymentAmount;
+      if (!Number.isFinite(amt) || amt <= 0 || outstanding <= 0) {
+        flash('Enter a positive amount for an entry with an outstanding balance.');
+        paymentActionPending.current = false;
+        return;
+      }
+      const paidDate = paymentDate;
+      const { result, receipt } = recordPaymentAndReceipt(entry.id, amt, paidDate);
+      setPaymentAmount(0);
+      flash(`Payment entered in this session (₹${result.applied} applied${result.overpaid > 0 ? `, ₹${result.overpaid} overpaid recorded` : ''}). Receipt ${receipt.receiptNumber}; check storage status.`);
     } catch (e) {
+      paymentActionPending.current = false;
       flash((e as Error).message);
     }
   };
@@ -470,16 +505,36 @@ export function App() {
       flash('Select a space.');
       return;
     }
-    setMeterReadings((prev) => [...prev, { spaceId: newMeter.spaceId, kwh: newMeter.kwh }]);
-    setNewMeter({ spaceId: '', kwh: 0 });
-    flash('Meter reading recorded.');
+    try {
+      if (newMeter.kwh === null) throw new Error('Enter consumption in kWh.');
+      const next = addMeterConsumption(meterReadings, { ...newMeter, kwh: newMeter.kwh });
+      setMeterReadings(next);
+      setNewMeter({ spaceId: '', kwh: null, periodStart: '', periodEnd: '' });
+      setBillAllocation(null);
+      flash('Period consumption recorded.');
+    } catch (error) { flash((error as Error).message); }
   };
 
-  const handleReset = () => {
-    if (!window.confirm('Reset all data? This cannot be undone.')) return;
-    void reset();
-    flash('Reset complete.');
+  const handleReset = async () => {
+    const hasOperatingRecords = ledgerEntries.length > 0 || receipts.length > 0 || leases.length > 0 || tenants.length > 0;
+    const confirmMsg = hasOperatingRecords
+      ? 'Reset LOCAL P09 data on this device/browser? Operating records (tenants/leases/ledger/receipts) may be present. This cannot be undone here and does not replace an authorized backup/audit process. Continue?'
+      : 'Reset local P09 data on this device/browser? This cannot be undone.';
+    if (!window.confirm(confirmMsg)) return;
+    const result = await reset();
+    if (result.warnings.length > 0) {
+      flash(`Reset incomplete: ${result.warnings.join(' ')}`);
+    } else if (!result.localDeleted) {
+      flash('Reset failed: local data could not be cleared.');
+    } else {
+      const serverNote = result.serverDeleted === true ? ' Server data cleared.' : result.serverDeleted === false ? ' Server data may remain (see warning).' : ' No server connection; server-side data not verified.';
+      flash(`Local P09 data cleared.${serverNote}`);
+    }
   };
+
+  if (storageError) {
+    return <div className="subproduct-root"><SuiteDock currentProductId="product-09-storage-leasing" /><main role="alert"><h1>Stored data needs review</h1><p>{storageError}</p><p>Both copies remain in place. Do not reset or replace either copy. Retry after the storage issue is resolved.</p><button type="button" onClick={() => window.location.reload()}>Retry reading</button></main></div>;
+  }
 
   if (loading) {
     return (
@@ -497,6 +552,7 @@ export function App() {
       <div className="subproduct-root">
         <SuiteDock currentProductId="product-09-storage-leasing" />
         <div className="app-shell">
+          {storageSaveStatus && <p role="alert">{storageSaveStatus}</p>}
           <header className="app-header">
             <div className="app-header__title">
               <Title order={2}>Storage &amp; Leasing Core</Title>
@@ -612,8 +668,11 @@ export function App() {
     );
   }
 
-  const overdueEntries = getOverdueEntries(ledgerEntries, asOfDate);
-  const overdueCount = overdueEntries.length;
+  const overdueEntries = ledgerEntries.filter((e) => {
+    if (paymentStatusAsOf(e, asOfDate) !== 'overdue') return false;
+    const out = Math.max(0, e.totalDue - e.amountPaid);
+    return out > 0 && e.dueDate.slice(0, 10) < asOfDate.slice(0, 10);
+  });
   const vacantSpaces = facility?.spaces.filter((s) => s.status === 'vacant') ?? [];
   const openMaintTasks = maintenanceTasks.filter((t) => t.status === 'open' || t.status === 'in_progress');
   const expiringLeases = leases.filter((l) => {
@@ -624,35 +683,21 @@ export function App() {
   const recentEvents = [...events].slice(-5).reverse();
   const tenantNameById = new Map(tenants.map((t) => [t.id, t.name]));
   const spaceCodeById = new Map((facility?.spaces ?? []).map((s) => [s.id, s.code]));
-  const actionableLedgerEntries = ledgerEntries.filter((e) => e.paymentStatus !== 'paid' && Math.max(0, e.totalDue - e.amountPaid) > 0);
+  const actionableLedgerEntries = ledgerEntries.filter((e) => paymentStatusAsOf(e, asOfDate) !== 'unknown' && Math.max(0, e.totalDue - e.amountPaid) > 0);
   const selectedPaymentEntry = paymentEntryId ? ledgerEntries.find((e) => e.id === paymentEntryId) ?? null : null;
   const selectedPaymentOutstanding = selectedPaymentEntry ? Math.max(0, selectedPaymentEntry.totalDue - selectedPaymentEntry.amountPaid) : 0;
   const filteredLedgerEntries = ledgerEntries.filter((e) => {
     if (ledgerFilter === 'all') return true;
-    if (ledgerFilter === 'pending') return e.paymentStatus === 'pending';
-    if (ledgerFilter === 'overdue') return e.paymentStatus === 'overdue';
-    if (ledgerFilter === 'partial') return e.paymentStatus === 'partial';
-    return e.paymentStatus === 'paid';
+    return paymentStatusAsOf(e, asOfDate) === ledgerFilter;
   });
-  const agingBuckets = (() => {
-    const buckets = { current: 0, d1_30: 0, d31_60: 0, d61_90: 0, d90p: 0 };
-    for (const e of ledgerEntries) {
-      const out = Math.max(0, e.totalDue - e.amountPaid);
-      if (out <= 0) continue;
-      const days = Math.floor((Date.parse(asOfDate) - Date.parse(e.dueDate.slice(0, 10))) / 86400000);
-      if (days <= 0) buckets.current += out;
-      else if (days <= 30) buckets.d1_30 += out;
-      else if (days <= 60) buckets.d31_60 += out;
-      else if (days <= 90) buckets.d61_90 += out;
-      else buckets.d90p += out;
-    }
-    return buckets;
-  })();
+  const agingAmount = (label: typeof analytics.receivablesAging.buckets[number]['label']) => analytics.receivablesAging.buckets.find(bucket => bucket.label === label)?.amount ?? 0;
 
   return (
     <div className="subproduct-root">
       <SuiteDock currentProductId="product-09-storage-leasing" />
-      <div className="app-shell">
+      {resetting && <p role="status">Reset in progress. Editing is temporarily unavailable.</p>}
+      <div className="app-shell" inert={resetting || undefined} aria-busy={resetting}>
+        {storageSaveStatus && <p role="alert">{storageSaveStatus}</p>}
         <header className="app-header">
           <div className="app-header__title">
             <div className="brand-mark">P09 · Storage &amp; Leasing</div>
@@ -697,12 +742,30 @@ export function App() {
                 <StatCard label="Facility usable (property)" value={sqft(metrics?.usableAreaSqFt ?? 0)} />
                 <StatCard label="Sum of modeled spaces" value={sqft(metrics?.modeledSpaceAreaSqFt ?? 0)} />
                 <StatCard label="Occupied sq ft" value={sqft(metrics?.leasedAreaSqFt ?? 0)} />
-                <StatCard label="Occupancy" value={pct(metrics?.occupancyPercent ?? 0)} />
-                <StatCard label="Monthly rent due" value={<Money value={rentSummary.totalDue} />} tone="money" />
                 <StatCard
-                  label="Overdue"
-                  value={<Money value={rentSummary.totalOverdue} />}
+                  label="Occupancy"
+                  value={
+                    facility.usableAreaSqFt <= 0
+                      ? 'Unavailable'
+                      : pct(metrics?.occupancyPercent ?? 0)
+                  }
+                  hint={
+                    facility.usableAreaSqFt <= 0
+                      ? 'Configure facility usable area'
+                      : undefined
+                  }
+                />
+                <StatCard
+                  label={`Billed (periods starting ${asOfMonth})`}
+                  value={<Money value={Math.round(billedInAsOfMonth * 100) / 100} />}
+                  tone="money"
+                  hint="Sum of ledger totalDue for entries whose period starts in as-of month"
+                />
+                <StatCard
+                  label={`Overdue outstanding (as of ${dateShort(asOfDate)})`}
+                  value={<Money value={Math.round(overdueAsOf * 100) / 100} />}
                   tone="danger"
+                  hint="Past-due unpaid balance by date (not persisted status alone)"
                 />
               </div>
               {metrics && facility.usableAreaSqFt > 0 && metrics.usableAreaSqFt !== metrics.modeledSpaceAreaSqFt && (
@@ -733,7 +796,7 @@ export function App() {
                 subtitle={`As-of ${dateShort(asOfDate)}. Actionable queues derived from current leases, ledger, maintenance, and audit events (read-only navigation).`}
               >
                 <div className="kpi-row">
-                  <StatCard label="Overdue entries" value={overdueCount} tone={overdueCount > 0 ? 'danger' : 'default'} />
+                  <StatCard label="Overdue entries (as of)" value={overdueCountAsOf} tone={overdueCountAsOf > 0 ? 'danger' : 'default'} />
                   <StatCard label="Vacant spaces" value={vacantSpaces.length} />
                   <StatCard label="Open/in-progress maintenance" value={openMaintTasks.length} />
                   <StatCard label="Leases expiring (30d)" value={expiringLeases.length} />
@@ -868,7 +931,16 @@ export function App() {
                 </Stack>
               </SectionCard>
 
-              <SectionCard title="Facility Spaces" subtitle={metrics ? `Utilization: ${metrics.occupancyPercent}% leased` : undefined}>
+              <SectionCard
+                title="Facility Spaces"
+                subtitle={
+                  metrics
+                    ? facility.usableAreaSqFt <= 0
+                      ? 'Occupancy unavailable: facility usable area not configured (see Overview).'
+                      : `Utilization: ${metrics.occupancyPercent ?? 0}% leased (property usable area basis).`
+                    : undefined
+                }
+              >
                 {facility.spaces.length === 0 ? (
                   <EmptyState title="No spaces yet" hint="Define your first rentable space above. Spaces drive occupancy, leasing, and electricity charges." />
                 ) : (
@@ -1056,6 +1128,16 @@ export function App() {
                       value={newLease.billing}
                       onChange={(v) => setNewLease({ ...newLease, billing: (v ?? 'sqft_month') as Lease['billingUnit'] })}
                     />
+                    {newLease.billing !== 'sqft_month' && newLease.billing !== 'fixed' && newLease.billing !== 'revenue_share' && <NumberInput
+                      aria-label="Billing quantity"
+                      placeholder="Billing quantity"
+                      value={newLease.billingQuantity ?? ''}
+                      onChange={(v) => setNewLease({ ...newLease, billingQuantity: v === '' ? null : Number(v) })}
+                      min={0}
+                    />}
+                    <TextInput aria-label="Lease intended use" placeholder="Use for this lease (optional)" value={newLease.intendedUse} onChange={(e) => setNewLease({ ...newLease, intendedUse: e.currentTarget.value })} />
+                    <Select aria-label="Lease commodity category" placeholder="Commodity unknown" clearable data={COMMODITY_OPTIONS} value={newLease.commodityCategory || null} onChange={(v) => setNewLease({ ...newLease, commodityCategory: (v ?? '') as CommodityCategory | '' })} />
+                    {newLease.billing === 'revenue_share' && <Text size="sm">Revenue-share billing needs actual revenue and an agreed calculation policy. Automatic ledger generation is unavailable.</Text>}
                     <NumberInput
                       aria-label="Security deposit"
                       placeholder="Deposit"
@@ -1287,15 +1369,16 @@ export function App() {
             <Stack gap="md">
               <SectionCard
                 title="Rent Ledger / Receivables"
-                subtitle={`Total due ${inr(rentSummary.totalDue)} · Paid ${inr(rentSummary.totalPaid)} · Overdue ${inr(rentSummary.totalOverdue)} (${rentSummary.overdueCount}) · Pending ${rentSummary.pendingCount}. As-of ${dateShort(asOfDate)}.`}
+                subtitle={`All recorded ledger entries (all periods): billed ${inr(rentSummaryAll.totalDue)} · paid ${inr(rentSummaryAll.totalPaid)} · outstanding ${inr(Math.max(0, rentSummaryAll.totalDue - rentSummaryAll.totalPaid))} · overdue count ${overdueCountAsOf}. Status uses current balances and browser-local date ${asOfDate}; it is not a historical balance reconstruction.`}
               >
                 <Stack gap="sm">
                   <Group gap="sm" wrap="wrap">
-                    <Badge variant="light" color="gray">Not yet due (outstanding): <Money value={agingBuckets.current} /></Badge>
-                    <Badge variant="light" color="yellow">1–30d: <Money value={agingBuckets.d1_30} /></Badge>
-                    <Badge variant="light" color="orange">31–60d: <Money value={agingBuckets.d31_60} /></Badge>
-                    <Badge variant="light" color="red">61–90d: <Money value={agingBuckets.d61_90} /></Badge>
-                    <Badge variant="light" color="red">90+d: <Money value={agingBuckets.d90p} /></Badge>
+                    <Badge variant="light" color="gray">Not yet due (outstanding): <Money value={agingAmount('current')} /></Badge>
+                    <Badge variant="light" color="yellow">1–30d: <Money value={agingAmount('1-30')} /></Badge>
+                    <Badge variant="light" color="orange">31–60d: <Money value={agingAmount('31-60')} /></Badge>
+                    <Badge variant="light" color="red">61–90d: <Money value={agingAmount('61-90')} /></Badge>
+                    <Badge variant="light" color="red">90+d: <Money value={agingAmount('90+')} /></Badge>
+                    <Badge variant="light" color="gray">Needs review: <Money value={agingAmount('unknown')} /></Badge>
                   </Group>
                   <Group gap="sm" wrap="wrap" align="flex-end">
                     <NumberInput aria-label="Year" placeholder="Year" value={monthlyYear} onChange={(v) => setMonthlyYear(Number(v) || monthlyYear)} w={80} />
@@ -1310,6 +1393,7 @@ export function App() {
                         { value: 'partial', label: 'Partial' },
                         { value: 'pending', label: 'Pending' },
                         { value: 'paid', label: 'Paid' },
+                        { value: 'unknown', label: 'Needs review' },
                       ]}
                       value={ledgerFilter}
                       onChange={(v) => setLedgerFilter((v as typeof ledgerFilter) ?? 'all')}
@@ -1334,6 +1418,7 @@ export function App() {
                       w={320}
                     />
                     <NumberInput aria-label="Payment amount" placeholder="Amount" value={paymentAmount || ''} onChange={(v) => setPaymentAmount(Number(v) || 0)} w={120} min={0} />
+                    <TextInput type="date" label="Payment date" description="Defaults to browser-local date; verify before recording." value={paymentDate} onChange={(e) => setPaymentDate(e.currentTarget.value)} />
                     <Button variant="light" onClick={() => selectedPaymentEntry && setPaymentAmount(selectedPaymentOutstanding)} disabled={!selectedPaymentEntry}>
                       Fill remaining {selectedPaymentEntry ? `(₹${selectedPaymentOutstanding})` : ''}
                     </Button>
@@ -1374,6 +1459,7 @@ export function App() {
                       <tbody>
                         {filteredLedgerEntries.map((e) => {
                           const outstanding = Math.max(0, e.totalDue - e.amountPaid);
+                          const currentStatus = paymentStatusAsOf(e, asOfDate);
                           const daysOver = Math.floor((Date.parse(asOfDate) - Date.parse(e.dueDate.slice(0, 10))) / 86400000);
                           return (
                           <tr key={e.id}>
@@ -1390,8 +1476,8 @@ export function App() {
                             <td style={{ textAlign: 'right' }} className="money">₹{e.amountPaid}</td>
                             <td style={{ textAlign: 'right' }} className="money">₹{outstanding}</td>
                             <td>
-                              <StatusBadge tone={e.paymentStatus === 'paid' ? 'success' : e.paymentStatus === 'overdue' ? 'danger' : e.paymentStatus === 'partial' ? 'warn' : 'neutral'}>
-                                {e.paymentStatus}
+                              <StatusBadge tone={currentStatus === 'paid' ? 'success' : currentStatus === 'overdue' ? 'danger' : currentStatus === 'partial' ? 'warn' : 'neutral'}>
+                                {currentStatus}
                               </StatusBadge>
                             </td>
                             <td>
@@ -1410,7 +1496,10 @@ export function App() {
                 )}
               </SectionCard>
 
-              <SectionCard title="GST Invoice (from ledger entry)" subtitle="Generates a tax invoice estimate from a selected ledger entry. Verify GSTIN, place of supply, and tax treatment before issuing.">
+              <SectionCard
+                title="Draft GST estimate (NOT a tax invoice)"
+                subtitle="Generates a draft tax estimate from a ledger entry for review only. It does not determine place of supply, tax liability, TDS, e-invoicing, or invoice issuance compliance. For immovable-property renting, place of supply/property location and registration context must be reviewed by a qualified CA/tax professional before issuing any document."
+              >
                 <Stack gap="sm">
                   <Group gap="sm" wrap="wrap" align="flex-end">
                     <Select
@@ -1422,35 +1511,43 @@ export function App() {
                     />
                     <TextInput aria-label="Supplier GSTIN" placeholder="Supplier GSTIN" value={supplierGstin || facility?.gstin || ''} onChange={(e) => setSupplierGstin(e.currentTarget.value)} />
                     <TextInput aria-label="Supplier state" placeholder="Supplier state" value={supplierState || facility?.state || ''} onChange={(e) => setSupplierState(e.currentTarget.value)} />
-                    <TextInput aria-label="Recipient state" placeholder="Recipient state (place of supply)" value={recipientState} onChange={(e) => setRecipientState(e.currentTarget.value)} />
+                    <TextInput aria-label="Recipient state" placeholder="Recipient/billing state (not place-of-supply determination)" value={recipientState} onChange={(e) => setRecipientState(e.currentTarget.value)} />
+                    <Text size="xs" c="dimmed">Property state used for estimate context: {facility?.state || '—'} (verify immovable-property place of supply with CA).</Text>
                   </Group>
                   {(() => {
                     const entry = ledgerEntries.find((e) => e.id === invoiceEntryId);
-                    if (!entry) return <Text size="sm" c="dimmed">Select a ledger entry to generate an invoice.</Text>;
+                    if (!entry) return <Text size="sm" c="dimmed">Select a ledger entry to generate a draft estimate.</Text>;
                     const tenant = tenants.find((t) => t.id === entry.tenantId);
                     const sState = supplierState || facility?.state || '';
                     const rState = recipientState || sState;
-                    if (!sState) return <Text size="sm" c="dimmed">Enter supplier state (and recipient state if inter-state) to compute GST.</Text>;
-                    const asOf = new Date().toISOString().slice(0, 10);
-                    const late = calculateLateFee({ dueDate: entry.dueDate, asOfDate: asOf, principal: entry.totalDue });
+                    if (!sState) return <Text size="sm" c="dimmed">Enter supplier state to compute a draft GST estimate. Do not issue as a tax invoice without professional review.</Text>;
+                    const asOf = asOfDate;
+                    const potentialLate = calculateLateFee({ dueDate: entry.dueDate, asOfDate: asOf, principal: entry.totalDue });
+                    // Do not auto-impose late fees; contract/policy must be confirmed.
                     const inv = generateGstInvoice({
-                      invoiceNumber: `INV-${entry.id.slice(-8)}`,
+                      invoiceNumber: `DRAFT-${entry.id.slice(-8)}`,
                       invoiceDate: asOf,
                       supplierGstin: supplierGstin || facility?.gstin || '',
                       recipientGstin: tenant?.gstin,
                       supplierState: sState,
                       recipientState: rState,
+                      propertyState: facility?.state,
                       description: `Storage rent ${entry.periodStart} to ${entry.periodEnd}`,
                       taxableValue: entry.baseRent + entry.electricityCharge + entry.otherCharges,
-                      lateFee: late > 0 ? late : undefined,
                     });
                     return (
                       <div style={{ overflowX: 'auto' }}>
-                        <table className="data-table">
-                          <thead><tr><th scope="col">Invoice</th><th scope="col">Place of supply</th><th scope="col" style={{ textAlign:'right' }}>Taxable</th><th scope="col" style={{ textAlign:'right' }}>CGST</th><th scope="col" style={{ textAlign:'right' }}>SGST</th><th scope="col" style={{ textAlign:'right' }}>IGST</th><th scope="col" style={{ textAlign:'right' }}>Total</th></tr></thead>
-                          <tbody><tr><td className="mono">{inv.invoiceNumber}</td><td>{inv.placeOfSupply} ({inv.intraState ? 'intra' : 'inter'}-state)</td><td style={{ textAlign:'right' }}>₹{inv.totalTaxable}</td><td style={{ textAlign:'right' }}>₹{inv.totalCgst}</td><td style={{ textAlign:'right' }}>₹{inv.totalSgst}</td><td style={{ textAlign:'right' }}>₹{inv.totalIgst}</td><td style={{ textAlign:'right' }}><strong>₹{inv.grandTotal}</strong></td></tr></tbody>
+                        <Text size="sm" fw={700} c="red">DRAFT GST ESTIMATE — NOT A TAX INVOICE / NOT LEGAL OR TAX ADVICE</Text>
+                        <table className="data-table" style={{ marginTop: 8 }}>
+                          <thead><tr><th scope="col">Reference</th><th scope="col">Place of supply (estimate)</th><th scope="col" style={{ textAlign:'right' }}>Taxable</th><th scope="col" style={{ textAlign:'right' }}>CGST</th><th scope="col" style={{ textAlign:'right' }}>SGST</th><th scope="col" style={{ textAlign:'right' }}>IGST</th><th scope="col" style={{ textAlign:'right' }}>Total (estimate)</th></tr></thead>
+                          <tbody><tr><td className="mono">{inv.invoiceNumber}</td><td>{inv.placeOfSupply} ({inv.intraState ? 'intra' : 'inter'}-state, estimate)</td><td style={{ textAlign:'right' }}>₹{inv.totalTaxable}</td><td style={{ textAlign:'right' }}>₹{inv.totalCgst}</td><td style={{ textAlign:'right' }}>₹{inv.totalSgst}</td><td style={{ textAlign:'right' }}>₹{inv.totalIgst}</td><td style={{ textAlign:'right' }}><strong>₹{inv.grandTotal}</strong></td></tr></tbody>
                         </table>
-                        {late > 0 && <Text size="xs" c="dimmed" mt={4}>Includes late fee estimate ₹{late} (verify before invoicing).</Text>}
+                        {potentialLate > 0 && <Text size="xs" c="orange" mt={6}>Potential late-fee estimate (not included; contractual basis/tax treatment not verified): ₹{potentialLate}</Text>}
+                        {(inv.warnings ?? []).length > 0 && (
+                          <ul style={{ margin: '8px 0 0', paddingLeft: 18, fontSize: 12 }}>
+                            {(inv.warnings ?? []).map((w, i) => <li key={i}>{w}</li>)}
+                          </ul>
+                        )}
                       </div>
                     );
                   })()}
@@ -1578,7 +1675,7 @@ export function App() {
 
           <Tabs.Panel value="meters" pt="md">
             <Stack gap="md">
-              <SectionCard title="Meter Readings &amp; Electricity Charges" subtitle="Tariff ₹8/kWh · DG ₹12/kWh (off by default)">
+              <SectionCard title="Meter Consumption &amp; Illustrative Charges" subtitle="Enter consumption for an explicit period, not cumulative meter readings. Example tariff ₹8/kWh; DG ₹12/kWh (off by default).">
                 <Stack gap="sm">
                   <Group gap="sm" wrap="wrap">
                     <Select
@@ -1589,13 +1686,15 @@ export function App() {
                       onChange={(v) => setNewMeter({ ...newMeter, spaceId: v ?? '' })}
                     />
                     <NumberInput
-                      aria-label="Kilowatt hours"
-                      placeholder="kWh"
-                      value={newMeter.kwh || ''}
-                      onChange={(v) => setNewMeter({ ...newMeter, kwh: Number(v) || 0 })}
+                      aria-label="Kilowatt hours consumed in period"
+                      placeholder="kWh consumed"
+                      value={newMeter.kwh ?? ''}
+                      onChange={(v) => setNewMeter({ ...newMeter, kwh: v === '' ? null : Number(v) })}
                       min={0}
                       w={90}
                     />
+                    <TextInput type="date" aria-label="Consumption period start" value={newMeter.periodStart} onChange={(e) => setNewMeter({ ...newMeter, periodStart: e.currentTarget.value })} />
+                    <TextInput type="date" aria-label="Consumption period end" value={newMeter.periodEnd} onChange={(e) => setNewMeter({ ...newMeter, periodEnd: e.currentTarget.value })} />
                     <Button color="cyan" onClick={handleMeterReading}>
                       Record Reading
                     </Button>
@@ -1603,20 +1702,22 @@ export function App() {
                 </Stack>
               </SectionCard>
 
-              <SectionCard title="Allocate Actual Utility Bill" subtitle="Split the real bill across tenants by sub-meter kWh (not a flat per-sqft rate).">
+              <SectionCard title="Allocate Utility Bill" subtitle="Select the exact consumption period. Only matching records are included; check that all relevant meters are present. Undated legacy records and other periods are excluded. This is a preview, not a posted charge.">
                 <Stack gap="sm">
                   <Group gap="sm" wrap="wrap">
                     <NumberInput
                       aria-label="Actual bill amount"
                       placeholder="Total bill ₹"
-                      value={actualBill || ''}
-                      onChange={(v) => setActualBill(Number(v) || 0)}
+                      value={actualBill ?? ''}
+                      onChange={(v) => { setActualBill(v === '' ? null : Number(v)); setBillAllocation(null); }}
                       min={0}
                       w={140}
                     />
+                    <TextInput type="date" aria-label="Bill period start" value={billPeriod.start} onChange={(e) => { setBillPeriod({ ...billPeriod, start: e.currentTarget.value }); setBillAllocation(null); }} />
+                    <TextInput type="date" aria-label="Bill period end" value={billPeriod.end} onChange={(e) => { setBillPeriod({ ...billPeriod, end: e.currentTarget.value }); setBillAllocation(null); }} />
                     <Button color="teal" onClick={() => {
-                      const subs = meterReadings.map((m) => ({ spaceId: m.spaceId, kwh: m.kwh }));
-                      setBillAllocation(allocateActualBill({ totalBill: actualBill, subReadings: subs }));
+                      try { if (actualBill === null) throw new Error('Enter the bill amount.'); setBillAllocation(allocateBillForPeriod(meterReadings, billPeriod.start, billPeriod.end, actualBill)); }
+                      catch (error) { setBillAllocation(null); flash((error as Error).message); }
                     }}>
                       Allocate
                     </Button>
@@ -1645,6 +1746,7 @@ export function App() {
                       <thead>
                         <tr>
                           <th scope="col">Space</th>
+                          <th scope="col">Period</th>
                           <th scope="col" style={{ textAlign: 'right' }}>kWh</th>
                           <th scope="col" style={{ textAlign: 'right' }}>Energy ₹</th>
                           <th scope="col" style={{ textAlign: 'right' }}>DG ₹</th>
@@ -1655,6 +1757,7 @@ export function App() {
                         {charges.map((c: { spaceId: string; kwh: number; energyCharge: number; dgCharge: number; total: number }, i: number) => (
                           <tr key={i}>
                             <td className="mono">{c.spaceId}</td>
+                            <td>{meterReadings[i].periodStart && meterReadings[i].periodEnd ? `${meterReadings[i].periodStart} to ${meterReadings[i].periodEnd}` : 'Unknown (legacy)'}</td>
                             <td style={{ textAlign: 'right' }} className="num">{c.kwh}</td>
                             <td style={{ textAlign: 'right' }} className="money">₹{c.energyCharge}</td>
                             <td style={{ textAlign: 'right' }} className="money">₹{c.dgCharge}</td>

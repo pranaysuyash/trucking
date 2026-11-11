@@ -12,6 +12,7 @@ export type VehicleCategory =
   | 'alternative_powertrain';
 
 export type VehicleSubtype =
+  | 'unknown'
   | 'dry_van_53'
   | 'reefer_53'
   | 'flatbed_48'
@@ -123,6 +124,8 @@ export interface VehicleSpec {
   code: string;
   category: VehicleCategory;
   subtype: VehicleSubtype;
+  /** Absent on older custom records whose subtype was defaulted, not declared. */
+  subtypeSource?: 'operator_declared';
   description: string;
   exterior: VehicleExteriorDims;
   interior: VehicleInteriorDims;

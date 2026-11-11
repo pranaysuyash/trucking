@@ -110,7 +110,8 @@ export function computeFacilityMetrics(
   vacantAreaSqFt: number;
   blockedAreaSqFt: number;
   underRepairAreaSqFt: number;
-  occupancyPercent: number;
+  /** null when facility.usableAreaSqFt is not configured (> 0). Do not present a false 0% occupancy. */
+  occupancyPercent: number | null;
   modeledSpaceAreaSqFt: number;
   activeLeases: number;
   vacantSpaces: number;
@@ -135,11 +136,11 @@ export function computeFacilityMetrics(
         break;
     }
   }
-  // Occupancy uses facility-level usable capacity (property-level, manual) to preserve
-  // existing semantics. UI surfaces modeledSpaceAreaSqFt and any delta for transparency.
+  // Occupancy uses facility-level usable capacity (property-level, manual). When the denominator
+  // is not configured, occupancy is unavailable — never report a false 0%.
   const occupancyPercent = facility.usableAreaSqFt > 0
     ? Math.round((leasedArea / facility.usableAreaSqFt) * 100)
-    : 0;
+    : null;
   return {
     totalAreaSqFt: facility.totalAreaSqFt,
     usableAreaSqFt: facility.usableAreaSqFt,
@@ -261,7 +262,7 @@ export function recordMeterReading(reading: import('./types').MeterReading): imp
   return reading;
 }
 
-export function computeSpaceUtilization(facility: Facility): { total: number; leased: number; vacant: number; blocked: number; repair: number; percent: number } {
+export function computeSpaceUtilization(facility: Facility): { total: number; leased: number; vacant: number; blocked: number; repair: number; percent: number | null } {
   const m = computeFacilityMetrics(facility, []);
   void facility;
   return {

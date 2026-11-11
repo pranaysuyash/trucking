@@ -3,6 +3,7 @@ import {
   processKioskCheckIn,
   KioskCheckInRequest,
   PRESEEDED_SCHEDULED_APPOINTMENTS,
+  scenarioGateInEvent,
 } from '../src/engine/guardShackKiosk';
 
 describe('Digital Guard Shack & Kiosk Check-In Engine', () => {
@@ -34,7 +35,8 @@ describe('Digital Guard Shack & Kiosk Check-In Engine', () => {
     expect(res.gatePass?.assignedLocationType).toBe('DOCK_DOOR');
     expect(res.gatePass?.freeTimeMinutes).toBe(120);
     expect(res.gatePass?.detentionRatePerHour).toBe(85);
-    expect(res.gatePass?.securityHash).toContain('SHA256:');
+    expect(res.gatePass?.securityHash).toMatch(/^SCENARIO-CHECKSUM:/);
+    expect(res.gatePass?.carrierDot).toBe('3819401');
   });
 
   it('rejects check-in with broken seal on loaded inbound freight', () => {
@@ -55,6 +57,17 @@ describe('Digital Guard Shack & Kiosk Check-In Engine', () => {
     const res = processKioskCheckIn(badSealReq);
     expect(res.success).toBe(false);
     expect(res.rejectionReason).toContain('BROKEN SEAL ALERT');
+  });
+
+  it('propagates each scenario carrier and marks the resulting event as simulated', () => {
+    for (const carrierDot of ['3819401', '2941088']) {
+      const request: KioskCheckInRequest = { confirmationNumber: 'sample', tractorPlate: 'ABC-123', trailerNumber: 'TLR-123', carrierName: 'Example', carrierDot, driverName: 'Driver', driverPhone: '000', sealNumber: 'SEAL-123', isSealIntact: true, equipmentType: 'REEFER', isLoadedInbound: true };
+      const pass = processKioskCheckIn(request).gatePass!;
+      const payload = scenarioGateInEvent(pass);
+      expect(payload.carrierDot).toBe(carrierDot);
+      expect(payload.evidenceStatus).toBe('simulated');
+      expect(payload.trailerNumber).toBe(pass.trailerNumber);
+    }
   });
 
   it('rejects check-in with missing license plate', () => {
