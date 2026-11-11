@@ -116,3 +116,28 @@ Scope: Tactical pricing HUD, Three.js Class 8 truck viewer, brokerage margin car
 2. `npm --prefix products/product-02-freight-pricing test`: PASS (`15` test files, `97` tests).
 3. `npm --prefix products/product-02-freight-pricing run build`: PASS (`index-n2xq-3E_.js` `454.76 kB`, `Realtime3DVehicle-DPFYujmH.js` `536.67 kB`).
 4. Live Chrome desktop `1440x900` capture inspected before and after edits with zero console warnings or errors.
+
+
+## Component 5: HOS Compliance & Corridor Legality Planner (`products/product-03-hos-planner`, Port 5175)
+
+Scope: FMCSA Part 395 HOS dashboard, 3D corridor scene, four compliance modals, stylesheet, HTML title, and README (`products/product-03-hos-planner`). Detailed audit record: `products/product-03-hos-planner/docs/reviews/UNSLOP_AUDIT_2026-11-11.md`.
+
+### Scanner Comparison (Before / After)
+
+| Target | Scanner | Before | After | Key Changes |
+| :--- | :--- | :--- | :--- | :--- |
+| `products/product-03-hos-planner` | `devibe_scan.py` | 11 (1 high, 4 med) | 0 (clean) | Replaced `#818cf8` / `#c084fc` purple tokens with teal `#2dd4bf`, removed neon glow shadow and UI emojis |
+| `src/` and `tests/` | `unslop_code_scan.py` | 132 (2 bug-class, 19 med) | 0 bug-class (0 high, 0 med) | Logged 2 bare `catch {}` blocks in `SuiteDock.tsx`, replaced 18 emojis with SVGs, cut narrating comment |
+| `README.md` and `index.html` | `unslop_text_scan.py` | 33 (`README.md`), 3 (`index.html`) | 0 (`README.md`), 0 (`index.html`) | Rewrote README without bold lead-ins or `---` rules; removed title em dash |
+
+### Implementation Summary
+
+1. Bug-class and suite consistency fixes: added `console.warn` context to bare `catch {}` blocks and updated hardcoded `All 6` product copy in `src/ui/SuiteDock.tsx`; removed narrating comment and replaced purple `0xc084fc` directional fill light with teal `0x2dd4bf` in `src/ui/Realtime3DCorridor.tsx`.
+2. UI and icon upgrades verified in Chrome (`1440x900` desktop): replaced emojis across `src/ui/App.tsx`, `HosRecapModal.tsx`, `CrossBorderHosModal.tsx`, `SplitSleeperModal.tsx`, and `HosExemptionsModal.tsx` with monochrome SVGs (`IconBed`, `IconClock`, `IconLeaf`, `IconGlobe`, `IconX`, `IconAlertTriangle`, `IconZap`, `IconCheck`, `IconSnowflake`); removed `.live-pulse` neon glow, `transition: all`, and `9999px` pill styling; wrapped action buttons cleanly.
+
+### Verification
+
+1. `npm --prefix products/product-03-hos-planner run typecheck`: PASS.
+2. `npm --prefix products/product-03-hos-planner test`: PASS (`12` test files, `70` tests).
+3. `npm --prefix products/product-03-hos-planner run build`: PASS (`index-C-uFG3f6.js` `972.06 kB`).
+4. Live Chrome desktop `1440x900` capture inspected before and after edits with zero console warnings or errors.
