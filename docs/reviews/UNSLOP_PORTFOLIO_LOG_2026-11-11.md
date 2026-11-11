@@ -91,3 +91,28 @@ Scope: Core load-planning app shell, six modal dialogs, compliance engine string
 2. `npm --prefix products/product-01-cargo-fit test`: PASS (`22` test files, `134` tests).
 3. `npm --prefix products/product-01-cargo-fit run build`: PASS (`dist/assets/index-LpC03HyL.js` `643.11 kB`).
 4. Live Chrome captures (`1440x900` landing, `#/app/cargo`, `#/app/plan`, and `390x844` mobile) inspected before and after edits with zero console warnings or errors.
+
+
+## Component 4: Freight Pricing & Tactical Dispatch HUD (`products/product-02-freight-pricing`, Port 5174)
+
+Scope: Tactical pricing HUD, Three.js Class 8 truck viewer, brokerage margin card, modal suite, stylesheet, HTML metadata, and README (`products/product-02-freight-pricing`). Detailed audit record: `products/product-02-freight-pricing/docs/reviews/UNSLOP_AUDIT_2026-11-11.md`.
+
+### Scanner Comparison (Before / After)
+
+| Target | Scanner | Before | After | Key Changes |
+| :--- | :--- | :--- | :--- | :--- |
+| `products/product-02-freight-pricing` | `devibe_scan.py` | 14 (2 high, 4 med) | 0 (clean) | Replaced `#a855f7` / `#818cf8` with teal `#14b8a6` / `#2dd4bf`, removed neon glow shadows and modal emojis |
+| `src/` and `tests/` | `unslop_code_scan.py` | 142 (2 bug-class, 25 med) | 0 bug-class (0 high, 0 med) | Logged 2 bare `catch {}` blocks in `SuiteDock.tsx`, replaced 24 emojis with SVGs, cut narrating comment |
+| `README.md` and `index.html` | `unslop_text_scan.py` | 44 (`README.md`), 6 (`index.html`) | 0 (`README.md`), 0 (`index.html`) | Rewrote README cleanly and removed em dashes from title, meta description, and engine strings |
+
+### Implementation Summary
+
+1. Bug-class and Three.js deprecation fixes: added `console.warn` context to bare `catch {}` blocks and replaced hardcoded `All 6` strings in `src/ui/SuiteDock.tsx`; upgraded `src/ui/Realtime3DVehicle.tsx` from deprecated `THREE.Clock` and `THREE.PCFSoftShadowMap` to `THREE.Timer` and `THREE.PCFShadowMap`, clearing both runtime warnings from Chrome console.
+2. Visual and SVG alignment verified in Chrome (`1440x900` desktop): restyled `src/ui/BrokerMarginCard.tsx` from jarring `#f8fafc` white cards to dark `#0b1120` surfaces matching the `#080c14` cockpit HUD with responsive `auto-fit` grid sizing; enlarged `TacticalHud.tsx` OR speedometer SVG geometry so `90% OR` and `+10.0% NET MARGIN` sit cleanly below the needle pivot; wrapped `.panel-h` and added `white-space: nowrap` to `.btn` in `src/styles.css`; replaced all button and modal emojis in `App.tsx` and the 5 pricing/compliance modals with monochrome SVG icons.
+
+### Verification
+
+1. `npm --prefix products/product-02-freight-pricing run typecheck`: PASS.
+2. `npm --prefix products/product-02-freight-pricing test`: PASS (`15` test files, `97` tests).
+3. `npm --prefix products/product-02-freight-pricing run build`: PASS (`index-n2xq-3E_.js` `454.76 kB`, `Realtime3DVehicle-DPFYujmH.js` `536.67 kB`).
+4. Live Chrome desktop `1440x900` capture inspected before and after edits with zero console warnings or errors.
