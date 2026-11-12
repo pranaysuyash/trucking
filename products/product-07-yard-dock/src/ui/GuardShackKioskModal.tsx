@@ -6,6 +6,7 @@ import {
   DigitalGatePass,
 } from '../engine/guardShackKiosk';
 import { DockDoor, YardSpot, DoorCommodityType } from '../engine/types';
+import { IconDoor, IconX, IconFileText, IconMapPin, IconAlertCircle } from './icons';
 
 interface GuardShackKioskModalProps {
   isOpen: boolean;
@@ -119,8 +120,9 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
           }}
         >
           <div>
-            <h3 id="kiosk-modal-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc' }}>
-              🛂 Scenario Check-In Kiosk &amp; Sample Pass
+            <h3 id="kiosk-modal-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <IconDoor size={18} />
+              Scenario Check-In Kiosk &amp; Sample Pass
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>
               Automated dock door &amp; drop lot allocation with bolt seal verification.
@@ -139,7 +141,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
             }}
             aria-label="Close"
           >
-            ✕
+            <IconX size={18} />
           </button>
         </div>
 
@@ -155,7 +157,9 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                 textAlign: 'center',
               }}
             >
-              <span style={{ fontSize: '2.5rem' }}>🎫</span>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+                <IconFileText size={36} style={{ color: '#2dd4bf' }} />
+              </div>
               <h3 style={{ margin: '8px 0 4px', color: '#4ade80' }}>
                 SAMPLE GATE PASS CREATED
               </h3>
@@ -176,8 +180,8 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                 <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginBottom: 4 }}>
                   ASSIGNED DESTINATION:
                 </div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#38bdf8', marginBottom: 12 }}>
-                  📍 {issuedGatePass.assignedLocationName}
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#38bdf8', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <IconMapPin size={18} /> {issuedGatePass.assignedLocationName}
                 </div>
 
                 <div style={{ fontSize: '0.8rem', color: '#cbd5e1', marginBottom: 8 }}>
@@ -260,9 +264,13 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                     marginBottom: 16,
                     color: '#fca5a5',
                     fontSize: '0.8rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6,
                   }}
                 >
-                  <strong>🚫 Gate Rejection:</strong> {errorMessage}
+                  <IconAlertCircle size={14} style={{ flexShrink: 0 }} />
+                  <span><strong>Gate Rejection:</strong> {errorMessage}</span>
                 </div>
               )}
 
@@ -404,7 +412,7 @@ export const GuardShackKioskModal: React.FC<GuardShackKioskModalProps> = ({
                     cursor: 'pointer',
                   }}
                 >
-                  Simulate gate check-in ➔
+                  Simulate gate check-in
                 </button>
               </div>
             </form>

@@ -14,6 +14,7 @@ import { DockAllocationTask } from './DockAllocationTask';
 import { YardMapCanvas } from './YardMapCanvas';
 import { GuardShackKioskModal } from './GuardShackKioskModal';
 import { DigitalGatePass, scenarioGateInEvent } from '../engine/guardShackKiosk';
+import { IconAlertTriangle, IconCheck, IconMapPin, IconTruck, IconPackage, IconShieldAlert, IconX } from './icons';
 
 export function App() {
   const [doors, setDoors] = useState<DockDoor[]>(INITIAL_DOCK_DOORS);
@@ -139,7 +140,7 @@ export function App() {
       {checkInNotice && (
         <div className="notice-banner">
           <span>{checkInNotice}</span>
-          <button className="notice-close" onClick={() => setCheckInNotice(null)}>✕</button>
+          <button className="notice-close" onClick={() => setCheckInNotice(null)}><IconX size={14} /></button>
         </div>
       )}
 
@@ -166,8 +167,8 @@ export function App() {
 
         <div className="kpi-card">
           <div className="kpi-label">DETENTION CLOCK STATUS</div>
-          <div className={`kpi-val ${detainedCount > 0 ? 'text-red' : 'text-emerald'}`}>
-            {detainedCount > 0 ? `⚠️ ${detainedCount} TRUCKS OVERDUE` : '✅ 0 Trapped Trucks'}
+          <div className={`kpi-val ${detainedCount > 0 ? 'text-red' : 'text-emerald'}`} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            {detainedCount > 0 ? <><IconAlertTriangle size={18} /> {detainedCount} TRUCKS OVERDUE</> : <><IconCheck size={18} /> 0 Trapped Trucks</>}
           </div>
           <div className="kpi-note">{detainedCount > 0 ? 'Accruing $85/hr fees' : 'All within 2-hr free time window'}</div>
         </div>
@@ -202,9 +203,12 @@ export function App() {
                     fontWeight: 700,
                     fontSize: '11px',
                     cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
                 >
-                  🗺️ 2D Blueprint SVG
+                  <IconMapPin size={12} /> 2D Blueprint SVG
                 </button>
                 <button
                   type="button"
@@ -326,11 +330,11 @@ export function App() {
                       if (availDoor) {
                         const newOrder = createJockeyMoveOrder(selectedSpot.trailerId!, selectedSpot.spotNumber, `Dock Door #${availDoor.doorNumber}`, 'URGENT');
                         setJockeyTasks(prev => [newOrder, ...prev]);
-                        setCheckInNotice(`🚜 Spotter Work Order WO-${newOrder.orderNumber} dispatched: Move ${selectedSpot.trailerId} to Door #${availDoor.doorNumber}`);
+                        setCheckInNotice(`Spotter Work Order WO-${newOrder.orderNumber} dispatched: Move ${selectedSpot.trailerId} to Door #${availDoor.doorNumber}`);
                       }
                     }}
                   >
-                    🚜 Dispatch Spotter to Nearest Door
+                    <IconTruck size={14} style={{ marginRight: 6 }} /> Dispatch Spotter to Nearest Door
                   </button>
                 </div>
               )}
@@ -367,7 +371,7 @@ export function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    📦 Bridge to P06 Inbound Putaway ↗
+                    <IconPackage size={14} style={{ marginRight: 6 }} /> Bridge to P06 Inbound Putaway
                   </a>
                   <a
                     href={selectedPass ? buildCarrierVettingBridgeUrl(selectedPass.carrierDot, selectedPass.carrierName) : 'http://localhost:5180/'}
@@ -375,7 +379,7 @@ export function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    🛡️ {selectedPass ? 'Open scenario carrier in P08' : 'Open P08 (carrier unknown)'} ↗
+                    <IconShieldAlert size={14} style={{ marginRight: 6 }} /> {selectedPass ? 'Open scenario carrier in P08' : 'Open P08 (carrier unknown)'}
                   </a>
                 </div>
               )}
@@ -440,13 +444,13 @@ export function App() {
                   </div>
                   <div className="jockey-move">
                     <strong>{t.trailerNumber}</strong>
-                    <div className="move-arrow">{t.sourceLocation} ➔ {t.targetLocation}</div>
+                    <div className="move-arrow">{t.sourceLocation} -&gt; {t.targetLocation}</div>
                   </div>
                   <div className="jockey-actions">
                     <span className="task-status">Status: {t.status}</span>
                     {t.status !== 'COMPLETED' && (
-                      <button className="btn-small" onClick={() => handleCompleteJockeyTask(t.orderId)}>
-                        Mark Moved ✓
+                      <button className="btn-small" onClick={() => handleCompleteJockeyTask(t.orderId)} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                        Mark Moved <IconCheck size={11} />
                       </button>
                     )}
                   </div>

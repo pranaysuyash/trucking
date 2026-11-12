@@ -1,0 +1,114 @@
+function runOnce(
+  ordered: Unit[], eq: NormalizedEquipment, strat: Strategy, minSupport: number,
+  deadline: number, shouldCancel: () => boolean,
+): RunResult {
+  const boxes: Box[] = [];
+  const CELL = 250;
+  const grid = new Map<number, number[]>();
+  const stamp: number[] = [];
+  let stampId = 0;
+  const cellKey = (ix: number, iy: number) => ix * 100003 + iy;
+  const registerBox = (i: number) => {
+    const b = boxes[i];
+    for (let ix = Math.floor(b.x / CELL); ix <= Math.floor((b.x + b.dx - EPS) / CELL); ix++) {
+      for (let iy = Math.floor(b.y / CELL); iy <= Math.floor((b.y + b.dy - EPS) / CELL); iy++) {
+        const k = cellKey(ix, iy);
+        const l = grid.get(k);
+        if (l) l.push(i); else grid.set(k, [i]);
+      }
+    }
+  };
+  /** boxes whose footprint cells overlap the query rectangle (deduped) */
+  const nearBoxes = (x: number, y: number, w: number, h: number): number[] => {
+    stampId++;
+    const out: number[] = [];
+    for (let ix = Math.floor(x / CELL); ix <= Math.floor((x + w - EPS) / CELL); ix++) {
+      for (let iy = Math.floor(y / CELL); iy <= Math.floor((y + h - EPS) / CELL); iy++) {
+        const l = grid.get(cellKey(ix, iy));
+        if (!l) continue;
+        for (const i of l) if (stamp[i] !== stampId) { stamp[i] = stampId; out.push(i); }
+      }
+    }
+    return out;
+  };
+
+  const points: [number, number][] = [[0, 0]]; // kept sorted by x then y
+  const pointSet = new Set<string>(['0|0']);
+  const placements: Placement[] = [];
+  const unplaced: string[] = [];
+  let weight = 0;
+  let lastFail = '';
+  const addPoint = (x: number, y: number) => {
+    if (x > eq.L + EPS || y > eq.W + EPS) return;
+    const k = `${Math.round(x * 100)}|${Math.round(y * 100)}`;
+    if (pointSet.has(k)) return;
+    pointSet.add(k);
+    let lo = 0, hi = points.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (points[mid][0] < x || (points[mid][0] === x && points[mid][1] < y)) lo = mid + 1; else hi = mid;
+    }
+    points.splice(lo, 0, [x, y]);
+  };
+
+  for (const u of ordered) {
+    if (shouldCancel() || Date.now() > deadline) { unplaced.push(u.id); continue; }
+    if (eq.payloadKg !== null && u.weightKg !== null && weight + u.weightKg > eq.payloadKg + 1e-6) {
+      unplaced.push(u.id);
+      continue;
+    }
+    // Consecutive identical units after a failed scan cannot succeed (nothing was added since).
+    const key = `${u.dims.join('x')}|${u.rotation}|${u.stackable}`;
+    if (key === lastFail) { unplaced.push(u.id); continue; }
+    const orients = usableOrientations(u, eq);
+    let best: { score: number[]; x: number; y: number; z: number; d: Dims } | null = null;
+    for (const [px, py] of points) {
+      // points are x-sorted; a later point cannot beat a floor-level candidate found earlier
+      if (best && px > best.x + EPS && (strat === 'front-first' || best.z <= EPS)) break;
+      for (const d of orients) {
+        const [dx, dy, dz] = d;
+        if (px + dx > eq.L + EPS || py + dy > eq.W + EPS) continue;
+        const near = nearBoxes(px, py, dx, dy);
+        let z = 0;
+        for (const i of near) {
+          const b = boxes[i];
+          if (px < b.x + b.dx - EPS && b.x < px + dx - EPS && py < b.y + b.dy - EPS && b.y < py + dy - EPS) {
+            if (b.top > z) z = b.top;
+          }
+        }
+        if (z + dz > eq.H + EPS) continue;
+        if (z > EPS) {
+          let sup = 0;
+          let ok = true;
+          for (const i of near) {
+            const b = boxes[i];
+            if (Math.abs(b.top - z) > EPS) continue;
+            const ox = Math.min(px + dx, b.x + b.dx) - Math.max(px, b.x);
+            const oy = Math.min(py + dy, b.y + b.dy) - Math.max(py, b.y);
+            if (ox > EPS && oy > EPS) {
+              if (!b.stackable) { ok = false; break; }
+              sup += ox * oy;
+            }
+          }
+          if (!ok || sup / (dx * dy) < minSupport - 1e-6) continue;
+        }
+        const score = strat === 'front-first' ? [px, z, py, dz] : [z, px, py, dz];
+        if (!best || cmp(score, best.score) < 0) best = { score, x: px, y: py, z, d };
+      }
+    }
+    if (!best) { unplaced.push(u.id); lastFail = key; continue; }
+    lastFail = '';
+    const [dx, dy, dz] = best.d;
+    boxes.push({ x: best.x, y: best.y, z: best.z, dx, dy, dz, top: best.z + dz, stackable: u.stackable });
+    registerBox(boxes.length - 1);
+    placements.push({ unitId: u.id, rowUid: u.rowUid, label: u.label, x: best.x, y: best.y, z: best.z, dx, dy, dz, order: placements.length + 1 });
+    if (u.weightKg !== null) weight += u.weightKg;
+    addPoint(best.x + dx, best.y);
+    addPoint(best.x, best.y + dy);
+    addPoint(best.x, best.y);
+    addPoint(best.x + dx, 0);
+    addPoint(0, best.y + dy);
+  }
+  return { placements, unplacedIds: unplaced };
+}
+

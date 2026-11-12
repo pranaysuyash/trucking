@@ -30,21 +30,21 @@ interface ActiveMovePreset {
 const PRESET_MOVES: ActiveMovePreset[] = [
   {
     id: 'move-1',
-    label: 'Spot A-1 ➔ Dock D-03',
+    label: 'Spot A-1 -> Dock D-03',
     trailerNumber: 'TLR-9042',
     sourceLocation: 'Spot A-1',
     targetLocation: 'D-03',
   },
   {
     id: 'move-2',
-    label: 'Dock D-08 ➔ Lot B-5',
+    label: 'Dock D-08 -> Lot B-5',
     trailerNumber: 'TLR-8120',
     sourceLocation: 'D-08',
     targetLocation: 'B-5',
   },
   {
     id: 'move-3',
-    label: 'Gate 1 ➔ Spot A-2',
+    label: 'Gate 1 -> Spot A-2',
     trailerNumber: 'TLR-5541',
     sourceLocation: 'Gate 1',
     targetLocation: 'Spot A-2',
@@ -167,7 +167,7 @@ export function YardMapCanvas({
 
         {/* Spotter Dispatch Actions */}
         <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <span style={{ fontWeight: 700, color: '#38bdf8', fontSize: '11px' }}>🚜 SPOT-3 DISPATCH:</span>
+          <span style={{ fontWeight: 700, color: '#38bdf8', fontSize: '11px' }}>SPOT-3 DISPATCH:</span>
           {PRESET_MOVES.map((preset) => (
             <button
               key={preset.id}
@@ -340,7 +340,7 @@ export function YardMapCanvas({
 
               {/* Door commodity icon / badge */}
               <text x={doorX + 31} y={doorY + 30} fill="#94a3b8" fontSize="8" textAnchor="middle">
-                {door.type === 'REEFER' ? '❄️ REF' : door.type === 'FLATBED' ? '🚜 FLT' : '📦 DRY'}
+                {door.type === 'REEFER' ? 'REF' : door.type === 'FLATBED' ? 'FLT' : 'DRY'}
               </text>
 
               {/* Occupied trailer silhouette */}
@@ -553,8 +553,8 @@ export function YardMapCanvas({
                     <text x={spotX + 39} y={spotY + 44} fill="#fff" fontSize="8" fontWeight="700" textAnchor="middle">
                       {spot.trailerId}
                     </text>
-                    <text x={spotX + 39} y={spotY + 54} fill="#94a3b8" fontSize="7" textAnchor="middle">
-                      {detention?.isDetained ? '⚠️ DETENTION' : 'STAGED'}
+                    <text x={spotX + 39} y={spotY + 54} fill={detention?.isDetained ? '#ef4444' : '#94a3b8'} fontSize="7" textAnchor="middle" fontWeight={detention?.isDetained ? 700 : 400}>
+                      {detention?.isDetained ? 'DETENTION' : 'STAGED'}
                     </text>
                   </g>
                 ) : (

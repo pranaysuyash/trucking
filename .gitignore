@@ -72,3 +72,4 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 output/antigravity-migrated/
+output/
