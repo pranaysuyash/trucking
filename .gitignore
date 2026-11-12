@@ -71,3 +71,4 @@ products/*/tests/**/*.js.map
 __pycache__/
 *.py[cod]
 .pytest_cache/
+output/antigravity-migrated/
