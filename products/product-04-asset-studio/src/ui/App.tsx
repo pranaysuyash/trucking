@@ -27,6 +27,7 @@ import { AeroEcoModelerModal } from './AeroEcoModelerModal';
 import { TrailerIoTSensorsModal } from './TrailerIoTSensorsModal';
 import { ProjectBridgeBar } from './ProjectBridgeBar';
 import { SuiteDock } from './SuiteDock';
+import { IconLeaf, IconRadio } from './icons';
 import { platformBus } from '../engine/platformBus';
 import { useShipmentSession } from '../suite/ShipmentSession';
 import { useShipmentDraft } from '../suite/useShipmentDraft';
@@ -334,6 +335,9 @@ export function App() {
                 type="button"
                 onClick={() => setIsAeroModalOpen(true)}
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
                   padding: '4px 10px',
                   borderRadius: 4,
                   fontSize: '11px',
@@ -344,12 +348,16 @@ export function App() {
                   cursor: 'pointer',
                 }}
               >
-                SmartWay Aero Modeler 🍃
+                <IconLeaf size={13} />
+                SmartWay Aero Modeler
               </button>
               <button
                 type="button"
                 onClick={() => setIsTrailerIoTModalOpen(true)}
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
                   padding: '4px 10px',
                   borderRadius: 4,
                   fontSize: '11px',
@@ -360,7 +368,8 @@ export function App() {
                   cursor: 'pointer',
                 }}
               >
-                Smart Trailer IoT 📡
+                <IconRadio size={13} />
+                Smart Trailer IoT
               </button>
               <span className="status-indicator">
                 <span className="indicator-dot pulse-green" />

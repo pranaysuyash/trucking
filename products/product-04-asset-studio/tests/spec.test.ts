@@ -92,7 +92,6 @@ describe('Spatial Fit Calculation', () => {
   });
 
   it('enforces 0 placed units and empty grid placements when package height exceeds vehicle interior or door aperture', () => {
-    // Create an oversized cargo package that exceeds dry van door height (115" height vs 108" door)
     const oversizedPkg = {
       ...gmaPallet,
       id: 'oversized-test-tall',

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IconRadio, IconX, IconPackage, IconAlertTriangle, IconThermometer, IconSun } from './icons';
 import {
   buildTrailerTelemetrySnapshot,
 } from '../engine/trailerIoTSensors';
@@ -78,9 +79,10 @@ export const TrailerIoTSensorsModal: React.FC<TrailerIoTSensorsModalProps> = ({
           <div>
             <h3
               id="trailer-iot-title"
-              style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: '#38bdf8' }}
+              style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '8px' }}
             >
-              📡 Smart Trailer IoT Sensor Topology & Fullness
+              <IconRadio size={17} />
+              Smart Trailer IoT Sensor Topology &amp; Fullness
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '11px', color: '#94a3b8' }}>
               Unit: {trailerUnitNumber} · FleetPulse / Cargo Connect Chassis Telemetry
@@ -98,7 +100,7 @@ export const TrailerIoTSensorsModal: React.FC<TrailerIoTSensorsModalProps> = ({
               padding: '4px 8px',
             }}
           >
-            ✕
+            <IconX size={18} />
           </button>
         </div>
 
@@ -198,8 +200,8 @@ export const TrailerIoTSensorsModal: React.FC<TrailerIoTSensorsModalProps> = ({
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-              <span style={{ fontSize: '12px', fontWeight: 700, color: '#38bdf8' }}>
-                📦 Ultrasonic Cargo Volume Fullness (% Cube)
+              <span style={{ fontSize: '12px', fontWeight: 700, color: '#38bdf8', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <IconPackage size={14} /> Ultrasonic Cargo Volume Fullness (% Cube)
               </span>
               <span style={{ fontSize: '11px', color: '#94a3b8' }}>
                 State: <strong>{snapshot.cargoFullness.cargoState}</strong>
@@ -264,8 +266,8 @@ export const TrailerIoTSensorsModal: React.FC<TrailerIoTSensorsModalProps> = ({
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f8fafc' }}>
-                  🛑 Air Brake Chamber Pushrod Stroke
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f8fafc', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <IconAlertTriangle size={13} style={{ color: '#f59e0b' }} /> Air Brake Chamber Pushrod Stroke
                 </span>
                 <span
                   style={{
@@ -322,8 +324,8 @@ export const TrailerIoTSensorsModal: React.FC<TrailerIoTSensorsModalProps> = ({
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f8fafc' }}>
-                  🌡️ Wheel-End Hub Bearing Temperature
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f8fafc', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <IconThermometer size={13} style={{ color: '#38bdf8' }} /> Wheel-End Hub Bearing Temperature
                 </span>
                 <span
                   style={{
@@ -371,8 +373,8 @@ export const TrailerIoTSensorsModal: React.FC<TrailerIoTSensorsModalProps> = ({
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f8fafc' }}>
-                  ☀️ Solar Roof &amp; Auxiliary 12V Battery
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f8fafc', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <IconSun size={13} style={{ color: '#f59e0b' }} /> Solar Roof &amp; Auxiliary 12V Battery
                 </span>
                 <span style={{ fontSize: '9px', color: '#10b981', fontWeight: 700 }}>
                   {snapshot.solarPower.isCharging ? 'CHARGING' : 'STANDBY'}

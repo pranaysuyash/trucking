@@ -141,3 +141,28 @@ Scope: FMCSA Part 395 HOS dashboard, 3D corridor scene, four compliance modals, 
 2. `npm --prefix products/product-03-hos-planner test`: PASS (`12` test files, `70` tests).
 3. `npm --prefix products/product-03-hos-planner run build`: PASS (`index-C-uFG3f6.js` `972.06 kB`).
 4. Live Chrome desktop `1440x900` capture inspected before and after edits with zero console warnings or errors.
+
+## Component 6: `products/product-04-asset-studio` (Port 5176)
+
+Audit report: [UNSLOP_AUDIT_2026-11-11.md](file:///Users/pranay/Projects/trucking/products/product-04-asset-studio/docs/reviews/UNSLOP_AUDIT_2026-11-11.md)
+
+### Summary of Findings and Fixes
+
+- Replaced `2` bare `catch {}` blocks in `SuiteDock.tsx` with `console.warn`, replaced `#818cf8` with `#2dd4bf`, and derived the suite tool count from `CANONICAL_PRODUCTS.length`.
+- Replaced `THREE.PCFSoftShadowMap` with `THREE.PCFShadowMap` in `Realtime3DCanvas.tsx` and `Interactive3DTeardown.tsx`, migrated `Interactive3DTeardown.tsx` from `THREE.Clock` to `THREE.Timer`, and removed narrating comments in `src/` and `tests/spec.test.ts`.
+- Replaced all UI emojis across `App.tsx`, `AeroEcoModelerModal.tsx`, and `TrailerIoTSensorsModal.tsx` with monochrome SVGs from `src/ui/icons.tsx`.
+- Stripped neon glow shadows, `9999px` radii, `--accent-purple`, and `transition: all` rules from `src/styles.css`.
+- Cleaned `src/engine/glec.ts` JSDoc wording, updated `index.html` title/favicon, and rewrote `README.md` cleanly.
+
+### Scanner Outcomes (Before -> After)
+
+- `unslop_code_scan.py src`: `153` (`1` high, `17` medium, `2` bug-class) -> `116` (`0` high, `0` medium, `0` bug-class, `116` low).
+- `devibe_scan.py`: `39` (`1` high, `18` medium) -> `0` across `64` files.
+- `unslop_text_scan.py`: `README.md` `68` -> `0`, `index.html` `3` -> `0`, `UNSLOP_AUDIT_2026-11-11.md` `0`.
+
+### Verification
+
+1. `npm --prefix products/product-04-asset-studio run typecheck`: PASS.
+2. `npm --prefix products/product-04-asset-studio test`: PASS (`9` test files, `66` tests).
+3. `npm --prefix products/product-04-asset-studio run build`: PASS (`index-DQt94xHf.js` `1,059.53 kB`).
+4. Live Chrome desktop `1440x900` capture inspected before and after edits; Three.js `PCFSoftShadowMap` warning eliminated with zero console warnings or errors.

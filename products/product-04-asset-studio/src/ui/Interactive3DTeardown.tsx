@@ -273,7 +273,6 @@ export const Interactive3DTeardown: React.FC<Interactive3DTeardownProps> = ({
     }
   };
 
-  // Initialize Scene
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
@@ -298,7 +297,7 @@ export const Interactive3DTeardown: React.FC<Interactive3DTeardownProps> = ({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.localClippingEnabled = true;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
 
     while (container.firstChild) {
       container.removeChild(container.firstChild);
@@ -715,11 +714,13 @@ export const Interactive3DTeardown: React.FC<Interactive3DTeardownProps> = ({
 
     // Render & Animation Loop
     let animId: number;
-    let clock = new THREE.Clock();
+    const timer = new THREE.Timer();
+    timer.connect(document);
 
     const animate = () => {
       animId = requestAnimationFrame(animate);
-      const delta = clock.getDelta();
+      timer.update();
+      const delta = timer.getDelta();
 
       if (autoRotate) {
         rotRef.current.theta += 0.25 * delta;
@@ -763,6 +764,7 @@ export const Interactive3DTeardown: React.FC<Interactive3DTeardownProps> = ({
 
     return () => {
       cancelAnimationFrame(animId);
+      timer.disconnect();
       dom.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);

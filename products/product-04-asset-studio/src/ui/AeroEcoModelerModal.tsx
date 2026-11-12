@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { IconLeaf, IconX, IconCheck, IconAlertTriangle } from './icons';
 import {
   evaluateAeroEcoConfiguration,
   SMARTWAY_AERO_FEATURES,
@@ -68,8 +69,9 @@ export const AeroEcoModelerModal: React.FC<AeroEcoModelerModalProps> = ({
           }}
         >
           <div>
-            <h3 id="aero-modal-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc' }}>
-              🍃 EPA SmartWay Aerodynamic Drag &amp; Eco-Equipment Modeler
+            <h3 id="aero-modal-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <IconLeaf size={18} style={{ color: '#6ee7b7' }} />
+              EPA SmartWay Aerodynamic Drag &amp; Eco-Equipment Modeler
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>
               Simulate Cd aerodynamic fairings, super singles &amp; fuel/carbon ROI for {vehicleName}.
@@ -87,7 +89,7 @@ export const AeroEcoModelerModal: React.FC<AeroEcoModelerModalProps> = ({
             }}
             aria-label="Close"
           >
-            ✕
+            <IconX size={18} />
           </button>
         </div>
 
@@ -141,8 +143,8 @@ export const AeroEcoModelerModal: React.FC<AeroEcoModelerModalProps> = ({
             }}
           >
             <div>
-              <strong style={{ color: evaluation.smartWayCertifiedFleet ? '#4ade80' : '#fcd34d', fontSize: '0.85rem' }}>
-                {evaluation.smartWayCertifiedFleet ? '🏆 EPA SmartWay Verified Elite Tractor-Trailer Specification' : '⚠️ Standard Fleet Specification (SmartWay Uncertified)'}
+              <strong style={{ color: evaluation.smartWayCertifiedFleet ? '#4ade80' : '#fcd34d', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                {evaluation.smartWayCertifiedFleet ? <><IconCheck size={14} /> EPA SmartWay Verified Elite Tractor-Trailer Specification</> : <><IconAlertTriangle size={14} /> Standard Fleet Specification (SmartWay Uncertified)</>}
               </strong>
               <div style={{ fontSize: '0.75rem', color: '#cbd5e1', marginTop: 2 }}>
                 Reduces Scope 1 transport emissions by <strong>{evaluation.annualGlecCo2ReductionTonnes} metric tons CO2e/year</strong> per vehicle.
@@ -259,6 +261,9 @@ export const AeroEcoModelerModal: React.FC<AeroEcoModelerModalProps> = ({
             type="button"
             onClick={onClose}
             style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
               padding: '8px 18px',
               borderRadius: 6,
               border: 'none',
@@ -269,7 +274,8 @@ export const AeroEcoModelerModal: React.FC<AeroEcoModelerModalProps> = ({
               cursor: 'pointer',
             }}
           >
-            Apply Specification 🍃
+            <IconLeaf size={14} />
+            Apply Specification
           </button>
         </div>
       </div>

@@ -102,7 +102,7 @@ export interface CarbonFootprintResult {
 
 /**
  * Calculates GLEC v3.0-aligned indicative freight emissions scenarios and insetting estimates.
- * NOTE: Software calculations are scenario estimates and do not constitute third-party
+ * Software calculations are scenario estimates and do not constitute third-party
  * ISO 14083 verification or official EPA SmartWay High Performer awards.
  */
 export function calculateCarbonFootprint(input: CarbonTripInput): CarbonFootprintResult {

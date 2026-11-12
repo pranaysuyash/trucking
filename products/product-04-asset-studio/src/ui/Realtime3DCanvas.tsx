@@ -68,7 +68,6 @@ export const Realtime3DCanvas: React.FC<Realtime3DCanvasProps> = ({
     }
   };
 
-  // Initialize Three.js scene
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
@@ -89,7 +88,7 @@ export const Realtime3DCanvas: React.FC<Realtime3DCanvasProps> = ({
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
 
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
@@ -595,7 +594,6 @@ export const Realtime3DCanvas: React.FC<Realtime3DCanvasProps> = ({
       ? -vehicle.exterior.lengthFt * 0.05
       : 0;
 
-    // Create instanced or individual meshes
     for (const p of placements) {
       const posX = p.xIn / 12;
       const posY = floorY + (p.yIn + selectedPackage.dims.heightIn / 2) / 12;
