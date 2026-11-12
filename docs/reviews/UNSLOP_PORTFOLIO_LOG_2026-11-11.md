@@ -263,3 +263,26 @@ Audit report: [UNSLOP_AUDIT_2026-11-11.md](file:///Users/pranay/Projects/truckin
 2. `npm --prefix products/product-08-carrier-trust test`: PASS (`8` test files, `53` tests).
 3. `npm --prefix products/product-08-carrier-trust run build`: PASS (`index-BsFLh_hv.js` `412.14 kB`, `index-Bg4aQDOC.css` `33.85 kB`).
 4. Live Chrome desktop `1440x900` capture inspected before and after edits with zero console warnings or errors.
+
+## Component 11: `products/product-09-storage-leasing` (Port 5181)
+
+Audit report: [UNSLOP_AUDIT_2026-11-11.md](file:///Users/pranay/Projects/trucking/products/product-09-storage-leasing/docs/reviews/UNSLOP_AUDIT_2026-11-11.md)
+
+### Summary of Findings and Fixes
+
+- Replaced `2` bare `catch {}` blocks in `SuiteDock.tsx` with `console.warn` and derived the suite tool count from `CANONICAL_PRODUCTS.length`.
+- Replaced `border-radius: 999px;` on `.status-pill` in `src/styles.css` with `border-radius: 6px;`.
+- Replaced emoji favicon in `index.html` with clean building path SVG, replaced title em dash with `|`, and authored clean project `README.md`.
+
+### Scanner Outcomes (Before -> After)
+
+- `unslop_code_scan.py src`: `38` (`2` bug-class) -> `34` (`0` high, `0` medium, `0` bug-class, `34` low).
+- `devibe_scan.py`: `2` (`1` medium) -> `0` across `50` files.
+- `unslop_text_scan.py`: `index.html` `3` -> `0`, `README.md` `0`, `UNSLOP_AUDIT_2026-11-11.md` `0`.
+
+### Verification
+
+1. `npm --prefix products/product-09-storage-leasing run typecheck`: PASS.
+2. `npm --prefix products/product-09-storage-leasing test`: PASS (`19` test files, `151` tests).
+3. `npm --prefix products/product-09-storage-leasing run build`: PASS (`index-D8egkpSn.js` `623.00 kB`, `index-Be5lybcI.css` `259.82 kB`).
+4. Live Chrome desktop `1440x900` capture inspected before and after edits with zero console warnings or errors.
