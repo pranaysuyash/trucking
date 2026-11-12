@@ -188,7 +188,7 @@ export function App() {
                 className="btn-cross p03"
                 style={{ cursor: 'pointer', textAlign: 'center', border: '1px solid rgba(56, 189, 248, 0.4)', background: '#1e293b', color: '#38bdf8' }}
               >
-                Driver DQF &amp; Clearinghouse 🧑‍✈️
+                Driver DQF &amp; Clearinghouse
               </button>
               <button
                 type="button"
@@ -196,7 +196,7 @@ export function App() {
                 className="btn-cross p03"
                 style={{ cursor: 'pointer', textAlign: 'center', border: '1px solid rgba(239, 68, 68, 0.4)', background: '#1e293b', color: '#fca5a5' }}
               >
-                FreightGuard Incidents 🛡️
+                FreightGuard Incidents
               </button>
             </div>
           </div>

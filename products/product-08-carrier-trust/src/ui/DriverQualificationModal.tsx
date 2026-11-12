@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useModalDialog } from './useModalDialog';
+import { IconX, IconCheck, IconAlertTriangle } from './icons';
 import {
   SAMPLE_DRIVER_ROSTER,
   auditDriverQualificationFile,
@@ -73,7 +74,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
         >
           <div>
             <h3 id="dqf-modal-title" style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc' }}>
-              🧑‍✈️ Driver Qualification File (DQF) &amp; Clearinghouse Compliance
+              Driver Qualification File (DQF) &amp; Clearinghouse Compliance
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>
               Sample roster evaluated as of {asOfDate}. Selected carrier: {carrierName} (DOT #{carrierDot}). Sample drivers are not associated with that carrier unless the DOT matches. No registry checks or assignment are performed.
@@ -92,7 +93,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
             }}
             aria-label="Close"
           >
-            ✕
+            <IconX size={18} />
           </button>
         </div>
 
@@ -197,7 +198,7 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
                     color: v.severity === 'CRITICAL_OOS' ? '#fca5a5' : '#fcd34d',
                   }}
                 >
-                  <strong>{v.severity === 'CRITICAL_OOS' ? '🚫 SCENARIO CRITICAL ISSUE' : '⚠️ SCENARIO WARNING'}:</strong>{' '}
+                  <strong>{v.severity === 'CRITICAL_OOS' ? 'SCENARIO CRITICAL ISSUE' : 'SCENARIO WARNING'}:</strong>{' '}
                   {v.message}
                 </div>
               ))}
@@ -211,41 +212,41 @@ export const DriverQualificationModal: React.FC<DriverQualificationModalProps> =
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, fontSize: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span>{selectedDriver.cdlClass === 'CLASS_A' ? '✅' : '❌'}</span>
+                <span>{selectedDriver.cdlClass === 'CLASS_A' ? <IconCheck size={14} color="#10b981" /> : <IconX size={14} color="#ef4444" />}</span>
                 <div>
                   <strong>CDL Class &amp; State:</strong> {selectedDriver.cdlClass} ({selectedDriver.cdlState})
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span>{audit.daysUntilMedCardExpires >= 0 ? '✅' : '🚫'}</span>
+                <span>{audit.daysUntilMedCardExpires >= 0 ? <IconCheck size={14} color="#10b981" /> : <IconAlertTriangle size={14} color="#ef4444" />}</span>
                 <div>
                   <strong>DOT Physical (MCSA-5876):</strong>{' '}
                   {audit.daysUntilMedCardExpires >= 0 ? 'Not expired in sample' : 'Expired / Disqualified'}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span>{!audit.mvrAnnualOverdue ? '✅' : '⚠️'}</span>
+                <span>{!audit.mvrAnnualOverdue ? <IconCheck size={14} color="#10b981" /> : <IconAlertTriangle size={14} color="#f59e0b" />}</span>
                 <div>
                   <strong>Annual MVR Review:</strong>{' '}
                   {audit.mvrAnnualOverdue ? 'Overdue (>365 Days)' : `Current (${selectedDriver.lastAnnualMvrDate})`}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span>{selectedDriver.clearinghouseStatus === 'CLEARED' ? '✅' : '🚫'}</span>
+                <span>{selectedDriver.clearinghouseStatus === 'CLEARED' ? <IconCheck size={14} color="#10b981" /> : <IconX size={14} color="#ef4444" />}</span>
                 <div>
                   <strong>Drug &amp; Alcohol Clearinghouse:</strong>{' '}
                   {selectedDriver.clearinghouseStatus === 'CLEARED' ? 'Sample says cleared' : 'PROHIBITED'}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span>{selectedDriver.priorEmployerHistoryVerified ? '✅' : '⚠️'}</span>
+                <span>{selectedDriver.priorEmployerHistoryVerified ? <IconCheck size={14} color="#10b981" /> : <IconAlertTriangle size={14} color="#f59e0b" />}</span>
                 <div>
                   <strong>3-Year Safety History:</strong>{' '}
                   {selectedDriver.priorEmployerHistoryVerified ? 'Sample says verified' : 'Pending Investigation'}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span>{selectedDriver.movingViolationsCount3Years <= 1 ? '✅' : '⚠️'}</span>
+                <span>{selectedDriver.movingViolationsCount3Years <= 1 ? <IconCheck size={14} color="#10b981" /> : <IconAlertTriangle size={14} color="#f59e0b" />}</span>
                 <div>
                   <strong>3-Yr Moving Violations:</strong> {selectedDriver.movingViolationsCount3Years} Record(s)
                 </div>

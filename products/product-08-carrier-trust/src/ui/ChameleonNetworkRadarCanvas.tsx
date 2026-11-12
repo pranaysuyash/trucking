@@ -123,7 +123,7 @@ export const ChameleonNetworkRadarCanvas: React.FC<ChameleonNetworkRadarCanvasPr
           />
           <div>
             <h4 style={{ margin: 0, fontSize: '15px', fontWeight: 700, letterSpacing: '0.5px', color: '#38bdf8' }}>
-              📡 CHAMELEON ENTITY & CYBER FRAUD NEXUS RADAR
+              CHAMELEON ENTITY & CYBER FRAUD NEXUS RADAR
             </h4>
             <div style={{ fontSize: '11px', color: '#94a3b8' }}>
               Graph Topology & Geolocation Dispersion Analysis · 49 U.S.C. § 13902 Antifraud Protocol
@@ -161,10 +161,10 @@ export const ChameleonNetworkRadarCanvas: React.FC<ChameleonNetworkRadarCanvasPr
             }}
           >
             {graph.verdict === 'CRITICAL_FRAUD_LOCKOUT'
-              ? '⛔ CRITICAL FRAUD LOCKOUT'
+              ? 'CRITICAL FRAUD LOCKOUT'
               : graph.verdict === 'ELEVATED_MONITORING'
-              ? '⚠️ ELEVATED MONITORING'
-              : '✅ CLEAN IDENTITY NEXUS'}
+              ? 'ELEVATED MONITORING'
+              : 'CLEAN IDENTITY NEXUS'}
           </span>
           <span
             style={{
@@ -530,7 +530,7 @@ export const ChameleonNetworkRadarCanvas: React.FC<ChameleonNetworkRadarCanvasPr
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '8px' }}>
-            <span style={{ fontWeight: 700, color: '#38bdf8' }}>🔬 FORENSIC NODE DOSSIER</span>
+            <span style={{ fontWeight: 700, color: '#38bdf8' }}>FORENSIC NODE DOSSIER</span>
             <span
               style={{
                 fontSize: '10px',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconShieldAlert, IconAlertTriangle } from './icons';
 import { FraudRiskIndicators, OperatingAuthorityStatus, SaferAuthorityFiling, ContactSecurityProfile } from '../engine/types';
 
 interface FraudRiskRadarProps {
@@ -34,11 +35,13 @@ export const FraudRiskRadar: React.FC<FraudRiskRadarProps> = ({
     <div className="safety-card fraud-card">
       <div className="card-header">
         <div className="title-with-subtitle">
-          <h3>🛡️ Fraud Risk & Double-Brokering Detection Radar</h3>
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <IconShieldAlert size={18} /> Fraud Risk &amp; Double-Brokering Detection Radar
+          </h3>
           <span className="subtitle">Chameleon Carrier & Unauthorized Re-Brokering Shield</span>
         </div>
         <span className={`risk-badge ${isHighRisk ? 'critical' : 'clean'}`}>
-          {isHighRisk ? '⚠️ HIGH FRAUD RISK' : '✅ LOW FRAUD PROFILE'}
+          {isHighRisk ? 'HIGH FRAUD RISK' : 'LOW FRAUD PROFILE'}
         </span>
       </div>
 
@@ -138,7 +141,11 @@ export const FraudRiskRadar: React.FC<FraudRiskRadarProps> = ({
       {isHighRisk && (
         <div className="fraud-alert-banner" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <div>
-            ⚠️ <strong>SCENARIO RISK FLAG:</strong> Carrier exhibits severe fraud, VOIP cyber-risk, or double-brokering indicators. This modeled result does not operate an actual dispatch lock.
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <IconAlertTriangle size={14} color="#f59e0b" />
+              <strong>SCENARIO RISK FLAG:</strong>
+            </span>{' '}
+            Carrier exhibits severe fraud, VOIP cyber-risk, or double-brokering indicators. This modeled result does not operate an actual dispatch lock.
           </div>
           {authority !== 'AUTHORIZED_FOR_HIRE' ? (
             <div style={{ fontSize: '11px', color: '#fca5a5', fontStyle: 'italic' }}>

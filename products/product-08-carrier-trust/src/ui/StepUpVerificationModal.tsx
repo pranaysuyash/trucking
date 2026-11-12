@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IconX } from './icons';
 import type { CarrierProfile } from '../engine/types';
 import { platformBus } from '../engine/platformBus';
 import { useModalDialog } from './useModalDialog';
@@ -163,7 +164,7 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
               fontWeight: 700,
             }}
           >
-            ✕
+            <IconX size={16} />
           </button>
         </div>
 
@@ -180,7 +181,7 @@ export const StepUpVerificationModal: React.FC<StepUpVerificationModalProps> = (
               lineHeight: 1.5,
             }}
           >
-            <strong>⛔ SCENARIO PRECONDITION:</strong>
+            <strong>SCENARIO PRECONDITION:</strong>
             <p style={{ margin: '6px 0 0 0' }}>
               The sample operating authority is <strong>{carrier.operatingAuthority}</strong> or Safety Rating is <strong>{carrier.safetyRating}</strong>. <strong>This tool cannot authorize dispatch or override a scenario blocker.</strong>
             </p>

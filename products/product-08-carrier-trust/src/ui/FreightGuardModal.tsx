@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IconX, IconShieldAlert } from './icons';
 import {
   SAMPLE_FREIGHTGUARD_REPORTS,
   auditCarrierIncidents,
@@ -110,9 +111,9 @@ export const FreightGuardModal: React.FC<FreightGuardModalProps> = ({
           <div>
             <h3
               id="freightguard-title"
-              style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: '#38bdf8' }}
+              style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '8px' }}
             >
-              🛡️ Carrier411 FreightGuard &amp; Double-Brokering Shield
+              <IconShieldAlert size={18} /> Carrier411 FreightGuard &amp; Double-Brokering Shield
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '11px', color: '#94a3b8' }}>
               DOT: {carrierDot} · {carrierName} · Industry Incident Nexus
@@ -130,7 +131,7 @@ export const FreightGuardModal: React.FC<FreightGuardModalProps> = ({
               padding: '4px 8px',
             }}
           >
-            ✕
+            <IconX size={18} />
           </button>
         </div>
 
@@ -466,7 +467,7 @@ export const FreightGuardModal: React.FC<FreightGuardModalProps> = ({
                     Reported by: <strong>{rpt.reportingBrokerName}</strong> ({rpt.reportingBrokerMc}) on {rpt.reportedDate}
                   </span>
                   <span>
-                    Disputed: <strong>${rpt.disputedAmountDollars.toLocaleString()}</strong> · Route: {rpt.originCity} → {rpt.destinationCity}
+                    Disputed: <strong>${rpt.disputedAmountDollars.toLocaleString()}</strong> · Route: {rpt.originCity} -&gt; {rpt.destinationCity}
                   </span>
                 </div>
               </div>
