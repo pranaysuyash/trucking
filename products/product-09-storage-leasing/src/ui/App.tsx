@@ -203,8 +203,8 @@ export function App() {
   const [spaceSearch, setSpaceSearch] = useState('');
   const [spaceStatusFilter, setSpaceStatusFilter] = useState<string>('all');
   const [spaceBuildingFilter, setSpaceBuildingFilter] = useState<string>('all');
+  const [leaseSearch, setLeaseSearch] = useState('');
   const [leaseStatusFilter, setLeaseStatusFilter] = useState<string>('all');
-  void spaceSearch; void setSpaceSearch; void spaceStatusFilter; void setSpaceStatusFilter; void spaceBuildingFilter; void setSpaceBuildingFilter; void leaseStatusFilter; void setLeaseStatusFilter;
   const [monthlyYear, setMonthlyYear] = useState(new Date().getFullYear());
   const [monthlyMonth, setMonthlyMonth] = useState(new Date().getMonth() + 1);
 
@@ -692,6 +692,26 @@ export function App() {
   });
   const agingAmount = (label: typeof analytics.receivablesAging.buckets[number]['label']) => analytics.receivablesAging.buckets.find(bucket => bucket.label === label)?.amount ?? 0;
 
+  const tenantForSpace = (spaceId: string): string => {
+    const lease = leases.find((l) => l.spaceId === spaceId && (l.status === 'active' || l.status === 'draft'));
+    return lease ? tenantNameById.get(lease.tenantId) ?? lease.tenantId : '';
+  };
+  const spaceBuildingOptions = [...new Set(facility.spaces.map((s) => s.buildingName).filter((b): b is string => Boolean(b)))].sort();
+  const filteredSpaces = facility.spaces.filter((s) => {
+    const q = spaceSearch.trim().toLowerCase();
+    if (q && ![s.code, s.name, s.buildingName ?? '', tenantForSpace(s.id)].some((v) => v.toLowerCase().includes(q))) return false;
+    if (spaceStatusFilter !== 'all' && s.status !== spaceStatusFilter) return false;
+    if (spaceBuildingFilter !== 'all' && (s.buildingName || '—') !== spaceBuildingFilter) return false;
+    return true;
+  });
+  const leaseStatusOptions = [...new Set(leases.map((l) => l.status))].sort();
+  const filteredLeases = leases.filter((l) => {
+    const q = leaseSearch.trim().toLowerCase();
+    if (q && ![l.id, tenantNameById.get(l.tenantId) ?? l.tenantId, spaceCodeById.get(l.spaceId) ?? l.spaceId].some((v) => v.toLowerCase().includes(q))) return false;
+    if (leaseStatusFilter !== 'all' && l.status !== leaseStatusFilter) return false;
+    return true;
+  });
+
   return (
     <div className="subproduct-root">
       <SuiteDock currentProductId="product-09-storage-leasing" />
@@ -941,8 +961,41 @@ export function App() {
                     : undefined
                 }
               >
+                {facility.spaces.length > 0 && (
+                  <Group gap="sm" wrap="wrap" mb="sm">
+                    <TextInput
+                      aria-label="Search spaces"
+                      placeholder="Search code, name, building, tenant"
+                      value={spaceSearch}
+                      onChange={(e) => setSpaceSearch(e.currentTarget.value)}
+                      w={260}
+                    />
+                    <Select
+                      aria-label="Filter spaces by status"
+                      placeholder="All statuses"
+                      data={[
+                        { value: 'all', label: 'All statuses' },
+                        ...(['vacant', 'leased', 'blocked', 'under_repair', 'temporarily_reserved'] as const).map((s) => ({ value: s, label: s.replace(/_/g, ' ') })),
+                      ]}
+                      value={spaceStatusFilter}
+                      onChange={(v) => setSpaceStatusFilter(v ?? 'all')}
+                      w={170}
+                    />
+                    <Select
+                      aria-label="Filter spaces by building/godown"
+                      placeholder="All buildings"
+                      data={[{ value: 'all', label: 'All buildings' }, ...spaceBuildingOptions.map((b) => ({ value: b, label: b }))]}
+                      value={spaceBuildingFilter}
+                      onChange={(v) => setSpaceBuildingFilter(v ?? 'all')}
+                      w={170}
+                    />
+                    <Text size="xs" c="dimmed">Showing {filteredSpaces.length} of {facility.spaces.length}</Text>
+                  </Group>
+                )}
                 {facility.spaces.length === 0 ? (
                   <EmptyState title="No spaces yet" hint="Define your first rentable space above. Spaces drive occupancy, leasing, and electricity charges." />
+                ) : filteredSpaces.length === 0 ? (
+                  <EmptyState title="No spaces match" hint="Adjust the search or filters above." />
                 ) : (
                 <div style={{ overflowX: 'auto' }}>
                   <table className="data-table">
@@ -959,7 +1012,7 @@ export function App() {
                       </tr>
                     </thead>
                     <tbody>
-                      {facility.spaces.map((s: RentableSpace) => (
+                      {filteredSpaces.map((s: RentableSpace) => (
                         <tr key={s.id}>
                           <td className="mono">{s.code}</td>
                           <td>{s.name}</td>
@@ -981,13 +1034,7 @@ export function App() {
                               {s.status}
                             </StatusBadge>
                           </td>
-                          <td>
-                            {(() => {
-                              const l = leases.find((x) => x.spaceId === s.id && (x.status === 'active' || x.status === 'draft'));
-                              const t = l ? tenants.find((x) => x.id === l.tenantId) : undefined;
-                              return t ? t.name : '—';
-                            })()}
-                          </td>
+                          <td>{tenantForSpace(s.id) || '—'}</td>
                           <td>{s.environmentalClass}</td>
                         </tr>
                       ))}
@@ -1187,9 +1234,30 @@ export function App() {
                 )}
               </SectionCard>
 
-              <SectionCard title={`Leases (${leases.length})`}>
+              <SectionCard title={`Leases (${filteredLeases.length}${filteredLeases.length !== leases.length ? ` of ${leases.length}` : ''})`}>
+                {leases.length > 0 && (
+                  <Group gap="sm" wrap="wrap" mb="sm">
+                    <TextInput
+                      aria-label="Search leases"
+                      placeholder="Search lease, tenant, space"
+                      value={leaseSearch}
+                      onChange={(e) => setLeaseSearch(e.currentTarget.value)}
+                      w={240}
+                    />
+                    <Select
+                      aria-label="Filter leases by status"
+                      placeholder="All statuses"
+                      data={[{ value: 'all', label: 'All statuses' }, ...leaseStatusOptions.map((s) => ({ value: s, label: s.replace(/_/g, ' ') }))]}
+                      value={leaseStatusFilter}
+                      onChange={(v) => setLeaseStatusFilter(v ?? 'all')}
+                      w={170}
+                    />
+                  </Group>
+                )}
                 {leases.length === 0 ? (
                   <EmptyState title="No leases yet" hint="Create one above." />
+                ) : filteredLeases.length === 0 ? (
+                  <EmptyState title="No leases match" hint="Adjust the search or status filter above." />
                 ) : (
                   <div style={{ overflowX: 'auto' }}>
                     <table className="data-table">
@@ -1205,11 +1273,11 @@ export function App() {
                         </tr>
                       </thead>
                       <tbody>
-                        {leases.map((l) => (
+                        {filteredLeases.map((l) => (
                           <tr key={l.id}>
                             <td className="mono">{l.id.slice(0, 14)}</td>
-                            <td>{tenants.find((t) => t.id === l.tenantId)?.name ?? l.tenantId}</td>
-                            <td>{l.spaceId}</td>
+                            <td>{tenantNameById.get(l.tenantId) ?? l.tenantId}</td>
+                            <td>{spaceCodeById.get(l.spaceId) ?? l.spaceId}</td>
                             <td>
                               {dateShort(l.startDate)} → {l.endDate ? dateShort(l.endDate) : 'Indefinite'}
                             </td>
