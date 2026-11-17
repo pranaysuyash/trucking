@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Tabs, Button, Group, Stack, Text, Title, TextInput, NumberInput, Select, Badge, Table, ScrollArea } from '@mantine/core';
 import { SuiteDock } from './SuiteDock';
 import { useFacilityStore } from './hooks/useFacilityStore';
@@ -31,7 +31,15 @@ import {
   cancelMaintenance,
   costVariance,
 } from '../engine/maintenanceEngine';
-import type { RentableSpace, Lease, MaintenanceTask, CommodityCategory, Tenant } from '../engine/types';
+import type { RentableSpace, Lease, MaintenanceTask, CommodityCategory, Tenant, StorageEvent } from '../engine/types';
+
+function payloadJson(payload: Record<string, unknown> | undefined, pretty = false): string {
+  try {
+    return JSON.stringify(payload ?? {}, null, pretty ? 2 : 0);
+  } catch {
+    return String(payload ?? '');
+  }
+}
 
 const OWNERSHIP_OPTIONS = [
   { value: 'owned', label: 'Owned (I own this building)' },
@@ -205,6 +213,12 @@ export function App() {
   const [spaceBuildingFilter, setSpaceBuildingFilter] = useState<string>('all');
   const [leaseSearch, setLeaseSearch] = useState('');
   const [leaseStatusFilter, setLeaseStatusFilter] = useState<string>('all');
+  const [auditSearch, setAuditSearch] = useState('');
+  const [auditTypeFilter, setAuditTypeFilter] = useState<string>('all');
+  const [auditActorFilter, setAuditActorFilter] = useState<string>('all');
+  const [auditVerificationFilter, setAuditVerificationFilter] = useState<string>('all');
+  const [expandedEventId, setExpandedEventId] = useState<string | null>(null);
+  const [auditCopyStatus, setAuditCopyStatus] = useState('');
   const [monthlyYear, setMonthlyYear] = useState(new Date().getFullYear());
   const [monthlyMonth, setMonthlyMonth] = useState(new Date().getMonth() + 1);
 
@@ -711,6 +725,26 @@ export function App() {
     if (leaseStatusFilter !== 'all' && l.status !== leaseStatusFilter) return false;
     return true;
   });
+
+  const auditTypeOptions = [...new Set(events.map((e) => e.eventType))].sort();
+  const auditActorOptions = [...new Set(events.map((e) => e.actor).filter(Boolean))].sort();
+  const auditVerificationOptions = [...new Set(events.map((e) => e.verificationStatus).filter(Boolean))].sort();
+  const filteredAuditEvents = events.filter((e) => {
+    const q = auditSearch.trim().toLowerCase();
+    if (q && ![e.eventType, e.actor, e.verificationStatus ?? '', e.facilityId, e.spaceId ?? '', e.tenantId ?? '', e.leaseId ?? '', payloadJson(e.payload)].some((v) => v.toLowerCase().includes(q))) return false;
+    if (auditTypeFilter !== 'all' && e.eventType !== auditTypeFilter) return false;
+    if (auditActorFilter !== 'all' && e.actor !== auditActorFilter) return false;
+    if (auditVerificationFilter !== 'all' && e.verificationStatus !== auditVerificationFilter) return false;
+    return true;
+  }).reverse();
+  const copyAuditPayload = async (ev: StorageEvent) => {
+    try {
+      await navigator.clipboard.writeText(payloadJson(ev.payload, true));
+      setAuditCopyStatus(`Copied payload for ${ev.eventType}.`);
+    } catch {
+      setAuditCopyStatus('Clipboard unavailable in this browser context.');
+    }
+  };
 
   return (
     <div className="subproduct-root">
@@ -2015,11 +2049,54 @@ export function App() {
                 title="Audit log (foundation)"
                 subtitle="Append-only operational events persisted in the schema-v1 state (additive). Read-only view; use for CA/audit traceability. Export, tamper-evidence, and retention policy are deferred decisions."
               >
+                {events.length > 0 && (
+                  <Stack gap="xs" mb="sm">
+                    <Group gap="sm" wrap="wrap">
+                      <TextInput
+                        aria-label="Search audit events"
+                        placeholder="Search event, actor, entity, payload"
+                        value={auditSearch}
+                        onChange={(e) => setAuditSearch(e.currentTarget.value)}
+                        w={280}
+                      />
+                      <Select
+                        aria-label="Filter audit events by type"
+                        placeholder="All event types"
+                        data={[{ value: 'all', label: 'All event types' }, ...auditTypeOptions.map((t) => ({ value: t, label: t }))]}
+                        value={auditTypeFilter}
+                        onChange={(v) => setAuditTypeFilter(v ?? 'all')}
+                        w={180}
+                      />
+                      <Select
+                        aria-label="Filter audit events by actor"
+                        placeholder="All actors"
+                        data={[{ value: 'all', label: 'All actors' }, ...auditActorOptions.map((a) => ({ value: a, label: a }))]}
+                        value={auditActorFilter}
+                        onChange={(v) => setAuditActorFilter(v ?? 'all')}
+                        w={150}
+                      />
+                      <Select
+                        aria-label="Filter audit events by verification"
+                        placeholder="All verification"
+                        data={[{ value: 'all', label: 'All verification' }, ...auditVerificationOptions.map((v) => ({ value: v, label: v }))]}
+                        value={auditVerificationFilter}
+                        onChange={(v) => setAuditVerificationFilter(v ?? 'all')}
+                        w={160}
+                      />
+                    </Group>
+                    <Group justify="space-between" wrap="wrap">
+                      <Text size="xs" c="dimmed">Showing {filteredAuditEvents.length} of {events.length} events</Text>
+                      {auditCopyStatus && <Text size="xs" role="status" c="dimmed">{auditCopyStatus}</Text>}
+                    </Group>
+                  </Stack>
+                )}
                 {events.length === 0 ? (
                   <EmptyState
                     title="No audit events yet"
                     hint="Events appear as you register facilities/spaces, create leases, generate ledger entries, and record payments/receipts."
                   />
+                ) : filteredAuditEvents.length === 0 ? (
+                  <EmptyState title="No events match" hint="Adjust the search or filters above." />
                 ) : (
                   <ScrollArea h={520}>
                     <Table striped highlightOnHover withTableBorder withColumnBorders>
@@ -2031,31 +2108,46 @@ export function App() {
                           <Table.Th>Actor</Table.Th>
                           <Table.Th>Verification</Table.Th>
                           <Table.Th>Payload</Table.Th>
+                          <Table.Th>Detail</Table.Th>
                         </Table.Tr>
                       </Table.Thead>
                       <Table.Tbody>
-                        {[...events].reverse().map((ev) => {
+                        {filteredAuditEvents.map((ev) => {
                           const refs = [
                             ev.spaceId ? `space:${ev.spaceId}` : null,
                             ev.tenantId ? `tenant:${ev.tenantId}` : null,
                             ev.leaseId ? `lease:${ev.leaseId}` : null,
                           ].filter(Boolean).join(' · ');
-                          let payload = '';
-                          try {
-                            payload = JSON.stringify(ev.payload ?? {});
-                          } catch {
-                            payload = String(ev.payload ?? '');
-                          }
-                          if (payload.length > 180) payload = `${payload.slice(0, 177)}…`;
+                          const fullPayload = payloadJson(ev.payload);
+                          const compactPayload = fullPayload.length > 180 ? `${fullPayload.slice(0, 177)}…` : fullPayload;
+                          const expanded = expandedEventId === ev.eventId;
                           return (
-                            <Table.Tr key={ev.eventId}>
-                              <Table.Td><Text size="xs">{new Date(ev.eventTime).toLocaleString()}</Text></Table.Td>
-                              <Table.Td><Badge variant="light">{ev.eventType}</Badge></Table.Td>
-                              <Table.Td><Text size="xs" c="dimmed">{refs || '—'}</Text></Table.Td>
-                              <Table.Td><Text size="xs">{ev.actor ?? '—'}</Text></Table.Td>
-                              <Table.Td><Text size="xs">{ev.verificationStatus ?? '—'}</Text></Table.Td>
-                              <Table.Td><Text size="xs" ff="monospace" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{payload || '{}'}</Text></Table.Td>
-                            </Table.Tr>
+                            <Fragment key={ev.eventId}>
+                              <Table.Tr>
+                                <Table.Td><Text size="xs">{new Date(ev.eventTime).toLocaleString()}</Text></Table.Td>
+                                <Table.Td><Badge variant="light">{ev.eventType}</Badge></Table.Td>
+                                <Table.Td><Text size="xs" c="dimmed">{refs || '—'}</Text></Table.Td>
+                                <Table.Td><Text size="xs">{ev.actor ?? '—'}</Text></Table.Td>
+                                <Table.Td><Text size="xs">{ev.verificationStatus ?? '—'}</Text></Table.Td>
+                                <Table.Td><Text size="xs" ff="monospace" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{compactPayload || '{}'}</Text></Table.Td>
+                                <Table.Td>
+                                  <Button size="compact-xs" variant="subtle" onClick={() => setExpandedEventId(expanded ? null : ev.eventId)}>
+                                    {expanded ? 'Hide' : 'View'}
+                                  </Button>
+                                </Table.Td>
+                              </Table.Tr>
+                              {expanded && (
+                                <Table.Tr>
+                                  <Table.Td colSpan={7}>
+                                    <Stack gap="xs">
+                                      <Text size="xs" c="dimmed">Event ID: <span style={{ fontFamily: 'monospace' }}>{ev.eventId}</span> · Facility: <span style={{ fontFamily: 'monospace' }}>{ev.facilityId}</span></Text>
+                                      <Text component="pre" size="xs" ff="monospace" style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{payloadJson(ev.payload, true) || '{}'}</Text>
+                                      <Button size="compact-xs" variant="light" onClick={() => void copyAuditPayload(ev)}>Copy payload JSON</Button>
+                                    </Stack>
+                                  </Table.Td>
+                                </Table.Tr>
+                              )}
+                            </Fragment>
                           );
                         })}
                       </Table.Tbody>
