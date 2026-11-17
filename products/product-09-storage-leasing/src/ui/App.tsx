@@ -4,6 +4,7 @@ import { SuiteDock } from './SuiteDock';
 import { useFacilityStore } from './hooks/useFacilityStore';
 import { selectMetrics, selectRentSummary, selectMaintSummary, selectCharges } from './selectors';
 import { computeAdminAnalytics } from '../engine/analytics';
+import { createStorageEvent } from '../engine/auditEvents';
 import { EmptyState } from './components/EmptyState';
 import { StatCard } from './components/StatCard';
 import { SectionCard } from './components/SectionCard';
@@ -120,6 +121,7 @@ export function App() {
     meterReadings,
     receipts,
     events,
+    setEvents,
     loading,
     resetting,
     storageError,
@@ -282,6 +284,11 @@ export function App() {
         landlordContact: reg.landlordContact || undefined,
       });
       setFacility(f);
+      setEvents((prev) => [...prev, createStorageEvent({
+        eventType: 'facility.registered',
+        facilityId: f.id,
+        payload: { code: f.code, name: f.name, city: f.city },
+      })]);
       setTab('spaces');
       flash('Facility registered.');
     } catch (e) {
@@ -295,7 +302,7 @@ export function App() {
       return;
     }
     try {
-      addSpace(facility, {
+      const space = {
         id: `SP-${Date.now()}`,
         code: newSpace.code || `SP-${facility.spaces.length + 1}`,
         name: newSpace.name || newSpace.code,
@@ -303,10 +310,17 @@ export function App() {
         floor: newSpace.floor,
         dimensions: { lengthFt: newSpace.lengthFt, widthFt: newSpace.widthFt },
         environmentalClass: newSpace.env,
-        status: 'vacant',
+        status: 'vacant' as const,
         buildingName: newSpace.buildingName.trim() || undefined,
-      });
+      };
+      addSpace(facility, space);
       setFacility({ ...facility, spaces: [...facility.spaces] });
+      setEvents((prev) => [...prev, createStorageEvent({
+        eventType: 'space.added',
+        facilityId: facility.id,
+        spaceId: space.id,
+        payload: { code: space.code, name: space.name, type: space.type, buildingName: space.buildingName },
+      })]);
       setNewSpace({ code: '', name: '', buildingName: '', type: 'room', floor: 1, lengthFt: 0, widthFt: 0, env: 'ambient' });
       flash('Space added.');
     } catch (e) {
@@ -391,6 +405,31 @@ export function App() {
       setLeases((prev) => [...prev, lease]);
       setLedgerEntries((prev) => [...prev, ...initialEntries]);
       setFacility({ ...facility, spaces: [...facility.spaces] });
+      const lifecycleEvents = [
+        ...(!newLease.tenantId ? [createStorageEvent({
+          eventType: 'tenant.created',
+          facilityId: facility.id,
+          tenantId: tenant.id,
+          payload: { name: tenant.name },
+        })] : []),
+        createStorageEvent({
+          eventType: 'lease.created',
+          facilityId: facility.id,
+          spaceId: space.id,
+          tenantId: tenant.id,
+          leaseId: lease.id,
+          payload: { startDate: lease.startDate, billingUnit: lease.billingUnit, rate: lease.rate, depositAmount: lease.depositAmount },
+        }),
+        ...(initialEntries.length > 0 ? [createStorageEvent({
+          eventType: 'ledger.generated',
+          facilityId: facility.id,
+          spaceId: space.id,
+          tenantId: tenant.id,
+          leaseId: lease.id,
+          payload: { reason: 'initial lease onboarding', count: initialEntries.length, ids: initialEntries.map((e) => e.id) },
+        })] : []),
+      ];
+      setEvents((prev) => [...prev, ...lifecycleEvents]);
       const wasExisting = !!newLease.tenantId;
       flash((wasExisting ? 'Additional space leased for existing tenant.' : 'Tenant onboarded and lease activated.') + usageWarning);
       setNewLease({ spaceId: '', tenantId: '', start: '', end: '', rate: 0, billing: 'sqft_month', billingQuantity: null, intendedUse: '', commodityCategory: '', deposit: 0, escalation: 0, leaseType: 'fixed_term', agreementDate: '', depositDate: '', billingStart: '', billingCycleDay: 10 });
@@ -417,6 +456,11 @@ export function App() {
         const ids = new Set(prev.map((e) => e.id));
         return [...prev, ...newEntries.filter((e) => !ids.has(e.id))];
       });
+      setEvents((prev) => [...prev, createStorageEvent({
+        eventType: 'ledger.generated',
+        facilityId: facility?.id ?? '',
+        payload: { period: `${monthlyYear}-${monthlyMonth}`, count: newEntries.length, ids: newEntries.map((e) => e.id) },
+      })]);
       flash(`Generated ${newEntries.length} ledger entr${newEntries.length === 1 ? 'y' : 'ies'}.`);
     } catch (e) {
       flash((e as Error).message);
@@ -442,6 +486,24 @@ export function App() {
       }
       const paidDate = paymentDate;
       const { result, receipt } = recordPaymentAndReceipt(entry.id, amt, paidDate);
+      const eventBase = {
+        facilityId: entry.facilityId || facility?.id || '',
+        spaceId: entry.spaceId,
+        tenantId: entry.tenantId,
+        leaseId: entry.leaseId,
+      };
+      setEvents((prev) => [...prev,
+        createStorageEvent({
+          ...eventBase,
+          eventType: 'payment.recorded',
+          payload: { ledgerId: entry.id, applied: result.applied, overpaid: result.overpaid, paidDate },
+        }),
+        createStorageEvent({
+          ...eventBase,
+          eventType: 'receipt.issued',
+          payload: { ledgerId: entry.id, receiptNumber: receipt.receiptNumber, amount: receipt.amount, paidDate },
+        }),
+      ]);
       setPaymentAmount(0);
       flash(`Payment entered in this session (₹${result.applied} applied${result.overpaid > 0 ? `, ₹${result.overpaid} overpaid recorded` : ''}). Receipt ${receipt.receiptNumber}; check storage status.`);
     } catch (e) {
@@ -467,6 +529,12 @@ export function App() {
         reportedBy: 'owner',
       });
       setMaintenanceTasks((prev) => [...prev, t]);
+      setEvents((prev) => [...prev, createStorageEvent({
+        eventType: 'maintenance.opened',
+        facilityId: facility.id,
+        spaceId: t.spaceId,
+        payload: { taskId: t.id, title: t.title, category: t.category, estimatedCost: t.estimatedCost },
+      })]);
       setNewMaint({ spaceId: '', category: 'roof', title: '', description: '', cost: 0 });
       flash('Maintenance task created.');
     } catch (e) {
@@ -481,6 +549,7 @@ export function App() {
         startMaintenance(t, facility);
         setFacility({ ...facility, spaces: [...facility.spaces] });
         setMaintenanceTasks((prev) => prev.map((m) => (m.id === t.id ? { ...t } : m)));
+        setEvents((prev) => [...prev, createStorageEvent({ eventType: 'maintenance.started', facilityId: facility.id, spaceId: t.spaceId, payload: { taskId: t.id } })]);
       } catch (e) {
         flash((e as Error).message);
       }
@@ -494,6 +563,7 @@ export function App() {
         resolveMaintenance(t, facility, t.estimatedCost);
         setFacility({ ...facility, spaces: [...facility.spaces] });
         setMaintenanceTasks((prev) => [...prev]);
+        setEvents((prev) => [...prev, createStorageEvent({ eventType: 'maintenance.resolved', facilityId: facility.id, spaceId: t.spaceId, payload: { taskId: t.id, actualCost: t.estimatedCost } })]);
         flash('Resolved.');
       } catch (e) {
         flash((e as Error).message);
@@ -508,6 +578,7 @@ export function App() {
         cancelMaintenance(t, facility);
         setFacility({ ...facility, spaces: [...facility.spaces] });
         setMaintenanceTasks((prev) => prev.map((m) => (m.id === t.id ? { ...t } : m)));
+        setEvents((prev) => [...prev, createStorageEvent({ eventType: 'maintenance.cancelled', facilityId: facility.id, spaceId: t.spaceId, payload: { taskId: t.id } })]);
       } catch (e) {
         flash((e as Error).message);
       }
@@ -523,6 +594,12 @@ export function App() {
       if (newMeter.kwh === null) throw new Error('Enter consumption in kWh.');
       const next = addMeterConsumption(meterReadings, { ...newMeter, kwh: newMeter.kwh });
       setMeterReadings(next);
+      setEvents((prev) => [...prev, createStorageEvent({
+        eventType: 'meter.reading_recorded',
+        facilityId: facility?.id ?? '',
+        spaceId: newMeter.spaceId,
+        payload: { kwh: newMeter.kwh, periodStart: newMeter.periodStart, periodEnd: newMeter.periodEnd },
+      })]);
       setNewMeter({ spaceId: '', kwh: null, periodStart: '', periodEnd: '' });
       setBillAllocation(null);
       flash('Period consumption recorded.');
@@ -738,9 +815,24 @@ export function App() {
     return true;
   }).reverse();
   const copyAuditPayload = async (ev: StorageEvent) => {
+    const text = payloadJson(ev.payload, true);
     try {
-      await navigator.clipboard.writeText(payloadJson(ev.payload, true));
+      await navigator.clipboard.writeText(text);
       setAuditCopyStatus(`Copied payload for ${ev.eventType}.`);
+      return;
+    } catch {
+      /* Clipboard API can be blocked by browser permissions; try the legacy path. */
+    }
+    try {
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      const copied = document.execCommand('copy');
+      area.remove();
+      setAuditCopyStatus(copied ? `Copied payload for ${ev.eventType}.` : 'Clipboard unavailable in this browser context.');
     } catch {
       setAuditCopyStatus('Clipboard unavailable in this browser context.');
     }
